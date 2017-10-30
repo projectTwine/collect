@@ -12,6 +12,7 @@
     "googleapis": "^22.2.0",
     "node-fetch": "^1.7.3",
     "pg": "^7.3.0",
+    "ramda": "^0.25.0",
     "request-promise": "^4.2.2",
     "sequelize": "^4.15.0"
   }

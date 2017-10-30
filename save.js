@@ -10,7 +10,9 @@ const util = require('util');
 const fs = require('fs');
 const crypto = require('crypto');
 const { spawn } = require('child_process');
+const R = require('ramda')
 const youtube = google.youtube('v3');
+
 
 const inspectJSON = function(object) {
   console.log(util.inspect(object, {showHidden: false, depth: null}));
