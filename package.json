@@ -1,17 +1,18 @@
 {
-  "name": "video-pipeline",
+  "name": "save-to-postgres",
   "version": "1.0.0",
   "description": "",
-  "main": "getYouTubeCaptions.js",
+  "main": "save-2.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "algorithmia": "^0.3.10",
     "googleapis": "^22.2.0",
     "node-fetch": "^1.7.3",
-    "request-promise": "^4.2.2"
+    "pg": "^7.3.0",
+    "request-promise": "^4.2.2",
+    "sequelize": "^4.15.0"
   }
 }

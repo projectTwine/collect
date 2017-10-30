@@ -110,36 +110,6 @@ function isURL(str) {
   return pattern.test(str);
 };
 
-/** 
- * Given a video_id uses Videos:list API to 
- * get relevant information about a video.
- */ 
-async function getYouTubeInfo(video_id, API_KEY) {
-  try {
-    const result = await fetch(`https://www.googleapis.com/youtube/v3/videos?id=${video_id}&part=snippet%2Cstatistics&key=${API_KEY}`);
-    const info = await result.json();
-    const data = {
-      source : info.items[0].snippet.source,
-      title : info.items[0].snippet.title,
-      url : null, //get URL from somewhere
-      captions : null, //get captions from shell script
-      goodness : null, //
-      tags: info.items[0].snippet.tags,
-      description : info.items[0].snippet.description,
-      viewCount : info.items[0].statistics.viewCount,
-      likeCount : info.items[0].statistics.likeCount,
-      dislikeCount : info.items[0].statistics.dislikeCount,
-      favoriteCount : info.items[0].statistics.favoriteCount,
-      commentCount : info.items[0].statistics.commentCount
-      description : null,
-      complexity_of_language : null,
-      subdivisions : null
-    };
-    return data;
-  } catch (error) {
-    console.warn(error);
-  }
-}
 
 function writeCaptionsToFS (subs, url)  {
   return new Promise((resolve, reject) => {
@@ -164,16 +134,6 @@ function writeCaptionsToFS (subs, url)  {
   })
 }
 
-//TODO: write a filename to the database
-//requires the title, description, and url
-//TODO: deal with the fact that youtube and khan can be redundant right..?k
-/*
-function generateHashFromVideo () {
-  crypto.createHash('md5').update(``)
-}
-crypto.createHash('md5').update(``)
-*/
-
 /**
  * Given a Video URL extracts the "source" of the video
  */
@@ -185,11 +145,43 @@ function getSource(url) {
 }
 
 /* Given a YouTube video URL, handles data saving and related */
-function handleYouTubeVideo(videoURL) {
-  const video_id = url.match(/watch\?v=(.*)/)[1];
-  const data = await getYouTubeInfo(video_id);
+async function handleYouTubeVideo(videoURL) {
+  const video_id = videoURL.match(/watch\?v=(.*)/)[1];
+  const data = await getYouTubeInfo(video_id, API_KEY);
   writeToDB_(data);
 }
+
+/** 
+ * Given a video_id uses Videos:list API to 
+ * get relevant information about a video.
+ */ 
+async function getYouTubeInfo(video_id) {
+  try {
+    const result = await fetch(`https://www.googleapis.com/youtube/v3/videos?id=${video_id}&part=snippet%2Cstatistics&key=${API_KEY}`);
+    const info = await result.json();
+    const data = {
+      source : info.items[0].snippet.source,
+      title : info.items[0].snippet.title,
+      url : null, //get URL from somewhere
+      captions : null, //get captions from shell script
+      goodness : null, //
+      tags: info.items[0].snippet.tags,
+      description : info.items[0].snippet.description,
+      viewCount : info.items[0].statistics.viewCount,
+      likeCount : info.items[0].statistics.likeCount,
+      dislikeCount : info.items[0].statistics.dislikeCount,
+      favoriteCount : info.items[0].statistics.favoriteCount,
+      commentCount : info.items[0].statistics.commentCount,
+      description : null,
+      complexity_of_language : null,
+      subdivisions : null
+    };
+    return data;
+  } catch (error) {
+    console.warn(error);
+  }
+}
+
 
 /*
  * Takes video attributes and writes to 'videos' table in 
@@ -223,32 +215,18 @@ function main() {
 
   //Dispatch table to handle various sources
   const handleSource = {
-    'YouTube' : YouTubeData,
-    'KhanAcademy' : KhanAcademy,
+    'YouTube' : handleYouTubeVideo,
+    //'KhanAcademy' : KhanAcademy,
   };
 
   //Check what type of URL it is.
   const source = getSource(url);
 
   //Start handling URL
-  handleSource[source]();
+  handleSource[source](url);
 }
 
 main();
   
-/*
+//Use to refresh your database schema
 sequelize.sync({force: true})
-  .then(() => {
-    Videos.create({
-        title : "",
-        source : "YouTube",
-        url : url,
-        captions : "",
-        goodness : 10,
-        tags : ["hell","there"],
-        description : "dummy",
-        complexity_of_language : 6969,
-        subdivisions: [1,2,3]
-      });
-  });
-*/

@@ -62,5 +62,5 @@ typings/
 *.vtt
 *.mp4*
 *.screenflow
-*.DS_STORE
+*.DS_Store
 
