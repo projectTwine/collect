@@ -1,0 +1,190 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block content %}
+    <div style="margin-top: 50px">
+        <div>
+            <h2>Instructors</h2>
+            <ul>
+                <li><a href="{{ path('instructor_new') }}">New</a></li>
+                <li><a href="{{ path('instructor') }}">List</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h2>Universities/Institution(s)</h2>
+            <ul>
+                <li><a href="{{ path('institution_new') }}">New</a></li>
+                <li><a href="{{ path('institution') }}">List</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h2>Courses</h2>
+            <ul>
+                <li><a href="{{ path('course_new') }}">New</a></li>
+                <li><a href="{{ path('course') }}">List</a></li>
+                <li><a href="{{ path('course_review') }}">Courses to be reviewed</a></li>
+                <li><a href="{{ path('course_paid') }}">Paid Courses</a></li>
+                <li><a href="{{ path('course_bulk_edit') }}">Bulk Edit Subjects</a></li>
+                <li><a href="{{ path('course_bulk_update') }}">Bulk Update Subjects</a> (Note:  add <b>?copy-course=true</b> to course listing pages to enable copy link</li>
+                <li><a href="{{ path('stream_text_view',{'slug':'cs'}) }}">Courses by subject in text format</a> (Update slug to see different subject course)</li>
+                <li><a href="{{ path('course_merge') }}">Merge Course</a></li>
+                <li><a href="{{ path('course_image_upload') }}">Course Image Upload</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h2>Advertising</h2>
+            <ul>
+                <li><a href="{{ path('textrow_ads_show_all') }}">Show All Text ads</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h2>Offerings</h2>
+            <ul>
+                <li><a href="{{ path('offering_new') }}">New</a></li>
+                <li><a href="{{ path('offering') }}">List</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h2>Subject</h2>
+            <ul>
+                <li><a href="{{ path('stream_new') }}">New</a></li>
+                <li><a href="{{ path('stream') }}">List</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h2>Tags</h2>
+            <ul>
+                <li><a href="{{ path('tags_view_all') }}">List</a></li>
+                <li><a href="{{ path('tags_copy_courses') }}">Copy courses from one tag to another</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h2>Career Categories</h2>
+            <ul>
+                <li><a href="{{ path('category_new') }}">New</a></li>
+                <li><a href="{{ path('category') }}">List</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h2>Careers</h2>
+            <ul>
+                <li><a href="{{ path('career_new') }}">New</a></li>
+                <li><a href="{{ path('career') }}">List</a></li>
+                <li><a href="{{ path('career_bulk_update') }}">Bulk Update Careers</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h2>Provider</h2>
+            <ul>
+                <li><a href="{{ path('initiative_new') }}">New</a></li>
+                <li><a href="{{ path('initiative') }}">List</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h2>News</h2>
+            <ul>
+                <li><a href="{{ path('news_new') }}">New</a></li>
+                <li><a href="{{ path('news') }}">List</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h2>Languages</h2>
+            <ul>
+                <li><a href="{{ path('language_new') }}">New</a></li>
+                <li><a href="{{ path('language') }}">List</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h2>Reviews</h2>
+            <ul>
+                <li><a href="{{ path('reviews_by_status',{statusId: 1}) }}">New Reviews to be approved</a></li>
+                <li><a href="{{ path('substantial_reviews') }}">Reviews with Substantial Text in last two months</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h2>Spotlights</h2>
+            <ul>
+                <li><a href="{{ path('spotlight') }}">List</a></li>
+                <li><a href="{{ path('spotlight_mooc_report') }}">Spotlight MOOC Report</a></li>
+            </ul>
+
+            <h3>Spotlights  - Homepage</h3>
+            <ul>
+                <li><a href="{{ path('spotlight_edit',{id:1}) }}">#1</a></li>
+                <li><a href="{{ path('spotlight_edit',{id:2}) }}">#2</a></li>
+                <li><a href="{{ path('spotlight_edit',{id:3}) }}">#3</a></li>
+                <li><a href="{{ path('spotlight_edit',{id:4}) }}">#4</a></li>
+                <li><a href="{{ path('spotlight_edit',{id:5}) }}">#5 (ad)</a></li>
+                <li><a href="{{ path('spotlight_edit',{id:6}) }}">#6</a></li>
+                <li><a href="{{ path('spotlight_edit',{id:7}) }}">#7</a></li>
+                <li><a href="{{ path('spotlight_edit',{id:8}) }}">#8</a></li>
+                <li><a href="{{ path('spotlight_edit',{id:9}) }}">#9</a></li>
+                <li><a href="{{ path('spotlight_edit',{id:10}) }}">#10 (ad)</a></li>
+            </ul>
+
+            <h3>Spotlights  - MOOC Report</h3>
+            <ul>
+                <li><a href="{{ path('spotlight_edit',{id:13}) }}">#1</a></li>
+                <li><a href="{{ path('spotlight_edit',{id:14}) }}">#2</a></li>
+                <li><a href="{{ path('spotlight_edit',{id:15}) }}">#3</a></li>
+                <li><a href="{{ path('spotlight_edit',{id:16}) }}">#4</a></li>
+                <li><a href="{{ path('spotlight_edit',{id:17}) }}">#5</a></li>
+            </ul>
+
+
+        </div>
+
+        <div>
+            <h2>In-Depth Reviews</h2>
+            <ul>
+                <li><a href="{{ path('indepthreview') }}">List</a></li>
+                <li><a href="{{ path('indepthreview_new') }}">New</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h2>Interviews</h2>
+            <ul>
+                <li><a href="{{ path('interview') }}">List</a></li>
+                <li><a href="{{ path('interview_new') }}">New</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h2>Credentials</h2>
+            <ul>
+                <li><a href="{{ path('credential') }}">List</a></li>
+
+            </ul>
+        </div>
+
+        <div>
+            <h2>Courses Starting by Dates</h2>
+            <ul>
+                {% for i in range(0,10) %}
+                    {% set dateAdd = "+"~i~"days" %}
+                 <li><a href="{{ path('course_mt',{ type: '1day', date: date(dateAdd)|date("Y-m-d")}) }}">{{ date(dateAdd)|date("l jS M") }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div>
+            <h3><a href="{{ path('ClassCentralSiteBundle_clearcache') }}">Clear Cache</a></h3>
+        </div>
+
+
+
+    </div>
+{% endblock %}

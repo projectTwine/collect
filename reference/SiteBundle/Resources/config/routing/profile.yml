@@ -1,0 +1,30 @@
+profile:
+    pattern:  /
+    defaults: { _controller: "ClassCentralSiteBundle:Profile:index" }
+
+profile_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ClassCentralSiteBundle:Profile:show" }
+
+profile_new:
+    pattern:  /new
+    defaults: { _controller: "ClassCentralSiteBundle:Profile:new" }
+
+profile_create:
+    pattern:  /create
+    defaults: { _controller: "ClassCentralSiteBundle:Profile:create" }
+    requirements: { _method: post }
+
+profile_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ClassCentralSiteBundle:Profile:editAdmin" }
+
+profile_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ClassCentralSiteBundle:Profile:update" }
+    requirements: { _method: post|put }
+
+profile_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ClassCentralSiteBundle:Profile:delete" }
+    requirements: { _method: post|delete }

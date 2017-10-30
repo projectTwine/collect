@@ -1,0 +1,49 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block content %}
+<h1>Initiative list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Url</th>
+            <th>Description</th>
+            <th>Code</th>
+            <th>Tooltip</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('initiative_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.name }}</td>
+            <td>{{ entity.url }}</td>
+            <td>{{ entity.description }}</td>
+            <td>{{ entity.code }}</td>
+            <td>{{ entity.tooltip }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('initiative_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('initiative_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('initiative_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
+{% endblock %}

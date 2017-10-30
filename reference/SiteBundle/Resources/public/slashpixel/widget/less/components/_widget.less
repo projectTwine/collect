@@ -1,0 +1,344 @@
+
+@text-color:                       @black;
+@text-highlight-color:             @blue;
+
+@avatar-border-color:              #f4f4f4;
+
+@bg-color:                         #ffffff;
+
+#writeSection {
+  display: none;
+}
+
+.ccReviewWidget {
+  max-width: 300px;
+  min-width: 200px;
+  margin: 0 auto;
+}
+
+.widgetSection {
+  padding-top: 47px;
+}
+
+.widgetHeader {
+  .clearfix;
+  display: block;
+  text-align: center;
+}
+
+.widgetTitleLink {
+  text-decoration: none;
+}
+
+.widgetTitle {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 500;
+  color: @text-color;
+  text-transform: uppercase;
+  vertical-align: bottom;
+  margin: 0;
+  font-family: @font-family-headings;
+}
+
+.widgetTitle-sub {
+  display: block;
+  font-size: 20px;
+  font-family: @font-family-headings;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: @text-color;
+  margin: 13px 0;
+}
+
+.widgetHeader .starRating {
+  display: inline-block;
+  vertical-align: bottom;
+  margin-bottom: 18px;
+}
+
+.widgetTitle {
+  margin-bottom: 14px;
+}
+
+.widgetTitle_count {
+  float: left;
+  font-size: 46px;
+  color: @text-highlight-color;
+  line-height: 40px;
+}
+
+.widgetTitle_text {
+  float: left;
+  max-width: 108px;
+  line-height: 1;
+  margin-left: -6px;
+}
+
+
+// text bubble
+
+.textBubble {
+  padding-top: 10px;
+}
+
+.textBubble_main {
+  display: block;
+  position: relative;
+  border: 1px solid @gray-border;
+  -webkit-box-shadow: 0px 0px 4px 1px rgba(3,3,3,0.05);
+  -moz-box-shadow: 0px 0px 4px 1px rgba(3,3,3,0.05);
+  box-shadow: 0px 0px 4px 1px rgba(3,3,3,0.05);
+}
+
+.textBubble_edge1 {
+  display: block;
+  position: absolute;
+  top: -6px;
+  height: 5px;
+  width: 100%;
+  padding: 0 10px;
+  &:before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 5px;
+    border: 1px solid @gray-border;
+    border-bottom: 0;
+    background: #f7f7f7;
+    -webkit-box-shadow: 0px 0px 4px 1px rgba(3,3,3,0.05);
+    -moz-box-shadow: 0px 0px 4px 1px rgba(3,3,3,0.05);
+    box-shadow: 0px 0px 4px 1px rgba(3,3,3,0.05);
+  }
+}
+
+.textBubble_edge2 {
+  display: block;
+  position: absolute;
+  top: -11px;
+  height: 5px;
+  width: 100%;
+  padding: 0 20px;
+  &:before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 5px;
+    border: 1px solid @gray-border;
+    border-bottom: 0;
+    background: #f1f1f1;
+    -webkit-box-shadow: 0px 0px 4px 1px rgba(3,3,3,0.05);
+    -moz-box-shadow: 0px 0px 4px 1px rgba(3,3,3,0.05);
+    box-shadow: 0px 0px 4px 1px rgba(3,3,3,0.05);
+  }
+}
+
+.textBubble_content {
+  font-family: @font-family-text;
+  font-size: 14px;
+  color: @text-color;
+  text-align: center;
+  padding: 20px 30px 13px 30px;
+  line-height: 1.45;
+}
+
+.textBubble_text {
+  font-weight: 600;
+  min-height: 80px;
+}
+
+.link-uppercase {
+  color: @blue;
+  font-size: 11px;
+  text-transform: uppercase;
+  text-decoration: none;
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+.textBubble_ratingWrap {
+  margin-top: 5px;
+}
+
+.textBubble_ratingWrap .starRating {
+  margin-right: 6px;
+}
+
+.textBubble_smallText {
+  margin-top: 3px;
+}
+
+.textBubble_smallTextLine {
+  font-size: 10px;
+}
+
+.textBubble_smallTextLine + .textBubble_smallTextLine {
+  padding: 0 5px;
+}
+
+// tabs nav
+
+.tabsNav {
+  display: block;
+  list-style: none;
+  margin: 0;
+  font-size: 0;
+  text-align: center;
+  padding-top: 22px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 19px;
+}
+
+.tabsNav li {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 1%;
+  width: 18%;
+  padding-top: 18%;
+}
+
+.tabsNav_link {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+}
+
+.cropCircle {
+  border: 5px solid @avatar-border-color;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+
+.cropCircle img {
+  width: 100%;
+}
+
+.tabsNav li.selected .tabsNav_link {
+  transform: scale(1.15);
+  opacity: 1;
+}
+
+.tabsNav li.selected:before {
+  content: "";
+  display: block;
+  border: 10px solid transparent;
+  border-top-color: @bg-color;
+  position: absolute;
+  top: -23px;
+  left: 50%;
+  margin-left: -10px;
+  z-index: 4;
+}
+
+.tabsNav li.selected:after {
+  content: "";
+  display: block;
+  border: 10px solid transparent;
+  border-top-color: @gray-border;
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  margin-left: -10px;
+  z-index: 3;
+}
+
+
+.textBubble_content {
+  display: none;
+}
+
+.textBubble_content.selected {
+  display: block;
+}
+
+// widget footer
+
+.widgetFooter {
+  .clearfix;
+}
+
+.widgetFooter_layoutUnit {
+  width: 50%;
+  float: left;
+}
+
+.widgetFooter_layoutUnit-left {
+  padding-right: 5px;
+}
+
+.widgetFooter_layoutUnit-right {
+  padding-left: 5px;
+}
+
+.widgetFooter_layoutUnit .widgetButton {
+  display: block;
+}
+
+@media (max-width: 270px) {
+  .widgetFooter_layoutUnit {
+    width: 100%;
+    float: none;
+    padding: 0 0 10px 0;
+  }
+}
+
+
+// related courses section
+
+.widgetSection-related {
+  padding-top: 0;
+  margin-top: 49px;
+  border: 1px solid @gray-border;
+  padding: 18px 18px 30px 18px;
+}
+
+
+// plainLink
+
+.plainLink {
+  color: @text-color;
+  text-decoration: none;
+  &:focus,
+  &:hover {
+    color: @text-color;
+    text-decoration: underline;
+  }
+}
+
+// basicLink
+
+.basicLink {
+  color: @blue;
+  text-decoration: none;
+  &:focus,
+  &:hover {
+    color: @blue;
+    text-decoration: underline;
+  }
+}
+
+// linkBlock
+
+.linkBlock {
+  display: block;
+  font-size: 13px;
+  font-weight: 400;
+  color: @text-color;
+}
+
+// writesection
+
+.widgetSection-write {
+  padding-top: 33px;
+}

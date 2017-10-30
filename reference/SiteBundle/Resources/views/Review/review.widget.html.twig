@@ -1,0 +1,387 @@
+
+{% if course is not null %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Reviews for {{ course.name }}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% stylesheets filter='lessphp'
+    '@widget_css'
+    %}
+    <link href="{{ asset(asset_url) }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
+
+    <script src="//use.typekit.net/nid6dsf.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
+
+    <script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', '{{ ganalytics_id }}', 'auto');
+    ga('send','event','Review Widget Load', '{{ course.initiative.name }}', '{{ course.name }}');
+
+    </script>
+
+</head>
+<body>
+<!-- SVG sprites -->
+<svg style="display: none;">
+    <symbol viewBox="0 0 50 48" id="shape-star-full">
+        <path d="M50.243 18.22c-0.131-0.399-0.507-0.674-0.928-0.674h-17.747l-5.494-16.872c-0.132-0.401-0.506-0.673-0.928-0.674s-0.798 0.272-0.928 0.673l-5.525 16.873h-17.716c-0.421 0-0.798 0.273-0.928 0.674s0.013 0.843 0.353 1.091l14.337 10.443-5.523 16.967c-0.132 0.4 0.012 0.843 0.353 1.092 0.342 0.247 0.807 0.247 1.149 0l14.428-10.475 14.398 10.475c0.172 0.125 0.373 0.187 0.575 0.187 0.2 0 0.401-0.062 0.573-0.187 0.344-0.25 0.485-0.69 0.354-1.092l-5.525-16.966 14.368-10.443c0.341-0.247 0.485-0.69 0.355-1.092z"></path>
+    </symbol>
+    <symbol viewBox="0 0 50 48" id="shape-star-half-left">
+        <path d="M25.145 0c-0.421 0-0.798 0.272-0.928 0.673l-5.525 16.873h-17.716c-0.421 0-0.798 0.273-0.928 0.674s0.013 0.843 0.353 1.091l14.337 10.443-5.523 16.967c-0.132 0.4 0.012 0.843 0.353 1.092 0.342 0.247 0.807 0.247 1.149 0l14.428-10.475z"></path>
+    </symbol>
+    <symbol viewBox="0 0 1073 1024" id="shape-star-half-right">
+        <path class="path1" d="M536.45 796.554l307.803 223.476c7.295 5.278 17.23 5.278 24.526 0 7.274-5.321 10.342-14.763 7.531-23.302l-117.821-361.961 305.829-222.79c7.253-5.3 10.299-14.763 7.553-23.281-2.789-8.561-10.814-14.398-19.826-14.398h-377.946l-117.864-359.944c-2.789-8.561-10.814-14.355-19.805-14.355z"></path>
+    </symbol>
+</svg>
+
+<!-- classcentral widget code -->
+<div class="ccReviewWidget">
+
+<div id="reviewSection" class="widgetSection widgetSection-review">
+<div class="tab-review js-tab-review">
+<header class="widgetHeader">
+    <a class="widgetTitleLink" href="{{ path('ClassCentralSiteBundle_mooc',{'id': course.id, 'slug': course.slug} ) }}#reviews" title="Reviews for {{ course.name }}" target="_blank">
+        <h1 class="widgetTitle">
+                <span class="widgetTitle_count">{{ reviews.ratingCount }}</span>
+                <span class="widgetTitle_text">Student {% if reviews.ratingCount == 1 %} Rating {% else %} Ratings {% endif %}</span>
+        </h1>
+    </a>
+
+    <div class="starRating rating{{ formattedRating*10 }}">
+        <div class="starRating_star">
+            <svg class="starRating_starShape starRating_starShape-blank">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+            </svg>
+            <svg class="starRating_starShape starRating_starShape-full">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+            </svg>
+            <svg class="starRating_starShape starRating_starShape-left starRating_starShape-half">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-half-left"></use>
+            </svg>
+            <svg class="starRating_starShape starRating_starShape-right starRating_starShape-half">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-half-right"></use>
+            </svg>
+        </div>
+        <div class="starRating_star">
+            <svg class="starRating_starShape starRating_starShape-blank">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+            </svg>
+            <svg class="starRating_starShape starRating_starShape-full">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+            </svg>
+            <svg class="starRating_starShape starRating_starShape-left starRating_starShape-half">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-half-left"></use>
+            </svg>
+            <svg class="starRating_starShape starRating_starShape-right starRating_starShape-half">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-half-right"></use>
+            </svg>
+        </div>
+        <div class="starRating_star">
+            <svg class="starRating_starShape starRating_starShape-blank">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+            </svg>
+            <svg class="starRating_starShape starRating_starShape-full">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+            </svg>
+            <svg class="starRating_starShape starRating_starShape-left starRating_starShape-half">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-half-left"></use>
+            </svg>
+            <svg class="starRating_starShape starRating_starShape-right starRating_starShape-half">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-half-right"></use>
+            </svg>
+        </div>
+        <div class="starRating_star">
+            <svg class="starRating_starShape starRating_starShape-blank">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+            </svg>
+            <svg class="starRating_starShape starRating_starShape-full">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+            </svg>
+            <svg class="starRating_starShape starRating_starShape-left starRating_starShape-half">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-half-left"></use>
+            </svg>
+            <svg class="starRating_starShape starRating_starShape-right starRating_starShape-half">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-half-right"></use>
+            </svg>
+        </div>
+        <div class="starRating_star">
+            <svg class="starRating_starShape starRating_starShape-blank">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+            </svg>
+            <svg class="starRating_starShape starRating_starShape-full">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+            </svg>
+            <svg class="starRating_starShape starRating_starShape-left starRating_starShape-half">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-half-left"></use>
+            </svg>
+            <svg class="starRating_starShape starRating_starShape-right starRating_starShape-half">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-half-right"></use>
+            </svg>
+        </div>
+    </div>
+
+</header>
+
+{% if reviewsWithSummaries|length > 0 %}
+
+<div class="widgetContent">
+<div class="textBubble">
+<div class="textBubble_main tabcontents">
+<span class="textBubble_edge2"></span>
+<span class="textBubble_edge1"></span>
+
+{% set tab = 1 %}
+{% for review in reviewsWithSummaries %}
+
+    {# figure out reviewer name #}
+    {% if review.externalReviewerName is not empty %}
+        {% set reviewer = review.externalReviewerName %}
+    {% else %}
+        {% set reviewer = review.user.name  %}
+    {% endif %}
+
+    {% set reviewerProfileUrl = user_service.profileUrl(review.user.id,review.user.handle, review.user.isPrivate) %}
+
+    <div class="textBubble_content js-textBubble-tab" id="js-tab-{{ tab }}">
+        {% set tab=tab+1 %} {# increment the tab #}
+    <div class="textBubble_text">
+        {# truncate the summary text if greater than 100 characters #}
+        {{ review.reviewSummary|length > 120 ? review.reviewSummary|slice(0, 120) ~ '...' :review.reviewSummary  }}
+    </div>
+    <div class="textBubble_ratingWrap">
+        <div class="starRating starRating-dark starRating-small rating{{ review.rating*10 }}">
+            <div class="starRating_star">
+                <svg class="starRating_starShape starRating_starShape-blank">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+                </svg>
+                <svg class="starRating_starShape starRating_starShape-full">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+                </svg>
+                <svg class="starRating_starShape starRating_starShape-left starRating_starShape-half">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-half-left"></use>
+                </svg>
+                <svg class="starRating_starShape starRating_starShape-right starRating_starShape-half">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-half-right"></use>
+                </svg>
+            </div>
+            <div class="starRating_star">
+                <svg class="starRating_starShape starRating_starShape-blank">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+                </svg>
+                <svg class="starRating_starShape starRating_starShape-full">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+                </svg>
+                <svg class="starRating_starShape starRating_starShape-left starRating_starShape-half">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-half-left"></use>
+                </svg>
+                <svg class="starRating_starShape starRating_starShape-right starRating_starShape-half">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-half-right"></use>
+                </svg>
+            </div>
+            <div class="starRating_star">
+                <svg class="starRating_starShape starRating_starShape-blank">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+                </svg>
+                <svg class="starRating_starShape starRating_starShape-full">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+                </svg>
+                <svg class="starRating_starShape starRating_starShape-left starRating_starShape-half">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-half-left"></use>
+                </svg>
+                <svg class="starRating_starShape starRating_starShape-right starRating_starShape-half">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-half-right"></use>
+                </svg>
+            </div>
+            <div class="starRating_star">
+                <svg class="starRating_starShape starRating_starShape-blank">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+                </svg>
+                <svg class="starRating_starShape starRating_starShape-full">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+                </svg>
+                <svg class="starRating_starShape starRating_starShape-left starRating_starShape-half">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-half-left"></use>
+                </svg>
+                <svg class="starRating_starShape starRating_starShape-right starRating_starShape-half">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-half-right"></use>
+                </svg>
+            </div>
+            <div class="starRating_star">
+                <svg class="starRating_starShape starRating_starShape-blank">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+                </svg>
+                <svg class="starRating_starShape starRating_starShape-full">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+                </svg>
+                <svg class="starRating_starShape starRating_starShape-left starRating_starShape-half">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-half-left"></use>
+                </svg>
+                <svg class="starRating_starShape starRating_starShape-right starRating_starShape-half">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-half-right"></use>
+                </svg>
+            </div>
+        </div>
+        <a href="{{ path('ClassCentralSiteBundle_mooc',{'id': course.id, 'slug': course.slug} ) }}#review-{{ review.id }}" target="_blank" class="link-uppercase">Read Review</a>
+    </div>
+
+
+        <div class="textBubble_smallText">
+            {% if reviewerProfileUrl %} <a href="{{ reviewerProfileUrl }}" target="_blank" title=" Profile of  {{reviewer }}"> {% endif %}
+            <span class="textBubble_smallTextLine">{{ reviewer }}</span>
+            <!-- <span class="textBubble_smallTextLine">London, England</span> -->
+                {% if reviewerProfileUrl %}</a> {% endif %}
+        </div>
+
+</div>
+{% endfor %}
+
+
+</div><!-- /textBubble_main -->
+
+
+<div class="textBubble_tabsNav js-textBubble-nav">
+    <ul class="tabsNav js-tabsNav tabs">
+        {% set tab = 1 %}
+        {% for review in reviewsWithSummaries %}
+            <li role="presentation">
+                <a href="#js-tab-{{ tab }}" class="tabsNav_link js-tab-nav-link" aria-controls="#js-tab-1" role="tab">
+                    <div class="cropCircle">
+                        <img src="{{  user_service.getProfilePic(review.user.id) }}">
+                    </div>
+                </a>
+            </li>
+            {% set tab = tab + 1 %}
+        {% endfor %}
+    </ul>
+</div> <!-- /textBubble_tabsNav -->
+
+</div>
+</div><!-- /widgetContent -->
+
+{% endif %}
+
+<footer class="widgetFooter">
+    <div class="widgetFooter_layoutUnit widgetFooter_layoutUnit-left">
+        <a href="{{ path('review_new',{courseId: course.id})}}" target="_blank"  class="widgetButton">Write your review</a>
+    </div>
+    <div class="widgetFooter_layoutUnit widgetFooter_layoutUnit-right">
+        <a href="{{ path('ClassCentralSiteBundle_mooc',{'id': course.id, 'slug': course.slug} ) }}#reviews" title="Reviews for {{ course.name }}" target="_blank" class="widgetButton widgetButton-gray">Read all reviews</a>
+    </div>
+</footer>
+</div>
+
+<div class="tab-write js-tab-write">
+
+</div>
+
+</div> <!-- /widgetSection-review -->
+
+<div id="writeSection" class="widgetSection widgetSection-write">
+
+    <form class="textBox" action="#">
+        <div class="textBox_bubble">
+            <textarea class="textBox_texteArea" placeholder="100 characters minimum..."></textarea>
+            <div class="textBox_starRating">
+                <div class="starRating starRating-selectable">
+
+                    <input type="radio" class="ratingInput" id="rating-input-1-5" name="rating-input-1" value="5">
+                    <label for="rating-input-1-5" class="starRating_label">
+                        <svg class="starRating_starShape starRating_starShape-blank">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+                        </svg>
+                        <svg class="starRating_starShape starRating_starShape-full">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+                        </svg>
+                    </label>
+
+                    <input type="radio" class="ratingInput" id="rating-input-1-4" name="rating-input-1" value="4">
+                    <label for="rating-input-1-4" class="starRating_label">
+                        <svg class="starRating_starShape starRating_starShape-blank">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+                        </svg>
+                        <svg class="starRating_starShape starRating_starShape-full">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+                        </svg>
+                    </label>
+
+                    <input type="radio" class="ratingInput" id="rating-input-1-3" name="rating-input-1" value="3">
+                    <label for="rating-input-1-3" class="starRating_label">
+                        <svg class="starRating_starShape starRating_starShape-blank">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+                        </svg>
+                        <svg class="starRating_starShape starRating_starShape-full">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+                        </svg>
+                    </label>
+
+                    <input type="radio" class="ratingInput" id="rating-input-1-2" name="rating-input-1" value="2">
+                    <label for="rating-input-1-2" class="starRating_label">
+                        <svg class="starRating_starShape starRating_starShape-blank">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+                        </svg>
+                        <svg class="starRating_starShape starRating_starShape-full">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+                        </svg>
+                    </label>
+
+                    <input type="radio" class="ratingInput" id="rating-input-1-1" name="rating-input-1" value="1">
+                    <label for="rating-input-1-1" class="starRating_label">
+                        <svg class="starRating_starShape starRating_starShape-blank">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+                        </svg>
+                        <svg class="starRating_starShape starRating_starShape-full">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+                        </svg>
+                    </label>
+
+                </div>
+            </div>
+
+        </div>
+
+        <input class="widgetButton" type="submit" value="Submit your review">
+    </form>
+
+</div> <!-- /widgetSection-write -->
+
+</div>
+
+
+{% javascripts filter='yui_js'
+'@ClassCentralSiteBundle/Resources/public/slashpixel/widget/js/_placeholders.js'
+'@ClassCentralSiteBundle/Resources/public/slashpixel/widget/js/_tabs.js'
+'@ClassCentralSiteBundle/Resources/public/slashpixel/widget/js/_main.js'
+'@ClassCentralSiteBundle/Resources/public/slashpixel/widget/js/iframeResizer.contentWindow.min.js'
+%}
+
+<script type="text/javascript" src="{{ asset(asset_url) }}"></script>
+
+{% endjavascripts %}
+
+
+</body>
+</html>
+
+{% else %}
+
+<!DOCTYPE html>
+<html>
+<head></head>
+<body></body>
+</html>
+
+{% endif %}

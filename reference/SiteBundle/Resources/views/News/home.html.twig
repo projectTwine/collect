@@ -1,0 +1,34 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block headmeta %}
+    <title> MOOC news</title>
+    <meta name="description" content="News from the world of Massive Open Online Courses i.e MOOCs"/>
+{% endblock %}
+
+
+{% block content %}
+<div class='mooc-news'>
+    <h1>MOOC news</h1>
+
+    {% set i= 0 %}
+    {% set j = 2 %}
+    {% for newsItem in news %}
+    {% if j - i == 2 %}<div class="row">{% endif %}
+        <div class='mooc-news-item col-lg-5'>
+            <p class="mooc-news-title"><a href="{{ newsItem.url }}" target="_blank" onClick="ga('send','event', 'Outbound Clicks - News','{{  newsItem.title }}')">{{ newsItem.title }}</p></a>
+            <p class="mooc-news-description">{{ newsItem.description }} <span><a href="{{ newsItem.url }}" target="_blank" onClick="ga('send','event', 'Outbound Clicks - News','{{  newsItem.title }}', 'News Page')">Read More></span></a></p>
+        </div>
+
+    {% set i = i+1 %}
+    {% if j - i == 0 %}
+        {% set j = j + 2 %}
+        </div>
+    {% endif %}
+    {% endfor %}
+
+    {# end the div for odd number #}
+    {% if i%2 == 1 %} </div> {% endif %}
+</div>
+
+
+{% endblock %}

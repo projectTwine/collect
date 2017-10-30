@@ -1,0 +1,35 @@
+ClassCentral\SiteBundle\Entity\Follow:
+    type: entity
+    table: follows
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        item:
+            type: string
+            length: 15
+            fixed: true
+            nullable: false
+        itemId:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: item_id
+        created:
+            type: datetime
+            nullable: false
+    manyToOne:
+      user:
+        targetEntity: User
+        cascade: {  }
+        mappedBy: null
+        inversedBy: follows
+        joinColumns:
+            user_id:
+                referencedColumnName: id
+        orphanRemoval: false
+    lifecycleCallbacks: {  }

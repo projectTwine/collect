@@ -1,0 +1,30 @@
+initiative:
+    pattern:  /
+    defaults: { _controller: "ClassCentralSiteBundle:Initiative:index" }
+
+initiative_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ClassCentralSiteBundle:Initiative:show" }
+
+initiative_new:
+    pattern:  /new
+    defaults: { _controller: "ClassCentralSiteBundle:Initiative:new" }
+
+initiative_create:
+    pattern:  /create
+    defaults: { _controller: "ClassCentralSiteBundle:Initiative:create" }
+    requirements: { _method: post }
+
+initiative_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ClassCentralSiteBundle:Initiative:edit" }
+
+initiative_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ClassCentralSiteBundle:Initiative:update" }
+    requirements: { _method: post }
+
+initiative_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ClassCentralSiteBundle:Initiative:delete" }
+    requirements: { _method: post }

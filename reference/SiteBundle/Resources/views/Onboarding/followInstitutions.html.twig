@@ -1,0 +1,86 @@
+<div class="modal fade" id="onboarding-follow-institutions-modal"  role="dialog" aria-labelledby="write-modal-title-here" aria-hidden="true" style="display: none;" data-backdrop="static">
+    <div class="modal-dialog modal-dialog__large" role="document">
+        <div class="modal-base-wrap">
+
+
+            <div class="modal-base-layout">
+
+
+                <div id="modal-pane-2" class="modal-pane">
+                    <div class="on-modal-header">
+                        <h1 class="on-modal-title">Follow <i>course providers</i> that you are interested in</h1>
+                        <h2 class="on-modal-subtitle">We will send you regular updates about new and upcoming courses.</h2>
+                    </div>
+
+                    <div class="on-modal-body">
+                        <div class="on-modal-body__tags">
+                            <div class="on-modal-body__tagswrap js-custom-scrollbar">
+                                <div class="tagboard">
+
+                                    {% set providerCount = 0  %}
+                                    {% for provider in providers if providerCount <= 8 %}
+
+                                        {% if provider.name != 'Independent' %}
+                                            {% include 'ClassCentralSiteBundle:Follow:btn.follow.html.twig' with {
+                                                item : followProviderItem,
+                                                item_id : provider.id,
+                                                itemName: provider.name,
+                                                followed: user_session.isItemFollowed(followProviderItem,provider.id),
+                                                simpleButton: true,
+                                                hideNotification: true
+                                            } %}
+                                        {% endif %}
+
+                                        {% set providerCount = providerCount + 1 %}
+                                    {% endfor %}
+
+
+                                    {% set insCount = 0 %}
+                                    {% for institution in institutions if insCount <= 100 %}
+
+                                        {% include 'ClassCentralSiteBundle:Follow:btn.follow.html.twig' with {
+                                            item : followInstitutionItem,
+                                            item_id : institution.id,
+                                            itemName: institution.name,
+                                            followed: user_session.isItemFollowed(followInstitutionItem,institution.id),
+                                            simpleButton: true,
+                                            hideNotification: true
+                                        } %}
+
+                                        {% set insCount = insCount + 1 %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="on-modal-footer">
+                        <div class="on-modal-footer__bar">
+                            <div class="meter">
+                                <span class="meter__bar" style="width: 0%"></span>
+                            </div>
+                        </div>
+                        <div class="on-modal-footer__button">
+                            <a href="#" class="on-modal-button" id="onboarding-follow-institutions__next">
+                                <div class="on-modal-button__icon">
+                                    <div class="u-scaling-svg">
+                                        <svg class="u-scalingSvg__shape">
+                                            <use xlink:href="#shape-arrow-right-thin" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <span>Pick 5 more providers to unlock recommendations</span>
+                            </a>
+                        </div>
+                        <div class="on-modal-footer__nav">
+                            <a href="#" class="on-modal-navbutton on-modal-navbutton-left" id="onboarding-follow-institutions__back">Back</a>
+                            <a href="#" class="on-modal-navbutton on-modal-navbutton-right" id="onboarding-follow-institutions__skip">Skip</a>
+                        </div>
+                    </div>
+                </div><!-- /.modal-pane -->
+
+            </div>
+
+        </div>
+    </div>
+</div>

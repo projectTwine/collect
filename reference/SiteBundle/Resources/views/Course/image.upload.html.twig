@@ -1,0 +1,23 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block content %}
+    <h1>Image Upload</h1>
+    <p>Either the course image url or Course image is required</p>
+    {% if msg is not empty %}
+        <h3>{{ msg }}</h3>
+    {% endif %}
+    <form method="post" enctype="multipart/form-data" name="course-image-upload">
+        <label>Course Id</label>
+        <input type="number" name="course-id" id="course-id"/>
+        <br/>
+
+        <label>Course Image Url</label>
+        <input type="text" name="course-image-url" id="course-image-url">
+        <br/>
+
+        <label>Course Image</label>
+        <input type="file" name="course-image" id="course-image"  accept="image/*">
+        <br/>
+        <input type="submit" value="Upload/Save Image" name="submit">
+    </form>
+{% endblock %}

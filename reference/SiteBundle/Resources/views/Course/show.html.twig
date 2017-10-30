@@ -1,0 +1,84 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block content %}
+<h1>Course</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td>{{ entity.name }}</td>
+        </tr>
+         <tr>
+            <th>Number of Offerings</th>
+            <td>{{ offerings|length }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('course') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('offering_new', { 'id': entity.id, 'type': 'selfpaced' }) }}">Create Selfpaced Offering form</a>
+    </li>
+    <li>
+        <a href="{{ path('course_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('course_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+
+<h1>Offering list</h1>
+<table class="records_list" align="middle">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Initiative</th>
+            <th>Course</th>
+            <th>Startdate</th>
+            <th>Enddate</th>                        
+            <th>Modified</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in offerings %}
+        <tr>
+            <td><a href="{{ path('offering_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.course.initiative }}</td>
+            <td align="center">{{ entity.course.name }}</td>
+            <td>{% if entity.startDate %}{{ entity.startDate|date('dS M, Y') }}{% endif%}</td>
+            <td>{% if entity.endDate %}{{ entity.endDate|date('dS M, Y') }}{% endif%}</td>                        
+            <td>{% if entity.modified %}{{ entity.modified|date('Y-m-d H:i:s') }}{% endif%}</td>
+            <td>
+                <ul>                    
+                    <li>
+                        <a href="{{ path('offering_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                     <li>
+                        <a href="{{ path('offering_new', { 'id': entity.id }) }}">clone</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+    {% include 'ClassCentralSiteBundle:Helpers:admin.links.html.twig' %}
+
+{% endblock %}

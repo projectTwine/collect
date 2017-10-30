@@ -1,0 +1,30 @@
+language:
+    pattern:  /
+    defaults: { _controller: "ClassCentralSiteBundle:Language:index" }
+
+language_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ClassCentralSiteBundle:Language:show" }
+
+language_new:
+    pattern:  /new
+    defaults: { _controller: "ClassCentralSiteBundle:Language:new" }
+
+language_create:
+    pattern:  /create
+    defaults: { _controller: "ClassCentralSiteBundle:Language:create" }
+    requirements: { _method: post }
+
+language_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ClassCentralSiteBundle:Language:edit" }
+
+language_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ClassCentralSiteBundle:Language:update" }
+    requirements: { _method: post }
+
+language_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ClassCentralSiteBundle:Language:delete" }
+    requirements: { _method: post }

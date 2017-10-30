@@ -1,0 +1,17 @@
+{
+  "name": "save-to-postgres",
+  "version": "1.0.0",
+  "description": "",
+  "main": "save-2.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "googleapis": "^22.2.0",
+    "node-fetch": "^1.7.3",
+    "request-promise": "^4.2.2",
+    "sequelize": "^4.15.0"
+  }
+}

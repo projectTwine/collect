@@ -1,0 +1,57 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block headmeta %}
+    <title>Careers - Browse onlines online courses and MOOCs by Subjects | Class Central</title>
+    <meta name="description"
+          content="Browse MOOCs by Careers"/>
+    <meta property="og:title" content="Browse  online courses and MOOCs by Careers" />
+    <meta property="og:url" content="{{ baseurl }}{{ path('subjects') }}" />
+    <meta property="og:image" content="https://www.class-central.com/bundles/classcentralsite/slashpixel/images/ccprofilepic.png">
+    <meta property="og:site_name" content="Class Central"/>
+    <meta property="og:description" content="Browse MOOCs by Careers" />
+    <meta property="og:type" content="website" />
+    <meta property="fb:admins" content="{{ fb_admins }}" />
+
+    <!-- Twitter card integration -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@classcentral">
+    <meta name="twitter:title" content="Browse  online courses and MOOCs by careers">
+    <meta name="twitter:description" content="Browse MOOCs by subject">
+    <meta name="twitter:domain" content="www.class-central.com">
+{% endblock %}
+
+{% block content %}
+
+    <div class="subjects">
+        <div class="intro-wrap">
+            <div class="description-wrap">
+                <h1 class='cc-page-header'>Careers</h1>
+            </div>
+        </div>
+
+        {% for category in categories %}
+            <div class="single-category col-xs-6 col-md-4">
+                <div class="category-header">
+                    <div class="course-count">
+                        <span class="count"></span>
+                        <span class="count-title"></span>
+                    </div>
+
+                    <span class="show-all-subjects view-all-courses category-title">{{ category.name }}</span>
+
+                </div>
+
+                <ul class="subject-list" >
+                    {% for career in category.careers %}
+                        <li><a href="{{ path('career_page', {'slug': career.slug } ) }}" title="List of {{ career.name }} MOOCs" onmousedown="ga('send','event', 'Careers Page', '{{career.name}}')"><span>{{ career.name }}</span></a></li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+        {% endfor %}
+
+    </div>
+
+
+
+{% endblock %}

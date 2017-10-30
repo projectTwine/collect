@@ -1,0 +1,34 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block headmeta %}
+    <title>Unsubscribe | Class Central</title>
+
+{% endblock %}
+
+
+{% block contentheader %}
+
+    <div class="cc-form-bg-wrap">
+        <div class="cc-form-box">
+            <div class="cc-form-box-inner">
+                <div class="form-box-header">
+                    <span class="icon-cc-logo-png"></span>
+                    <svg class="icon icon-cc-logo-circle" viewBox="0 0 32 32"><use xlink:href="#icon-cc-logo-circle"></use></svg>
+                </div>
+
+                <div class="form-box-body">
+                    {% if prefId == 100 %}
+                        <p>You have been subscribed to MOOC Tracker Course Reminders.</p>
+                    {% elseif prefId == 101 %}
+                        <p>You have been subscribed to MOOC Tracker Search Notifications.</p>
+                    {% elseif prefId == 102 %}
+                        <p>You have been subscribed to course feedback request emails.</p>
+                    {% else %}
+                        <p>You subsctiption has been reactivated.</p>
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

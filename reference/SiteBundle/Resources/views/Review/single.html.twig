@@ -1,0 +1,95 @@
+
+<div class="single-review"  id="review-{{ review.id }}" >
+    {% if review.fb.total > 0 %}
+        <div class="review-feedback">{{review.fb.positive }} out of {{ review.fb.total  }} people found the following review useful</div>
+    {% endif %}
+    {# <span class="author" itemprop="author">{{ review.user.name }}</span> #}
+
+    {% if course is defined %}
+        <meta content="{{ course.name}}">
+    {% else %}
+        {# This is for My Reviews page#}
+        <span class="author"><a href="{{ path('ClassCentralSiteBundle_mooc', {id: review.course.id, slug: review.course.slug}) }}"> {{ review.course.name }}</a></span>
+    {% endif %}
+
+    {#
+        {% if review.externalReviewLink is not empty %}
+            <span class="author">
+                <a href="{{ review.externalReviewLink }}" target="_blank">  &nbsp;External Review</a>
+            </span>
+        {% endif %}
+    #}
+
+    {% if review.externalReviewerName is not empty %}
+        {% set reviewer = review.externalReviewerName %}
+    {% else %}
+        {% set reviewer = review.user.name  %}
+    {% endif %}
+
+
+    <div>
+    {% set reviewerProfileUrl = user_service.profileUrl(review.user.id,review.user.handle, review.user.isPrivate) %}
+        <a class="review-date" href="{{ path('ClassCentralSiteBundle_mooc', {id: review.course.id, slug: review.course.slug}) }}#review-{{ review.id }}"> {{ review.displayDate }}</a>
+        <div class="review-title title-with-image" >
+            <div class="crop-circle crop-circle--bordered">
+                {% if reviewerProfileUrl %} <a href="{{ reviewerProfileUrl }}" onmousedown="ga('send','event','User Profile Click - Reviews','{{ review.course.name }}','{{ review.user.id  }}')" rel="nofollow"> {% endif %}
+                    <img src="{{  user_service.getProfilePicThumbnail(review.user.id) }}" alt="profile picture">
+                {% if reviewerProfileUrl %}</a> {% endif %}
+            </div>
+
+            {% if reviewerProfileUrl %} <a href="{{ reviewerProfileUrl }}" onmousedown="ga('send','event','User Profile Click - Reviews','{{ review.course.name }}','{{ review.user.id  }}')" rel="nofollow"> {% endif %}
+                <span class="author">{{ reviewer  }}</span>
+            {% if reviewerProfileUrl %}</a> {% endif %}
+            {{ review.reviewTitle|raw }}
+        </div>
+
+        <div class="small-star-rating small-rating-{{ review.rating }}">
+            <span class="star-rating-1"></span>
+            <span class="star-rating-2"></span>
+            <span class="star-rating-3"></span>
+            <span class="star-rating-4"></span>
+            <span class="star-rating-5"></span>
+            <meta  content="{{ review.rating }}">
+        </div>
+
+        <div class="review-content wide-border-left">
+            <span class="wide-border-left__border"></span>
+            {% if review.reviewText and review.reviewText|length >400 %}
+                <div class="review-preview">
+                    {{ review.reviewText|striptags|slice(0,320) }}
+                    <a class="expand-preview" href="#">
+                        Read More
+                    <span class="icon-down-arrow">
+                        <svg class="icon icon-cc-logo7" viewBox="0 0 32 32"><use xlink:href="#icon-cc-logo7"></use></svg>
+                    </span>
+                    </a>
+                </div>
+
+        {% endif %}
+        <div class="review-full">
+            {{ review.reviewText|striptags('<br>')|raw }}
+        </div>
+        </div>
+        {% if review.externalReviewLink is not empty %}
+            <div id="ext-review-link">
+                <a href="{{ review.externalReviewLink }}" target="_blank"> <span class="glyphicon glyphicon-new-window"></span> Full Review
+                </a>
+            </div>
+        {% endif %}
+
+
+    </div>
+    {% if app.user and user_session.isUserReview(review.id) %}
+        {# show the edit button #}
+        <div class="question"><a href="{{ path('review_edit',{reviewId:review.id}) }}">edit review</a></div>
+    {% else %}
+        {# show the feedback #}
+        <div class="question" id="review-feedback-{{ review.id }}">Was this review helpful to you?
+            <span class="yes-no"><a href="#" class="review-feedback" data-reviewId="{{ review.id }}" data-reviewId="{{ review.id }}" onmousedown="ga('send','event','Review Feedback','Yes');">YES</a> | <a href="#" class="review-feedback" data-reviewid="{{ review.id }}" onmousedown="ga('send','event','Review Feedback','No');">NO</a></span></div>
+    {% endif %}
+    {# edit button for all admins#}
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="question"><a href="{{ path('review_edit',{reviewId:review.id}) }}">edit review (admin only)</a></div>
+        <a class="review-status-update" href="{{ path('reviews_status_update', {statusId: 2, reviewId: review.id}) }}">Approve</a>|<a class="review-status-update" href="{{ path('reviews_status_update', {statusId: 100, reviewId: review.id}) }}">Don't Show</a>
+    {% endif %}
+</div>

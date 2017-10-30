@@ -1,0 +1,50 @@
+{# set user details #}
+{% if app.user %}
+    {% set userInfo = user_service.getUserMetaDataForAnalyticsJsonNonStatic(app.user) %}
+{% endif %}
+
+{# CC Anlatyics (via keen, ga, etc ) #}
+<script type="text/javascript">
+  // track pageview
+  CC.track("{{ ts.event('PAGEVIEW') }}");
+
+{% if page is defined and page == 'course' %}
+    {# log the subjects #}
+    {% for subject in pageMetadata.course_subjects %}
+        CC.track("{{ ts.event('PAGEVIEW_SUBJECT') }}", {
+            subject: {{ subject|json_encode()|raw }}
+        });
+    {% endfor %}
+
+    {# log the institutions #}
+    {% for ins in pageMetadata.course_institutions %}
+        CC.track("{{ ts.event('PAGEVIEW_INSTITUTION') }}", {
+            institution: {{ ins|json_encode()|raw }}
+        });
+    {% endfor %}
+{% endif %}
+
+</script>
+
+{# Clicky tracking code #}
+<script type="text/javascript">
+  {% if app.user %}
+  var clicky_custom = clicky_custom || {};
+  clicky_custom.visitor = {
+      user_id: '{{ app.user.id }}',
+      email: '{{ app.user.email }}'
+  };
+  {% endif %}
+
+  var clicky_site_ids = clicky_site_ids || [];
+  clicky_site_ids.push({{ clicky_site_id }});
+
+  (function() {
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = '//static.getclicky.com/js';
+      ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
+  })();
+</script>
+<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100717250ns.gif" /></p></noscript>

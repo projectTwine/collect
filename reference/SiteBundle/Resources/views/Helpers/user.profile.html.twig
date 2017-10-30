@@ -1,0 +1,24 @@
+{#
+  Variables required - numProfiles, profileUsers, profileLocation
+#}
+
+<div class="portraits-container">
+    {% set userCount = 0 %}
+    {% for user in profileUsers if userCount < numProfiles %}
+        {% set profileUrl = user_service.getProfileUrl( user.id, user.handle ) %}
+        {% if profileUrl %}
+            <div class="portrait-col">
+                <a href="{{ profileUrl }}" title="{{ user_service.getDisplayName(user) }}'s Class Central profile" class="fluid-portrait"
+                   onmousedown="ga('send','event','User Profile Click','{{ profileLocation }}','{{ user.id  }}')" rel="nofollow"
+                        >
+                        <span class="fluid-portrait-image">
+                            <div class="fluid-portrait-crop">
+                                <img src="{{  user_service.getProfilePicThumbnail(user.id) }}" alt="{{ user_service.getDisplayName(user) }}" onerror="this.src='/bundles/classcentralsite/slashpixel/images/profile-pic-placeholder.png'">
+                            </div>
+                        </span>
+                </a>
+            </div>
+            {% set userCount = userCount+1 %}
+        {% endif %}
+    {% endfor %}
+</div>

@@ -1,0 +1,87 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block headmeta %}
+    <title>Reviews for {{provider.name}} Free Online Courses and MOOCs | Class Central</title>
+    <meta name="description"
+          content="Class Central ratings are the most trusted measurement of quality for online courses. Now you can easily decide which {{ provider.name }} course to take next."/>
+
+    <meta property="og:title" content="Reviews for {{provider.name}} Free Online Courses and MOOCs | Class Central" />
+    <meta property="og:url" content="{{ baseurl }}{{ path('ClassCentralSiteBundle_initiative',{'type': provider.code|lower}) }}" />
+    {% if pageInfo.imageUrl %}
+        <meta property="og:image" content="{{ rackspace_cdn_base_url }}{{ pageInfo.imageUrl }}">
+    {% else %}
+        <meta property="og:image" content="https://www.class-central.com/bundles/classcentralsite/slashpixel/images/ccprofilepic.png">
+    {% endif %}
+    <meta property="og:description" content="Class Central ratings are the most trusted measurement of quality for online courses. Now you can easily decide which {{ provider.name }} course to take next." />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter card integration -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@classcentral">
+    <meta name="twitter:title" content="Reviews for {{provider.name}} Free Online Courses and MOOCs">
+    <meta name="twitter:description" content="Class Central ratings are the most trusted measurement of quality for online courses. Now you can easily decide which {{ provider.name }} course to take next.">
+    <meta name="twitter:domain" content="www.class-central.com">
+
+    <link rel="canonical" href="{{ baseurl }}{{ path('ClassCentralSiteBundle_initiative',{'type': provider.code|lower}) }}" />
+
+    {# paginated content #}
+    {% include 'ClassCentralSiteBundle:Helpers:paginationRelTags.html.twig' with
+        { 'pageNo': pageNo, 'totalCourses': results.hits.total }
+    %}
+
+{% endblock %}
+
+{%  block content %}
+
+    {% include 'ClassCentralSiteBundle:Helpers:pageHeader.html.twig' with {'info':pageInfo} %}
+
+    {% include 'ClassCentralSiteBundle:Follow:btn.follow.html.twig' with {
+        item : followItem,
+        item_id : followItemId,
+        itemName: followItemName,
+        followed: user_session.isItemFollowed(followItem,followItemId),
+        followButtonWithCount: true,
+        followDesc: 'Want an email when new courses are available?',
+        followDescPosition: 'right',
+        followDescColor: 'black',
+        followers:followService.getNumFollowers(followItem,followItemId)
+    } %}
+
+
+    <section class="courses">
+        <h2 class="section-heading">
+            <span>Courses</span>
+        </h2>
+        <div id="filter-wrap">
+            <div class="mobile-filter-btn-wrap">
+                <a href="#" class="mobile-filter-btn">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 col-lg-3 filter-column">
+                    {% include 'ClassCentralSiteBundle:Helpers:filters.html.twig' with {'offSubjects':allSubjects,'offLanguages':allLanguages, 'offSessions' : allSessions } %}
+                </div>
+                <div class="col-sm-8 col-lg-9 table-column">
+
+                    <div class="tables-wrap">
+
+                        {% if app.request.get('credential') == true %}
+                            {% include 'ClassCentralCredentialBundle:Credential:credentialcards.html.twig' %}
+                        {% else %}
+                            {% include 'ClassCentralSiteBundle:Helpers:course.table.html.twig' with{'results':results,'tableId':'providertable', 'showHeader':true } %}
+                        {% endif %}
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% include 'ClassCentralSiteBundle:Helpers:related.html.twig' with {
+
+    } %}
+{% endblock %}

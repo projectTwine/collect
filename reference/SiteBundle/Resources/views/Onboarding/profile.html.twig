@@ -1,0 +1,112 @@
+<div class="modal fade" id="onboarding-profile-modal" role="dialog" aria-labelledby="write-modal-title-here" aria-hidden="true" style="display: none;" data-backdrop="static">
+    <div class="modal-dialog modal-dialog__large" role="document">
+        <div class="modal-base-wrap">
+
+
+            <div class="modal-base-layout">
+
+                <div id="modal-pane-4" class="modal-pane" >
+                    <div class="on-modal-header">
+                        <h1 class="on-modal-title">Complete your profile</h1>
+                    </div>
+
+                    <div class="on-modal-body">
+                        <form action="#" method="post">
+                        <div class="on-modal-body-col on-modal-body-col--left">
+                             <span class="review-form-error" id="full-name-error" style="display:none;">
+                                Should be atleast three letters
+                            </span>
+                            <div class="bordered-box bordered-box--input">
+                                <label class="cc-input-label" for="edit-profile-full-name">Full Name</label>
+                                <input class="plain-input" type="text" name="full-name" placeholder="Full name" id="edit-profile-full-name" value="{{ user.getDisplayName }}">
+                            </div>
+
+                            <div class="bordered-box bordered-box--input">
+                                <label class="cc-input-label" for="edit-profile-location">Location</label>
+                                <input class="plain-input" type="text" name="location" placeholder="My location" id="edit-profile-location" value="{{ profile.location }}">
+                            </div>
+
+                            <div class="bordered-box bordered-box--input">
+                                <label class="cc-input-label cc-input-label-for-select" for="edit-profile-qualifications">Highest Degree obtained</label>
+                                <select class="plain-input plain-input--select js-colorize-select empty" name="highest-degree" id="edit-profile-qualifications">
+                                    <option value="" class="select-placeholder">Degrees</option>
+                                    {% for id,degree in degrees%}
+                                        <option value="{{ id }}" {% if profile.highestDegree == degree %} selected="selected" {% endif %}>{{ degree }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div class="bordered-box bordered-box--input">
+                                <label class="cc-input-label" for="edit-profile-field-of-study">Field of Study</label>
+                                <input class="plain-input" type="text" name="field-of-study" placeholder="Add field of study" id="edit-profile-field-of-study" value="{{ profile.fieldOfStudy }}">
+                            </div>
+                        </div>
+
+                        <div class="on-modal-body-col on-modal-body-col--right">
+                            <div class="bordered-box bordered-box--input">
+                                <label class="cc-input-label" for="edit-profile-job-title">Job Title</label>
+                                <input class="plain-input" type="text" name="job-title" placeholder="Current Job Title" id="edit-profile-job-title" value="{{ profile.jobTitle }}">
+                            </div>
+                            <div class="bordered-box bordered-box--input">
+                                <label class="cc-input-label" for="edit-profile-about-me">About me</label>
+                                <textarea class="plain-input plain-input--textarea" name="about-me" id="edit-profile-about-me" placeholder="A little about me...">{{ profile.aboutMe }}</textarea>
+                            </div>
+
+                            <div class="cc-form-block-wrap">
+                                <label class="cc-input-label" for="edit-profile-job-title">Privacy</label>
+                                <span class="cc-label-subtext">My Class Central profile is...</span>
+
+                                <div class="cc-form-toggle">
+                                    <div class="cc-toggle">
+                                        <span class="cc-toggle__text cc-toggle__text--left">Private</span>
+                                        <input id="toggle-private" type="checkbox" class="cc-toggle__checkbox" name="privacy" id="edit-profile-qualifications"  {% if not user.isPrivate %}checked{% endif %}>
+                                        <label for="toggle-private" class="cc-toggle__label"></label>
+                                        <span class="cc-toggle__text cc-toggle__text--right">Public</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        </form>
+
+
+                    </div>
+
+                    <div class="on-modal-footer">
+                        <div class="on-modal-footer__bar">
+                            <div class="meter">
+                                <span class="meter__bar" style="width: 5%"></span>
+                            </div>
+                        </div>
+                        <div class="on-modal-footer__button">
+                            <a href="#" class="on-modal-button" id="onboarding-profile-modal__save">
+                                <div class="on-modal-button__icon">
+                                    <div class="u-scaling-svg">
+                                        <svg class="u-scalingSvg__shape">
+                                            <use xlink:href="#shape-arrow-right-thin" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                Update Profile
+                            </a>
+                        </div>
+                        <div class="on-modal-footer__nav">
+                            <a href="#" class="on-modal-navbutton on-modal-navbutton-left" id="onboarding-profile-modal__back">Back</a>
+                            <a href="#" class="on-modal-navbutton on-modal-navbutton-right" id="onboarding-profile-modal__skip">Skip and finish</a>
+                        </div>
+                    </div>
+                </div><!-- /.modal-pane -->
+            </div>
+
+            <!--
+            <a href="#" class="modal-close-button" data-dismiss="modal" aria-label="Close">
+                <svg class="modal-close-button__icon">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use>
+                </svg>
+                Not right now, thanks.
+            </a>
+            -->
+
+        </div>
+    </div>
+</div>

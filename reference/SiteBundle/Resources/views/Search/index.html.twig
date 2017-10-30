@@ -1,0 +1,100 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block headmeta %}
+    {% if keywords is not null and keywords|length %}
+        <title> {{keywords}} - free online courses/MOOC search results | Class Central</title>
+        <meta name="description" content="{{keywords}} - free online courses/MOOC search results | Class Central"/>
+        <meta name="robots" content="noindex, follow" />
+        {# paginated content #}
+        {% include 'ClassCentralSiteBundle:Helpers:paginationRelTags.html.twig' with
+            { 'pageNo': pageNo, 'totalCourses': results.hits.total }
+        %}
+    {% else %}
+        <title>Search for free online courses/MOOCs | Class Central</title>
+        <meta name="description" content="Free MOOC (Massive Open Online Course) Search"/>
+
+    {% endif %}
+
+{% endblock %}
+
+{% block customJS %}
+    $(document).ready(function(){
+        $('.icon-link').click(function(){
+            var feedback = $(this).attr("value");
+            $('#search-feedback').slideUp();
+            try{
+                 ga('send','event', 'Search Feedback' , feedback, '{{keywords}}' );
+            } catch(err){}
+        });
+
+        var keywords = '{{keywords}}';
+        totalCourses = {{ results.hits.total }};
+        $.ajax({
+            type: "get",
+            url: "{{ path('maestro_udemy_courses',{'term':keywords|url_encode}) }}"
+        })
+        .done(
+            function(result){
+                result = JSON.parse(result);
+                if(result.success) {
+                    udemy = result;
+                    $('#course-listing-tbody').append(result.tableRows);
+                }
+            }
+        );
+
+     });
+{% endblock %}
+
+{% block content %}
+
+    {% if keywords is not null and keywords|length %}
+        <div class="classcentral-style">
+          <h1 class="head-1 margin-bottom-xlarge" style="font-size: 32px;">Search results for "{{keywords}}"</h1>
+          {% if app.user %}
+              {# user is logged in #}
+              {% if user_session.isSearchTermAddedToMT(keywords) %}
+                  <a class="btn-white btn-course-cc btn-mooc-tracker-added"
+                     title="Added to MOOC tracker" href="{{ path('mooctracker_remove_search_term',{'searchTerm' : keywords|url_encode }) }}">Remove "{{ keywords }}" from MOOC tracker</a>
+              {% else %}
+                  <a class="btn-white btn-course-cc btn-mooc-tracker-add"
+                     href="{{ path('mooctracker_add_search_term',{'searchTerm' : keywords|url_encode }) }}"
+                     title="Receive email notifications when new courses matching {{ keywords }} are added or about to start" rel="nofollow">Create alerts for "{{  keywords }}"</a>
+              {% endif %}
+          {% else %}
+              {# user has not signed up #}
+              <a id='btn_add_search_term_to_mooc_tracker' class="btn btn-white btn-course-cc btn-mooc-tracker-add"
+                 href="#"
+                 title="Receive email notifications when new courses matching '{{ keywords }}' are added or about to start" rel="nofollow">Create alerts for "{{  keywords }}"</a>
+          {% endif %}
+        </div>
+
+        {% if total != 0 %}
+            <section class="courses">
+                <h2 class="section-heading">
+                    <span>Courses</span>
+                </h2>
+                <div id="filter-wrap">
+                    <div class="mobile-filter-btn-wrap">
+                        <a href="#" class="mobile-filter-btn">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 col-lg-3 filter-column">
+                            {% include 'ClassCentralSiteBundle:Helpers:filters.html.twig' with {'offSubjects':allSubjects,'offLanguages':allLanguages, 'offSessions': allSessions } %}
+                        </div>
+                        <div class="col-sm-8 col-lg-9 table-column">
+                            <div class="tables-wrap">
+                                {% include 'ClassCentralSiteBundle:Helpers:course.table.html.twig' with{'results':results,'tableId':'searchtable'} %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        {% endif %}
+    {% endif %}
+
+{% endblock %}

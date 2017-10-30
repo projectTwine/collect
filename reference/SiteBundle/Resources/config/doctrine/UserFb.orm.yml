@@ -1,0 +1,50 @@
+ClassCentral\SiteBundle\Entity\UserFb:
+    type: entity
+    table: users_fb
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        fbId:
+            type: string
+            length: 45
+            fixed: false
+            nullable: false
+            column: fb_id
+        accessToken:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+            column: access_token
+        fbEmail:
+            type: string
+            length: 100
+            fixed: false
+            nullable: true
+            column: fb_email
+        userInfo:
+            type: text
+            nullable: true
+            column: user_info
+        created:
+            type: datetime
+            nullable: true
+        modified:
+            type: datetime
+            nullable: false
+    oneToOne:
+        user:
+            targetEntity: User
+            cascade: {  }
+            mappedBy: null
+            inversedBy: fb
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

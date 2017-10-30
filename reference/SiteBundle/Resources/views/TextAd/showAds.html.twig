@@ -1,0 +1,44 @@
+{% for ad in ads %}
+    {%  if ad.visible %}
+          <div class="ad-wrap"
+            data-track-impression="{{ ts.event('AD_IMPRESSION') }}"
+            data-track-props='{
+              "ad": {
+                "provider": "{{ ad.providerName }}",
+                "unit": "Sidebar Text Ad",
+                "title": "{{ ad.title }}"
+              }
+            }'
+          >
+            <div class="ad-content">
+                <a class="ad-title" href="{{ ad.url }}" target="_blank"
+                   onmousedown='
+                    CC.track("{{ ts.event('AD_CLICK') }}", {
+                      ad: {
+                        provider: "{{ ad.providerName }}",
+                        unit: "Sidebar Text Ad",
+                        title: "{{ ad.title }}"
+                      }
+                    });ga("send","event", "Text Ad", "{{ ad.title }}", "{{ pageName }}");'
+                rel="nofollow">
+                {{ ad.title }}
+                </a>
+
+                <a class="ad-link" href="{{ ad.url }}" target="_blank"
+                   onmousedown='
+                    CC.track("{{ ts.event('AD_CLICK') }}", {
+                      ad: {
+                        provider: "{{ ad.providerName }}",
+                        unit: "Sidebar Text Ad",
+                        title: "{{ ad.title }}"
+                      }
+                    });ga("send","event", "Text Ad", "{{ ad.title }}", "{{ pageName }}");'
+                rel="nofollow">
+                    {{ ad.displayUrl }}
+                </a>
+                <p class="ad-text">{{ ad.description }}</p>
+            </div>
+            <span class="ad-note">Advertisement</span>
+        </div>
+    {% endif %}
+{% endfor %}

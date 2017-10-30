@@ -1,0 +1,117 @@
+{% if hideItemName is not defined %}
+   {%  set hideItemName = false  %}
+{% endif %}
+{% if hideLogo is not defined %}
+    {% set hideLogo = false %}
+{% endif %}
+{% if hideFollowing is not defined %}
+    {% set hideFollowing = false %}
+{% endif %}
+
+
+{% if simpleButton is not defined  %}
+    {% set simpleButton = false %}
+{% endif %}
+
+{% if followButtonWithCount is not defined  %}
+    {% set followButtonWithCount = false %}
+{% endif %}
+
+{% if hideNotification is not defined %}
+    {% set hideNotification = false %}
+{% endif %}
+
+{% set truncate = false %}
+{% if itemName|length > 35 %}
+    {% set truncate = true %}
+{% endif %}
+
+{% if nextCourseWizard is not defined %}
+    {% set nextCourseWizard = false %}
+{% endif %}
+
+{% if simpleButton %}
+    <a href="#"
+       class="tagboard__tag btn-follow-item btn-follow-item-{{ item }}-{{ item_id }}  {% if followed %}active{% endif %}"
+       {% if truncate %}data-toggle="tooltip" data-placement="top"{% endif %}
+       title="{{ itemName }}"
+       data-original-title="{{ itemName }}"
+       data-item="{{ item }}"
+       data-item-id="{{ item_id }}"
+       data-item-name="{{ itemName }}"
+       data-following ="{{ followed }}"
+       data-hide-notification ="{{ hideNotification }}"
+       data-next-course-wizard = "{{ nextCourseWizard }}"
+            >
+        {% if truncate %}
+            {{ itemName|slice(0,27) }}...
+        {% else %}
+            {{ itemName }}
+        {% endif %}
+
+    </a>
+{% elseif followButtonWithCount %}
+  <div
+    data-button-follow
+    class="
+      {% if followDesc %}descriptor-{{ followDescPosition ? followDescPosition : 'right' }}{% endif %}
+      text--{{ followDescColor ? followDescColor : 'black' }}
+      {% if followed %}is-following{% endif %}
+    "
+    data-follow='{"item":"{{ item }}","item-id":"{{ item_id }}"}'
+  >
+    {% if followDesc %}<span data-descriptor>{{ followDesc }}</span>{% endif %}
+    <button>
+        <i data-indicator class="icon"></i>
+        <span data-action>{% if followed %}Following{% else %}Follow{% endif %}</span>
+        <span data-display-count></span>
+        <div class="tooltip">
+            <h5 class="head-5">{{ itemName }}</h5>
+            <!--
+              starting count is based on provided integer below
+              formatting is handled by the JS for the shorthand display
+            -->
+            <p class="text-4"><span data-count>{{ followers }}</span> <span data-learners>learners</span> following</p>
+
+        </div>
+    </button>
+  </div>
+{% else %}
+    <a href="#"
+       class="action-button action-button--transparent btn-follow-item btn-follow-item-{{ item }}-{{ item_id }}
+       {% if followed %}active{% endif %}"
+       data-item="{{ item }}"
+       data-item-id="{{ item_id }}"
+       data-item-name="{{ itemName }}"
+       data-show-item-name ="{% if hideItemName%}false{% else %}true{% endif %}"
+       data-hide-logo="{{ hideLogo }}"
+       data-following ="{{ followed }}"
+       data-hide-following = "{{ hideFollowing }}"
+       data-hide-notification ="{{ hideNotification }}"
+       data-next-course-wizard = "{{ nextCourseWizard }}"
+        >
+        <span class="action-button__container">
+          {% if hideLogo %}
+
+              {# hide the logo #}
+          {% else %}
+            <span class="action-button__unit action-button__unit-bordered">
+                    <div class="action-button__icon">
+                        <div class="u-scaling-svg">
+                            <svg class="u-scalingSvg__shape">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-cc-single-letter"></use>
+                            </svg>
+                        </div>
+                    </div>
+            </span>
+          {% endif %}
+            {% set itemText = itemName %}
+            {% if followed %}
+                {% set itemText  = "<i>" ~ itemName ~ "</i>" %}
+            {% endif %}
+            <span class="action-button__unit action-button__unit-bordered btn-follow-item-box">
+                {% if not hideFollowing %}{% if followed %}Following{% else %}Follow{% endif %}{% endif %}<span>{% if not hideItemName %} {{ itemText|raw }}</span>{% endif %}
+            </span>
+        </span><!-- /.action-button__container -->
+    </a>
+{% endif %}

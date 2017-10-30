@@ -1,0 +1,100 @@
+{# renders a single line of course item in interested tabs and transcripts #}
+<div class="tab-pane-item left-point">
+    <h3>
+
+       <span class="item-title">
+           <a href="{{ path('ClassCentralSiteBundle_mooc',{'id': course.id, 'slug': course.slug} ) }}" class="colored"
+             onmousedown='recordInboundLink(
+                           "{{ path('ClassCentralSiteBundle_mooc',{'id': course.id, 'slug': course.slug} ) }}",
+                           "{{course.provider.name}}","{{course.name}}","User Profile");return false'
+          >{{ course.name }}</a>
+       </span>
+        {% if userStatus is defined %}
+            {#  <span class="item-status">{{ userStatus }}</span> #}
+        {% endif %}
+
+    </h3>
+    <span class="item-info">
+            <ul class="table-uni-list">
+                {% if course.institutions|length > 0  %}
+                    {% for institution in course['institutions'] %}
+                        {% set route = 'ClassCentralSiteBundle_university' %}
+                        {% if not institution['isUniversity'] %}
+                            {% set route = 'ClassCentralSiteBundle_institution' %}
+                        {% endif %}
+                        <li>
+                            <a class="uni-name" href="{{ path(route,{'slug' : institution['slug']|lower })}}" title="List of {{institution['name']}} MOOCs" onClick="ga('send','event', 'Inbound Clicks - University', '{{institution['name']}}', '{{course['name']}}')">{{institution['name']}}</a>
+
+                        </li>
+                    {% endfor %}
+                {% endif %}
+                {% if course['provider'] %}
+                    <span class="via">via</span>
+                    <a href="{{ path('ClassCentralSiteBundle_initiative', {'type': course.provider.code }) }}"  class="initiativelinks colored" title="List of {{ course['provider']['tooltip'] }} MOOCs" onClick="ga('send','event', 'Inbound Clicks - Initiative', '{{ course.provider.name }}', '{{course.name}}')"> {{ course.provider.name }}</a>
+                {% endif %}
+            </ul>
+    </span>
+
+        {# Overall reviews/ratings for this course #}
+        {% if showOverAllRating  %}
+        <div class="rating-wrap">
+            <div class="small-star-rating small-rating-{{ course.rating|round }}">
+                <span class="star-rating-1"></span>
+                <span class="star-rating-2"></span>
+                <span class="star-rating-3"></span>
+                <span class="star-rating-4"></span>
+                <span class="star-rating-5"></span>
+            </div>
+            <a href="{{ path('ClassCentralSiteBundle_mooc',{'id': course.id, 'slug': course.slug} ) }}#course-all-reviews" class="read-review colored">{{ course.reviewsCount }} {% if course.reviewsCount == 1 %}review{% else %}reviews{% endif %}</a>
+        </div>
+        {% endif %}
+
+        {%  if review is defined and review is not empty %}
+        <span class="review-date">Written {{ review.displayDate }}</span>
+        <div itemprop="description">
+            <div class="review-content">
+                {#
+                    <div class="review-preview wide-border-left">
+                        <span class="wide-border-left__border"></span>
+                        {{ review.reviewText }}
+
+                            <a class="expand-preview" href="#">
+                                Read More
+                            <span class="icon-down-arrow">
+                                <svg class="icon icon-cc-logo7" viewBox="0 0 32 32"><use xlink:href="#icon-cc-logo7"></use></svg>
+                            </span>
+                            </a>
+                    </div>
+                #}
+                <div class="review-full wide-border-left">
+                    <span class="wide-border-left__border"></span>
+                    {{ review.reviewText|striptags('<br>')|raw }}
+                    <div class="rating-container">
+                        <span class="rating-text--small">My rating</span>
+                        <div class="small-star-rating small-rating-{{ review.rating}}">
+                            <span class="star-rating-1"></span>
+                            <span class="star-rating-2"></span>
+                            <span class="star-rating-3"></span>
+                            <span class="star-rating-4"></span>
+                            <span class="star-rating-5"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-info">
+                {{ user.displayName }} {{ review.reviewTitle|raw }}
+            </div>
+            {#
+                <div class="question" id="">
+                    Was this review helpful to you?
+                <span class="yes-no">
+                    <a href="#" class="review-feedback" data-reviewid="{{ review.id }}" onmousedown="ga('send','event','Review Feedback','Yes');">YES</a> | <a href="#" class="review-feedback" data-reviewid="66" onmousedown="ga('send','event','Review Feedback','No');">NO</a>
+                </span>
+                </div>
+            #}
+
+
+        </div>
+    {% endif %}
+</div>

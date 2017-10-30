@@ -1,0 +1,35 @@
+<div class="intro-wrap__ad">
+    <div class="ad-box ad-box--horizontal">
+        <a href="{{ url }}" class="ad-box__link" rel="nofollow" target="_blank"
+          data-track-impression="{{ ts.event('AD_IMPRESSION') }}"
+          data-track-props='{
+            "ad": {
+              "provider": "{{ provider}}",
+              "unit": "PageHeader Image Ad",
+              "title": "{{ desc }}"
+            }
+          }'
+          onmousedown='
+            CC.track("{{ ts.event('AD_CLICK') }}", {
+              ad: {
+                provider: "{{ provider}}",
+                unit: "PageHeader Image Ad",
+                title: "{{ desc }}"
+              }
+            });ga("send","event", "PageHeader Ad", "{{ provider }}","{{ desc }}")'
+        >
+            <div class="ad-box__left-col">
+                <img src="{{ imageUrl }}" alt="" class="ad-box__img">
+            </div>
+
+            <div class="ad-box__right-col">
+                <div class="ad-box__text">
+                    {{ desc }}
+                </div>
+                <div class="ad-box__note">
+                    Ad
+                </div>
+            </div>
+        </a>
+    </div>
+</div>

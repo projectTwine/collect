@@ -1,0 +1,24 @@
+
+
+{% set ad = random(3) %}
+
+{# two out of 4 #}
+{% if ad == 0 or ad == 1 %}
+
+        {%  include 'ClassCentralSiteBundle:Helpers:pageHeaderImageAd.html.twig' with {
+        'url': 'https://www.udacity.com/course/data-analyst-nanodegree--nd002?utm_source=class-central&utm_medium=ads&utm_campaign=2016-05-class-central-course-table-header-image-data-analyst',
+        'imageUrl' : 'https://d3r3mog6nu8pt4.cloudfront.net/ads/Udacity_ClassCentralAd_130x100_0000_1.jpg',
+        'desc': "Master the skills to become a Data Analyst in this self-paced course.",
+        'provider' : 'Udacity'
+        } %}
+
+{% else  %}
+
+     {%  include 'ClassCentralSiteBundle:Helpers:pageHeaderImageAd.html.twig' with {
+         'url': 'https://www.datacamp.com/?utm_source=class-central&utm_medium=home_ad&utm_campaign=class-central',
+         'imageUrl' : 'https://d3r3mog6nu8pt4.cloudfront.net/ads/2.png',
+         'desc': "Master the skills to become a Data Analyst in this self-paced course.",
+         'provider' : 'DataCamp'
+     } %}
+
+{% endif %}

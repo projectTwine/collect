@@ -1,0 +1,54 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+
+{%  block headmeta %}
+    {% include 'ClassCentralSiteBundle:Course:tinymce.inc.html.twig' %}
+{% endblock %}
+
+{% block content %}
+<h1>Offering edit</h1>
+
+<form action="{{ path('offering_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    {{ form_widget(edit_form) }}
+    <p>
+        <button type="submit">Edit</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('offering') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('offering_delete', { 'id': entity.id }) }}" method="post">
+
+            {{ form_widget(delete_form) }}
+
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+{% endblock %}
+
+
+{%  block beforeClosingBody %}
+
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/black-tie/jquery-ui.css" />
+{% endblock %}
+
+{% block customJS %}
+    $(document).ready(function () {
+        $( "#classcentral_sitebundle_offeringtype_course_search" ).autocomplete({
+        source: "{{ path('course_autocomplete') }}",
+        minLength: 2,
+        select: function(event, ui) {
+            event.preventDefault();
+            $("#classcentral_sitebundle_offeringtype_course").val(ui.item.value);
+            $("#classcentral_sitebundle_offeringtype_course_search").val(ui.item.label);
+        }
+        });
+    });
+{% endblock %}

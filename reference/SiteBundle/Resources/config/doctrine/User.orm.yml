@@ -1,0 +1,113 @@
+ClassCentral\SiteBundle\Entity\User:
+    type: entity
+    table: users
+    repositoryClass: ClassCentral\SiteBundle\Repository\UserRepository
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigndsdasded: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        email:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            unique: true
+        name:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        password:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        role:
+            type: string
+            length: 50
+            fixed: false
+            nullable: false
+        isActive:
+            type: boolean
+            nullable: true
+            column: is_active
+        created:
+            type: datetime
+            nullable: true
+        modified:
+            type: datetime
+            nullable: false
+        lastLogin:
+            type: datetime
+            nullable: true
+            column: last_login
+        isverified:
+            type: boolean
+            nullable: false
+            column: isVerified
+        signupType:
+            type: integer
+            unsigned: false
+            nullable: true
+            column: signup_type
+        handle:
+            type: string
+            length: 25
+            fixed: false
+            nullable: true
+        isPrivate:
+            type: boolean
+            nullable: true
+            column: is_private
+    oneToOne:
+        fb:
+            targetEntity: UserFb
+            mappedBy: user
+        google:
+            targetEntity: UserGoogle
+            mappedBy: user
+        profile:
+            targetEntity: Profile
+            mappedBy: user
+    oneToMany:
+        moocTrackerSearchTerms:
+          targetEntity: MoocTrackerSearchTerm
+          mappedBy: user
+        moocTrackerCourses:
+          targetEntity: MoocTrackerCourse
+          mappedBy: user
+        userCourses:
+          targetEntity: UserCourse
+          mappedBy: user
+        follows:
+          targetEntity: Follow
+          mappedBy: user
+        reviews:
+          targetEntity: Review
+          mappedBy: user
+        credentialReviews:
+          targetEntity: ClassCentral\CredentialBundle\Entity\CredentialReview
+          mappedBy: user
+        userPreferences:
+          targetEntity: UserPreference
+          mappedBy: user
+        indepthReviews:
+          targetEntity: IndepthReview
+          mappedBy: user
+    manyToMany:
+      newsletters:
+        targetEntity: Newsletter
+        joinTable:
+          name: newsletters_subscriptions
+          joinColumns:
+            user_id:
+              referencedColumnName: id
+          inverseJoinColumns:
+            newsletter_id:
+              referencedColumnName: id
+
+    lifecycleCallbacks: {  }

@@ -1,0 +1,38 @@
+{# Related section shown below the course#}
+
+{#
+    related:
+        items (array):
+            name,numCourses,numFollows,url
+        type
+        header
+        name
+        view_all_url
+        skipName
+
+#}
+
+<br/><br/>
+
+{% set relatedIcon = 'subject' %}
+{% if related.type == 'institution' %}
+    {% set relatedIcon = 'university' %}
+{% elseif related.type == 'provider' %}
+    {% set relatedIcon = 'provider' %}
+{% endif %}
+
+<section id="cc-related">
+    <h4 class="head-3"><span class="icon-{{ relatedIcon }}-black icon--left icon--small">{{ related.header }}</span></h4>
+    <ul data-equalize>
+        {% for relatedItem in related.items if relatedItem.name != related.skipName %}
+            <li data-equalize-child>
+                <h5><a href="{{ relatedItem.url }}" class="text--skyblue"
+                       onmousedown="ga('send','event', 'Related Section Clicks', '{{related.type}}', '{{relatedItem.name}}')">{{ relatedItem.name }}</a></h5>
+                <p>{{ relatedItem.numCourses }} Courses / <span class="text--bold"><span data-format-number="short">{{ relatedItem.numFollows }}</span> following</span></p>
+            </li>
+        {% endfor %}
+        <li>
+            <a href="{{ related.view_all_url }}" class="btn-white"><span class="icon-arrow-skyblue icon--right">View All</span></a>
+        </li>
+    </ul>
+</section>

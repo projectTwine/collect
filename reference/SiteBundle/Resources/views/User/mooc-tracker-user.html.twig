@@ -1,0 +1,40 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+ {% block headmeta %}
+     <title>MOOC Tracker | Class Central</title>
+ {% endblock %}
+
+{%  block content %}
+
+    <h1>MOOC Tracker</h1>
+
+    <h2>Courses</h2>
+
+    {% if courses|length > 0 %}
+        {% include 'ClassCentralSiteBundle:Helpers:courses-grid.html.twig' with {'courses' : courses, 'courseGridId':'mooc-tracker'} %}
+    {% else %}
+        {# no courses added to MOOC tracker #}
+        <p class="mt-info-text">No courses added to MOOC tracker. To add, visit a course page and then click "add to MOOC Tracker" button</p>
+    {% endif %}
+
+    <h2>Search Terms</h2>
+    {% if searchTerms|length > 0 %}
+            <div id='mooc-tracker-courses-grid'>
+            {% for searchTerm in searchTerms %}
+                <a href="{{ path("ClassCentralSiteBundle_search", {'q' : searchTerm }) }}" class="btn btn-primary btn-mooc-tracker-search">
+                    {% if searchTerm|length > 25 %}
+                        {{ searchTerm[0:35] }}...
+                    {% else %}
+                        {{ searchTerm }}
+                    {% endif %}
+                </a>
+            {% endfor %}
+            </div>
+    {% else %}
+        {# no search terms found #}
+        <p class="mt-info-text">No search terms added to MOOC tracker. To add, search for a course and click "add to MOOC Tracker" button on the search results page</p>
+    {% endif %}
+    <div class="clearfix"/>
+{% endblock %}
+
+

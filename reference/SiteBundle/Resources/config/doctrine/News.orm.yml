@@ -1,0 +1,30 @@
+ClassCentral\SiteBundle\Entity\News:
+  type: entity
+  table: news
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: AUTO
+    title:
+        type: text
+    url:
+        type: text
+    created:
+      type: datetime
+    modified:
+      type: datetime
+    description:
+      type: text
+      nullable: true
+    localImageUrl:
+      type: text
+      nullable: true
+      column: local_image_url
+    remoteImageUrl:
+      type: text
+      nullable: true
+      column: remote_image_url

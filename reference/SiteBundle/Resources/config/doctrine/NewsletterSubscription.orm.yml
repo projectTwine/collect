@@ -1,0 +1,15 @@
+ClassCentral\SiteBundle\Entity\NewsletterSubscription:
+    type: entity
+    table: newsletters_subscriptions
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        created:
+            type: datetime
+            nullable: true
+    lifecycleCallbacks: {  }

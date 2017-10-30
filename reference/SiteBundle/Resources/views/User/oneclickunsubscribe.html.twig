@@ -1,0 +1,34 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block headmeta %}
+    <title>Unsubscribe | Class Central</title>
+
+{% endblock %}
+
+
+{% block contentheader %}
+
+    <div class="cc-form-bg-wrap">
+        <div class="cc-form-box">
+            <div class="cc-form-box-inner">
+                <div class="form-box-header">
+                    <span class="icon-cc-logo-png"></span>
+                    <svg class="icon icon-cc-logo-circle" viewBox="0 0 32 32"><use xlink:href="#icon-cc-logo-circle"></use></svg>
+                </div>
+
+                <div class="form-box-body">
+                    {% if prefId == 100 %}
+                        <p>You have been unsubscribed from *all* MOOC Tracker Course Reminders. If this was a mistake please <a href="{{ path('oneclick_subscribe', { 'token': token }) }}">click here to enable your subscription</a></p>
+                    {% elseif prefId == 101 %}
+                        <p>You have been unsubscribed from *all* MOOC Tracker Search Notifications. If this was a mistake please <a href="{{ path('oneclick_subscribe', { 'token': token }) }}">click here to enable your subscription</a></p>
+                    {% elseif prefId == 102 %}
+                        <p>You have been unsubscribed from *all* requests for writing reviews for courses. If this was a mistake please <a href="{{ path('oneclick_subscribe', { 'token': token }) }}">click here to enable your subscription</a></p>
+                    {% else %}
+                        <p>You have been unsubscribed. If this was a mistake please <a href="{{ path('oneclick_subscribe', { 'token': token }) }}">click here to enable your subscription</a></p>
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

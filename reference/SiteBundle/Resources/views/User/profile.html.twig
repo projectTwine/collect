@@ -1,0 +1,159 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+
+{% block content %}
+
+	<h2 class="section-heading"><span>Profile</span></h2>
+
+	<div class="row">
+		<div class="col-md-3 profile-info">
+			<div class="crop-wrap">
+				<img src="/bundles/classcentralsite/slashpixel/images/profile-dummy-img.jpg" alt="profile-img" class="profile-img">
+			</div>
+			<div class="profile-social">
+				<a href="#" class="profile-social-icon profile-twitter">
+					<svg class="icon icon-twitter" viewBox="0 0 32 32"><use xlink:href="#icon-twitter"></use></svg>
+				</a>
+				<a href="#" class="profile-social-icon profile-facebook">
+					<svg class="icon icon-facebook" viewBox="0 0 32 32"><use xlink:href="#icon-facebook"></use></svg>
+				</a>
+				<a href="#" class="profile-social-icon profile-chain">
+					<svg class="icon icon-chain" viewBox="0 0 32 32"><use xlink:href="#icon-chain"></use></svg>
+				</a>
+				<a href="#" class="profile-social-icon profile-linkedin">
+					<svg class="icon icon-linkedin" viewBox="0 0 32 32"><use xlink:href="#icon-linkedin"></use></svg>
+				</a>
+				<a href="#" class="profile-social-icon coursera-profile">
+					<svg class="icon icon-coursera" viewBox="0 0 32 32"><use xlink:href="#icon-coursera"></use></svg>
+				</a>
+				<a href="#" class="profile-social-icon google-profile">
+					<svg class="icon icon-googleplus" viewBox="0 0 32 32"><use xlink:href="#icon-googleplus"></use></svg>
+				</a>
+			</div>
+			<p class="profile-description">
+				I’m a consulting detective, the only one in the world, helping out Scotland Yard when they are out of their depth with cases (most of the time).
+			</p>
+			<div class="info-row info-name">
+				<span class="info-icon info-user-icon"><svg class="icon icon-cc-logo4" viewBox="0 0 32 32"><use xlink:href="#icon-cc-logo4"></use></svg></span>
+				<span class="info-text">Benedict Cucumberhatch</span>
+			</div>
+
+			<div class="info-row info-location">
+				<span class="info-icon info-location-icon"><svg class="icon icon-location" viewBox="0 0 19 32"><use xlink:href="#icon-location"></use></svg></span>
+				<span class="info-text">New York, USA</span>
+			</div>
+
+			<div class="info-row info-profession">
+				<span class="info-icon info-books-icon"><svg class="icon icon-books" viewBox="0 0 43 32"><use xlink:href="#icon-books"></use></svg></span>
+				<span class="info-text">Consulting detective</span>
+			</div>
+
+			<div class="info-row info-education">
+				<span class="info-icon info-institution-icon"><svg class="icon icon-institution-icon" viewBox="0 0 22 32"><use xlink:href="#icon-institution-icon"></use></svg></span>
+				<span class="info-text">Bachelors degree</span>
+			</div>
+
+		</div>
+
+		<div class="col-md-8 profile-content">
+			<div class="tabbed-content">
+				<ul class="nav nav-tabs" role="tablist">
+					<li class="active"><a href="#transcripts" role="tab" data-toggle="tab">Transcripts (67)</a></li>
+					<li><a href="#interested" role="tab" data-toggle="tab">Interested (12)</a></li>
+					<li><a href="#reviews" role="tab" data-toggle="tab">Reviews (7)</a></li>
+					<li><a href="#collections" role="tab" data-toggle="tab">Collections (24)</a></li>
+				</ul>
+
+				<!-- Tab panes -->
+				<div class="tab-content">
+
+					<div class="tab-pane active" id="transcripts">
+						<div class="tab-pane-item">
+							<h3>
+								<span class="item-title">Introduction to Databases</span>
+								<span class="item-status">Completed</span>
+							</h3>
+							<span class="item-info">Jennifer Widom, Stanford OpenEdX, January–March 2014</span>
+							<div class="rating-wrap">
+								<span class="rating-text">I rate this course</span>
+								<span class="course-rating" data-score="3"></span>
+							</div>
+
+							<a href="#" class="read-review">Read review</a>
+
+							<span class="review-date">Written 3 months ago</span>
+							<div itemprop="description">
+								
+						        <div class="review-content">
+						        	<div class="review-full">
+						        		<span class="review-border"></span>
+						        		This course helped me get a job. Before doing this course, I had trouble clearing technical interviews. Infact, I couldn't even clear the phone interviews. "Algorithms: Design and Analysis, Part 1" was instrumental in clearing my first technical interview and helped me get a job as a Software Engineer in Silicon Valley.
+						        	</div>
+						    	</div>
+
+						    	<div class="review-info">
+									Benedict completed this course, spending 12 hours a week on it and
+									found the course difficulty to be medium.
+						    	</div>
+						    	<div class="question">Was this review helpful to you?
+						    	    <span class="yes-no">
+						    	    	<a href="#" class="review-feedback">YES</a> | <a href="#" class="review-feedback">NO</a>
+						    	    </span>
+						    	</div>
+
+						    </div>
+						</div>
+						<div class="tab-pane-item">
+							<h3>
+								<span class="item-title">Principles of Reactive Programming</span>
+								<span class="item-status">Audited</span>
+							</h3>
+							<span class="item-info">Martin Odersky, Erik Meijer, Roland Kuhn, Coursera, November–December 2013</span>
+						</div>
+						<div class="tab-pane-item">
+							<h3>
+								<span class="item-title">Tales from the Genome</span>
+								<span class="item-status">Dropped</span>
+							</h3>
+							<span class="item-info">Matthew Cook & Lauren Castellano, Udacity, December 2013</span>
+						</div>
+						<div class="tab-pane-item">
+							<h3>
+								<span class="item-title">Functional Prgoramming Principles in Scala</span>
+								<span class="item-status">Completed</span>
+							</h3>
+							<span class="item-info">Martin Odersky, Coursera, September–November 2013</span>
+						</div>
+					</div>
+
+					<div class="tab-pane" id="interested">interested</div>
+					<div class="tab-pane" id="reviews">reviews</div>
+					<div class="tab-pane" id="collections">collections</div>
+				</div>
+			</div>
+			<!--
+			<div class="timeline-wrap">
+				<div class="timeline">
+					<div class="timeline-content">
+						<h2 class="timeline-heading">Benedict's Activity Timeline</h2>
+						<div class="timeline-item">
+							<span class="item-type">Programming Collection</span>
+							<h3 class="item-title"><span class="user-action">Benedict added</span> Introduction to Databases</h3>
+							<span class="item-info">Jennifer Widom, Stanford OpenEdX, January–March 2014</span>
+						</div>
+						<div class="timeline-item">
+							<span class="item-type">Review</span>
+							<h3 class="item-title"><span class="user-action">Benedict Reviewed</span> Tales from the Genome</h3>
+							<span class="item-info">Matthew Cook & Lauren Castellano, Udacity, December 2013</span>
+							<p class="item-quote">
+								It was a mammouth ambition to cover the basics of data science in fewer days than Phileas Fogg took to travel around the world. The lectures, at time, felt disjointed, since there was so much material to cover.
+							</p>
+							<div class="rating-wrap"><span class="rating-text">I rate this course</span> <span class="course-rating" data-score="3"></span></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			-->
+		</div>
+	</div>
+{% endblock %}

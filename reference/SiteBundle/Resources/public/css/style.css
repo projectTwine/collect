@@ -1,0 +1,39 @@
+body {
+    padding-top: 60px;
+}
+
+footer p{
+    text-align: center;  
+    vertical-align: bottom;
+}
+
+div.addthis_toolbox addthis_default_style {
+    visibility: hidden;
+}
+
+#addThisButton{
+    margin-top: 10px;
+}
+
+.external{
+    padding-right: 5px;    
+}
+
+.logo{
+    margin-right: 15px;
+    float: left;
+}
+
+/* FAQ Styles */
+.faq-qa-block{
+
+}
+
+.faq-question{
+    font-weight: bold;
+    padding: 10px 0px;
+}
+
+.faq-answer{
+    margin-left: 20px;
+}

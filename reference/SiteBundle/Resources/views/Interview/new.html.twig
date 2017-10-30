@@ -1,0 +1,40 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block content -%}
+    <h1>Interview creation</h1>
+
+    <form action="{{ path('interview_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <p>
+            <button type="submit">Create</button>
+        </p>
+    </form>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('interview') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}
+
+
+{%  block beforeClosingBody %}
+    {% javascripts '@ClassCentralSiteBundle/Resources/public/slashpixel/js/selectize.min.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    {% stylesheets '@ClassCentralSiteBundle/Resources/public/slashpixel/css/selectize.bootstrap2.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+
+{% block customJS %}
+    $(document).ready(function () {
+
+    $('#classcentral_sitebundle_interviewtype_courses').selectize();
+    });
+{% endblock %}
+

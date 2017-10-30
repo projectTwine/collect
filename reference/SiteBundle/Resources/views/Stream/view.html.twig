@@ -1,0 +1,170 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block headmeta %}
+    <title>{{subject.name}} | Free Online Courses & MOOCs | Class Central</title>
+    <meta name="description" content="Discover free online {{ subject.name }} courses from top universities. Thousands of reviews written by Class Central users help you pick the best course."/>
+
+    <meta property="og:title" content="{{ subject.name}} | Free Online Courses & MOOCs | Class Central" />
+    <meta property="og:url" content="{{ baseurl }}{{ path('ClassCentralSiteBundle_stream',{'slug': slug}) }}" />
+    {% if pageInfo.imageUrl %}
+        <meta property="og:image" content="{{ rackspace_cdn_base_url }}{{ pageInfo.imageUrl }}">
+    {% else %}
+        <meta property="og:image" content="https://www.class-central.com/bundles/classcentralsite/slashpixel/images/ccprofilepic.png">
+    {% endif %}
+    <meta property="og:description" content="Discover free online {{ subject.name }} courses from top universities. Thousands of reviews written by Class Central users help you pick the best course." />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter card integration -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@classcentral">
+    <meta name="twitter:title" content="{{ results.hits.total }} FREE online courses in {{subject.name}} from top universities and companies">
+    <meta name="twitter:description" content="{{subject.name}} free online courses and MOOCs aggregated by Class Central">
+    <meta name="twitter:domain" content="www.class-central.com">
+
+    <link rel="canonical" href="{{ baseurl }}{{ path('ClassCentralSiteBundle_stream',{'slug': slug}) }}" />
+
+
+    {# paginated content #}
+    {% include 'ClassCentralSiteBundle:Helpers:paginationRelTags.html.twig' with
+        { 'pageNo': pageNo, 'totalCourses': results.hits.total }
+    %}
+
+{% endblock %}
+
+
+{% block customJS %}
+    $(document).ready(function(){
+        var skipSubjects = ['Political Science','Law','Theoretical Computer Science','Science','Environmental Science','Course Development',
+            'Test Prep','K12','Visual Arts'
+        ];
+        if($.inArray("{{ subject.name }}",skipSubjects) == -1)
+        {
+            $.ajax({
+                type: "get",
+                url: "{{ path('maestro_udemy_courses',{'term':subject.name|url_encode}) }}"
+            })
+            .done(
+                function(result){
+                    result = JSON.parse(result);
+                    if(result.success) {
+                        udemy = result;
+                        $('#course-listing-tbody').append(result.tableRows);
+                    }
+                }
+            );
+        }
+
+     });
+{% endblock %}
+
+{%  block content %}
+
+    {% include 'ClassCentralSiteBundle:Helpers:pageHeader.html.twig' with {'info':pageInfo} %}
+
+
+
+
+
+
+
+
+   {#
+
+    <section class="headerArea headerArea-slim">
+        <div class="container">
+          <div class="headerIntro">
+
+            <div class="headerIntro_topText">
+                Online courses and MOOCs
+            </div>
+
+            <h1 class="headerIntro_title headerIntro_title-noSpacing">Business & Management</h1>
+            <h2 class="headerIntro_subTitle">Study business & Management via the best free courses & MOOCs from top universities and colleges.</h2>
+
+            <div class="headerIntro_buttons">
+                <div class="headerIntro_button">
+                    <a href="#" class="action-button action-button--transparent">
+
+                        <span class="action-button__container">
+                            <span class="action-button__unit action-button__unit-bordered">
+                                <div class="action-button__icon">
+                                    <div class="u-scaling-svg">
+                                        <svg class="u-scalingSvg__shape">
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-cc-single-letter"></use>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </span>
+                            <span class="action-button__unit action-button__unit-bordered btn-follow-item-box">
+                            Follow<span> Business &amp; Management</span> </span>
+                        </span>
+                        <!-- /.action-button__container -->
+                    </a>
+                    <span class="headerIntro_buttonSub headerIntro_buttonSub-larger">2,784 interested students</span>
+                </div>
+
+            </div>
+          </div>
+
+        </div><!-- /container -->
+        <div class="headerArea_tilt"></div>
+    </section>
+
+
+#}
+
+    {% include 'ClassCentralSiteBundle:Follow:btn.follow.html.twig' with {
+        item : followItem,
+        item_id : followItemId,
+        itemName: followItemName,
+        followed: user_session.isItemFollowed(followItem,followItemId),
+        followButtonWithCount: true,
+        followDesc: 'Want an email when new courses are available?',
+        followDescPosition: 'right',
+        followDescColor: 'black',
+        followers:followService.getNumFollowers(followItem,followItemId)
+    } %}
+
+
+    <section class="courses">
+        <h2 class="section-heading">
+            <span>Courses</span>
+        </h2>
+        <div id="filter-wrap">
+            <div class="mobile-filter-btn-wrap">
+                <a href="#" class="mobile-filter-btn">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 col-lg-3 filter-column">
+                    {% include 'ClassCentralSiteBundle:Helpers:filters.html.twig' with {'offLanguages':allLanguages,  'offSessions' : allSessions } %}
+                </div>
+                <div class="col-sm-8 col-lg-9 table-column">
+                    <div class="tables-wrap">
+                        {% if app.request.get('credential') == true %}
+                            {% include 'ClassCentralCredentialBundle:Credential:credentialcards.html.twig' %}
+                        {% else %}
+                         {% include 'ClassCentralSiteBundle:Helpers:course.table.html.twig' with{'results':results,'tableId':'subjectstable'} %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% include 'ClassCentralSiteBundle:Helpers:related.html.twig' with {
+
+    } %}
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <br/>
+        {% for term,tagCount in tagCounts %}
+            {{ term }} -- {{ tagCount }} <br/>
+        {% endfor %}
+        <br/>
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,417 @@
+
+
+/*
+  TABLE OF CONTENTS
+
+  =General
+  =Banner
+  =mooc-watch-view-section
+  =mooc-watch-testimonials-section
+
+*/
+
+/* =General
+----------------------------------------------------------------------------- */
+
+@mooc-watch-bg-color:                 #1d2021;
+@mooc-watch-purple:                   #6b4f7a;
+
+.mooc-watch-banner + .cc-body-content {
+	display: none;
+}
+
+/* =Banner
+----------------------------------------------------------------------------- */
+
+.mooc-watch-banner {
+	min-height: 744px;
+	background-color: @mooc-watch-bg-color;
+	background-image: url("/bundles/classcentralsite/slashpixel/images/mooc-watch-bg.jpg");
+	background-position: center top;
+	background-repeat: no-repeat;
+	background-size: 1600px auto;
+	position: relative;
+	.clearfix;
+}
+
+.mooc-watch-banner-content {
+	margin-top: 140px;
+}
+
+.mooc-watch-title {
+	font-size: 26px;
+	text-transform: uppercase;
+	color: #fff;
+	font-weight: 400;
+	letter-spacing: 2px;
+	margin-bottom: 20px;
+}
+
+.heading-two-colors .heading-color-second {
+	font-weight: 600;
+	color: #bcc5cf;
+	margin-left: 8px;
+}
+
+.heading-tagline {
+	font-size: 24px;
+	color: #fff;
+	font-weight: 200;
+	line-height: 1.3;
+}
+
+.heading-tagline__highlight {
+	font-weight: 300;
+	font-style: italic;
+}
+
+.mooc-digest-subscription {
+	margin-top: 43px;
+}
+
+.mooc-digest-subscription__title {
+	font-size: 20px;
+	color: #21cd3d;
+	font-weight: 300;
+	margin-bottom: 0;
+	display: block;
+}
+
+.mooc-digest-subscription__smallprint {
+	margin-left: 20px;
+	color: #233e56;
+	font-size: 12px;
+	font-family: @font-family-small-text;
+}
+
+.cc-inline-form-group {
+	.clearfix;
+}
+
+.cc-inline-form-element {
+	display: inline-block;
+	margin-right: 10px;
+	border-radius: 4px;
+	border: 0;
+	padding: 15px 20px;
+	line-height: 21px;
+	margin-top: 28px;
+	&:focus,
+	&:hover {
+		outline: none;
+	}
+}
+
+.mooc-digest-subscription .cc-inline-form-element--input {
+	min-width: 260px;
+	font-family: @font-family-small-text;
+	font-size: 17px;
+	background-color: @gray-dark;
+    color: #f9f9f9;
+}
+
+
+.mooc-digest-subscription .cc-inline-form-element--button {
+	font-size: 16px;
+	color: #fff;
+	background: #21cd3d;
+	padding-left: 26px;
+	padding-right: 26px;
+	letter-spacing: 1px;
+	font-weight: 300;
+	&:focus,
+	&:hover {
+		background: darken(#21cd3d, 10%)
+	}
+}
+
+@media (min-width: 600px) {
+
+	.mooc-watch-banner {
+		min-height: 944px;
+	}
+
+	.mooc-watch-banner-content {
+		margin-top: 179px;
+	}
+
+	.mooc-watch-title {
+		font-size: 68px;
+	}
+
+	.heading-tagline {
+		font-size: 50px;
+	}
+
+	.mooc-digest-subscription__title {
+		font-size: 28px;
+	}
+
+	.mooc-digest-subscription .cc-inline-form-element--input {
+		min-width: 300px;
+	}
+}
+
+@media (min-width: @screen-lg-min) {
+	.heading-tagline {
+		max-width: 580px;
+	}
+}
+
+
+@media (min-width: 1600px) {
+	.mooc-watch-banner {
+		background-size: 100% auto;
+		background-position: center bottom;
+	}
+
+}
+
+/* =mooc-watch-view-section
+----------------------------------------------------------------------------- */
+
+.mooc-watch-view-section {
+	background: @mooc-watch-bg-color;
+	padding-bottom: 40px;
+}
+
+.mooc-watch-title-col {
+	text-align: center;
+}
+
+.mooc-info-col {
+	margin-left: auto;
+	margin-right: auto;
+	width: 310px;
+}
+
+.mooc-watch-view-section__title {
+	color: @mooc-watch-purple;
+	font-weight: 700;
+	text-transform: uppercase;
+	margin-top: 75px;
+	margin-bottom: 25px;
+	font-size: 32px;
+}
+
+.mooc-watch-view-section__tagline {
+	color: #fff;
+	font-weight: 300;
+	display: block;
+	font-size: 20px;
+}
+
+.mooc-watch-view-section__button {
+	margin-top: 85px;
+	margin-bottom: 85px;
+}
+
+.mooc-watch-info {
+	.clearfix;
+	color: @gray-dark;
+}
+
+.mooc-watch-info__title {
+	display: inline-block;
+	text-align: center;
+	padding-left: 28px;
+	position: relative;
+	font-size: 26px;
+	font-weight: 400;
+	color: @gray-dark;
+	margin-top: 50px;
+	margin-bottom: 40px;
+	margin-left: 48px;
+}
+
+.mooc-watch-info__title-colored {
+	color: @mooc-watch-purple;
+	margin-right: 2px;
+}
+
+.mooc-watch-info__title .icon-cc-logo-circle {
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	left: 0;
+	top: 1px;
+}
+
+.mooc-watch-info__item-content {
+	text-align: left;
+	display: inline-block;
+}
+
+.mooc-watch-info__item-count {
+	font-size: 24px;
+	color: @mooc-watch-purple;
+	display: block;
+	font-weight: 700;
+}
+
+.mooc-watch-info__item-key {
+	font-size: 10px;
+	text-transform: uppercase;
+	display: block;
+	line-height: 1.3;
+}
+
+.mooc-watch-info__news-title {
+	font-size: 18px;
+	text-transform: uppercase;
+	font-weight: 700;
+	margin-top: 40px;
+	margin-bottom: 20px;
+}
+
+.mooc-watch-info__news-item-title {
+	font-size: 12px;
+	color: @gray-dark;
+	line-height: 1.3;
+	&:hover,
+	&:focus {
+		color: @gray-dark;
+		text-decoration: underline;
+	}
+}
+
+.mooc-watch-info__item-group {
+	.clearfix;
+	text-align: left;
+}
+
+.mooc-watch-info__news-item-provider {
+	font-size: 10px;
+	color: @blue;
+}
+
+.mooc-watch-info__item {
+	width: 33.333333%;
+	float: left;
+	background-color: #fbfbfb;
+	border: 1px solid #eeeded;
+	position: relative;
+	text-align: center;
+	padding-top: 13px;
+	padding-bottom: 13px;
+}
+
+.mooc-watch-info__item:first-child {
+	border-left: none;
+}
+
+.mooc-watch-info__item:last-child {
+	border-right: none;
+}
+
+.mooc-watch-info__news {
+	.clearfix;
+	padding-left: 48px;
+	padding-right: 48px;
+	text-align: left;
+	padding-bottom: 25px;
+}
+
+.mooc-watch-info__news-item-title {
+	display: block;
+}
+
+.mooc-watch-info__news-item-provider {
+	display: block;
+}
+
+.mooc-watch-info__news-item {
+	margin-bottom: 20px;
+}
+
+
+@media (min-width: 380px) {
+	.mooc-info-col {
+		width: 330px;
+	}
+}
+
+
+
+@media (min-width: 600px) {
+	.mooc-watch-view-section__button {
+		min-width: 300px;
+	}
+
+	.mooc-watch-view-section__title {
+		font-size: 42px;
+	}
+
+	.mooc-watch-view-section__tagline {
+		font-size: 28px;
+	}
+
+	.mooc-watch-view-section {
+		padding-top: 40px;
+		padding-bottom: 90px;
+	}
+}
+
+@media (min-width: @screen-lg-min) {
+	.mooc-watch-title-col {
+		padding-left: 115px;
+		text-align: left;
+	}
+
+	.mooc-watch-view-section {
+		padding-top: 40px;
+		padding-bottom: 130px;
+	}
+
+	.mooc-info-col {
+		padding: 0;
+		margin-left: 0;
+		margin-right: 0;
+		float: left;
+	}
+}
+/* =mooc-watch-testimonials-section
+----------------------------------------------------------------------------- */
+
+.mooc-watch-testimonials-section {
+	background-color: @blue;
+	padding-bottom: 145px;
+}
+
+.mooc-watch-testimonials-section__title {
+	color: #fff;
+	font-size: 34px;
+	font-weight: 700;
+	text-align: center;
+	margin-top: 75px;
+	margin-bottom: 50px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+.mooc-watch-testimonials-section__testimonial-card {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.testimonialWrap {
+	clear: both;
+}
+
+
+@media (min-width: 600px) {
+	.mooc-watch-testimonials-section__title {
+		font-size: 42px;
+	}
+
+	.mooc-watch-testimonials-section__title {
+		margin-bottom: 95px;
+		margin-top: 125px;
+	}
+}
+
+@media (min-width: @screen-md-min) {
+	.mooc-watch-testimonials-section__testimonial-card {
+		width: 800px;
+	}
+}

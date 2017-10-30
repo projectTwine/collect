@@ -1,0 +1,121 @@
+
+{% if is_granted('ROLE_ADMIN') and review.id is not empty %}
+    <h3>Quick approve/reject</h3>
+    <a class="review-status-update" href="{{ path('reviews_status_update', {statusId: 2, reviewId: review.id}) }}">Approve</a>|<a class="review-status-update" href="{{ path('reviews_status_update', {statusId: 100, reviewId: review.id}) }}">Don't Show</a>
+{% endif %}
+
+<header>
+    <h2><span>Review </span>{{ course.name }}</h2>
+</header>
+<span id="courseId" data-value="{{ course.id }}" class="hidden"></span>
+<span id="reviewid" data-value="{{ review.id }}" class="hidden"></span>
+<span id="courseUrl" data-value="{{ path('ClassCentralSiteBundle_mooc',{id:course.id,slug:course.slug }) }}" class="hidden"></span>
+
+<div class="review-form-wrap">
+    <form id="review-form" class="clearfix" method="post" action="#review-form">
+        <div class="course-quality">
+            <span class="review-field-label">How would you rate this course?<span style="color: red"> *</span></span>
+            <span class="review-form-error" id="rating-error" style="display:none;">Rating is required</span>
+            <div id="rating" data-score ={{ review.rating }}></div>
+        </div>
+        <div class="course-progress">
+            <span class="review-field-label">How much of the course did you finish?<span style="color: red"> *</span></span>
+            <span class="review-form-error" id="progress-error" style="display:none;">This is a required field</span>
+            {% for id,state in progress %}
+                <input type="radio" id="{{ state.slug }}" name="progress" value="{{ id }}" {% if review.listId == id %}checked{%  endif  %}>
+                <label for="{{ state.slug }}">{{ state.desc }}</label>
+            {% endfor %}
+        </div>
+
+        <div class="course-progress">
+            <span class="review-field-label">How difficult was this course?</span>
+            {% for id,state in difficulty %}
+                <input type="radio" id="{{ state.slug }}" name="difficulty" value="{{ id }}" {% if review.difficultyId == id %}checked{%  endif  %}>
+                <label for="{{ state.slug }}">{{ state.desc }}</label>
+            {% endfor %}
+        </div>
+
+        <div class="course-progress">
+            <span class="review-field-label">Which level is this course appropriate for?</span>
+            {% for id,state in levels %}
+                <input type="radio" id="{{ state.slug }}" name="level" value="{{ id }}" {% if review.levelId == id %}checked{%  endif  %}>
+                <label for="{{ state.slug }}">{{ state.desc }}</label>
+            {% endfor %}
+        </div>
+
+        {% if offeringCount == 1 %}
+            <select id="sessionOptions" class="hidden">
+                <option itemprop="startDate" content="{{ offering['microdataDate'] }}" data-url="{{ offering['url'] }}"
+                        data-sessionstatus = '{{ offering.status }}' data-sessionstartdate="{{ offering.startDate }}"
+                        selected="selected" value="{{ offering.id }}"
+                        >
+                    {{ offering['displayDate'] }}
+                </option>
+            </select>
+        {% elseif offeringCount > 1 %}
+            <div class="course-progress">
+                {% if review.offering is not null %}
+                    {% set offId = review.offering.id %}
+                {% else %}
+                    {% set offId = -1 %}
+                {% endif %}
+                <span class="review-field-label">Session</span>
+                <select id="sessionOptions">
+                    <option value="-1"></option>
+                    {% for offeringType in offeringTypesOrder %}
+                        {% if offerings[offeringType]|length > 0 %}
+                            <optgroup label="{{ offeringTypes[offeringType]['sessionDesc'] }}"></optgroup>
+                            {% for offering in offerings[offeringType]%}
+                                <option itemprop="startDate" content="{{ offering['microdataDate'] }}" data-url="{{ offering['url'] }}"
+                                        data-sessiontype="{{ offeringType }}"  data-sessionstatus = '{{ offering.status }}' data-sessionstartdate="{{ offering.startDate }}"
+                                        value="{{ offering.id }}" {% if offId == offering.id %}selected="selected" {% endif %}
+                                        >
+                                    {{ offering['displayDate'] }}
+                                </option>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+        {% endif %}
+
+        <div class="course-effort">
+            <span class="review-field-label">How many hours did you spend per week?</span>
+            <input type="text" class="form-control bfh-number" data-min="0" data-max="40" name="effort" value="{{ review.hours }}">
+
+        </div>
+        {% if isAdmin %}
+            <div class="course-progress">
+                <span class="review-field-label">Review Status</span>
+                <select id="reviewStatus">
+                    {% for id,status in reviewStatuses %}
+                        <option value="{{ id }}" >{{ status }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="course-progress">
+                <span class="review-field-label">External Reviewer Name</span>
+                <input type="text" id="ext-reviewer-name" value="{{ review.reviewerName }}" />
+            </div>
+
+            <div class="course-progress">
+                <span class="review-field-label">External Review Link</span>
+                <input type="text" id="ext-review-link" value="{{ review.externalLink }}">
+            </div>
+        {% endif %}
+
+        <div class="text-wrap">
+            <div class="review-text">
+                <span class="review-field-label">Review</span>
+                <span class="review-form-error" id="review-text-error" style="display:none;">Review should be at least 20 words</span>
+                <textarea id="review-text" name="review-text" placeholder="Your review helps other learners like you discover great courses.
+
+Only Review the course if you have taken or started taking this course." class="expandable">{{ review.review }}</textarea>
+            </div>
+        </div>
+
+        <a id="submit-review"  name="cc-send" href="#">Review Course</a>
+        <a id="cancel-review"  onmousedown="ga('send','event', 'Create Review Page', 'Cancel', '{{course.name}}')" href="{{ path('ClassCentralSiteBundle_mooc',{id: course.id,slug:course.slug}) }}">Cancel</a>
+    </form>
+</div>

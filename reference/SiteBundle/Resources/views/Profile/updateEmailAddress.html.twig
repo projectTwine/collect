@@ -1,0 +1,26 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block headmeta %}
+    <title>Change of Email Address | Class Central</title>
+
+{% endblock %}
+
+
+{% block contentheader %}
+
+    <div class="cc-form-bg-wrap">
+        <div class="cc-form-box">
+            <div class="cc-form-box-inner">
+                <div class="form-box-header">
+                    <span class="icon-cc-logo-png"></span>
+                    <svg class="icon icon-cc-logo-circle" viewBox="0 0 32 32"><use xlink:href="#icon-cc-logo-circle"></use></svg>
+                </div>
+
+                <div class="form-box-body">
+                        <p>{{ msg }}</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

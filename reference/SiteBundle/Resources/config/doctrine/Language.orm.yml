@@ -1,0 +1,44 @@
+ClassCentral\SiteBundle\Entity\Language:
+  type: entity
+  table: languages
+  repositoryClass: ClassCentral\SiteBundle\Repository\LanguageRepository
+  fields:
+      id:
+        id: true
+        type: integer
+        unsigned: false
+        nullable: false
+        generator:
+          strategy: AUTO
+      name:
+        type: string
+        length: 255
+        nullable: false
+      slug:
+        type: string
+        length: 45
+        fixed: false
+        nullable: false
+      code:
+        type: string
+        length: 45
+        fixed: false
+        nullable: false
+      color:
+        type: string
+        length: 7
+        fixed: true
+        nullable: true
+      displayOrder:
+        type: integer
+        unsigned: false
+        nullable: true
+        column: display_order
+        order: asc
+  oneToMany:
+       courses:
+         targetEntity: Course
+         cascade: {}
+         mappedBy: language
+         inversedBy: null
+         orphanRemoval: false

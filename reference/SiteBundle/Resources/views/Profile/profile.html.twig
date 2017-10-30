@@ -1,0 +1,274 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+ {% block headmeta %}
+    <title>{{ user.displayName }} - MOOC transcript, reviews, and interests | Class Central </title>
+    <meta name="description" content="View {{ user.displayName }}'s MOOC Record on Class Central. Class Central profile pages makes it easy for you to learn about {{ user.displayName }}'s interests in MOOCs." />
+    <meta name="author" content="{{ user.displayName }}" />
+     {%  if profilePic  %}
+         <meta property="og:image" content="{{ profilePic }}">
+     {% else %}
+         <meta property="og:image" content="/bundles/classcentralsite/slashpixel/images/profile-dummy-img.jpg">
+     {% endif %}
+
+     <meta name=”robots” content=”noindex, follow”>
+
+     <meta property="og:title" content="{{ user.displayName }}'s MOOC record on Class Central - online transcript, reviews, and interests "/>
+     <meta property="og:site_name" content="Class Central"/>
+     <meta property="og:description" content="View {{ user.displayName }}'s MOOC Record on Class Central. Class Central profile pages makes it easy for you to learn about {{ user.displayName }}'s interest in MOOCs. " />
+     <meta property="og:type" content="website" />
+     <meta property="fb:admins" content="{{ fb_admins }}" />
+
+{% endblock %}
+
+{% block content -%}
+
+
+    <h2 class="section-heading"><span>Profile</span></h2>
+    <div class="row">
+    <div class="col-md-3 profile-info">
+        <div class="crop-wrap">
+
+            {%  if profilePic  %}
+                <img src="{{ profilePic }}" alt="{{ user.displayName }}" class="profile-img">
+            {% else %}
+                <img src="/bundles/classcentralsite/slashpixel/images/profile-dummy-img.jpg" alt="profile-img" class="profile-img">
+            {% endif %}
+        </div>
+        <div class="profile-social">
+            {% if profile.website %}
+                <a href="{{ profile.website }}" class="profile-social-icon profile-chain" target="_blank" rel="nofollow">
+                    <svg class="icon icon-chain" viewBox="0 0 32 32"><use xlink:href="#icon-chain"></use></svg>
+                </a>
+            {% endif %}
+
+            {% if profile.twitter %}
+                <a href="https://twitter.com/{{ profile.twitter }}" class="profile-social-icon profile-twitter" target="_blank" rel="nofollow">
+                    <svg class="icon icon-twitter" viewBox="0 0 32 32"><use xlink:href="#icon-twitter"></use></svg>
+                </a>
+            {% endif %}
+
+            {% if profile.facebook %}
+                <a href="https://facebook.com/{{ profile.facebook }}" class="profile-social-icon profile-facebook" target="_blank" rel="nofollow">
+                    <svg class="icon icon-facebook" viewBox="0 0 32 32"><use xlink:href="#icon-facebook"></use></svg>
+                </a>
+            {% endif %}
+
+            {% if profile.linkedin %}
+                <a href="http://www.linkedin.com/in/{{ profile.linkedin }}/" class="profile-social-icon profile-linkedin" target="_blank" rel="nofollow">
+                    <svg class="icon icon-linkedin" viewBox="0 0 32 32"><use xlink:href="#icon-linkedin"></use></svg>
+                </a>
+            {% endif %}
+
+            {% if profile.coursera %}
+                <a href="https://www.coursera.org/user/i/{{ profile.coursera }}" class="profile-social-icon coursera-profile" target="_blank" rel="nofollow">
+                    <svg class="icon icon-coursera" viewBox="0 0 32 32"><use xlink:href="#icon-coursera"></use></svg>
+                </a>
+            {% endif %}
+
+            {% if profile.gplus %}
+                <a href="https://plus.google.com/{{ profile.gplus }}" class="profile-social-icon google-profile" target="_blank" rel="nofollow">
+                    <svg class="icon icon-googleplus" viewBox="0 0 32 32"><use xlink:href="#icon-googleplus"></use></svg>
+                </a>
+            {% endif %}
+        </div>
+
+
+        <p class="profile-description">
+            {{ profile.aboutMe  }}
+            {% if deleteAccount %}
+                <div class="alert alert-info" role="alert">
+                    We received a request to delete your account. Accounts are deleted within 7 days of receiving the request.
+                 </div>
+        {% endif %}
+        </p>
+
+
+        <div class="info-row info-name">
+            <span class="info-icon info-user-icon"><svg class="icon icon-cc-logo4" viewBox="0 0 32 32"><use xlink:href="#icon-cc-logo4"></use></svg></span>
+            <span class="info-text">{{ user.getDisplayName }}</span>
+        </div>
+
+        {% if profile.location %}
+            <div class="info-row info-location">
+                <span class="info-icon info-location-icon"><svg class="icon icon-location" viewBox="0 0 19 32"><use xlink:href="#icon-location"></use></svg></span>
+                <span class="info-text">{{ profile.location }}</span>
+            </div>
+        {% endif %}
+
+        {% if profile.fieldOfStudy %}
+            <div class="info-row info-profession">
+                <span class="info-icon info-books-icon"><svg class="icon icon-books" viewBox="0 0 43 32"><use xlink:href="#icon-books"></use></svg></span>
+                <span class="info-text">{{ profile.fieldOfStudy }}</span>
+            </div>
+        {% endif %}
+
+        {% if profile.highestDegree %}
+            <div class="info-row info-education">
+                <span class="info-icon info-institution-icon"><svg class="icon icon-institution-icon" viewBox="0 0 22 32"><use xlink:href="#icon-institution-icon"></use></svg></span>
+                <span class="info-text">{{ profile.highestDegree }}</span>
+            </div>
+        {% endif %}
+
+    </div>
+
+    {# Build tab counts #}
+    {% set interestedCount = 0 %}
+    {% if coursesByLists['interested'] is not empty %}
+        {%  set interestedCount = coursesByLists['interested']['hits']['total'] %}
+    {% endif %}
+
+    {% set transcriptCount = 0 %}
+    {% for list in listTypes %}
+        {% set courses =  coursesByLists[list.slug] %}
+        {% if courses is not empty %}
+            {% set transcriptCount = transcriptCount + courses['hits']['total'] %}
+        {% endif %}
+    {% endfor %}
+
+
+    <div class="col-md-8 profile-content">
+    <div class="tabbed-content" id="profile-tabs">
+    <ul class="nav nav-tabs" role="tablist">
+        <li {% if tab == 'transcript' %}class="active" {% endif%} data-tab="transcript"><a href="#transcripts" role="tab" data-toggle="tab">Transcript ({{ transcriptCount }})</a></li>
+        <li {% if tab == 'interested' %}class="active" {% endif%} data-tab="interested"><a href="#interested" role="tab" data-toggle="tab">Interested ({{ interestedCount }})</a></li>
+        <li {% if tab == 'reviews' %}class="active" {% endif%} data-tab="reviews"><a href="#reviews" role="tab" data-toggle="tab">Reviews ({{ reviews|length }})</a></li>
+        {# <li><a href="#collections" role="tab" data-toggle="tab">Collections (24)</a></li> #}
+        {% if app.user and app.user.id == user.id %}
+            <li {% if tab == 'edit-profile' %}class="active" {% endif%} data-tab="edit-profile"><a href="#edit-profile" role="tab" data-toggle="tab">Edit Profile</a></li>
+        {% endif %}
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+
+    {# Transcript tab #}
+    <div class="tab-pane {% if tab == 'transcript' %} active {% endif %}" id="transcripts">
+        {# Credentials section #}
+        {% if userCreds is not empty %}
+        <h2 class="large-thin-title">Credentials ( {{ userCreds|length }} )</h2>
+        <div class="line-with-points color-scheme--blue">
+            {% for userCred in userCreds %}
+            {% set cred = userCred.cred['hits']['hits'][0]['_source'] %}
+                <div class="tab-pane-item left-point">
+                    <h3>
+                       <span class="item-title">
+                           <a href="{{ path('credential_page',{'slug': cred.slug } ) }}" class="colored">{{ cred.name }}</a>
+                       </span>
+                    </h3>
+
+                  <span class="item-info">
+                      {{ cred.bulletPoints[0] }}
+                    </span>
+                </div>
+            {% endfor %}
+        </div>
+        {%  endif %}
+
+
+
+        {% if transcriptCount == 0 %}
+            <h2 class="large-thin-title">No courses found</h2>
+        {% endif %}
+        {% for list in listTypes %}
+            {% set courses =  coursesByLists[list.slug] %}
+
+            {% if courses is not empty %}
+                <h2 class="large-thin-title">{{ list.desc }} ( {{ courses['hits']['total'] }} )</h2>
+                <div class="line-with-points color-scheme--blue">
+                    {% for result in courses['hits']['hits']  %}
+                        {% set review = null %}
+                        {% set course = result._source %}
+                        {% if reviews[course.id] is defined %}
+                            {% set review = reviews[course.id] %}
+                        {% endif %}
+
+                        {{ include ('ClassCentralSiteBundle:Profile:course.item.html.twig',{
+                        'course': course,
+                        'userStatus' : list.desc,
+                        'review': null,
+                        'showOverAllRating': false
+                        }) }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    {# interested tab #}
+    <div class="tab-pane {% if tab == 'interested' %} active {% endif %}" id="interested">
+        {% if interestedCount > 0 %}
+            <div class="line-with-points color-scheme--blue">
+                {% for result in coursesByLists['interested'] ['hits']['hits'] %}
+                    {{ include ('ClassCentralSiteBundle:Profile:course.item.html.twig',{
+                    'course': result._source,
+                    'showOverAllRating':true
+                    }) }}
+                {% endfor %}
+            </div>
+        {% else %}
+            <h2 class="large-thin-title">No courses found</h2>
+        {% endif %}
+    </div>
+
+    {#  reviews tab #}
+    <div class="tab-pane {% if tab == 'reviews' %} active {% endif %}" id="reviews">
+        {% if reviews is empty  %}
+            <h2 class="large-thin-title">{{ user.displayName }} hasn't written any reviews</h2>
+        {% endif %}
+        {% for courseId, review in reviews %}
+            {% if reviewedCourses[courseId] is defined %}
+            <div class="line-with-points color-scheme--blue">
+                        {{ include ('ClassCentralSiteBundle:Profile:course.item.html.twig',{
+                            'course': reviewedCourses[courseId],
+                            'userStatus' : null,
+                            'review': review,
+                            'showOverAllRating': true
+                        }) }}
+            </div>
+            {% endif %}
+
+        {% endfor %}
+    </div>
+
+    {#
+        <div class="tab-pane" id="collections">collections</div>
+    #}
+
+   {# only show it to loggein users #}
+    {% if app.user and app.user.id == user.id %}
+        <div class="tab-pane tab-pane--no-styling {% if tab == 'edit-profile' %} active {% endif %}" id="edit-profile">
+            {% include 'ClassCentralSiteBundle:Profile:public.profile.edit.form.html.twig' %}
+            {% include 'ClassCentralSiteBundle:Profile:private.profile.edit.form.html.twig' %}
+        </div>
+    {% endif %}
+
+    </div>
+    </div>
+    {#
+        <!--
+        <div class="timeline-wrap">
+            <div class="timeline">
+                <div class="timeline-content">
+                    <h2 class="timeline-heading">Benedict's Activity Timeline</h2>
+                    <div class="timeline-item">
+                        <span class="item-type">Programming Collection</span>
+                        <h3 class="item-title"><span class="user-action">Benedict added</span> Introduction to Databases</h3>
+                        <span class="item-info">Jennifer Widom, Stanford OpenEdX, January–March 2014</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="item-type">Review</span>
+                        <h3 class="item-title"><span class="user-action">Benedict Reviewed</span> Tales from the Genome</h3>
+                        <span class="item-info">Matthew Cook & Lauren Castellano, Udacity, December 2013</span>
+                        <p class="item-quote">
+                            It was a mammouth ambition to cover the basics of data science in fewer days than Phileas Fogg took to travel around the world. The lectures, at time, felt disjointed, since there was so much material to cover.
+                        </p>
+                        <div class="rating-wrap"><span class="rating-text">I rate this course</span> <span class="course-rating" data-score="3"></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        -->
+    #}
+    </div>
+    </div>
+{% endblock %}

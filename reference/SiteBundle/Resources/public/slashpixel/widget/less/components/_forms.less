@@ -1,0 +1,87 @@
+
+@text-bubble-border-color:            @gray-border;
+@text-bubble-bg-color:                #fafafa;
+@placeholder-color:                   #d4d0d0;
+@text-color:                          @black;
+
+::-webkit-input-placeholder {
+   color: @placeholder-color;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: @placeholder-color;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: @placeholder-color;
+}
+
+:-ms-input-placeholder {
+   color: @placeholder-color;
+}
+
+
+.textBox {
+	display: block;
+	.clearfix;
+}
+
+.textBox_bubble {
+	border: 1px solid @text-bubble-border-color;
+	background-color: @text-bubble-bg-color;
+	padding: 10px;
+	margin-bottom: 20px;
+	position: relative;
+}
+
+.textBox_bubble:before {
+  content: "";
+  display: block;
+  border: 10px solid transparent;
+  border-top-color: @text-bubble-bg-color;
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  margin-left: -10px;
+  z-index: 4;
+}
+
+.textBox_bubble:after {
+  content: "";
+  display: block;
+  border: 10px solid transparent;
+  border-top-color: @text-bubble-border-color;
+  position: absolute;
+  bottom: -21px;
+  left: 50%;
+  margin-left: -10px;
+  z-index: 3;
+}
+
+.textBox_texteArea {
+	border: 0;
+	box-shadow: none;
+	border-radius: 0;
+	display: block;
+	width: 100%;
+	max-width: 100%;
+	min-height: 172px;
+	background-color: transparent;
+	font-size: 14px;
+	color: @text-color;
+	padding: 19px;
+	&:focus {
+		outline: none;
+	}
+}
+
+.textBox .widgetButton {
+	display: block;
+	width: 100%;
+}
+
+.textBox_starRating {
+	display: block;
+	position: relative;
+	text-align: center;
+}

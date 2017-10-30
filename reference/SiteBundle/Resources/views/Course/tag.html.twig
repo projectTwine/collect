@@ -1,0 +1,92 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block headmeta %}
+    <title>Free online {{tagDisplayName}} courses and MOOCs | Class Central</title>
+    <meta name="description" content="Discover free online {{ tagDisplayName }} courses from top universities. Thousands of reviews written by Class Central users help you pick the best course."/>
+
+    <meta property="og:title" content="{{tagDisplayName}} free online courses and MOOCs" />
+    <meta property="og:url" content="{{ baseurl }}{{ path('tag_courses',{'tag': tag}) }}" />
+    <meta property="og:image" content="https://www.class-central.com/bundles/classcentralsite/slashpixel/images/ccprofilepic.png">
+    <meta property="og:description" content="{{ tag }} free online courses/MOOCs list aggregated by Class Central" />
+    <meta property="og:type" content="website" />
+
+    <link rel="canonical" href="{{ baseurl }}{{ path('tag_courses',{'tag': tag}) }}" />
+
+
+    {# paginated content #}
+    {% include 'ClassCentralSiteBundle:Helpers:paginationRelTags.html.twig' with
+        { 'pageNo': pageNo, 'totalCourses': results.hits.total }
+    %}
+{% endblock %}
+
+
+{% block customJS %}
+    $(document).ready(function(){
+
+        $.ajax({
+            type: "get",
+            url: "{{ path('maestro_udemy_courses',{'term':tag|url_encode}) }}"
+        })
+        .done(
+            function(result){
+                result = JSON.parse(result);
+                if(result.success) {
+                    udemy = result;
+                    $('#course-listing-tbody').append(result.tableRows);
+                }
+            }
+        );
+
+     });
+{% endblock %}
+
+{%  block content %}
+
+
+    <div class="intro-wrap">
+        <div class="description-wrap">
+            <div class="description">
+                <h1 class='cc-page-header'  style="max-width: 700px; white-space: normal">Free online {{ tagDisplayName|title }} courses</h1>
+                <p>Study free online <em>{{ tagDisplayName }}</em> courses and MOOCs from top universities and colleges. Read reviews to decide if a class is right for you. Learn the fundamentals of <em>{{  tagDisplayName }}</em> and increase your career prospects by earning certificates of completion.</p>
+            </div>
+        </div>
+    </div>
+
+    {% include 'ClassCentralSiteBundle:Follow:btn.follow.html.twig' with {
+        item : followItem,
+        item_id : followItemId,
+        itemName: followItemName,
+        followed: user_session.isItemFollowed(followItem,followItemId),
+        followButtonWithCount: true,
+        followDesc: 'Want an email when new courses are available?',
+        followDescPosition: 'right',
+        followDescColor: 'black',
+        followers:followService.getNumFollowers(followItem,followItemId)
+    } %}
+
+
+    <section class="courses">
+        <h2 class="section-heading">
+            <span>Courses</span>
+        </h2>
+        <div id="filter-wrap">
+            <div class="mobile-filter-btn-wrap">
+                <a href="#" class="mobile-filter-btn">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 col-lg-3 filter-column">
+                    {% include 'ClassCentralSiteBundle:Helpers:filters.html.twig' with {'offSubjects':allSubjects,'offLanguages':allLanguages, 'offSessions': allSessions } %}
+                </div>
+                <div class="col-sm-8 col-lg-9 table-column">
+                    <div class="tables-wrap">
+                        {% include 'ClassCentralSiteBundle:Helpers:course.table.html.twig' with{'results':results,'tableId':'tagtable'} %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

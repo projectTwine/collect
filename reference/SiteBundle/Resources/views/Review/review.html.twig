@@ -1,0 +1,12 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+{% block headmeta %}
+    <title>Review {{ course.name }}</title>
+    <meta name="robots" content="noindex" />
+{% endblock %}
+{% block content %}
+    <div class="new-review full-new-review col-md-6">
+        {# Render the review form #}
+        {% render controller('ClassCentralSiteBundle:Review:reviewForm', {'courseId': course.id, 'page': page, 'reviewId': reviewId}) %}
+    </div>
+
+{% endblock %}

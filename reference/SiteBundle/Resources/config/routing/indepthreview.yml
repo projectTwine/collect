@@ -1,0 +1,30 @@
+indepthreview:
+    pattern:  /
+    defaults: { _controller: "ClassCentralSiteBundle:IndepthReview:index" }
+
+indepthreview_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ClassCentralSiteBundle:IndepthReview:show" }
+
+indepthreview_new:
+    pattern:  /new
+    defaults: { _controller: "ClassCentralSiteBundle:IndepthReview:new" }
+
+indepthreview_create:
+    pattern:  /create
+    defaults: { _controller: "ClassCentralSiteBundle:IndepthReview:create" }
+    requirements: { _method: post }
+
+indepthreview_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ClassCentralSiteBundle:IndepthReview:edit" }
+
+indepthreview_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ClassCentralSiteBundle:IndepthReview:update" }
+    requirements: { _method: post|put }
+
+indepthreview_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ClassCentralSiteBundle:IndepthReview:delete" }
+    requirements: { _method: post|delete }

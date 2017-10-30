@@ -1,0 +1,26 @@
+ClassCentral\SiteBundle\Entity\Category:
+    type: entity
+    table: categories
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        name:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        slug:
+            type: string
+            length: 100
+            fixed: false
+            nullable: false
+    oneToMany:
+        careers:
+          targetEntity: Career
+          mappedBy: category
+    lifecycleCallbacks: {  }

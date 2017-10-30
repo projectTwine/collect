@@ -1,0 +1,68 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block headmeta %}
+    <title>{{career.name}} •  Online Courses and MOOCs | Class Central</title>
+    <meta name="description" content="Discover online courses taught in {{ career.name }}. Watch videos, do assignments, earn a certificate while learning from some of the best Instructors."/>
+
+    <meta property="og:title" content="{{career.name}} • Online Courses and MOOCs | Class Central" />
+    <meta property="og:url" content="{{ baseurl }}{{ path('career_page',{'slug': slug}) }}" />
+
+    <meta property="og:image" content="https://www.class-central.com/bundles/classcentralsite/slashpixel/images/cc.never.stop.learning.png">
+
+    <meta property="og:description" content="Discover  online courses taught in {{ career.name }}. Watch videos, do assignments, earn a certificate while learning from some of the best Professors." />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter card integration -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@classcentral">
+    <meta name="twitter:title" content="{{career.name}} • Online Courses and MOOCs">
+    <meta name="twitter:description" content="List of {{career}} online courses and MOOCs aggregated by Class Central">
+    <meta name="twitter:domain" content="www.class-central.com">
+
+    <link rel="canonical" href="{{ baseurl }}{{ path('career_page',{'slug': slug}) }}" />
+
+    {# paginated content #}
+    {% include 'ClassCentralSiteBundle:Helpers:paginationRelTags.html.twig' with
+    { 'pageNo': pageNo, 'totalCourses': results.hits.total }
+    %}
+{% endblock %}
+
+{%  block content %}
+
+    {% include 'ClassCentralSiteBundle:Helpers:pageHeader.html.twig' with {'info':pageInfo} %}
+
+    <div class="header-follow-button ui-theme-light" style="display: inline-block; background-color: transparent;" >
+        {%   include 'ClassCentralSiteBundle:Follow:btn.follow.html.twig' with {
+        item : followItem,
+        item_id : followItemId,
+        itemName: followItemName,
+        followed: user_session.isItemFollowed(followItem,followItemId)
+        } %}
+    </div>
+
+    <section class="courses">
+        <h2 class="section-heading">
+            <span>Courses</span>
+        </h2>
+        <div id="filter-wrap">
+            <div class="mobile-filter-btn-wrap">
+                <a href="#" class="mobile-filter-btn">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 col-lg-3 filter-column">
+                    {% include 'ClassCentralSiteBundle:Helpers:filters.html.twig' with {'offSubjects':allSubjects,'offLanguages':allLanguages, 'offSessions' : allSessions } %}
+                </div>
+                <div class="col-sm-8 col-lg-9 table-column">
+                    <div class="tables-wrap">
+                        {% include 'ClassCentralSiteBundle:Helpers:course.table.html.twig' with{'results':results,'tableId':'careertable', 'showInstitution' : true} %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

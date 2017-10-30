@@ -1,0 +1,29 @@
+ClassCentral\SiteBundle\Entity\VerificationToken:
+    type: entity
+    table: verification_tokens
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        token:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        value:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        created:
+            type: datetime
+            nullable: true
+        expiry:
+            type: integer
+            unsigned: false
+            nullable: true
+    lifecycleCallbacks: {  }

@@ -1,0 +1,94 @@
+ClassCentral\SiteBundle\Entity\Profile:
+    type: entity
+    table: profiles
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        aboutMe:
+            type: text
+            nullable: true
+            column: about_me
+        location:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        fieldOfStudy:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: field_of_study
+        jobTitle:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: job_title
+        highestDegree:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: highest_degree
+        twitter:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        coursera:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        website:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        gplus:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        linkedin:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        facebook:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        photo:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        score:
+            type: integer
+            unsigned: false
+            nullable: true
+        created:
+            type: datetime
+            nullable: true
+        modified:
+            type: datetime
+            nullable: true
+    oneToOne:
+        user:
+            targetEntity: User
+            cascade: {  }
+            mappedBy: null
+            inversedBy: profile
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,44 @@
+ClassCentral\SiteBundle\Entity\Career:
+    type: entity
+    table: careers
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        name:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        slug:
+            type: string
+            length: 100
+            fixed: false
+            nullable: false
+    manyToOne:
+        category:
+            targetEntity: Category
+            cascade: {  }
+            mappedBy: null
+            inversedBy: careers
+            joinColumns:
+                category_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToMany:
+        courses:
+            targetEntity: Course
+            mappedBy: careers
+            joinTable:
+                name: courses_careers
+                joinColumns:
+                    career_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    course_id:
+                        referencedColumnName: id
+    lifecycleCallbacks: {  }

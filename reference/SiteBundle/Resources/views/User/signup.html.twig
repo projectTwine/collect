@@ -1,0 +1,82 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+ {% block headmeta %}
+     <title>Class Central Sign Up</title>
+     <meta name="description"
+           content="Signup for a Class Central account and build your own searchable library of courses. MOOC Tracker is a service from Class Central that sends you email notifications based on your interests. Stay updated on courses that match your interests"/>
+     <meta property="og:title" content="Signup for Class Central" />
+     <meta property="og:url" content="https://www.class-central.com/signup" />
+     <meta property="og:image" content="https://www.class-central.com/bundles/classcentralsite/slashpixel/images/ccprofilepic.png">
+     <meta property="og:site_name" content="Class Central"/>
+     <meta property="og:description" content="Signup for a Class Central account and build your own searchable library of courses. MOOC Tracker is a service from Class Central that sends you email notifications based on your interests. Stay updated on courses that match your interests" />
+     <meta property="og:type" content="website" />
+     <meta property="fb:admins" content="{{ fb_admins }}" />
+
+     <!-- Twitter card integration -->
+     <meta name="twitter:card" content="summary">
+     <meta name="twitter:site" content="@classcentral">
+     <meta name="twitter:title" content="Sign Up for Class Central">
+     <meta name="twitter:description" content="Sign Up for a Class Central account and build your own searchable library of courses. MOOC Tracker is a service from Class Central that sends you email notifications based on your interests. Stay updated on courses that match your interests">
+     <meta name="twitter:domain" content="www.class-central.com">
+
+ {% endblock %}
+
+{% block contentheader %}
+    {#
+<div class="signup-box">
+
+    <div class="signup-copy">
+        <p class="signup-copy-line1">
+            Build your own searchable library of courses.
+        </p>
+
+        <p class="signup-copy-line2">
+            Additionaly, receive email notifications via MOOC Tracker, a service from Class Central that sends you notifications based on your interests.
+        </p>
+
+        <div class="signup-copy-desc">
+            <span>Some handy uses of MOOC Tracker include:</span>
+            <ul>
+                <li>
+                    Receive a <a href="http://www.blog.class-central.com/mooc-course-report-october-2013/" title="MOOC Course Report - October, 2013" target="_blank">monthly report of courses</a> starting in that month
+                </li>
+                <li>
+                    Track courses and get notified when it is offered again, about to start, the dates change, etc.
+                </li>
+                <li>
+                    Track search terms and receive new course notifications eg. <a href="search?q=python" target="_blank">python</a>, <a href="search?q=python" target="_blank">java</a>, <a href="search?q=python" target="_blank">music</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+
+</div>
+     #}
+    <div class="cc-form-bg-wrap">
+        <div class="cc-form-box">
+            <div class="cc-form-box-inner">
+                <div class="form-box-header">
+                    <span class="icon-cc-logo-png"></span>
+                    <svg class="icon icon-cc-logo-circle" viewBox="0 0 32 32"><use xlink:href="#icon-cc-logo-circle"></use></svg>
+                </div>
+                <div class="form-box-body">
+                    <a class="sign-in-with-facebook" href="{{ path('fb_authorize_start') }}" onmousedown="ga('send','event','Sign In with Facebook', 'Login Form');">
+                        <span class="icon-facebook2-png"></span>
+                        <svg class="icon icon-facebook2" viewBox="0 0 32 32"><use xlink:href="#icon-facebook2"></use></svg>
+                        Sign up with Facebook
+                    </a>
+
+                    <div class="or-separator">
+                        <span>OR</span>
+                    </div>
+                    {{ form(form) }}
+                </div>
+            </div>
+            <p id="cc-form-box-additional-link">
+                Already have an account? <a href="{{ path('login')  }}" title="Login">Login</a>
+            </p>
+        </div>
+    </div>
+{% endblock %}

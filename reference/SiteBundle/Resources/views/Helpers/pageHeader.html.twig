@@ -1,0 +1,45 @@
+<div class="intro-wrap">
+    {% if info.imageUrl %}
+        <div class="image-wrap">
+            <div class="illustrative-image">
+                <img src="{{ rackspace_cdn_base_url }}{{ info.imageUrl }}">
+            </div>
+            {% if info.url %}
+                {#
+                    <div class="learn-more-wrap">
+                        <a href="{{ info.url }}" class="learn-more-link" target="_blank">Learn More</a>
+                    </div>
+                #}
+            {% endif %}
+        </div>
+    {% endif %}
+    <div class="description-wrap">
+        <div class="description">
+            <h1 class='cc-page-header' style="max-width: 700px; white-space: normal" >{{info.name}}</h1>
+            {% if info.description %}
+                <p>{{ info.description|raw  }}</p>
+            {% endif %}
+        </div>
+        {#
+        <div class="social-media-wrap">
+            <a class="twitter-icon" href="https://twitter.com/share?url={{ info.pageUrl|url_encode }}&text={{ info.tweet|url_encode }}&via=classcentral&hashtags=mooc"
+               onmousedown="ga('send','event', '{{ info.type }} Share', 'Twitter', '{{ info.name }}')" target="_blank"></a>
+            <a class="google-icon" href="https://plus.google.com/share?url={{ info.pageUrl|url_encode }}"
+               onclick="_javascript:window.open(this.href,
+                    '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"
+               onmousedown="ga('send','event', '{{ info.type }} Share', 'Google+', '{{ info.name }}')"     ></a>
+            <a class="facebook-icon" href="https://www.facebook.com/sharer/sharer.php?u={{info.pageUrl|url_encode }}"
+               onmousedown="ga('send','event', '{{ info.type }} Share', 'Facebook', '{{ info.name }}')" target="_blank"></a>
+            <a class="in-icon" href="https://www.linkedin.com/cws/share?url={{ info.pageUrl|url_encode }}" target="_blank"
+               onmousedown="ga('send','event', '{{ info.type }} Share', 'LinkedIn', '{{ info.name }}')"     ></a>
+            <a class="mail-icon" href="mailto:?subject={{ info.subject|url_encode }}&body={{ info.pageUrl|url_encode }}"
+               onmousedown="ga('send','event', '{{ info.type }} Share', 'Mail', '{{ info.name }}')"></a>
+        </div>
+        #}
+    </div>
+
+    {%  include 'ClassCentralSiteBundle:Helpers:pageHeaderImageAds.html.twig' %}
+
+
+
+</div>

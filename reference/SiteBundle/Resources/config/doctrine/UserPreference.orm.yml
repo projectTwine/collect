@@ -1,0 +1,36 @@
+ClassCentral\SiteBundle\Entity\UserPreference:
+    type: entity
+    table: user_preferences
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        type:
+            type: smallint
+            nullable: false
+        value:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        created:
+            type: datetime
+            nullable: true
+        modified:
+            type: datetime
+            nullable: false
+    manyToOne:
+        user:
+            targetEntity: User
+            cascade: {  }
+            mappedBy: null
+            inversedBy: userPreferences
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

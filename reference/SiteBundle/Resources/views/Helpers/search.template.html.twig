@@ -1,0 +1,80 @@
+<!-- Handlebars template scripts for Typeahead-->
+{% raw %}
+<script id="course-template" type="text/x-handlebars-template">
+    <a class="type-{{payload.type}} suggestion-template template-course" href="{{payload.url}}" data-type="{{payload.type}}" data-name="{{payload.name}}" onmousedown="ga('send','event', 'Search Autocomplete' , '{{payload.type}}', '{{payload.name}}' )">
+        <span class="name">{{payload.name}}</span>
+        <div class="session-wrap">
+            {{#if payload.nextSession}}
+            <span class="next-session">{{payload.nextSession}}</span>
+            {{/if}}
+            {{#if payload.provider}}
+            <span class="course-provider">&nbsp;via {{payload.provider}}</span>
+            {{/if}}
+        </div>
+    </a>
+</script>
+
+<script id="subject-template" type="text/x-handlebars-template">
+    <a class="type-{{payload.type}} suggestion-template template-subject" href="{{payload.url}}" data-type="{{payload.type}}" data-name="{{payload.name}}" onmousedown="ga('send','event', 'Search Autocomplete' , '{{payload.type}}', '{{payload.name}}' )">
+        <span class="name">{{payload.name}}</span>
+        {{#if payload.count}}
+        <span class="course-count">{{payload.count}} courses</span>
+        {{/if}}
+    </a>
+</script>
+
+<script id="credential-template" type="text/x-handlebars-template">
+    <a class="type-{{payload.type}} suggestion-template template-credential" href="{{payload.url}}" data-type="{{payload.type}}" data-name="{{payload.name}}" onmousedown="ga('send','event', 'Search Autocomplete' , '{{payload.type}}', '{{payload.name}}' )">
+        <span class="name">{{payload.name}}</span>
+        {{#if payload.count}}
+        <span class="course-count">Earn a Credential</span>
+        {{/if}}
+    </a>
+</script>
+
+<script id="provider-template" type="text/x-handlebars-template">
+    <a class="type-{{payload.type}} suggestion-template template-provider" href="{{payload.url}}" data-type="{{payload.type}}" data-name="{{payload.name}}" onmousedown="ga('send','event', 'Search Autocomplete' , '{{payload.type}}', '{{payload.name}}' )">
+        <span class="name">{{payload.name}}</span>
+        {{#if payload.count}}
+        <span class="course-count">{{payload.count}} courses</span>
+        {{/if}}
+    </a>
+</script>
+
+<script id="uni-template" type="text/x-handlebars-template">
+    <a class="type-{{payload.type}} suggestion-template template-uni" href="{{payload.url}}" data-type="{{payload.type}}" data-name="{{payload.name}}" onmousedown="ga('send','event', 'Search Autocomplete' , '{{payload.type}}', '{{payload.name}}' )">
+        <span class="name">{{payload.name}}</span>
+        {{#if payload.count}}
+        <span class="course-count">{{payload.count}} courses</span>
+        {{/if}}
+    </a>
+</script>
+
+<script id="article-template" type="text/x-handlebars-template">
+    <a class="type-{{payload.type}} suggestion-template template-article" href="{{payload.url}}" data-type="{{payload.type}}" data-name="{{payload.name}}" onmousedown="ga('send','event', 'Search Autocomplete' , '{{payload.type}}', '{{{payload.name}}}' )">
+        <span class="name">{{{payload.name}}}</span>
+    </a>
+</script>
+
+<script id="footer-template" type="text/x-handlebars-template">
+    <a class="suggestions-footer search-view-all" href="">View All</a>
+</script>
+
+<script id="base-template" type="text/x-handlebars-template">
+    <a class="type-{{payload.type}} suggestion-template template-base" href="{{payload.url}}" data-type="{{payload.type}}" data-name="{{payload.name}}" onmousedown="ga('send','event', 'Search Autocomplete' , '{{payload.type}}', '{{payload.name}}' )">
+        <span class="name">{{payload.name}}</span>
+        {{#if payload.count}}
+        <span class="course-count">{{payload.count}} courses</span>
+        {{/if}}
+        <div class="session-wrap">
+            {{#if payload.nextSession}}
+            <span class="next-session">{{payload.nextSession}}</span>
+            {{/if}}
+            {{#if payload.provider}}
+            <span class="course-provider">&nbsp;via {{payload.provider}}</span>
+            {{/if}}
+        </div>
+    </a>
+</script>
+{% endraw %}
+<!-- End Handlebars template scripts for Typeahead-->

@@ -1,0 +1,32 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block headmeta %}
+    <title>My Courses | Class Central</title>
+{% endblock %}
+
+{%  block content %}
+    <h1 class='cc-page-header'>My Courses</h1>
+    <section class="courses">
+        <h2 class="section-heading">
+            <span>Courses</span>
+        </h2>
+        <div id="filter-wrap">
+            <div class="mobile-filter-btn-wrap">
+                <a href="#" class="mobile-filter-btn">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 col-lg-3 filter-column">
+                    {% include 'ClassCentralSiteBundle:Helpers:filters.html.twig' with
+                    {'offSubjects':allSubjects,'offLanguages':allLanguages, 'offSessions' : allSessions, 'userLists' : userLists,'results':courses } %}
+                </div>
+                <div class="col-sm-8 col-lg-9 table-column">
+                    {% include 'ClassCentralSiteBundle:User:libraryTable.html.twig' %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

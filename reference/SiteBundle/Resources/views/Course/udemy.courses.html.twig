@@ -1,0 +1,65 @@
+{% if isDeal %}
+    <tr id="udemy-deals" class="classcentral-style">
+        <td class="add-column">
+            <i class="icon icon-coupon-charcoal icon--small"></i>
+        </td>
+        <td colspan="3">
+            <div class="pull width-1-3 relative">
+                <i class="symbol-udemy-green symbol--xsmall absolute left">Udemy</i>
+                <span class="head-5 padding-left-xxlarge">$10 for all courses below</span>
+            </div>
+            <div class="push width-2-3 border-box padding-horz-medium text-right">
+              <span class="head-5 icon--left icon-clock-charcoal">
+                Deal ends in <strong class="text--bold">{{ timeLeft }}</strong>
+              </span>
+            </div>
+        </td>
+    </tr>
+{% endif %}
+{% for course in udemyCourses.results %}
+    {% set courseUrl = 'https://www.udemy.com' ~ course.url ~ '&u1=cc_table_listings' %}
+    {% set courseUrl = udemy_url~courseUrl|url_encode  %}
+    {% set courseProvider = 'Udemy' %}
+        <tr>
+
+            {# add to profile column #}
+            <td class="add-column">
+
+            </td>
+
+            <td class="course-name-column">
+
+                <a class="course-name" itemprop='url' href="{{ courseUrl }}" target="_blank" title="{{ course.title }}">
+                  <span itemprop="name" class="course-name-text">{{ course.title }}</span>
+                {% if course.is_paid %}
+                        <span class="course-name-icon">
+                           <svg viewBox="0 0 32 32"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-paid-icon"></use></svg>
+                       </span>
+                       {% if course.is_paid and isDeal %}
+                           <span class="classcentral-style">
+                             <span class="text--gray text--line inline-block padding-horz-xxsmall">{{ course.price }}</span> <span class="text--bold text--yellow">$10</span>
+                           </span>
+                       {% endif %}
+                {% endif %}
+                </a>
+                <ul class="table-uni-list">
+                    <span class="via">via</span>
+                    <a href="{{ path('ClassCentralSiteBundle_initiative', {'type': 'udemy' }) }}"  class="initiativelinks" title="List of Udemy MOOCs" onClick="ga('send','event', 'Inbound Clicks - Initiative', '{{ courseProvider }}', '{{course.title}}')"> {{ courseProvider }}</a>
+
+                </ul>
+
+                <div class="course-name-column-start-date">Self Paced</div>
+            </td>
+            <td class="start-date">Self Paced</td>
+
+            <td  class="course-rating-column">
+                <div class="rating-and-count-wrap">
+
+                    <div class="course-table-rating">
+                        {% include 'ClassCentralSiteBundle:Helpers:starRating.html.twig' with {formattedRating: reviewService.formatRating(0),ratingColour: 'brand'} %}
+                    </div>
+                </div>
+            </td>
+
+        </tr>
+{% endfor %}

@@ -1,0 +1,38 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block content -%}
+    <h1>IndepthReview creation</h1>
+
+    <form action="{{ path('indepthreview_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <p>
+            <button type="submit">Create</button>  * Note: Course associations are not saved
+        </p>
+    </form>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('indepthreview') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}
+
+{%  block beforeClosingBody %}
+    {% javascripts '@ClassCentralSiteBundle/Resources/public/slashpixel/js/selectize.min.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    {% stylesheets '@ClassCentralSiteBundle/Resources/public/slashpixel/css/selectize.bootstrap2.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+
+{% block customJS %}
+    $(document).ready(function () {
+
+    $('#classcentral_sitebundle_indepthreviewtype_course').selectize();
+    });
+{% endblock %}

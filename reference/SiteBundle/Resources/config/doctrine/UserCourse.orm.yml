@@ -1,0 +1,51 @@
+ClassCentral\SiteBundle\Entity\UserCourse:
+    type: entity
+    table: users_courses
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        created:
+            type: datetime
+            nullable: true
+        listId:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: list_id
+    manyToOne:
+        # many to one bidirectional
+        user:
+            targetEntity: User
+            cascade: {  }
+            mappedBy: null
+            inversedBy: userCourses
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        # many to one unidirectional
+        course:
+            targetEntity: Course
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                course_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        # many to one unidirectional
+        offering:
+            targetEntity: Offering
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                offering_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,54 @@
+<!-- new sticky ad unit, remove this comment -->
+{#
+<div class="stickyAd js-closable-ad" style="display: none;">
+    <a href="#" class="stickyAd_close js-close-this-ad" role="button" aria-label="Close this ad">
+        <div class="u-scaling-svg">
+            <svg class="u-scalingSvg__shape">
+                <use xlink:href="#shape-cross"></use>
+            </svg>
+        </div>
+    </a>
+    <a href="#" class="stickyAd_image">
+        <img src="http://placehold.it/130x98" alt="ad illustration">
+    </a>
+
+    <a href="#" class="stickyAd_text">
+        The most versatile to-do app UI kit you've ever seen. Yours, For Free.
+    </a>
+</div>
+<!-- new sticky ad unit ends here, remove this comment-->
+
+#}
+
+
+
+<h2 class="section-heading">
+    <span>Deals</span>
+</h2>
+
+<div class="row row-extraMargin">
+
+    {% set dealCount = 0 %}
+    {% for deal in deals %}
+
+        <div class="col-lg-4 col-md-4 col-extraPadding">
+
+            <a href="{{ path('ClassCentralSiteBundle_mooc',{id: deal.id,slug:deal.slug}) }}" class="blackBoardCard blackBoardCard-{{ deal.colour }}"
+                        onmousedown="ga('send','event','Homepage Deals','{{ deal.name }}');"
+                    >
+                <div class="blackBoardCard_wrap">
+                    <div class="blackBoardCard_inner">
+                        <span class="blackBoardCard_text blackBoardCard_text-caps">Deal {{ deal.numText }}</span>
+                        <h2 class="blackBoardCard_title">{{ deal.name }}</h2>
+                        <span class="blackBoardCard_text">Regular course price ${{ deal.price }}</span>
+                    </div>
+                    <div class="blackBoardCard_colorBar">
+                        {{ deal.discount_percentage }}% discount means <b>you pay ${{ deal.discounted_price }}</b>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    {% endfor %}
+
+</div>

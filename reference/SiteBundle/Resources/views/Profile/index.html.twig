@@ -1,0 +1,61 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block content -%}
+    <h1>Profile list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Aboutme</th>
+                <th>Location</th>
+                <th>Fieldofstudy</th>
+                <th>Highestdegree</th>
+                <th>Twitter</th>
+                <th>Coursera</th>
+                <th>Website</th>
+                <th>Gplus</th>
+                <th>Linkedin</th>
+                <th>Facebook</th>
+                <th>Photo</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('profile_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.aboutMe }}</td>
+                <td>{{ entity.location }}</td>
+                <td>{{ entity.fieldOfStudy }}</td>
+                <td>{{ entity.highestDegree }}</td>
+                <td>{{ entity.twitter }}</td>
+                <td>{{ entity.coursera }}</td>
+                <td>{{ entity.website }}</td>
+                <td>{{ entity.gplus }}</td>
+                <td>{{ entity.linkedin }}</td>
+                <td>{{ entity.facebook }}</td>
+                <td>{{ entity.photo }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('profile_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('profile_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('profile_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

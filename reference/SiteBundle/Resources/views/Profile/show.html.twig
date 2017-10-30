@@ -1,0 +1,78 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block content -%}
+    <h1>Profile</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Aboutme</th>
+                <td>{{ entity.aboutMe }}</td>
+            </tr>
+            <tr>
+                <th>Location</th>
+                <td>{{ entity.location }}</td>
+            </tr>
+            <tr>
+                <th>Fieldofstudy</th>
+                <td>{{ entity.fieldOfStudy }}</td>
+            </tr>
+            <tr>
+                <th>Highestdegree</th>
+                <td>{{ entity.highestDegree }}</td>
+            </tr>
+            <tr>
+                <th>Twitter</th>
+                <td>{{ entity.twitter }}</td>
+            </tr>
+            <tr>
+                <th>Coursera</th>
+                <td>{{ entity.coursera }}</td>
+            </tr>
+            <tr>
+                <th>Website</th>
+                <td>{{ entity.website }}</td>
+            </tr>
+            <tr>
+                <th>Gplus</th>
+                <td>{{ entity.gplus }}</td>
+            </tr>
+            <tr>
+                <th>Linkedin</th>
+                <td>{{ entity.linkedin }}</td>
+            </tr>
+            <tr>
+                <th>Facebook</th>
+                <td>{{ entity.facebook }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ entity.photo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('profile') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('profile_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('profile_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+{% endblock %}

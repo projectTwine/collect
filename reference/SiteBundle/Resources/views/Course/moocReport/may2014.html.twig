@@ -1,0 +1,268 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+ {% block headmeta %}
+     <title>MOOC Course Report - {{ month|capitalize }}, {{ year }}</title>
+     <meta name="description"
+           content="MOOC Report: List of {{ count }} courses starting in {{ month|capitalize }} {{ year }}"/>
+     <meta property="og:title" content="MOOC Report: List of {{ count }} courses starting in {{ month|capitalize }} {{ year }}" />
+     <meta property="og:url" content="https://www.class-central.com{{ path('mooc-report', {month: month, year: year}) }}" />
+     <meta property="og:image" content="https://www.class-central.com/bundles/classcentralsite/slashpixel/images/ccprofilepic.png">
+     <meta property="og:site_name" content="Class Central"/>
+     <meta property="og:description" content="MOOC Report: List of {{ count }} courses starting in {{ month|capitalize }} {{ year }}" />
+     <meta property="og:type" content="website" />
+
+     <meta property="fb:admins" content="{{ fb_admins }}" />
+
+     <!-- Twitter card integration -->
+     <meta name="twitter:card" content="summary">
+     <meta name="twitter:site" content="@classcentral">
+     <meta name="twitter:title" content="MOOC Report: List of {{ count }} courses starting in {{ month|capitalize }} {{ year }}">
+     <meta name="twitter:description" content="MOOC Report: List of {{ count }} courses starting in {{ month|capitalize }} {{ year }}">
+     <meta name="twitter:domain" content="www.class-central.com">
+
+     <script type="text/javascript">
+         //<![CDATA[
+         (function() {
+             var shr = document.createElement('script');
+             shr.setAttribute('data-cfasync', 'false');
+             shr.src = '//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js';
+             shr.type = 'text/javascript'; shr.async = 'true';
+             shr.onload = shr.onreadystatechange = function() {
+                 var rs = this.readyState;
+                 if (rs && rs != 'complete' && rs != 'loaded') return;
+                 var site_id = '5fdc3916cf323ac313c8667aa04b147a';
+                 try { Shareaholic.init(site_id); } catch (e) {}
+             };
+             var s = document.getElementsByTagName('script')[0];
+             s.parentNode.insertBefore(shr, s);
+         })();
+         //]]>
+     </script>
+ {% endblock %}
+
+ {% block content %}
+
+     <div id="mooc-report" style="background-color: white; padding: 20px 40px">
+
+     <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='6526183' style="margin-left: -10px"></div>
+     <h1 style="color: #000000; font-size: 35px; margin-top: -10px">MOOC Report: List of 99 courses starting in May 2014</h1>
+     <em>MOOC Report is a monthly column published by <a href="http://www.class-central.com/" target="_blank">Class Central</a> during the first week of each month. MOOC Course report aims to provide a comprehensive list of courses starting/available in the month of publication. To receive this list via email signup for our <a title="MOOC Report Newsletter" href="https://www.class-central.com/newsletters/subscribe/mooc-report" target="_blank">monthly newsletter</a>.</em>
+
+     <br/>  <br/>
+     Self paced courses are not mentioned below and can be found over at <a title="Self Paced MOOC courses" href="http://www.class-central.com/courses/selfpaced" target="_blank">Class Central</a>.
+    <br/> <br/>
+     <a title="Permalink to Ten most popular MOOCs starting in May 2014." href="https://www.class-central.com/ten-most-popular-moocs/may-2014" rel="bookmark"><strong>Ten most popular MOOCs starting in May 2014.</strong></a>
+
+     <br/>
+
+     <h1><a href='https://www.class-central.com/stream/humanities'>Humanities (19)</a></h1>
+     <a href='https://www.class-central.com/mooc/1747/coursera-the-global-student-s-introduction-to-u-s-law'><strong>The Global Student's Introduction to U.S. Law</strong></a><br/>
+     <div><em>May 1st &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1530/coursera-correccion-y-estilo-en-espanol'><strong>Corrección y Estilo en Español</strong></a><br/>
+     <div><em>May 5th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1145/canvas-net-from-the-gilded-age-to-the-roaring-twenties-the-emergence-of-modern-america'><strong>From the Gilded Age to the Roaring Twenties: The Emergence of Modern America</strong></a><br/>
+     <div><em>May 5th &middot; Canvas.net</em></div>
+     <a href='https://www.class-central.com/mooc/1224/canvas-net-the-civil-war-era-dividing-a-nation'><strong>The Civil War Era: Dividing a Nation</strong></a><br/>
+     <div><em>May 5th &middot; Canvas.net</em></div>
+     <a href='https://www.class-central.com/mooc/1144/canvas-net-first-peoples-to-the-early-republic-born-in-colonialism'><strong>First Peoples to the Early Republic: Born in Colonialism</strong></a><br/>
+     <div><em>May 5th &middot; Canvas.net</em></div>
+     <a href='https://www.class-central.com/mooc/1146/canvas-net-the-great-depression-to-the-war-on-terror-enter-the-world-stage'><strong>The Great Depression to the War on Terror: Enter the World Stage</strong></a><br/>
+     <div><em>May 5th &middot; Canvas.net</em></div>
+     <a href='https://www.class-central.com/mooc/690/coursera-history-of-rock-part-one'><strong>History of Rock, Part One</strong></a><br/>
+     <div><em>May 9th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1301/coursera-understanding-europe-why-it-matters-and-what-it-can-offer-you'><strong>Understanding Europe: Why It Matters and What It Can Offer You</strong></a><br/>
+     <div><em>May 9th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/2020/investigative-journalism-for-the-digital-age'><strong>Investigative Journalism for the Digital Age</strong></a><br/>
+     <div><em>May 12th &middot; Others</em></div>
+     <a href='https://www.class-central.com/mooc/1862/futurelearn-cooperation-in-the-contemporary-world'><strong>Cooperation in the contemporary world</strong></a><br/>
+     <div><em>May 12th &middot; FutureLearn</em></div>
+     <a href='https://www.class-central.com/mooc/1882/coursesites-the-history-of-terrorism'><strong>The History of Terrorism</strong></a><br/>
+     <div><em>May 12th &middot; CourseSites</em></div>
+     <a href='https://www.class-central.com/mooc/1601/canvas-net-doing-journalism-with-data-first-steps-skills-and-tools'><strong>Doing Journalism with Data: First Steps, Skills and Tools</strong></a><br/>
+     <div><em>May 19th &middot; Canvas.net</em></div>
+     <a href='https://www.class-central.com/mooc/1932/gacco-ga002-'><strong>ga002: インターネット</strong></a><br/>
+     <div><em>May 19th &middot; gacco</em></div>
+     <a href='https://www.class-central.com/mooc/1723/coursera-the-changing-global-order'><strong>The Changing Global Order</strong></a><br/>
+     <div><em>May 19th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1863/futurelearn-archaeology-of-portus-exploring-the-lost-harbour-of-ancient-rome'><strong>Archaeology of Portus: exploring the lost harbour of ancient Rome</strong></a><br/>
+     <div><em>May 19th &middot; FutureLearn</em></div>
+     <a href='https://www.class-central.com/mooc/1986/edx-sw12-6x-china-part-6-the-manchus-and-the-qing'><strong>SW12.6x: China (Part 6): The Manchus and the Qing</strong></a><br/>
+     <div><em>May 22nd &middot; EdX</em></div>
+     <a href='https://www.class-central.com/mooc/1880/france-universite-numerique-le-droit-des-contrats-de-travail-en-france'><strong>Le droit des contrats de travail en France</strong></a><br/>
+     <div><em>May 22nd &middot; France Université Numerique</em></div>
+     <a href='https://www.class-central.com/mooc/1364/coursera-water-supply-and-sanitation-policy-in-developing-countries'><strong>Water Supply and Sanitation Policy in Developing Countries</strong></a><br/>
+     <div><em>May 26th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1406/coursera-the-bible-s-prehistory-purpose-and-political-future'><strong>The Bible's Prehistory, Purpose, and Political Future</strong></a><br/>
+     <div><em>May 26th &middot; Coursera</em></div>
+     <h1><a href='https://www.class-central.com/stream/art-and-design'>Art & Design (3)</a></h1>
+     <a href='https://www.class-central.com/mooc/1955/the-design-process'><strong>The Design Process</strong></a><br/>
+     <div><em>May 2nd &middot; Others</em></div>
+     <a href='https://www.class-central.com/mooc/1985/edx-bmpr365x-vocal-recording-technology'><strong>BMPR365x: Vocal Recording Technology</strong></a><br/>
+     <div><em>May 26th &middot; EdX</em></div>
+     <a href='https://www.class-central.com/mooc/1486/edx-introduction-to-the-music-business'><strong>Introduction to the Music Business</strong></a><br/>
+     <div><em>May 27th &middot; EdX</em></div>
+     <h1><a href='https://www.class-central.com/stream/maths'>Mathematics and Stats (12)</a></h1>
+     <a href='https://www.class-central.com/mooc/1897/miriada-x-aprende-analisis-estadistico-de-datos-con-r-2-edicion'><strong>Aprende Análisis Estadístico de Datos con R (2ª edición)</strong></a><br/>
+     <div><em>May 5th &middot; Miríada X</em></div>
+     <a href='https://www.class-central.com/mooc/1412/coursera-cok-degiskenli-fonksiyonlarda-turev-ve-entegral-i-temel-kavram-ve-yontemler-multivariable-calculus-i-fundamental-concepts-and-basic-techniques'><strong>Çok Değişkenli Fonksiyonlarda Türev ve Entegral I: Temel Kavram ve Yöntemler / Multivariable Calculus I: Fundamental Concepts and Basic Techniques</strong></a><br/>
+     <div><em>May 5th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1712/coursera-the-data-scientist-s-toolbox'><strong>The Data Scientist’s Toolbox</strong></a><br/>
+     <div><em>May 5th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1713/coursera-r-programming'><strong>R Programming</strong></a><br/>
+     <div><em>May 5th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1714/coursera-getting-and-cleaning-data'><strong>Getting and Cleaning Data</strong></a><br/>
+     <div><em>May 5th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1715/coursera-exploratory-data-analysis'><strong>Exploratory Data Analysis</strong></a><br/>
+     <div><em>May 5th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1716/coursera-reproducible-research'><strong>Reproducible Research</strong></a><br/>
+     <div><em>May 5th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1717/coursera-statistical-inference'><strong>Statistical Inference</strong></a><br/>
+     <div><em>May 5th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1938/coursera-invitation-to-mathematics--'><strong> Invitation to Mathematics     הזמנה למתמטיקה</strong></a><br/>
+     <div><em>May 11th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1013/coursera-mathematical-methods-for-quantitative-finance'><strong>Mathematical Methods for Quantitative Finance</strong></a><br/>
+     <div><em>May 19th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/331/coursera-calculus-single-variable'><strong>Calculus: Single Variable</strong></a><br/>
+     <div><em>May 23rd &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1837/edx-sabr101x-sabermetrics-101-introduction-to-baseball-analytics'><strong>SABR101x: Sabermetrics 101: Introduction to Baseball Analytics</strong></a><br/>
+     <div><em>May 29th &middot; EdX</em></div>
+     <h1><a href='https://www.class-central.com/stream/education'>Education & Teaching (12)</a></h1>
+     <a href='https://www.class-central.com/mooc/1918/canvas-net-digital-literacies-ii'><strong>Digital Literacies II</strong></a><br/>
+     <div><em>May 5th &middot; Canvas.net</em></div>
+     <a href='https://www.class-central.com/mooc/1960/introduction-to-digital-curation'><strong>Introduction to Digital Curation</strong></a><br/>
+     <div><em>May 5th &middot; Others</em></div>
+     <a href='https://www.class-central.com/mooc/1965/canvas-net-30-days-of-ted'><strong>30 Days of TED</strong></a><br/>
+     <div><em>May 5th &middot; Canvas.net</em></div>
+     <a href='https://www.class-central.com/mooc/1883/coursesites-study-skills-for-academic-success'><strong>Study Skills for  Academic Success</strong></a><br/>
+     <div><em>May 5th &middot; CourseSites</em></div>
+     <a href='https://www.class-central.com/mooc/866/coursera-teaching-character-and-creating-positive-classrooms'><strong>Teaching Character and Creating Positive Classrooms </strong></a><br/>
+     <div><em>May 7th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/873/coursera-coaching-teachers-promoting-changes-that-stick'><strong>Coaching Teachers: Promoting Changes that Stick </strong></a><br/>
+     <div><em>May 9th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/958/coursera-using-the-next-generation-science-standards-for-students-deeper-understanding'><strong>Using The Next Generation Science Standards for Students’ Deeper Understanding </strong></a><br/>
+     <div><em>May 12th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1929/coursera-shaping-the-way-we-teach-english-2-paths-to-success-in-elt'><strong>Shaping the Way We Teach English, 2: Paths to Success in ELT</strong></a><br/>
+     <div><em>May 12th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/876/coursera-foundations-of-teaching-for-learning-3-learners-and-learning'><strong>Foundations of Teaching for Learning 3: Learners and Learning</strong></a><br/>
+     <div><em>May 12th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1936/futurelearn-study-skills-for-international-students'><strong>Study skills for international students</strong></a><br/>
+     <div><em>May 19th &middot; FutureLearn</em></div>
+     <a href='https://www.class-central.com/mooc/883/coursera-foundations-of-teaching-for-learning-6-introduction-to-student-assessment'><strong>Foundations of Teaching for Learning 6: Introduction to Student Assessment</strong></a><br/>
+     <div><em>May 19th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1763/coursera-ict-in-primary-education-transforming-children-s-learning-across-the-curriculum'><strong>ICT in Primary Education: Transforming children's learning across the curriculum</strong></a><br/>
+     <div><em>May 27th &middot; Coursera</em></div>
+     <h1><a href='https://www.class-central.com/stream/business'>Business & Management (13)</a></h1>
+     <a href='https://www.class-central.com/mooc/1923/canvas-net-gerenciamento-de-financas-pessoais-personal-finance-management'><strong>Gerenciamento de Financas Pessoais (Personal Finance Management)</strong></a><br/>
+     <div><em>May 5th &middot; Canvas.net</em></div>
+     <a href='https://www.class-central.com/mooc/840/coursera-developing-innovative-ideas-for-new-companies-the-first-step-in-entrepreneurship'><strong>Developing Innovative Ideas for New Companies: The First Step in Entrepreneurship</strong></a><br/>
+     <div><em>May 5th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1217/canvas-net-introduction-to-applied-investing'><strong>Introduction to Applied Investing</strong></a><br/>
+     <div><em>May 5th &middot; Canvas.net</em></div>
+     <a href='https://www.class-central.com/mooc/1966/canvas-net-basics-of-e-commerce'><strong>Basics of e-Commerce</strong></a><br/>
+     <div><em>May 5th &middot; Canvas.net</em></div>
+     <a href='https://www.class-central.com/mooc/710/coursera-inspiring-leadership-through-emotional-intelligence'><strong>Inspiring Leadership through Emotional Intelligence</strong></a><br/>
+     <div><em>May 5th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1751/coursera-analyzing-global-trends-for-business-and-society'><strong>Analyzing Global Trends for Business and Society</strong></a><br/>
+     <div><em>May 5th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1160/novoed-dq-101-introduction-to-decision-quality'><strong>DQ 101: Introduction to Decision Quality</strong></a><br/>
+     <div><em>May 8th &middot; NovoED</em></div>
+     <a href='https://www.class-central.com/mooc/853/coursera-el-abc-del-emprendimiento-esbelto'><strong>El ABC del emprendimiento esbelto </strong></a><br/>
+     <div><em>May 12th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1826/acumen-making-sense-of-social-impact-acumen-s-building-blocks-for-impact-analysis'><strong>Making Sense of Social Impact: Acumen’s Building Blocks for Impact Analysis</strong></a><br/>
+     <div><em>May 12th &middot; +Acumen</em></div>
+     <a href='https://www.class-central.com/mooc/1761/futurelearn-managing-people-engaging-your-workforce'><strong>Managing people: engaging your workforce</strong></a><br/>
+     <div><em>May 12th &middot; FutureLearn</em></div>
+     <a href='https://www.class-central.com/mooc/1824/acumen-adaptive-leadership-mobilizing-for-change'><strong>Adaptive Leadership: Mobilizing for Change</strong></a><br/>
+     <div><em>May 20th &middot; +Acumen</em></div>
+     <a href='https://www.class-central.com/mooc/715/coursera-understanding-media-by-understanding-google'><strong>Understanding Media by Understanding Google</strong></a><br/>
+     <div><em>May 26th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1740/coursera-enhance-your-career-and-employability-skills'><strong>Enhance Your Career and Employability Skills</strong></a><br/>
+     <div><em>May 27th &middot; Coursera</em></div>
+     <h1><a href='https://www.class-central.com/stream/social-sciences'>Social Sciences (6)</a></h1>
+     <a href='https://www.class-central.com/mooc/1503/france-universite-numerique-la-bombe-demographique-est-elle-desamorcee'><strong>La bombe démographique est-elle désamorcée ?</strong></a><br/>
+     <div><em>May 5th &middot; France Université Numerique</em></div>
+     <a href='https://www.class-central.com/mooc/1765/coursera-introduction-to-human-behavioral-genetics'><strong>Introduction to Human Behavioral Genetics</strong></a><br/>
+     <div><em>May 5th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1937/futurelearn-managing-my-money'><strong>Managing my money</strong></a><br/>
+     <div><em>May 12th &middot; FutureLearn</em></div>
+     <a href='https://www.class-central.com/mooc/1379/coursera-understanding-russians-contexts-of-intercultural-communication'><strong>Understanding Russians: Contexts of Intercultural Communication</strong></a><br/>
+     <div><em>May 12th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1989/edx-mas-s69x-big-data-and-social-physics'><strong>MAS.S69x: Big Data and Social Physics</strong></a><br/>
+     <div><em>May 12th &middot; EdX</em></div>
+     <a href='https://www.class-central.com/mooc/1388/coursera--macroeconomics'><strong>Макроэкономика (Macroeconomics)</strong></a><br/>
+     <div><em>May 21st &middot; Coursera</em></div>
+     <h1><a href='https://www.class-central.com/stream/cs'>Computer Science (9)</a></h1>
+     <a href='https://www.class-central.com/mooc/475/mongodb-university-m102-mongodb-for-dbas'><strong>M102: MongoDB for DBAs</strong></a><br/>
+     <div><em>May 5th &middot; MongoDB University</em></div>
+     <a href='https://www.class-central.com/mooc/1377/coursera-----latex-introduction-to-latex'><strong>Документы и презентации в LaTeX (Introduction to LaTeX)</strong></a><br/>
+     <div><em>May 12th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1849/udacity-machine-learning-3-reinforcement-learning'><strong>Machine Learning 3—Reinforcement Learning</strong></a><br/>
+     <div><em>May 12th &middot; Udacity</em></div>
+     <a href='https://www.class-central.com/mooc/533/coursera-pattern-oriented-software-architectures-programming-mobile-services-for-android-handheld-systems'><strong>Pattern-Oriented Software Architectures: Programming Mobile Services for Android Handheld Systems</strong></a><br/>
+     <div><em>May 12th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/2018/opensap-rapid-deployment-of-sap-solutions'><strong>Rapid Deployment of SAP Solutions</strong></a><br/>
+     <div><em>May 14th &middot; openSAP</em></div>
+     <a href='https://www.class-central.com/mooc/1529/coursera-technology-and-ethics'><strong>Technology and Ethics</strong></a><br/>
+     <div><em>May 19th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/489/coursera-software-defined-networking'><strong>Software Defined Networking</strong></a><br/>
+     <div><em>May 26th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/599/mongodb-university-m101j-mongodb-for-java-developers'><strong>M101J: MongoDB for Java Developers</strong></a><br/>
+     <div><em>May 26th &middot; MongoDB University</em></div>
+     <a href='https://www.class-central.com/mooc/1906/coursera-pensamiento-algoritmico'><strong>Pensamiento algorítmico</strong></a><br/>
+     <div><em>May 26th &middot; Coursera</em></div>
+     <h1><a href='https://www.class-central.com/stream/science'>Science (11)</a></h1>
+     <a href='https://www.class-central.com/mooc/1362/coursera-the-brain-and-space'><strong>The Brain and Space</strong></a><br/>
+     <div><em>May 5th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1987/edx-3-091x-introduction-to-solid-state-chemistry'><strong>3.091x: Introduction to Solid State Chemistry</strong></a><br/>
+     <div><em>May 12th &middot; EdX</em></div>
+     <a href='https://www.class-central.com/mooc/1874/edx-spu30x-super-earths-and-life'><strong>SPU30x: Super-Earths And Life</strong></a><br/>
+     <div><em>May 15th &middot; EdX</em></div>
+     <a href='https://www.class-central.com/mooc/1963/canvas-net-fundamentals-of-energy-resources'><strong>Fundamentals of Energy Resources</strong></a><br/>
+     <div><em>May 19th &middot; Canvas.net</em></div>
+     <a href='https://www.class-central.com/mooc/1244/futurelearn-cancer-in-the-21st-century-the-genomic-revolution'><strong>Cancer in the 21st century - the genomic revolution</strong></a><br/>
+     <div><em>May 19th &middot; FutureLearn</em></div>
+     <a href='https://www.class-central.com/mooc/1264/coursera-introduction-to-forensic-science'><strong>Introduction to Forensic Science</strong></a><br/>
+     <div><em>May 19th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1255/futurelearn-introduction-to-ecosystems'><strong>Introduction to ecosystems</strong></a><br/>
+     <div><em>May 19th &middot; FutureLearn</em></div>
+     <a href='https://www.class-central.com/mooc/723/coursera-the-diversity-of-exoplanets'><strong>The diversity of exoplanets</strong></a><br/>
+     <div><em>May 26th &middot; 5 weeks long &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1829/coursera-ocean-solutions'><strong>Ocean Solutions</strong></a><br/>
+     <div><em>May 26th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1873/edx-atoc185x-natural-disasters'><strong>ATOC185x: Natural Disasters</strong></a><br/>
+     <div><em>May 28th &middot; EdX</em></div>
+     <a href='https://www.class-central.com/mooc/858/edx-8-mrev-mechanics-review'><strong>8.MReV: Mechanics ReView</strong></a><br/>
+     <div><em>May 29th &middot; EdX</em></div>
+     <h1><a href='https://www.class-central.com/stream/engineering'>Engineering (3)</a></h1>
+     <a href='https://www.class-central.com/mooc/1910/edx-eecs149-1x-cyber-physical-systems'><strong>EECS149.1x: Cyber-Physical Systems</strong></a><br/>
+     <div><em>May 6th &middot; EdX</em></div>
+     <a href='https://www.class-central.com/mooc/1911/edx-autonavx-autonomous-navigation-for-flying-robots'><strong>AUTONAVx: Autonomous Navigation for Flying Robots</strong></a><br/>
+     <div><em>May 6th &middot; EdX</em></div>
+     <a href='https://www.class-central.com/mooc/569/canvas-net-exploring-engineering'><strong>Exploring Engineering</strong></a><br/>
+     <div><em>May 19th &middot; Canvas.net</em></div>
+     <h1><a href='https://www.class-central.com/stream/health'>Health & Medicine (11)</a></h1>
+     <a href='https://www.class-central.com/mooc/1927/edx-becoming-a-resilient-person-the-science-of-stress-management'><strong>Becoming a Resilient Person - The Science of Stress Management</strong></a><br/>
+     <div><em>May 6th &middot; EdX</em></div>
+     <a href='https://www.class-central.com/mooc/1839/edx-bioc372-2x-fundamentals-of-immunology-part-2'><strong>BIOC372.2x: Fundamentals of Immunology, Part 2</strong></a><br/>
+     <div><em>May 11th &middot; EdX</em></div>
+     <a href='https://www.class-central.com/mooc/1861/futurelearn-global-food-security-addressing-the-challenge'><strong>Global food security: addressing the challenge</strong></a><br/>
+     <div><em>May 12th &middot; FutureLearn</em></div>
+     <a href='https://www.class-central.com/mooc/888/coursera-case-based-introduction-to-biostatistics'><strong>Case-Based Introduction to Biostatistics</strong></a><br/>
+     <div><em>May 12th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/826/coursera-growing-old-around-the-globe'><strong>Growing Old Around the Globe</strong></a><br/>
+     <div><em>May 19th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1675/coursera-edivet-do-you-have-what-it-takes-to-be-a-veterinarian'><strong>EDIVET: Do you have what it takes to be a veterinarian?</strong></a><br/>
+     <div><em>May 19th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1887/coursera-vital-signs-understanding-what-the-body-is-telling-us'><strong>Vital Signs: Understanding What the Body Is Telling Us</strong></a><br/>
+     <div><em>May 19th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1809/coursera-the-horse-course-introduction-to-basic-care-and-management'><strong>The Horse Course: Introduction to Basic Care and Management</strong></a><br/>
+     <div><em>May 27th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/837/coursera-health-for-all-through-primary-health-care'><strong>Health for All Through Primary Health Care</strong></a><br/>
+     <div><em>May 28th &middot; Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/888/coursera-case-based-introduction-to-biostatistics'><strong>Case-Based Introduction to Biostatistics</strong></a><br/>
+     <div><em>Coursera</em></div>
+     <a href='https://www.class-central.com/mooc/1769/coursera-preventing-chronic-pain-a-human-systems-approach'><strong>Preventing Chronic Pain: A Human Systems Approach</strong></a><br/>
+     <div><em>May 30th &middot; Coursera</em></div>
+     </div>
+
+ {% endblock %}

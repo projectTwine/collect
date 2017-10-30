@@ -1,0 +1,15 @@
+{% set totalPages = (totalCourses/50)|round(0,'ceil')  %}
+    {% if pageNo < totalPages %}
+        <link rel="next" href="{{ path(app.request.attributes.get('_route'),
+        app.request.attributes.get('_route_params')|merge(app.request.query.all|merge({'page':pageNo + 1})))  }}" />
+    {% endif %}
+    {% if pageNo > 1 %}
+        {% if pageNo == 2 %}
+            {# remove page=1 from the url #}
+            <link rel="prev" href="{{ path(app.request.attributes.get('_route'),
+            app.request.attributes.get('_route_params')|merge(app.request.query.all|merge({'page':null})))  }}" />
+        {% else %}
+            <link rel="prev" href="{{ path(app.request.attributes.get('_route'),
+            app.request.attributes.get('_route_params')|merge(app.request.query.all|merge({'page':pageNo - 1})))  }}" />
+        {% endif %}
+{% endif %}

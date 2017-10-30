@@ -1,0 +1,107 @@
+{% if course.indepthReview %}
+    {% set profileUrl = user_service.getProfileUrl( course.indepthReview.user.id, course.indepthReview.user.handle, course.indepthReview.user.isPrivate ) %}
+    <div class="course-review-card">
+        <div class="review-card">
+            <div class="review-card__header">
+                <div class="review-card__image">
+                    {% if profileUrl is not empty %}
+                    <a href="{{ profileUrl }}" title="{{ course.indepthReview.user.name }} MOOC Transcript"
+                       onmousedown="ga('send','event','User Profile Click - InDepth Review','{{ course.name }}','{{ course.indepthReview.user.id  }}')"
+                     >
+                        {% endif %}
+                        <img src="{{  user_service.getProfilePic(course.indepthReview.user.id) }}"
+                             alt="{{ course.indepthReview.user.name }}"
+                             title="Review by {{ course.indepthReview.user.name }}"
+                        >
+                    {% if profileUrl is not empty %}
+                    </a>
+                    {% endif %}
+                </div>
+                <div class="review-card__info">
+                    <div class="review-card__rating">
+                        <div class="starRating rating{{ course.indepthReview.rating*10 }}">
+                            <div class="starRating_star">
+                                <svg class="starRating_starShape starRating_starShape-blank">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+                                </svg>
+                                <svg class="starRating_starShape starRating_starShape-full">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+                                </svg>
+                                <svg class="starRating_starShape starRating_starShape-left starRating_starShape-half">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-half-left"></use>
+                                </svg>
+                                <svg class="starRating_starShape starRating_starShape-right starRating_starShape-half">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-half-right"></use>
+                                </svg>
+                            </div>
+                            <div class="starRating_star">
+                                <svg class="starRating_starShape starRating_starShape-blank">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+                                </svg>
+                                <svg class="starRating_starShape starRating_starShape-full">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+                                </svg>
+                                <svg class="starRating_starShape starRating_starShape-left starRating_starShape-half">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-half-left"></use>
+                                </svg>
+                                <svg class="starRating_starShape starRating_starShape-right starRating_starShape-half">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-half-right"></use>
+                                </svg>
+                            </div>
+                            <div class="starRating_star">
+                                <svg class="starRating_starShape starRating_starShape-blank">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+                                </svg>
+                                <svg class="starRating_starShape starRating_starShape-full">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+                                </svg>
+                                <svg class="starRating_starShape starRating_starShape-left starRating_starShape-half">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-half-left"></use>
+                                </svg>
+                                <svg class="starRating_starShape starRating_starShape-right starRating_starShape-half">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-half-right"></use>
+                                </svg>
+                            </div>
+                            <div class="starRating_star">
+                                <svg class="starRating_starShape starRating_starShape-blank">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+                                </svg>
+                                <svg class="starRating_starShape starRating_starShape-full">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+                                </svg>
+                                <svg class="starRating_starShape starRating_starShape-left starRating_starShape-half">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-half-left"></use>
+                                </svg>
+                                <svg class="starRating_starShape starRating_starShape-right starRating_starShape-half">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-half-right"></use>
+                                </svg>
+                            </div>
+                            <div class="starRating_star">
+                                <svg class="starRating_starShape starRating_starShape-blank">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+                                </svg>
+                                <svg class="starRating_starShape starRating_starShape-full">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-full"></use>
+                                </svg>
+                                <svg class="starRating_starShape starRating_starShape-left starRating_starShape-half">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-half-left"></use>
+                                </svg>
+                                <svg class="starRating_starShape starRating_starShape-right starRating_starShape-half">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-star-half-right"></use>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card__title">In-Depth Review</div>
+                </div>
+            </div>
+            <div class="review-card__body">
+                <span class="triangle"></span>
+                {{ course.indepthReview.summary }}
+                <a href="{{ course.indepthReview.url }}"
+                   onmousedown="ga('send','event','Read Indepth Review','{{ course.name }}')"
+                   class="review-card__read">Read Review</a>
+            </div>
+        </div>
+    </div><!-- /.course-review-card -->
+{% endif %}

@@ -1,0 +1,149 @@
+<div class="modal fade" id="signupModal-{{ src }}" tabindex="-1" role="dialog" aria-labelledby="write-modal-title-here">
+
+<div class="modal-dialog modal-dialog__large" role="document">
+
+<div class="modal-base-wrap">
+<div class="modal-base">
+<div class="modal-base__brand-logo">
+    <svg class="icon" viewBox="0 0 32 32">
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-cc-logo-circle"></use>
+    </svg>
+</div>
+<div class="modal-base__content">
+<div class="modal-base__col modal-base__col--left">
+<div class="mini-slider js-mini-slider">
+<div class="mini-slider__slides js-mini-slider-slides">
+<div class="mini-slider__slide js-mini-slider-slide">
+    <div class="media-card">
+        <h2 class="media-card__title media-card__title--large">{{ mediaCard_1.title }}</h2>
+
+        <div class="media-card__text">{{ mediaCard_1.text }}</div>
+        <div class="media-card__media">
+            <img src="/bundles/classcentralsite/slashpixel/images/Illustration-desk.png" alt="desk">
+        </div>
+    </div>
+</div>
+<div class="mini-slider__slide js-mini-slider-slide">
+    <div class="media-card">
+        <h2 class="media-card__title">Never miss a course</h2>
+
+        <div class="media-card__text">Receive course reminders and notifications with MOOC Tracker</div>
+        <div class="media-card__media">
+            <img src="/bundles/classcentralsite/slashpixel/images/Illustration-letter.png" alt="letter">
+        </div>
+    </div>
+</div>
+<div class="mini-slider__slide js-mini-slider-slide">
+<div class="media-card">
+<h2 class="media-card__title media-card__title--large">What are you waiting for?</h2>
+
+<div class="media-card__text">Come join the<br>Class Central community.</div>
+<div class="media-card__media">
+<div class="media-card__portraits">
+<div class="portraits-container portraits-container--reduced-spacing">
+    {% for user in sigupFormModels %}
+        {% if user.profile is defined  %}
+            {{ user.profile.name }}
+        {% endif %}
+        {% set profileUrl = user_service.getProfileUrl( user.id, user.handle ) %}
+        {% if profileUrl %}
+            <div class="portrait-col">
+                <a  target="_blank" href="{{ profileUrl }}" title="{{ user_service.getDisplayName(user) }}'s Class Central profile" class="fluid-portrait"
+                   onmousedown="ga('send','event','User Profile Click - Signup Modal','{{ src }}','{{ user.id  }}')"
+                        >
+                                        <span class="fluid-portrait-image">
+                                            <div class="fluid-portrait-crop">
+                                                <img src="{{  user_service.getProfilePicThumbnail(user.id) }}" alt="{{ user_service.getDisplayName(user) }}">
+                                            </div>
+                                        </span>
+                </a>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+</div>
+<!-- /.media-card__portraits -->
+</div>
+<!-- /.media-card__media -->
+</div>
+</div>
+</div>
+<!-- /.mini-slider__slides -->
+
+<div class="mini-slider__controls js-mini-slider-controls">
+    <span class="mini-slider-control-bullet js-mini-slider-control"></span>
+    <span class="mini-slider-control-bullet js-mini-slider-control"></span>
+    <span class="mini-slider-control-bullet js-mini-slider-control"></span>
+</div>
+<!-- /.mini-slider__controls -->
+
+</div>
+<!-- /.mini-slider -->
+</div>
+<div class="modal-base__col modal-base__col--right">
+    <div class="modal-base__header">
+        <a  href="{{ path('fb_authorize_start', { src: src}) }}" onmousedown="ga('send','event','Sign up with Facebook', 'Go To Class Modal');">
+            <button class="loginBtn loginBtn--facebook" >
+                Sign up with Facebook
+            </button>
+        </a>
+
+        <a class='sign-in-with-google'  href="#" onmousedown="ga('send','event','Sign up with Google', 'Go To Class Modal');">
+            <button  class="loginBtn loginBtn--google">
+                Sign up  with Google
+            </button>
+        </a>
+    </div>
+
+    <div class="or-separator or-separator--black or-separator--reduce-margin">
+        <span>OR</span>
+    </div>
+
+
+    {{ form_start(signupForm, { attr: { name :'cc-signup-form'}} ) }}
+
+        <div class="hidden signup-modal-src">{{ src}}</div>
+
+        <h4 class="cc-signup-form-error-message"></h4>
+
+        <div class="basic-field-group">
+           {{ form_row(signupForm.email,{ attr: {class: 'basic-input', placeholder: 'Your email'}, label:false }) }}
+        </div>
+
+        <div class="basic-field-group">
+            {{ form_row(signupForm.name,{ attr: {class: 'basic-input'}, label:false } ) }}
+        </div>
+
+        <div class="basic-field-group">
+            {{ form_row(signupForm.password,{ attr: {class: 'basic-input inspectletIgnore',  placeholder: 'Choose password'}, label:false }) }}
+        </div>
+
+        <div class="basic-field-group">
+            {{ form_row(signupForm.save, { attr: {class: 'basic-input-button btn-cc-user-signup'} }) }}
+        </div>
+
+        <input type="hidden" name="signupFormModal" value="true">
+
+    {{ form_end(signupForm) }}
+    <div class="basic-field-note">
+        Already have an account? <a href="{{ path('login')  }}" title="Log In">Sign in</a>
+    </div>
+
+   {# form(signupForm) #}
+
+</div>
+</div>
+</div>
+<a href="#" class="modal-close-button" data-dismiss="modal" aria-label="Close">
+    <svg class="modal-close-button__icon">
+        <use xlink:href="#icon-close"></use>
+    </svg>
+    Not right now, thanks.
+</a>
+</div>
+
+</div>
+</div>
+
+{# Google Sign in #}
+{% include 'ClassCentralSiteBundle:Layouts/Auth:google.html.twig' %}

@@ -1,0 +1,27 @@
+{% if breadcrumbs is defined and breadcrumbs is not empty %}
+    <div class="breadcrumb-wrap" style="margin-bottom: 25px;">
+        <ul class="breadcrumbs">
+            <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" >
+                <a href="/" onmousedown="ga('send','event','Breadcrumbs','Home');" itemprop="url">
+                    <span itemprop="title">Home</span>
+                </a>
+            </li>
+
+            {% for b in breadcrumbs %}
+                <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child">
+                    <span class="arrow-right">
+                         <svg class="icon icon-cc-arrow-right" viewBox="0 0 32 32"><use xlink:href="#icon-cc-arrow-right"></use></svg>
+                    </span>
+                    {% set pageUrl = b.url %}
+                    {% if pageUrl is empty %}
+                        {% set pageUrl = path(app.request.attributes.get('_route'),
+                        app.request.attributes.get('_route_params'))  %}
+                    {% endif %}
+                    <a href="{{ pageUrl }}"  itemprop="url" onmousedown="ga('send','event','Breadcrumbs','{{ b.name }}');">
+                        <span itemprop="title">{{ b.name }}</span>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}

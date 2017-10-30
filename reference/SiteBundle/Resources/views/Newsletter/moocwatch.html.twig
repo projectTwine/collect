@@ -1,0 +1,227 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block headmeta %}
+    <title>MOOCWatch - Understand what’s going on in the World of MOOCs</title>
+    <meta name="description"
+          content="Understand what’s going on in the World of MOOCs with MOOCWatch. Receive a monthly digest of everything related to MOOCs"/>
+    <meta property="og:title" content="MOOCWatch - Understand what’s going on in the World of MOOCs" />
+    <meta property="og:url" content="{{ baseurl }}{{ path('moocwatch') }}" />
+    <meta property="og:image" content="https://www.class-central.com/bundles/classcentralsite/slashpixel/images/ccprofilepic.png">
+    <meta property="og:site_name" content="Class Central"/>
+    <meta property="og:description" content="Understand what’s going on in the World of MOOCs with MOOCWatch. Receive a monthly digest of everything related to MOOCs" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter card integration -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@classcentral">
+    <meta name="twitter:title" content="MOOCWatch - Understand what’s going on in the World of MOOCs">
+    <meta name="twitter:description" content="Receive a monthly digest of everything related to MOOCs">
+    <meta name="twitter:domain" content="www.class-central.com">
+{% endblock %}
+
+
+
+
+{% block contentheader %}
+    <div class="mooc-watch-banner">
+        <div class="container mooc-watch-banner-content">
+
+            <div class="col-lg-7 no-padding">
+                <h1 class="heading-two-colors mooc-watch-title"><span class="heading-color-first">Mooc</span><span class="heading-color-second">watch</span></h1>
+                <div class="heading-tagline">Understand what’s going on in the <span class="heading-tagline__highlight">World of MOOCs</span></div>
+            </div>
+
+            <div class="col-lg-5 no-padding">
+                <form action="//class-central.us8.list-manage.com/subscribe/post?u=a04149ada492173efe6609e68&amp;id=c5a9919ea5" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"  class="mooc-digest-subscription inline-form validate"  novalidate>
+                    <span class="mooc-digest-subscription__title">Receive a monthly digest of everything related to MOOCs</span>
+                    <p class="cc-inline-form-group">
+
+                        <input class="cc-inline-form-element cc-inline-form-element--input" type="email" placeholder="Your email address" name="EMAIL" required id="mce-EMAIL">
+                        <input class="cc-inline-form-element cc-inline-form-element--button" type="submit" value="Subscribe">
+                    </p>
+                    <div style="position: absolute; left: -5000px;"><input type="text" name="b_a04149ada492173efe6609e68_c5a9919ea5" tabindex="-1" value=""></div>
+                    <span class="mooc-digest-subscription__smallprint">We hate spam - unsubscribe any time.</span>
+                </form>
+            </div>
+
+
+
+            <div class="testimonialWrap">
+
+                <div class="testimonialTabs">
+
+                    <div class="tabContent-bubble">
+                        <div role="tabpanel" class="tabPane active testimonial-bubble" id="testimonial1">
+
+                            <div class="testimonial-bubble__text">
+                                If you search for the term MOOC on Google today, you'll get more than 8 million hits. How do you know what matters? Class Central's MOOCWatch is a time-saving digest of
+                                the top figures and events, compiled with the know-how of long-time MOOC watchers and takers.
+                            </div>
+
+                            <div class="testimonial-bubble__meta">
+                                <span class="testimonial-bubble__meta-title">Lorena A. Barba</span>
+                                <span class="testimonial-bubble__meta-info">Associate Professor, George Washington University</span>
+                            </div>
+
+                        </div>
+
+                        <div role="tabpanel" class="tabPane testimonial-bubble" id="testimonial2">
+
+                            <div class="testimonial-bubble__text">
+                                MOOCWatch is an executive summary for what is happening in the MOOC world, and it serves a good purpose for college administrators and MOOC enthusiasts.
+
+                            </div>
+
+                            <div class="testimonial-bubble__meta">
+                                <span class="testimonial-bubble__meta-title">Yaser S. Abu-Mostafa</span>
+                                <span class="testimonial-bubble__meta-info">Professor, Caltech</span>
+                            </div>
+
+                        </div>
+
+                        <div role="tabpanel" class="tabPane testimonial-bubble" id="testimonial3">
+
+                            <div class="testimonial-bubble__text">
+                                I devour every page of MOOCWatch as soon as I get it!  MOOCWatch is THE “go-to” publication for anyone who wants the best, most topical information on MOOCs.
+                            </div>
+
+                            <div class="testimonial-bubble__meta">
+                                <span class="testimonial-bubble__meta-title">Barbara Oakley</span>
+                                <span class="testimonial-bubble__meta-info">Professor of Engineering, Oakland University</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="testimonial-tabs__nav">
+
+                        <ul class="nav-tabs">
+                            <li role="presentation" class="active">
+                                <a href="#testimonial1" class="testimonial-tabs__nav-tab" aria-controls="testimonial1" role="tab" data-toggle="tab">
+                                    <div class="crop-circle crop-circle--bordered">
+                                        <img src="/bundles/classcentralsite/slashpixel/images/lorenabarba.png" alt="Lorena Barba">
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="##testimonial2" class="testimonial-tabs__nav-tab" aria-controls="testimonial2" role="tab" data-toggle="tab">
+                                    <div class="crop-circle crop-circle--bordered">
+                                        <img src="/bundles/classcentralsite/slashpixel/images/yaser.jpg" alt="Yaser S. Abu-Mostafa">
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#testimonial3" class="testimonial-tabs__nav-tab" aria-controls="testimonial3" role="tab" data-toggle="tab">
+                                    <div class="crop-circle crop-circle--bordered">
+                                        <img src="/bundles/classcentralsite/slashpixel/images/Barb-Oakley.jpg" alt="Barb Oakley">
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+{% block abovefooter %}
+
+    <section id="mooc-watch-view-section" class="mooc-watch-view-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mooc-watch-title-col">
+                    <h2 class="mooc-watch-view-section__title">June 2016 edition</h2>
+                    <span class="mooc-watch-view-section__tagline">Take a peek at last month’s MOOCWatch</span>
+                    <a href="https://www.class-central.com/report/moocwatch-june-2016-moocs-tutors/" class="cc-button mooc-watch-view-section__button" target="_blank">View June’s MOOCWatch</a>
+                </div>
+                <div class="col-lg-4 mooc-info-col">
+                    <div class="paper-stack-wrap">
+
+                        <div class="paper-stack">
+
+                            <div class="paper-stack__top-sheet">
+                                <div class="mooc-watch-info">
+
+                                    <h2 class="mooc-watch-info__title">
+                                        <svg class="icon icon-cc-logo-circle" viewBox="0 0 32 32">
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-cc-logo-circle"></use>
+                                        </svg>
+                                        <span class="mooc-watch-info__title-colored">MOOC</span>WATCH
+                                    </h2>
+
+                                    <div class="mooc-watch-info__item-group">
+                                        <div class="mooc-watch-info__item">
+                                            <div class="mooc-watch-info__item-content">
+                                                <span class="mooc-watch-info__item-count">450+</span>
+                                                <span class="mooc-watch-info__item-key">Courses<br>started</span>
+                                            </div>
+                                        </div>
+                                        <div class="mooc-watch-info__item">
+                                            <div class="mooc-watch-info__item-content">
+                                                <span class="mooc-watch-info__item-count">114</span>
+                                                <span class="mooc-watch-info__item-key">Courses<br>Added</span>
+                                            </div>
+                                        </div>
+                                        <div class="mooc-watch-info__item">
+                                            <div class="mooc-watch-info__item-content">
+                                                <span class="mooc-watch-info__item-count">6000+</span>
+                                                <span class="mooc-watch-info__item-key">Total<br>MOOCs</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mooc-watch-info__news">
+                                        <h3 class="mooc-watch-info__news-title">Top Stories</h3>
+                                        <div class="mooc-watch-info__news-item">
+                                            <a href="https://www.class-central.com/report/coursera-old-platform-shutdown-download-courses/" target="_blank" class="mooc-watch-info__news-item-title">Coursera will shut down its old platform</a>
+                                            <span class="mooc-watch-info__news-item-provider">Class Central</span>
+                                        </div>
+                                        <div class="mooc-watch-info__news-item">
+                                            <a href="https://www.class-central.com/report/india-swayam-resurfaces/" class="mooc-watch-info__news-item-title" target="_blank">India's Official MOOC Platform</a>
+                                            <span class="mooc-watch-info__news-item-provider">Class Central</span>
+                                        </div>
+                                        <div class="mooc-watch-info__news-item">
+                                            <a href="https://www.class-central.com/report/india-swayam-resurfaces/" target="_blank" class="mooc-watch-info__news-item-title">Computer Tutor In MOOCs</a>
+                                            <span class="mooc-watch-info__news-item-provider">Columbia University</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="footer-logos">
+        <ul>
+            <li><a class="stanford-logo" href="{{ path('ClassCentralSiteBundle_university',{slug : 'stanford'}) }}">Stanford University</a></li>
+            <li><a class="harvard-logo" href="{{ path('ClassCentralSiteBundle_university',{slug : 'harvard'}) }}">Harvard University</a></li>
+            <li><a class="mit-logo" href="{{ path('ClassCentralSiteBundle_university',{slug : 'mit'}) }}">Massachusetts Institute of Technology</a></li>
+            <li><a class="berkeley-logo" href="{{ path('ClassCentralSiteBundle_university',{slug : 'berkeley'}) }}">Berkeley University of California</a></li>
+            <li><a class="uts-logo" href="{{ path('ClassCentralSiteBundle_university',{slug : 'utexas'}) }}">University of Texas System</a></li>
+            <li><a class="cornell-logo" href="{{ path('ClassCentralSiteBundle_university',{slug : 'cornell'}) }}">Cornell University</a></li>
+            <li><a class="princeton-logo" href="{{ path('ClassCentralSiteBundle_university',{slug : 'princeton'}) }}">Princeton University</a></li>
+            <li><a class="git-logo" href="{{ path('ClassCentralSiteBundle_university',{slug : 'gatech'}) }}">Georgia Tech</a></li>
+            <li><a class="jhu-logo" href="{{ path('ClassCentralSiteBundle_university',{slug : 'jhu'}) }}">Johns Hopkins University</a></li>
+        </ul>
+    </section>
+
+{% endblock %}

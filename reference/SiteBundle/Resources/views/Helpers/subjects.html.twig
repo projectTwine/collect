@@ -1,0 +1,29 @@
+<div data-equalize='{ "height": 200}' class="row border-wrap">
+
+    {% set i = 0 %}
+    {% set closeRow = 0 %}
+    {% set closeBlock = 0 %}
+    {% for parent in subjects.parent %}
+        {# Actual subject information #}
+        <div data-equalize-child class="single-category col-xs-6 col-md-4">
+            <div class="category-header">
+                <div class="course-count">
+                    <span class="count">{{ parent.courseCount }}</span>
+                    <span class="count-title">courses</span>
+                </div>
+                <a class="show-all-subjects view-all-courses" href="{{ path('ClassCentralSiteBundle_stream', {'slug': parent.slug } ) }}" title="List of {{ parent.name }} MOOCs" onmousedown="ga('send','event', 'Inbound Clicks - Stream', '{{parent.name}}', 'Subjects')">
+                    <span class="category-title">{{ parent.name }}</span>
+                </a>
+            </div>
+            {% if subjects.children[parent.id] is defined %}
+                <ul class="subject-list" >
+                    {% for child in subjects.children[parent.id] %}
+                        <li><a href="{{ path('ClassCentralSiteBundle_stream', {'slug': child.slug } ) }}" title="List of {{ child.name }} MOOCs" onmousedown="ga('send','event', 'Inbound Clicks - Stream', '{{child.name}}', 'Subjects')"><span>{{ child.name }}</span></a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+<br/>
+<div>Based on an open sourced taxonomy for online courses created by Class Central. <a href="https://github.com/classcentral/online-course-taxonomy">Find it on Github</a> </div>

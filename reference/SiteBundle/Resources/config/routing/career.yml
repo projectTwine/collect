@@ -1,0 +1,34 @@
+career:
+    pattern:  /
+    defaults: { _controller: "ClassCentralSiteBundle:Career:index" }
+
+career_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ClassCentralSiteBundle:Career:show" }
+
+career_new:
+    pattern:  /new
+    defaults: { _controller: "ClassCentralSiteBundle:Career:new" }
+
+career_create:
+    pattern:  /create
+    defaults: { _controller: "ClassCentralSiteBundle:Career:create" }
+    requirements: { _method: post }
+
+career_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ClassCentralSiteBundle:Career:edit" }
+
+career_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ClassCentralSiteBundle:Career:update" }
+    requirements: { _method: post|put }
+
+career_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ClassCentralSiteBundle:Career:delete" }
+    requirements: { _method: post|delete }
+
+career_bulk_update:
+    pattern:  /bulkUpdate
+    defaults: { _controller: "ClassCentralSiteBundle:Career:bulkUpdate" }

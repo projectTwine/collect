@@ -1,0 +1,16 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block content -%}
+    <h1>Text Row Ads</h1>
+    {% set format = 'course-top' %}
+    {% set totalFrequency = 0 %}
+    {% for textAd in ads %}
+        {% if textAd.frequency > 0 %}
+            {{ textAd.frequency  }}
+            {%  include 'ClassCentralSiteBundle:Helpers:table.ad.html.twig' with textAd   %}
+
+            {% set totalFrequency = totalFrequency + textAd.frequency %}
+        {% endif %}
+    {% endfor %}
+    <b>{{ totalFrequency }}</b> ads running
+{% endblock %}

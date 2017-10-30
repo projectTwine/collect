@@ -1,0 +1,28 @@
+ClassCentral\SiteBundle\Entity\NewsletterLog:
+    type: entity
+    table: newsletter_log
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        sent:
+            type: datetime
+            nullable: false
+        created:
+            type: datetime
+            nullable: false
+    manyToOne:
+        newsletter:
+            targetEntity: Newsletter
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                newsletter_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

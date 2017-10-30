@@ -1,0 +1,25 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block headmeta %}
+<title>Verify Email | Class Central</title>
+
+{% endblock %}
+
+
+{% block contentheader %}
+
+<div class="cc-form-box">
+    {% if tokenValid %}
+        <p>Thank you for confirming your email</p>
+    {% else %}
+        <p>URL has expired</p>
+    {% endif %}
+</div>
+
+<style type="text/css">
+    .cc-page {
+        display: none;
+    }
+</style>
+
+{% endblock %}

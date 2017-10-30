@@ -1,0 +1,55 @@
+//
+// Icon font for Class Central site
+//
+// Since icons are fonts, they can be placed anywhere text is placed and are
+// thus automatically sized to match the surrounding child. To use, create an
+// inline element with the appropriate classes, like so:
+//
+// <a href="#"><span class="glyphicon glyphicon-star"></span> Star</a>
+
+// Import the fonts
+@font-face {
+  font-family: 'CC Icon Font';
+  src: ~"url('@{icon-font-path}@{icon-font-name}.eot')";
+  src: ~"url('@{icon-font-path}@{icon-font-name}.eot?#iefix') format('embedded-opentype')",
+       ~"url('@{icon-font-path}@{icon-font-name}.woff') format('woff')",
+       ~"url('@{icon-font-path}@{icon-font-name}.ttf') format('truetype')",
+       ~"url('@{icon-font-path}@{icon-font-name}.svg#@{icon-font-svg-id}') format('svg')";
+}
+
+.icon-cc-logo-glyph:before {
+  content: "\e605";
+}
+.icon-search:before {
+  content: "\e003";
+}
+.icon-star:before {
+  content: "\e006";
+}
+.icon-tick:before {
+  content: "\e013";
+}
+.icon-up:before {
+  content: "\e113";
+}
+.icon-down:before {
+  content: "\e114";
+}
+.icon-check:before {
+  content: "\f00c";
+}
+.icon-home:before {
+  content: "\e600";
+}
+.icon-lock:before {
+  content: "\e601";
+}
+.icon-cross:before {
+  content: "\e602";
+}
+.icon-minus:before {
+  content: "\e603";
+}
+.icon-plus:before {
+  content: "\e604";
+}

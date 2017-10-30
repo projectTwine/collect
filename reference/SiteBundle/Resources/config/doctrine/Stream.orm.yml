@@ -1,0 +1,65 @@
+ClassCentral\SiteBundle\Entity\Stream:
+  type: entity
+  table: streams
+  repositoryClass: ClassCentral\SiteBundle\Repository\StreamRepository
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: AUTO
+    name:
+      type: string
+      length: 255
+      fixed: false
+      nullable: true
+    slug:
+      type: string
+      length: 255
+      fixed: false
+      nullable: true
+    showInNav:
+      type: boolean
+      nullable: false
+      column: show_in_nav
+    imageUrl:
+      type: string
+      nullable: true
+      column: image_url
+    description:
+      type: string
+      nullable: true
+    color:
+      type: string
+      length: 7
+      fixed: true
+      nullable: true
+    childColor:
+      type: string
+      length: 7
+      fixed: true
+      nullable: true
+      column: child_color
+    displayOrder:
+      type: integer
+      unsigned: false
+      nullable: true
+      column: display_order
+      order: asc
+  oneToMany:
+    children:
+      targetEntity: Stream
+      mappedBy: parentStream
+  manyToOne:
+    parentStream:
+        targetEntity: Stream
+        cascade: {  }
+        mappedBy: null
+        inversedBy: children
+        joinColumns:
+            parent_stream_id:
+                referencedColumnName: id
+        orphanRemoval: false
+  lifecycleCallbacks: {  }

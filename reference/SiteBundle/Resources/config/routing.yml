@@ -1,0 +1,536 @@
+
+ClassCentralSiteBundle_redirects:
+    resource: "@ClassCentralSiteBundle/Resources/config/redirects.yml"
+
+ClassCentralSiteBundle_homepage:
+    pattern:  /
+    defaults: { _controller: ClassCentralSiteBundle:Default:index }
+
+ClassCentralSiteBundle_faq:
+    pattern:  /faq
+    defaults: { _controller: ClassCentralSiteBundle:Default:faq }
+
+ClassCentralSiteBundle_privacy:
+    pattern:  /privacy-policy
+    defaults: { _controller: ClassCentralSiteBundle:Default:privacyPolicy }
+
+
+ClassCentralSiteBundle_courses:
+    pattern:  /courses/{type}
+    defaults: { _controller: ClassCentralSiteBundle:Default:courses }
+
+ClassCentralSiteBundle_initiative:
+  pattern: /provider/{type}
+  defaults: { _controller: ClassCentralSiteBundle:Initiative:provider }
+
+providers:
+  pattern: /providers
+  defaults: { _controller: ClassCentralSiteBundle:Initiative:providers }
+
+
+ClassCentralSiteBundle_university:
+    pattern:  /university/{slug}
+    defaults: { _controller: ClassCentralSiteBundle:Institution:view }    
+
+universities:
+    pattern:  /universities
+    defaults: { _controller: ClassCentralSiteBundle:Institution:universities }
+
+ClassCentralSiteBundle_institution:
+    pattern:  /institution/{slug}
+    defaults: { _controller: ClassCentralSiteBundle:Institution:view }
+
+institutions:
+    pattern:  /institutions
+    defaults: { _controller: ClassCentralSiteBundle:Institution:institutions }
+
+tag_courses:
+  pattern: /tag/{tag}
+  defaults: { _controller: ClassCentralSiteBundle:Course:tag }
+
+
+collection:
+  pattern: /collection/{slug}
+  defaults: { _controller: ClassCentralSiteBundle:Course:collection }
+
+
+career_page:
+  pattern: /career/{slug}
+  defaults: { _controller: ClassCentralSiteBundle:Career:career }
+
+careers:
+  pattern: /careers
+  defaults: { _controller: ClassCentralSiteBundle:Career:careers }
+
+ClassCentralSiteBundle_stream:
+    pattern:  /subject/{slug}
+    defaults: { _controller: ClassCentralSiteBundle:Stream:view }  
+        
+ClassCentralSiteBundle_search:
+  pattern: /search
+  defaults: { _controller: ClassCentralSiteBundle:Search:index}
+
+autocomplete:
+  pattern: /autocomplete/{query}
+  defaults: { _controller: ClassCentralSiteBundle:Search:autocomplete }
+ClassCentralSiteBundle_mooc_share:
+  pattern: /mooc/{id}/share
+  defaults: { _controller: ClassCentralSiteBundle:Course:share}
+
+ClassCentralSiteBundle_mooc:
+  pattern: /mooc/{id}/{slug}
+  defaults: { _controller: ClassCentralSiteBundle:Course:mooc}
+
+reviews_short_url:
+  pattern: /r/{courseId}
+  defaults: { _controller: ClassCentralSiteBundle:Review:reviewsShortUrl}
+
+
+mooc_interested:
+  pattern: /mooc/{id}/{slug}/interested
+  defaults: { _controller: ClassCentralSiteBundle:Course:interested }
+
+
+ClassCentralSiteBundle_news:
+  pattern: /news
+  defaults: {_controller: ClassCentralSiteBundle:News:home}
+
+programming_languages:
+  pattern: /programming-online-courses
+  defaults: { _controller: ClassCentralSiteBundle:Course:programmingLanguages }
+
+computer_science_moocs:
+  pattern: /computer-science-online-courses
+  defaults: { _controller: ClassCentralSiteBundle:Course:computerScienceCourses }
+
+ClassCentralSiteBundle_admin:
+    resource: "@ClassCentralSiteBundle/Resources/config/routing_admin.yml"
+    prefix: /admin
+
+random:
+  pattern: /random
+  defaults: { _controller: ClassCentralSiteBundle:Course:random}
+
+top10:
+  pattern: /ten-most-popular-moocs/{month}-{year}
+  defaults: { _controller: ClassCentralSiteBundle:Course:top10 }
+
+mooc-report:
+  pattern: /mooc-report/{month}-{year}
+  defaults: { _controller: ClassCentralSiteBundle:Course:moocReport }
+
+subjects:
+   pattern: /subjects
+   defaults: { _controller: ClassCentralSiteBundle:Stream:subjects}
+
+languages:
+   pattern: /languages
+   defaults: { _controller: ClassCentralSiteBundle:Language:languages}
+
+lang:
+    pattern:  /language/{slug}
+    defaults: { _controller: ClassCentralSiteBundle:Language:view }
+
+github_btn:
+  pattern: /githubbtn
+  defaults: { _controller: ClassCentralSiteBundle:Default:githubButton }
+login:
+  pattern: /login
+  defaults: {_controller: ClassCentralSiteBundle:Login:login }
+  schemes:  [https]
+
+google_auth:
+  pattern: /google-auth
+  defaults: { _controller: ClassCentralSiteBundle:Login:googleAuth }
+  methods: [post]
+
+login_check:
+  pattern: /login_check
+  schemes:  [https]
+
+logout:
+  path: /logout
+  schemes:  [https]
+
+signup:
+  pattern: /signup
+  defaults: {_controller: ClassCentralSiteBundle:User:signup }
+  schemes:  [https]
+
+signup_mooc:
+  pattern: /signup/mooc/{courseId}
+  defaults: {_controller: ClassCentralSiteBundle:User:signupMooc }
+  schemes:  [https]
+
+pre_signup_search_term:
+  pattern: /signup/pre_q/{searchTerm}
+  defaults: {_controller: ClassCentralSiteBundle:User:preSignupSearchTerm }
+  schemes:  [https]
+
+signup_create_user:
+  pattern: /create_user
+  defaults: {_controller: ClassCentralSiteBundle:User:createUser}
+  methods: [POST]
+
+forgotpassword:
+  pattern: /forgotpassword
+  defaults: {_controller: ClassCentralSiteBundle:User:forgotPassword}
+
+forgotpassword_sendemail:
+  pattern: /forgotpasswordSendEmail
+  defaults: {_controller: ClassCentralSiteBundle:User:forgotPasswordSendEmail}
+  methods: [POST]
+
+loginViaEmail:
+  pattern: /login-via-email
+  defaults: {_controller: ClassCentralSiteBundle:Login:loginViaEmail}
+
+loginViaEmail_sendemail:
+  pattern: /login-via-email-sendemail
+  defaults: {_controller: ClassCentralSiteBundle:Login:loginViaEmailSendEmail}
+  methods: [POST]
+
+resetPassword:
+  pattern: /resetPassword/{token}
+  defaults: {_controller: ClassCentralSiteBundle:User:resetPassword }
+
+resetPassword_save:
+  pattern: /resetPassword
+  defaults: {_controller: ClassCentralSiteBundle:User:resetPasswordSave }
+  methods: [POST]
+
+email_verify:
+  pattern: /verify/{token}
+  defaults: {_controller: ClassCentralSiteBundle:User:verifyEmail}
+
+oneclick_unsubscribe:
+  pattern: /u/unsubscribe/{token}
+  defaults: { _controller: ClassCentralSiteBundle:User:oneClickUnsubscribe }
+
+oneclick_subscribe:
+  pattern: /u/subscribe/{token}
+  defaults: { _controller: ClassCentralSiteBundle:User:oneClickSubscribe }
+#mooc tracker
+mooctracker:
+  pattern: /mooc-tracker
+  defaults:
+            _controller: FrameworkBundle:Redirect:redirect
+            route: user_library
+            permanent: true # this is for 301
+
+mooctracker_signup:
+  pattern: /mooc-tracker-signup
+  defaults:
+              _controller: FrameworkBundle:Redirect:redirect
+              route: signup
+              permanent: true # this is for 301
+
+mooctracker_add_search_term:
+  pattern: /user/tracker/searchTerm/{searchTerm}
+  defaults: {_controller: ClassCentralSiteBundle:User:addSearchTermToMOOCTracker }
+
+mooctracker_remove_search_term:
+  pattern: /user/tracker/removeSearchTerm/{searchTerm}
+  defaults: {_controller: ClassCentralSiteBundle:User:removeSearchTermFromMOOCTracker }
+
+#newsletter
+newsletter_subscribe:
+  pattern: /newsletters/subscribe/{code}
+  defaults: {_controller: ClassCentralSiteBundle:Newsletter:subscribe}
+
+newsletter_subscribe_to:
+  pattern: /newsletters/subscribeTo/{code}
+  defaults: {_controller: ClassCentralSiteBundle:Newsletter:subscribeTo}
+
+newsletter_subscribed:
+  pattern: /newsletters/subscribed/
+  defaults: {_controller: ClassCentralSiteBundle:Newsletter:subscribed}
+newsletter_mooc_tracker_signup:
+  pattern: /newsletters/mooc-tracker-save-user
+  defaults: {_controller: ClassCentralSiteBundle:Newsletter:moocTrackerSignup}
+
+moocwatch:
+  pattern: /moocwatch
+  defaults: {_controller: ClassCentralSiteBundle:Newsletter:moocWatch}
+
+#user course routes
+ajax_user_course_add:
+  pattern: /ajax/user/course/add
+  defaults: {_controller: ClassCentralSiteBundle:User:addCourse}
+
+ajax_user_course_remove:
+  pattern: /ajax/user/course/remove
+  defaults: {_controller: ClassCentralSiteBundle:User:removeCourse}
+
+ajax_user_newsletter_subscribe:
+  pattern: /ajax/newsletter/subscribe/{code}
+  defaults: {_controller: ClassCentralSiteBundle:User:subscribeNewsletter}
+
+ajax_user_newsletter_add:
+  pattern: /ajax/newsletter/unsubscribe/{code}
+  defaults: {_controller: ClassCentralSiteBundle:User:unsubscribeNewsletter}
+
+ajax_user_preference:
+  pattern: /ajax/user/pref/{prefId}/{value}
+  defaults: {_controller: ClassCentralSiteBundle:User:updateUserPreference}
+
+ajax_user_loggedin:
+  pattern : /ajax/isLoggedIn
+  defaults: {_controller: ClassCentralSiteBundle:User:isLoggedIn}
+
+ajax_follow:
+  pattern: /ajax/follow/{item}/{itemId}
+  defaults: {_controller: ClassCentralSiteBundle:Follow:follow}
+
+ajax_unfollow:
+  pattern: /ajax/unfollow/{item}/{itemId}
+  defaults: {_controller: ClassCentralSiteBundle:Follow:unFollow}
+
+ajax_pre_follow:
+  pattern: /ajax/pre_follow/{item}/{itemId}
+  defaults:  {_controller: ClassCentralSiteBundle:Follow:preFollow}
+
+user_library:
+  pattern: /user/courses
+  defaults: {_controller: ClassCentralSiteBundle:User:library }
+
+user_follows:
+  pattern: /user/follows
+  defaults: {_controller: ClassCentralSiteBundle:Follow:personalization }
+
+user_recommendations:
+  pattern: /user/recommendations
+  defaults: {_controller: ClassCentralSiteBundle:Follow:recommendations }
+
+signup_add_to_library:
+  pattern: /signup/cc/{courseId}/{listId}
+  defaults: {_controller: ClassCentralSiteBundle:User:signUpAddToLibrary }
+  schemes:  [https]
+
+pre_signup_add_to_library:
+  pattern: /signup/pre_cc/{courseId}/{listId}
+  defaults: {_controller: ClassCentralSiteBundle:User:preSignupAddToLibrary}
+  schemes:  [https]
+
+ajax_user_signup_modal:
+  pattern: /ajax/signup/{src}
+  defaults: {_controller: ClassCentralSiteBundle:User:createSignupModalAjax}
+
+user_preferences:
+  pattern: /user/preferences
+  defaults: {_controller: ClassCentralSiteBundle:User:preferences}
+
+# review routes
+review_new:
+  pattern: /review/new/{courseId}
+  defaults: {_controller: ClassCentralSiteBundle:Review:new}
+
+review_edit:
+  pattern: /user/review/edit/{reviewId}
+  defaults: {_controller: ClassCentralSiteBundle:Review:edit}
+
+review_create:
+  pattern: /user/review/create/{courseId}
+  defaults: {_controller: ClassCentralSiteBundle:Review:create}
+
+# saves the review in the session
+review_save:
+  pattern: /review/save/{courseId}
+  defaults: {_controller: ClassCentralSiteBundle:Review:save}
+
+user_reviews:
+  pattern: /user/reviews
+  defaults: {_controller: ClassCentralSiteBundle:Review:myReviews}
+signup_create_review:
+  pattern: /signup/review/{courseId}
+  defaults: {_controller: ClassCentralSiteBundle:User:signUpCreateReview }
+  schemes:  [https]
+
+ajax_review_feedback:
+  pattern: /ajax/review/feedback/{reviewId}/{feedback}
+  defaults: {_controller: ClassCentralSiteBundle:Review:feedback }
+
+fb_authorize_start:
+  pattern: /facebook/oauth/start
+  defaults: {_controller: ClassCentralSiteBundle:Login:redirectToAuthorization }
+
+fb_authorize_redirect:
+  pattern: /facebook/oauth/authorize
+  defaults: {_controller: ClassCentralSiteBundle:Login:fbReceiveAuthorizationCode }
+
+
+# maestro api
+maestro_provider:
+  pattern: /maestro/provider/{slug}
+  defaults: { _controller: ClassCentralSiteBundle:Maestro:provider }
+
+maestro_subject:
+  pattern: /maestro/subject/{slug}
+  defaults: { _controller: ClassCentralSiteBundle:Maestro:subject }
+
+maestro_courses:
+    pattern:  /maestro/courses/{type}
+    defaults: { _controller: ClassCentralSiteBundle:Maestro:courses }
+
+maestro_university:
+    pattern:  /maestro/university/{slug}
+    defaults: { _controller: ClassCentralSiteBundle:Maestro:institution }
+
+maestro_institution:
+    pattern:  /maestro/institution/{slug}
+    defaults: { _controller: ClassCentralSiteBundle:Maestro:institution }
+
+maestro_career:
+  pattern: /maestro/career/{slug}
+  defaults: { _controller: ClassCentralSiteBundle:Maestro:career }
+
+maestro_lang:
+    pattern:  /maestro/language/{slug}
+    defaults: { _controller: ClassCentralSiteBundle:Maestro:language }
+
+maestro_tag_courses:
+  pattern: /maestro/tag/{tag}
+  defaults: { _controller: ClassCentralSiteBundle:Maestro:tag }
+
+maestro_search:
+  pattern: /maestro/search
+  defaults: { _controller: ClassCentralSiteBundle:Maestro:search}
+
+maestro_user_library:
+  pattern: /maestro/user/courses
+  defaults: {_controller: ClassCentralSiteBundle:Maestro:library }
+
+maestro_course_details:
+  pattern: /maestro/course/{courseId}
+  defaults: {_controller: ClassCentralSiteBundle:Course:courseDetails}
+
+maestro_credentials:
+  pattern: /maestro/certificate
+  defaults: {_controller: ClassCentralSiteBundle:Maestro:credentials}
+
+maestro_user_recommendations:
+  pattern: /maestro/user/recommendations
+  defaults: {_controller: ClassCentralSiteBundle:Maestro:userRecommendations}
+
+maestro_next_course:
+  pattern: /maestro/course-recommendations
+  defaults: {_controller: ClassCentralSiteBundle:Maestro:nextCourse}
+
+maestro_collection:
+  pattern: /maestro/collection/{slug}
+  defaults: {_controller: ClassCentralSiteBundle:Maestro:collection}
+
+maestro_udemy_courses:
+  pattern: /maestro/udemy
+  defaults: {_controller: ClassCentralSiteBundle:Course:getUdemyCoursesTableHtml}
+
+user_profile_dummy:
+  pattern: /profile
+  defaults: {_controller: ClassCentralSiteBundle:User:profile }
+
+user_profile:
+  pattern: /u/{slug}/{tab}
+  defaults: {_controller: ClassCentralSiteBundle:Profile:profile, tab:'transcript'}
+
+user_profile_handle:
+  pattern: /@{slug}/{tab}
+  defaults: {_controller: ClassCentralSiteBundle:Profile:profile, tab:'transcript'}
+
+user_profile_edit:
+  pattern: /user/edit
+  defaults: {_controller: ClassCentralSiteBundle:Profile:edit }
+
+user_profile_save:
+  pattern: /user/profile/save
+  defaults: {_controller: ClassCentralSiteBundle:Profile:Save }
+
+user_profile_update_password:
+  pattern: /user/profile/updatePassword
+  defaults: {_controller: ClassCentralSiteBundle:Profile:updatePassword }
+
+user_profile_update_email:
+  pattern: /user/profile/updateEmail
+  defaults: {_controller: ClassCentralSiteBundle:Profile:updateEmail }
+
+user_profile_verify_new_email:
+  pattern: /verifyNewEmail/{token}
+  defaults: { _controller: ClassCentralSiteBundle:Profile:verifyNewEmail }
+
+user_profile_image_upload_step_1:
+  pattern: /user/profile/image/step1
+  defaults: {_controller: ClassCentralSiteBundle:Profile:profileImageStep1 }
+  methods: [POST]
+
+user_profile_image_upload_step_2:
+  pattern: /user/profile/image/step2
+  defaults: {_controller: ClassCentralSiteBundle:Profile:profileImageStep2 }
+  methods: [POST]
+
+user_profile_delete:
+  pattern: /user/profile/delete
+  defaults: {_controller: ClassCentralSiteBundle:Profile:deleteProfile }
+
+tfc_redirect:
+  pattern: /tfc{src}
+  defaults:
+    _controller: FrameworkBundle:Redirect:redirect
+    route: ClassCentralSiteBundle_homepage
+    permanent: true # this is for 301
+  requirements:
+    src: ".*"
+
+review_widget:
+  pattern: /reviews/widget
+  defaults: {_controller: ClassCentralSiteBundle:Review:getReviewWidget}
+
+auto_login_secure:
+  pattern: /autoLoginSecure
+  defaults: {_controller: ClassCentralSiteBundle:Default:autoLoginSecure }
+
+trending:
+  pattern: /trending
+  defaults: { _controller: ClassCentralSiteBundle:Course:trending }
+
+onboarding_profile:
+  pattern: /user/onboarding/profile
+  defaults: { _controller: ClassCentralSiteBundle:Onboarding:stepProfile }
+
+onboarding_follow_subjects:
+  pattern: /user/onboarding/follow-subjects
+  defaults: { _controller: ClassCentralSiteBundle:Onboarding:stepFollowSubjects }
+
+onboarding_follow_institutions:
+  pattern: /user/onboarding/follow-institutions
+  defaults: { _controller: ClassCentralSiteBundle:Onboarding:stepFollowInstitutions }
+
+onboarding_follow_courses:
+  pattern: /user/onboarding/follow-courses
+  defaults: { _controller: ClassCentralSiteBundle:Onboarding:stepFollowCourses }
+
+next_course_pick_subjects:
+  pattern: /next-course/pick-subjects
+  defaults: { _controller: ClassCentralSiteBundle:NextCourseWizard:stepPickSubjects }
+
+next_course_pick_providers:
+  pattern: /next-course/pick-providers
+  defaults: { _controller: ClassCentralSiteBundle:NextCourseWizard:stepPickProviders }
+
+next_course_loading_screen:
+  pattern: /next-course/loading-screen
+  defaults: { _controller: ClassCentralSiteBundle:NextCourseWizard:stepLoadingScreen }
+
+next_course_courses:
+   pattern: /course-recommendations
+   defaults: { _controller: ClassCentralSiteBundle:NextCourseWizard:nextCourse }
+
+next_course_follow:
+  pattern: /next-course/follow/{item}/{itemId}
+  defaults: { _controller: ClassCentralSiteBundle:NextCourseWizard:Follow }
+
+next_course_un_follow:
+  pattern: /next-course/unfollow/{item}/{itemId}
+  defaults: { _controller: ClassCentralSiteBundle:NextCourseWizard:UnFollow }
+
+mailgun_webhook_receiver:
+  pattern: /mailgun-webhook
+  defaults: {_controller: ClassCentralSiteBundle:Analytics:MailgunWebhookReceiver}

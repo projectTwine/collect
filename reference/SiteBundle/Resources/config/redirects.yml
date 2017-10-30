@@ -1,0 +1,343 @@
+ClassCentralSiteBundle_initiative_redirect:
+  pattern: /initiative/{type}
+  defaults:
+    _controller: FrameworkBundle:Redirect:redirect
+    route: ClassCentralSiteBundle_initiative
+    permanent: true
+
+
+# redirect /stream to /subject
+ClassCentralSiteBundle_stream_redirect:
+    pattern:  /stream/{slug}
+    defaults:
+      _controller: FrameworkBundle:Redirect:redirect
+      route: ClassCentralSiteBundle_stream
+      permanent: true # this is for 301
+
+
+ClassCentralSiteBundle_stream_basic_math_and_calculus:
+    pattern:  /subject/basic-math-and-calculus
+    defaults:
+          _controller: FrameworkBundle:Redirect:redirect
+          route: ClassCentralSiteBundle_stream
+          permanent: true # this is for 301
+          slug: foundations-of-mathematics
+
+ClassCentralSiteBundle_stream_electrical_and_mechanical:
+    pattern:  /subject/electrical-and-mechanical
+    defaults:
+          _controller: FrameworkBundle:Redirect:redirect
+          route: ClassCentralSiteBundle_stream
+          permanent: true # this is for 301
+          slug: electrical-engineering
+
+ClassCentralSiteBundle_stream_psychology_and_sociology:
+    pattern:  /subject/psychology-and-sociology
+    defaults:
+          _controller: FrameworkBundle:Redirect:redirect
+          route: ClassCentralSiteBundle_stream
+          permanent: true # this is for 301
+          slug: sociology
+
+ClassCentralSiteBundle_stream_history_and_philosophy:
+    pattern:  /subject/history-and-philosophy
+    defaults:
+          _controller: FrameworkBundle:Redirect:redirect
+          route: ClassCentralSiteBundle_stream
+          permanent: true # this is for 301
+          slug: history
+
+ClassCentralSiteBundle_stream_literature_and_writing:
+    pattern:  /subject/literature-and-writing
+    defaults:
+          _controller: FrameworkBundle:Redirect:redirect
+          route: ClassCentralSiteBundle_stream
+          permanent: true # this is for 301
+          slug: literature
+
+ClassCentralSiteBundle_stream_statistics_and_data_analysis:
+    pattern:  /subject/statistics-and-data-analysis
+    defaults:
+          _controller: FrameworkBundle:Redirect:redirect
+          route: ClassCentralSiteBundle_stream
+          permanent: true # this is for 301
+          slug: statistics
+
+ClassCentralSiteBundle_stream_networking_and_security:
+    pattern:  /subject/it-and-security
+    defaults:
+          _controller: FrameworkBundle:Redirect:redirect
+          route: ClassCentralSiteBundle_stream
+          permanent: true # this is for 301
+          slug: cs
+
+ClassCentralSiteBundle_materials_science_and_engineering:
+    pattern:  /subject/materials-science-and-engineering
+    defaults:
+          _controller: FrameworkBundle:Redirect:redirect
+          route: ClassCentralSiteBundle_stream
+          permanent: true # this is for 301
+          slug: engineering
+
+ClassCentralSiteBundle_education_systems:
+    pattern:  /subject/education-systems
+    defaults:
+          _controller: FrameworkBundle:Redirect:redirect
+          route: ClassCentralSiteBundle_stream
+          permanent: true # this is for 301
+          slug: education
+
+ClassCentralSiteBundle_teaching_and_learning:
+    pattern:  /subject/teaching-and-learning
+    defaults:
+          _controller: FrameworkBundle:Redirect:redirect
+          route: ClassCentralSiteBundle_stream
+          permanent: true # this is for 301
+          slug: education
+
+ClassCentralSiteBundle_health_and_society:
+    pattern:  /subject/health-and-society
+    defaults:
+          _controller: FrameworkBundle:Redirect:redirect
+          route: ClassCentralSiteBundle_stream
+          permanent: true # this is for 301
+          slug: health
+
+ClassCentralSiteBundle_earth_sciences:
+    pattern:  /subject/earth-sciences
+    defaults:
+          _controller: FrameworkBundle:Redirect:redirect
+          route: ClassCentralSiteBundle_stream
+          permanent: true # this is for 301
+          slug: environmental-science
+
+ClassCentralSiteBundle_systems_engineering_and_design:
+    pattern:  /subject/systems-engineering-and-design
+    defaults:
+          _controller: FrameworkBundle:Redirect:redirect
+          route: ClassCentralSiteBundle_stream
+          permanent: true # this is for 301
+          slug: environmental-science
+
+ClassCentralSiteBundle_politics_law_and_society:
+    pattern:  /subject/politics-law-and-society
+    defaults:
+          _controller: FrameworkBundle:Redirect:redirect
+          route: ClassCentralSiteBundle_stream
+          permanent: true # this is for 301
+          slug: social-sciences
+
+ClassCentralSiteBundle_food_excercise_and_nutrition:
+    pattern:  /subject/food-excercise-and-nutrition
+    defaults:
+          _controller: FrameworkBundle:Redirect:redirect
+          route: ClassCentralSiteBundle_stream
+          permanent: true # this is for 301
+          slug: nutrition-and-wellness
+
+ClassCentralSiteBundle_disease_and_medicine :
+    pattern:  /subject/disease-and-medicine
+    defaults:
+          _controller: FrameworkBundle:Redirect:redirect
+          route: ClassCentralSiteBundle_stream
+          permanent: true # this is for 301
+          slug: disease-and-disorders
+
+ClassCentralSiteBundle_chemistry_biology_and_life_sciences:
+    pattern:  /subject/chemistry-biology-and-life-sciences
+    defaults:
+          _controller: FrameworkBundle:Redirect:redirect
+          route: ClassCentralSiteBundle_stream
+          permanent: true # this is for 301
+          slug: chemistry
+
+ClassCentralSiteBundle_physics_and_astronomy:
+    pattern:  /subject/physics-and-astronomy
+    defaults:
+          _controller: FrameworkBundle:Redirect:redirect
+          route: ClassCentralSiteBundle_stream
+          permanent: true # this is for 301
+          slug: physics
+
+ClassCentralSiteBundle_web_and_cloud_development:
+    pattern:  /subject/web-and-cloud-development
+    defaults:
+          _controller: FrameworkBundle:Redirect:redirect
+          route: ClassCentralSiteBundle_stream
+          permanent: true # this is for 301
+          slug: web-development
+
+ClassCentralSiteBundle_initiative_novoed:
+    pattern:  /initiative/vlab
+    defaults:
+          _controller: FrameworkBundle:Redirect:redirect
+          route: ClassCentralSiteBundle_initiative
+          permanent: true # this is for 301
+          type: novoed
+ClassCentralSiteBundle_initiative_coursesites:
+    pattern:  /provider/cs
+    defaults:
+          _controller: FrameworkBundle:Redirect:redirect
+          route: ClassCentralSiteBundle_initiative
+          permanent: true # this is for 301
+          type: open-education
+
+ClassCentralSiteBundle_institution_worldbank:
+    pattern:  /university/worldbank
+    defaults:
+          _controller: FrameworkBundle:Redirect:redirect
+          route: ClassCentralSiteBundle_institution
+          permanent: true # this is for 301
+          slug: worldbank
+
+tag_software_development:
+    pattern: /tag/software development
+    defaults:
+      _controller: FrameworkBundle:Redirect:redirect
+      route: ClassCentralSiteBundle_stream
+      permanent: true # this is for 301
+      slug: software-development
+
+tag_android:
+    pattern: /tag/android
+    defaults:
+      _controller: FrameworkBundle:Redirect:redirect
+      route: ClassCentralSiteBundle_stream
+      permanent: true # this is for 301
+      slug: android-development
+
+tag_android_programming:
+    pattern: /tag/android programming
+    defaults:
+      _controller: FrameworkBundle:Redirect:redirect
+      route: ClassCentralSiteBundle_stream
+      permanent: true # this is for 301
+      slug: android-development
+
+tag_android_studio:
+    pattern: /tag/android studio
+    defaults:
+      _controller: FrameworkBundle:Redirect:redirect
+      route: ClassCentralSiteBundle_stream
+      permanent: true # this is for 301
+      slug: android-development
+
+tag_android_tv:
+    pattern: /tag/android tv
+    defaults:
+      _controller: FrameworkBundle:Redirect:redirect
+      route: ClassCentralSiteBundle_stream
+      permanent: true # this is for 301
+      slug: android-development
+
+tag_ios:
+    pattern: /tag/ios
+    defaults:
+      _controller: FrameworkBundle:Redirect:redirect
+      route: ClassCentralSiteBundle_stream
+      permanent: true # this is for 301
+      slug: ios-development
+
+tag_ios_development:
+    pattern: /tag/ios development
+    defaults:
+      _controller: FrameworkBundle:Redirect:redirect
+      route: ClassCentralSiteBundle_stream
+      permanent: true # this is for 301
+      slug: ios-development
+
+tag_ios_physics_engine:
+    pattern: /tag/ios physics engine
+    defaults:
+      _controller: FrameworkBundle:Redirect:redirect
+      route: ClassCentralSiteBundle_stream
+      permanent: true # this is for 301
+      slug: ios-development
+
+tag_game_development:
+    pattern: /tag/game development
+    defaults:
+      _controller: FrameworkBundle:Redirect:redirect
+      route: ClassCentralSiteBundle_stream
+      permanent: true # this is for 301
+      slug: game-development
+
+tag_game_programming:
+    pattern: /tag/game programming
+    defaults:
+      _controller: FrameworkBundle:Redirect:redirect
+      route: ClassCentralSiteBundle_stream
+      permanent: true # this is for 301
+      slug: game-development
+
+tag_machine_learning:
+    pattern: /tag/machine learning
+    defaults:
+      _controller: FrameworkBundle:Redirect:redirect
+      route: ClassCentralSiteBundle_stream
+      permament: true # this is for 301
+      slug: machine-learning
+
+old_subject_digital-media-and-video-games:
+   pattern: /subject/digital-media-and-video-games
+   defaults:
+     _controller: FrameworkBundle:Redirect:redirect
+     route: ClassCentralSiteBundle_stream
+     permanent: true # this is for 301
+     slug: digital-media
+
+old_subject_theoretical-computer-science:
+   pattern: /subject/theoretical-computer-science
+   defaults:
+     _controller: FrameworkBundle:Redirect:redirect
+     route: ClassCentralSiteBundle_stream
+     permanent: true # this is for 301
+     slug: algorithms-and-data-structures
+
+old_subject_business-analytics-and-intelligence:
+   pattern: /subject/business-analytics-and-intelligence
+   defaults:
+     _controller: FrameworkBundle:Redirect:redirect
+     route: ClassCentralSiteBundle_stream
+     permanent: true # this is for 301
+     slug: business-intelligence
+
+old_subject_public-and-global-health:
+   pattern: /subject/public-and-global-health
+   defaults:
+     _controller: FrameworkBundle:Redirect:redirect
+     route: ClassCentralSiteBundle_stream
+     permanent: true # this is for 301
+     slug: public-health
+
+old_subject_health-care-and-research:
+   pattern: /subject/health-care-and-research
+   defaults:
+     _controller: FrameworkBundle:Redirect:redirect
+     route: ClassCentralSiteBundle_stream
+     permanent: true # this is for 301
+     slug: health-care
+
+old_subject_calculus-and-mathematical-analysis:
+   pattern: /subject/calculus-and-mathematical-analysis
+   defaults:
+     _controller: FrameworkBundle:Redirect:redirect
+     route: ClassCentralSiteBundle_stream
+     permanent: true # this is for 301
+     slug: calculus
+
+old_subject_language-culture:
+   pattern: /subject/language-culture
+   defaults:
+     _controller: FrameworkBundle:Redirect:redirect
+     route: ClassCentralSiteBundle_stream
+     permanent: true # this is for 301
+     slug: foreign-language
+
+old_subject_civil-environmental-engineering:
+   pattern: /subject/civil-environmental-engineering
+   defaults:
+     _controller: FrameworkBundle:Redirect:redirect
+     route: ClassCentralSiteBundle_stream
+     permanent: true # this is for 301
+     slug: civil-engineering

@@ -1,0 +1,79 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block headmeta %}
+    <title>Languages - Browse MOOCs by languages | Class Central</title>
+    <meta name="description"
+          content="Browse MOOCs by languages"/>
+    <meta property="og:title" content="Browse MOOCs by languages" />
+    <meta property="og:url" content="{{ baseurl }}{{ path('languages') }}" />
+    <meta property="og:image" content="https://www.class-central.com/bundles/classcentralsite/slashpixel/images/ccprofilepic.png">
+    <meta property="og:site_name" content="Class Central"/>
+    <meta property="og:description" content="Browse MOOCs by languages" />
+    <meta property="og:type" content="website" />
+    <meta property="fb:admins" content="{{ fb_admins }}" />
+
+    <!-- Twitter card integration -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@classcentral">
+    <meta name="twitter:title" content="Browse MOOCs by languages">
+    <meta name="twitter:description" content="Browse MOOCs by languages">
+    <meta name="twitter:domain" content="www.class-central.com">
+{% endblock %}
+
+{% block content %}
+
+    <div class="subjects">
+    <div class="intro-wrap">
+        <div class="description-wrap">
+            <h1 class='cc-page-header'>Languages</h1>
+        </div>
+    </div>
+    {% set i = 0 %}
+    {% set closeRow = 0 %}
+    {% set closeBlock = 0 %}
+    {% for language in languages %}
+        {% if i is divisible by(4) %}
+            <div class="subjects-row">
+            {% set closeRow = i + 4 %}
+        {% endif %}
+
+        {% if i is divisible by(2) %}
+        <div class="two-subjects-block">
+        {% set closeBlock = i + 2 %}
+        {% endif %}
+
+        {# Actual subject information #}
+        <div class="single-category col-xs-6 col-md-4" style="min-height: 120px">
+            <div class="category-header">
+                <div class="course-count">
+                    <span class="count">{{ language.courseCount }}</span>
+                    <span class="count-title">courses</span>
+                </div>
+
+                <a class="show-all-subjects" st href="{{ path('lang', {'slug': language.slug } ) }}" title="List of {{ language.name }} language MOOCs" onmousedown="ga('send','event', 'Inbound Clicks - Language', '{{language.name}}', 'Languages')"
+                   class="view-all-courses"><span class="category-title">{{ language.name }}</span></a>
+            </div>
+        </div>
+        {% set i = i +1 %}
+        {% if i  == closeBlock %}
+        </div>
+        {% endif %}
+
+        {% if i ==  closeRow %}
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    {# close the unfinished divs #}
+    {% if i  != closeBlock %}
+        </div>
+    {% endif %}
+
+    {% if i !=  closeRow %}
+        </div>
+    {% endif %}
+    </div>
+
+
+
+{% endblock %}

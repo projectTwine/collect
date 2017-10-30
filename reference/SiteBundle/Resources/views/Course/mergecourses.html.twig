@@ -1,0 +1,23 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block content %}
+
+    <h1>Merge Courses</h1>
+
+    <form id="merge-course-form" class="clearfix" method="post" action="{{ path('course_merge_save') }}">
+
+        <span >Original course id</span>
+        <input type="text" class="form-control bfh-number" data-min="0" name="orig" >
+
+        <span >Duplicate course id</span>
+        <input type="text" class="form-control bfh-number" data-min="0" name="dup" >
+
+        <span >Merge Type</span>
+        <select name="type">
+            <option value="1">Users</option>
+            <option value="2">Users and offerings</option>
+        </select>
+        <br /><br />
+        <input type="submit"></intput>
+    </form>
+{% endblock %}

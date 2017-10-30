@@ -1,0 +1,233 @@
+ClassCentral\SiteBundle\Entity\Course:
+  type: entity
+  repositoryClass: ClassCentral\SiteBundle\Repository\CourseRepository
+  table: courses
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: AUTO
+    name:
+      type: string
+      length: 255
+      fixed: false
+      nullable: false
+    created:
+      type: datetime
+      nullable: true
+    modified:
+      type: datetime
+      nullable: false
+    shortName:
+      type: string
+      length: 50
+      column: short_name
+    url:
+     type: text
+    description:
+      type: text
+    longDescription:
+     type: text
+     column: long_description
+    syllabus:
+      type: text
+    videoIntro:
+     type: text
+     nullable: true
+     column: video_intro
+    length:
+     type: integer
+     nullable: true
+    searchDesc:
+     type: text
+     nullable: true
+     column: search_desc
+    status:
+      type: integer
+    certificate:
+      type: boolean
+      nullable: true
+    verifiedCertificate:
+      type: boolean
+      nullable: true
+      column: verified_certificate
+    workloadMin:
+      type: integer
+      unsigned: false
+      nullable: true
+      column: workload_min
+    workloadMax:
+      type: integer
+      unsigned: false
+      nullable: true
+      column: workload_max
+    oneliner:
+      type: string
+      length: 100
+      fixed: false
+      nullable: true
+    thumbnail:
+      type: string
+      length: 255
+      fixed: false
+      nullable: true
+    price:
+        type: integer
+        unsigned: false
+        nullable: false
+    pricePeriod:
+        type: string
+        length: 2
+        fixed: false
+        nullable: false
+        column: price_period
+    certificatePrice:
+        type: integer
+        unsigned: false
+        nullable: true
+        column: certificate_price
+    workloadType:
+        type: string
+        length: 2
+        fixed: false
+        nullable: true
+        column: workload_type
+    durationMin:
+        type: integer
+        unsigned: false
+        nullable: true
+        column: duration_min
+    durationMax:
+        type: integer
+        unsigned: false
+        nullable: true
+        column: duration_max
+    durationType:
+        type: string
+        length: 2
+        fixed: false
+        nullable: true
+        column: duration_type
+    isMooc:
+        type: boolean
+        length: 2
+        fixed: false
+        nullable: true
+        column: is_mooc
+  oneToOne:
+    indepthReview:
+      targetEntity: IndepthReview
+      mappedBy: course
+  manyToOne:
+    duplicateCourse:
+      targetEntity: Course
+      cascade: {  }
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+          duplicate_course_id:
+              referencedColumnName: id
+      orphanRemoval: false
+    stream:
+      targetEntity: Stream
+      fetch: EAGER
+      cascade: {  }
+      joinColumns:
+        stream_id:
+          referencedColumnName: id
+      orphanRemoval: false  
+    initiative:
+      targetEntity: Initiative
+      fetch: EAGER
+      cascade: {}
+      mappedBy: null
+      inversedBy: courses
+      orphanRemoval: false
+      nullable: true
+    interview:
+      targetEntity: Interview
+      mappedBy: interview
+      inversedBy: courses
+    language:
+      targetEntity: Language
+      fetch: EAGER
+      cascade: {}
+      mappedBy: null
+      inversedBy: courses
+      orphanRemoval: false
+      nullable: true
+  oneToMany:
+    offerings:
+      targetEntity: Offering
+      cascade: {  }
+      mappedBy: course
+      inversedBy: null    
+      orphanRemoval: false
+    reviews:
+      targetEntity: Review
+      mappedBy: course
+  manyToMany:    
+    institutions:
+      targetEntity: Institution
+      inversedBy: courses      
+      joinTable: 
+        name: courses_institutions 
+        joinColumns:
+          course_id:
+            referencedColumnName: id
+        inverseJoinColumns:
+          institution_id:
+            referencedColumnName: id
+      nullable: true
+    instructors:
+      targetEntity: Instructor
+      inversedBy: courses
+      joinTable:
+        name: courses_instructors
+        joinColumns:
+          course_id:
+            referencedColumnName: id
+        inverseJoinColumns:
+          instructor_id:
+            referencedColumnName: id
+      nullable: true
+    credentials:
+       targetEntity: ClassCentral\CredentialBundle\Entity\Credential
+       mappedBy: courses
+    careers:
+       targetEntity: Career
+       inversedBy: courses
+       joinTable:
+          name: courses_careers
+          joinColumns:
+            course_id:
+              referencedColumnName: id
+          inverseJoinColumns:
+             career_id:
+               referencedColumnName: id
+    tags:
+      targetEntity: Tag
+      inversedBy: courses
+      joinTable:
+        name: courses_tags
+        joinColumns:
+          course_id:
+            referencedColumnName: id
+        inverseJoinColumns:
+          tag_id:
+            referencedColumnName: id
+    subjects:
+       targetEntity: Stream
+       joinTable:
+          name: courses_subjects
+          joinColumns:
+            course_id:
+              referencedColumnName: id
+          inverseJoinColumns:
+             subject_id:
+               referencedColumnName: id
+
+lifecycleCallbacks: {  }

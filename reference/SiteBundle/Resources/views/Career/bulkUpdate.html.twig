@@ -1,0 +1,44 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block content %}
+    <div>
+        <h4>>NOTE</h4>
+        <p>
+            <b>A course can have multiple careers. This page only adds careers to a course, doesn't replace/remove them.</b>
+        </p>
+    </div>
+
+    <div>
+        {% if succeeded is not empty %}
+            <h3>Successfully updated</h3>
+            {% for id,name in succeeded %}
+                {{ id }}|||{{ name }}<br/>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <div>
+        {% if failed is not empty %}
+            <h3>Failed</h3>
+            {% for id,name in succeeded %}
+                {{ id }}|||{{ name }}<br/>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+
+    <form method="post">
+        <label>Pick a career</label>
+        <select name="career">
+            {% for career in careers %}
+                <option value="{{ career.id }}">{{ career.name  }}</option>
+            {% endfor %}
+        </select>
+        <br/><br/>
+        <label>Paste courses with ids</label>
+        <textarea name="courses" rows="25" cols="100"></textarea>
+        <br/><br/>
+
+        <input type="submit" value="Update Courses">
+    </form>
+{% endblock %}

@@ -1,0 +1,30 @@
+newsletter:
+    pattern:  /
+    defaults: { _controller: "ClassCentralSiteBundle:Newsletter:index" }
+
+newsletter_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ClassCentralSiteBundle:Newsletter:show" }
+
+newsletter_new:
+    pattern:  /new
+    defaults: { _controller: "ClassCentralSiteBundle:Newsletter:new" }
+
+newsletter_create:
+    pattern:  /create
+    defaults: { _controller: "ClassCentralSiteBundle:Newsletter:create" }
+    requirements: { _method: post }
+
+newsletter_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ClassCentralSiteBundle:Newsletter:edit" }
+
+newsletter_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ClassCentralSiteBundle:Newsletter:update" }
+    requirements: { _method: post|put }
+
+newsletter_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ClassCentralSiteBundle:Newsletter:delete" }
+    requirements: { _method: post|delete }

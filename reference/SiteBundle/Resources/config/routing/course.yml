@@ -1,0 +1,82 @@
+course:
+    pattern:  /
+    defaults: { _controller: "ClassCentralSiteBundle:Course:index" }
+
+course_initiative:
+    pattern:  /initiative/{initiative}
+    defaults: { _controller: "ClassCentralSiteBundle:Course:initiative" }
+
+course_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ClassCentralSiteBundle:Course:show" }
+
+course_new:
+    pattern:  /new
+    defaults: { _controller: "ClassCentralSiteBundle:Course:new" }
+
+course_create:
+    pattern:  /create
+    defaults: { _controller: "ClassCentralSiteBundle:Course:create" }
+    requirements: { _method: post }
+
+course_review:
+    pattern: /review
+    defaults: {_controller: "ClassCentralSiteBundle:Course:review"}
+
+course_paid:
+    pattern: /paid
+    defaults: {_controller: "ClassCentralSiteBundle:Course:paidCourses"}
+
+course_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ClassCentralSiteBundle:Course:edit" }
+
+course_edit_lite:
+    pattern:  /{id}/edit_lite
+    defaults: { _controller: "ClassCentralSiteBundle:Course:editLite" }
+
+course_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ClassCentralSiteBundle:Course:update" }
+    requirements: { _method: post }
+
+course_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ClassCentralSiteBundle:Course:delete" }
+    requirements: { _method: post }
+
+course_bulk_edit:
+    pattern:  /bulkEdit
+    defaults: { _controller: "ClassCentralSiteBundle:Course:bulkEdit" }
+
+course_bulk_update:
+    pattern:  /bulkUpdate
+    defaults: { _controller: "ClassCentralSiteBundle:Course:bulkUpdate" }
+
+course_mt:
+    pattern: /mt/{type}/{date}
+    defaults: { _controller: "ClassCentralSiteBundle:Course:moocTrackerCourses" }
+
+course_merge:
+  pattern: /merge
+  defaults: { _controller: "ClassCentralSiteBundle:Course:mergeCoursesForm" }
+
+course_merge_save:
+  pattern: /merge_save
+  defaults: { _controller: "ClassCentralSiteBundle:Course:mergeCourses" }
+
+course_approve:
+  pattern: /approve/{courseId}
+  defaults: { _controller: ClassCentralSiteBundle:Course:quickApprove }
+
+course_image_upload:
+  pattern: /image-upload
+  defaults: { _controller: ClassCentralSiteBundle:Course:imageUpload }
+
+courses_all:
+  pattern: /all
+  defaults: { _controller: ClassCentralSiteBundle:Course:allCourses }
+
+course_autocomplete:
+  pattern: /autocomplete
+  defaults: { _controller: ClassCentralSiteBundle:Course:autoCompleteCourse }

@@ -1,0 +1,31 @@
+<div class="tables-wrap">
+    {% if showInstructions %}
+    No courses found
+    {% endif %}
+
+
+    {% for listId, listDetails in listTypes %}
+    {% set listType=listDetails['slug'] %}
+        {% if coursesByLists[listType] is defined and coursesByLists[listType] is not empty %}
+            <div id ="{{ listType }}-table-wrapper">
+                <h2 class="tabletitle" id="{{listType}}">{{listDetails.desc}} (<span id="{{ listType }}-count">{{ coursesByLists[listType]['hits']['total'] }}</span>)</h2>
+                {% include 'ClassCentralSiteBundle:Helpers:course.table.html.twig' with {'results':coursesByLists[listType],'allowSorting' : false,'tableId':listType, 'hideLoadMore':true} %}
+            </div>
+        {% endif %}
+    {% endfor %}
+
+
+    {# search terms #}
+    {% if searchTerms|length > 0 %}
+    <div id="searchTerm-table-wrapper">
+        <h2 class="tabletitle" id="searchTerm">Search Terms (<span id="searchTerm-count">{{searchTerms|length }}</span>)</h2>
+        <div class="table-body-searchTerm">
+            {% for searchTerm in searchTerms %}
+            <div class="profile-search-term">
+                <a href="{{ path("ClassCentralSiteBundle_search", {'q' : searchTerm }) }}">{{ searchTerm }}</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</div>

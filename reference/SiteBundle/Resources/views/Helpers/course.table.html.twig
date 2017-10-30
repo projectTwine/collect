@@ -1,0 +1,292 @@
+{% if pageNo is not defined %}
+    {% set pageNo = 1 %}
+{% endif %}
+{% if showHeader is not defined %}
+    {% set showHeader = true %}
+{% endif %}
+{% set sorting = true %}
+{% if allowSorting is defined %}
+    {%  set sorting = allowSorting %}
+{% endif %}
+{% if showSubjectInTable is not defined %}
+    {% set showSubjectInTable = false %}
+{% endif %}
+{% if hideTableAd is not defined %}
+    {% set hideTableAd = false %}
+{% endif %}
+{% if pageNo == 1 or showHeader %}
+<table class="table table-bordered" id='{{ tableId}}list'>
+    <thead>
+    <tr>
+        {#<th class="introcolumn" onmousedown="ga('send','event', 'Table Header Click - sort', '{{ tableId }}', 'intro')">Intro Video</th>#}
+        <th class="add-column"></th>
+        {% set nameSortClass = '' %}
+        {% if sortField is defined and sortField =='name'  %}
+            {% set nameSortClass = sortClass %}
+        {% endif %}
+        <th class="{% if sorting %} sorting {% endif %}{{ nameSortClass }} course-name-column" onmousedown="ga('send','event', 'Table Header Click - sort', '{{ tableId }}', 'Course Name')" data-sort="name">
+            <div class="arrow-wrap">
+                Course Name
+                <p class="sorting-arrows">
+                    <span>
+                        <svg class="icon-arrow-up icon-cc-logo6" viewBox="0 -3 32 32"><use xlink:href="#icon-cc-logo6"></use></svg>
+                    </span>
+                    <span>
+                        <svg class="icon-arrow-down icon-cc-logo7" viewBox="0 3 32 32"><use xlink:href="#icon-cc-logo7"></use></svg>
+                    </span>
+                </p>
+            </div>
+        </th>
+        {#<th class="sorting instructors" onmousedown="ga('send','event', 'Table Header Click - sort', '{{ tableId }}', 'Instructor')">Instructor(s)</th>#}
+        {# hide the stream column on stream pages #}
+        {% if page is defined and page != 'stream' and page=='home' %}
+            <th class="{% if sorting %} sorting {% endif %} subject subject-column" onmousedown="ga('send','event', 'Table Header Click - sort', '{{ tableId }}', 'Subject')" data-sort="subjectSlug">
+                <div class="arrow-wrap">
+                    Subject
+                    <p class="sorting-arrows">
+                    <span>
+                        <svg class="icon-arrow-up icon-cc-logo6" viewBox="0 -3 32 32"><use xlink:href="#icon-cc-logo6"></use></svg>
+                    </span>
+                    <span>
+                        <svg class="icon-arrow-down icon-cc-logo7" viewBox="0 3 32 32"><use xlink:href="#icon-cc-logo7"></use></svg>
+                    </span>
+                    </p>
+                </div>
+            </th>
+        {% endif %}
+
+        {% set dateSortClass = '' %}
+        {% if sortField is defined and sortField =='date'  %}
+            {% set dateSortClass = sortClass %}
+        {% endif %}
+        <th class="{% if sorting %} sorting {% endif %} {{ dateSortClass  }} start-date" onmousedown="ga('send','event', 'Table Header Click - sort', '{{ tableId }}', 'Start Date')" data-sort="date">
+            <div class="arrow-wrap">
+                Start Date
+                <p class="sorting-arrows">
+                    <span>
+                        <svg class="icon-arrow-up icon-cc-logo6" viewBox="0 -3 32 32"><use xlink:href="#icon-cc-logo6"></use></svg>
+                    </span>
+                    <span>
+                        <svg class="icon-arrow-down icon-cc-logo7" viewBox="0 3 32 32"><use xlink:href="#icon-cc-logo7"></use></svg>
+                    </span>
+                </p>
+            </div>
+        </th>
+        {# <th class="sorting offering-length" onmousedown="ga('send','event', 'Table Header Click - sort', '{{ tableId }}', 'Length')">Length</th> #}
+        {# hide the initiative column on all pages #}
+        {% if page is defined and page != 'initiative' and false %}<th class="sorting" onmousedown="ga('send','event', 'Table Header Click - sort', '{{ tableId }}', 'Initiative')" data-sort="course-provider">Provider</th> {% endif %}
+
+        {% set ratingSortClass = '' %}
+        {% if sortField is defined and sortField =='rating'  %}
+            {% set ratingSortClass = sortClass %}
+        {% endif %}
+        <th class="{% if sorting %} sorting {% endif %} {{ ratingSortClass }} course-rating-column" onmousedown="ga('send','event', 'Table Header Click - sort', '{{ tableId }}', 'Rating')" data-sort="rating">
+            <div class="arrow-wrap">
+                Rating
+                <p class="sorting-arrows">
+                    <span>
+                        <svg class="icon-arrow-up icon-cc-logo6" viewBox="0 -3 32 32"><use xlink:href="#icon-cc-logo6"></use></svg>
+                    </span>
+                    <span>
+                        <svg class="icon-arrow-down icon-cc-logo7" viewBox="0 3 32 32"><use xlink:href="#icon-cc-logo7"></use></svg>
+                    </span>
+                </p>
+            </div>
+        </th>
+    </tr>
+    </thead>
+    <tbody class="table-body-{{ tableId }}" id="course-listing-tbody">
+{% endif %}
+
+        {% if not hideTableAd %}
+            {{ cc_ads.renderTextRowAd('table',{
+                'tableId': tableId,
+                'midRowTableAd': false,
+                'showSubjectInTable': showSubjectInTable
+            })|raw }}
+        {% endif %}
+
+
+    {% for result in results.hits.hits if result._source.nextSession is not empty %}
+        {% set course = result._source %}
+
+        {% if loop.index is divisibleby(20) and not hideTableAd %}
+            {{ cc_ads.renderTextRowAd('table',{
+                'tableId': tableId,
+                'midRowTableAd': true,
+                'showSubjectInTable':showSubjectInTable
+            })|raw }}
+        {% endif %}
+
+        {% if followItem is defined and loop.index == 5 and showHeader and not user_session.isItemFollowed(followItem,followItemId) %}
+            <tr>
+                <td colspan="4" class="featured-cell">
+                    <div class="featured-cell__container">
+                        <div class="featured-cell__text"><i>Want an email when new courses are available?</i></div>
+                        <div class="featured-cell__button ui-theme-light">
+                            {% include 'ClassCentralSiteBundle:Follow:btn.follow.html.twig' with {
+                                item : followItem,
+                                item_id : followItemId,
+                                itemName: followItemName,
+                                followed: user_session.isItemFollowed(followItem,followItemId)
+                            } %}
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        {% endif %}
+
+        <tr itemscope itemtype="http://schema.org/Event">
+
+            {# add to profile column #}
+            <td class="add-column">
+                {# filter information #}
+
+                {# set the subject to the child subject if it exists #}
+                {% set subject = course.subjects[0] %}
+                {% if course.subjects|length > 1 %}
+                    {% set subject = course.subjects[1] %}
+                {% endif %}
+                <div class="subjectSlug" style="display: none">{{ subject.slug }}</div>
+                <div class="languageSlug" style="display: none">{{ course.language.name }}</div>
+                <div class="course-startdate" style="display: none">{{ course.nextSession.startDate }}</div>
+                <div class="course-rating-value" style="display: none"> {{ course.rating }} </div>
+                <div class="course-provider" style="display: none">{{ course.provider.name }}</div>
+                {% set states = [] %}
+                {% for state in course.nextSession.states %}
+                    {% set states = states|merge([state]) %}
+                {% endfor %}
+                <div class="sessionSlug" style="display:none;">{{ states|join(',') }}</div>
+
+                <div class="dropdown">
+                    {% set userListIds = user_session.getCourseListIds(course.id) %}
+                    {# span id is same as the name of the input checkbox#}
+                    <a class="add-button dropdown-toggle" href="#" data-toggle="dropdown">
+                        <span id="check-{{ tableId }}-{{ course.id }}" class="round-add-btn {% if userListIds is empty %}round-add-btn--plus{% else %}round-add-btn--minus{% endif %}">
+                            <span class="round-add-btn__x-bar"></span>
+                            <span class="round-add-btn__y-bar"></span>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-list-header">My Courses</li>
+                        {% for listId, list in listTypes %}
+                            <li>
+                                <input type="checkbox" name="check-{{ tableId }}-{{ course.id }}" class = "course-list-checkbox" id="check-{{ listId }}-{{ course.id }}" value="{{ listId }}" data-course-id = "{{ course.id }}"
+                                       {% if listId in userListIds %}checked="checked"{% endif %} data-course-name="{{ course.name }}"
+                                       data-source="{{ tableId }}"
+                                        >
+                                <label for="check-{{ listId }}-{{ course.id }}">{{ list.desc }}</label>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </td>
+
+            <td class="course-name-column">
+
+                <div class="course-name-column-rating">
+                    <div class="course-rating" data-score="{{ course.rating }}"></div>
+                </div>
+
+                {% if is_granted('ROLE_ADMIN') and app.request.get('copy-course') is not empty %}
+                    <button class="btn-course-name-copy" data-clipboard-text="{{ course.id }}|||{{ course.name }}">
+                        Copy
+                    </button>
+                {% endif %}
+                <a class="course-name" itemprop='url' href="{{ path('ClassCentralSiteBundle_mooc',{'id': course.id, 'slug': course.slug} ) }}"
+                   onmousedown='recordInboundLink(
+                           "{{ path('ClassCentralSiteBundle_mooc',{'id': course.id, 'slug': course.slug} ) }}",
+                           "{{course.provider.name}}","{{course.name}}","{{ tableId }}");return false'
+
+                   title="{{ course.name }}"><span itemprop="name" class="course-name-text">{{ course.name }}</span>
+
+                    {% if course.price > 0 or course.price == -1 %}
+                    <span class="course-name-icon">
+                       <svg viewBox="0 0 32 32"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-paid-icon"></use></svg>
+                   </span>
+                    {% endif %}
+                </a>
+
+
+                {# showing institutions and universities #}
+
+                    <ul class="table-uni-list">
+                        {% if course.institutions |length > 0 and showInstitution is not defined  %}
+                            {% for institution in course['institutions'] %}
+                                {% set route = 'ClassCentralSiteBundle_university' %}
+                                {% if not institution['isUniversity'] %}
+                                    {% set route = 'ClassCentralSiteBundle_institution' %}
+                                {% endif %}
+                                <li>
+                                    <a class="uni-name" href="{{ path(route,{'slug' : institution['slug']|lower })}}" title="List of {{institution['name']}} MOOCs" onClick="ga('send','event', 'Inbound Clicks - University', '{{institution['name']}}', '{{course['name']}}')">{{institution['name']}}</a>
+
+                                </li>
+                            {% endfor %}
+                        {% endif %}
+                        {% if course['provider'] and page != 'initiative' %}
+                            <span class="via">via</span>
+                            <a href="{{ path('ClassCentralSiteBundle_initiative', {'type': course.provider.code }) }}"  class="initiativelinks" title="List of {{ course['provider']['tooltip'] }} MOOCs" onClick="ga('send','event', 'Inbound Clicks - Initiative', '{{ course.provider.name }}', '{{course.name}}')"> {{ course.provider.name }}</a>
+                        {% endif %}
+                    </ul>
+
+
+                <div class="course-name-column-start-date">Start Date:  {{ course.nextSession.displayDate  }}</div>
+
+                {% if course.credential is not empty %}
+                <div class="course-name-column-cred">
+                    <a href="{{ path('credential_page', {slug: course.credential.slug}) }}" onmousedown="ga('send','event', 'Inbound Click - Credential from Course Table', '{{ course.credential.name}}', '{{ course.credential.certificateName }}')">
+                        <span class="course-name-column-cred__button" >Earn A Credential</span>
+                        <span class="course-name-column-cred__text">Part of {{ course.credential.name }}{%  if course.credential.certificateSlug != 'nanodegree' %} {{ course.credential.certificateName }}{% endif %}</span>
+                    </a>
+                </div>
+                {% endif %}
+
+            </td>
+
+            {# hide the stream/subject column for all pages except home page #}
+
+
+            {% if page is defined and page != 'stream' and page=='home' %}
+                <td class="subject-column"> <a class="subject" href="{{ path('ClassCentralSiteBundle_stream', {'slug': course['subjects'][0]['slug']} ) }}" title="List of {{ course['subjects'][0]['name'] }} MOOCs" onClick="ga('send','event', 'Inbound Clicks - Stream', '{{course['subjects'][0]['name']}}', '{{course['name']}}')" data-category="{{course['subjects'][0]['name']}}">{{ course['subjects'][0]['name'] }} </a>
+                </td>
+            {% endif %}
+
+
+            <td class="start-date" {% if course.nextSession.status == 1 %} itemprop="startDate" content="{{ course.nextSession.microdataDate }}" {% endif %} data-timestamp="{{ course.nextSession.startTimeStamp }}">{{ course.nextSession.displayDate  }}</td>
+
+
+            {# hide the initiative column on every page #}
+            {% if page is defined and page != 'initiative' and false %}
+                <td>
+                    {% if course['provider'] %}
+                        <a href="{{ path('ClassCentralSiteBundle_initiative', {'type': course.provider.code }) }}"  class="initiativelinks" title="List of {{ course['provider']['tooltip'] }} MOOCs" onClick="ga('send','event', 'Inbound Clicks - Initiative', '{{ course.provider.name }}', '{{course.name}}')"> {{ course.provider.name }}</a>
+                    {% endif %}
+                </td>
+            {% endif %}
+
+            <td data-timestamp="{{ course.rating }}" class="course-rating-column">
+                <div class="rating-and-count-wrap">
+
+                    <div class="course-table-rating">
+                        {% include 'ClassCentralSiteBundle:Helpers:starRating.html.twig' with {formattedRating: reviewService.formatRating(course.rating),ratingColour: 'brand'} %}
+                    </div>
+
+
+                     <a href="{{ path('ClassCentralSiteBundle_mooc',{'id': course.id, 'slug': course.slug} ) }}#course-all-reviews" class="number-of-ratings-bubble">{{ course.reviewsCount }}</a>
+                </div>
+
+            </td>
+
+        </tr>
+    {% endfor %}
+
+{% if pageNo == 1 or showHeader %}
+    </tbody>
+</table>
+    {% if hideLoadMore is defined and hideLoadMore == true %}
+        {# don't show the load more#}
+    {% else %}
+        {% include 'ClassCentralSiteBundle:Helpers:loadMoreCourses.html.twig' with{'nextPage':pageNo + 1,'totalCourses': results.hits.total } %}
+    {% endif %}
+
+{% endif %}

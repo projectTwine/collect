@@ -1,0 +1,35 @@
+ClassCentral\SiteBundle\Entity\Email:
+    type: entity
+    table: emails
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        email:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        created:
+            type: datetime
+            nullable: true
+        isverified:
+            type: boolean
+            nullable: false
+            column: isVerified
+    manyToMany:
+      newsletters:
+        targetEntity: Newsletter
+        joinTable:
+          name: newsletters_subscriptions
+          joinColumns:
+            email_id:
+              referencedColumnName: id
+          inverseJoinColumns:
+            newsletter_id:
+              referencedColumnName: id
+    lifecycleCallbacks: {  }

@@ -1,0 +1,37 @@
+{# modal signup form #}
+
+<div class="modal fade" id="{% if signupFormId is defined %}{{ signupFormId }}{% else %}signupForm{% endif %}" role="dialog" aria-labelledby="home-create-free-account" aria-hidden="true">
+    <div class="cc-form-box">
+        <div class="cc-form-box-inner">
+            <div class="form-box-header">
+                <span class="icon-cc-logo-png"></span>
+                <svg class="icon icon-cc-logo-circle" viewBox="0 0 32 32"><use xlink:href="#icon-cc-logo-circle"></use></svg>
+            </div>
+            <div class="form-box-body">
+                {% if formTitle is defined %}
+                    <h4>{{ formTitle|raw }}</h4>
+                {% endif %}
+                <a href="{{ path('fb_authorize_start') }}" onmousedown="ga('send','event','Sign In with Facebook', 'Signup Form');">
+                    <button class="loginBtn loginBtn--facebook" >
+                        Sign up with Facebook
+                    </button>
+                </a>
+
+                <a class='sign-in-with-google'  href="#" onmousedown="ga('send','event','Sign In with Google', 'Signup Form');">
+                    <button  class="loginBtn loginBtn--google">
+                        Sign up with Google
+                    </button>
+                </a>
+
+                <div class="or-separator">
+                    <span>OR</span>
+                </div>
+
+                {{ form(signupForm) }}
+            </div>
+        </div>
+        <p id="cc-form-box-additional-link">
+            Already have an account? <a href="{{ path('login')  }}" title="Login">Login</a>
+        </p>
+    </div>
+</div>

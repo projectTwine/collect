@@ -1,0 +1,28 @@
+ClassCentral\SiteBundle\Entity\Instructor:
+  type: entity
+  table: instructors
+  repositoryClass: ClassCentral\SiteBundle\Repository\InstructorRepository
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: IDENTITY
+    name:
+      type: string
+      length: 100
+      fixed: false
+      nullable: false
+    homepage:
+      type: text
+      nullable: true  
+  manyToMany:
+    offerings:
+      targetEntity: Offering
+      mappedBy: instructors
+    courses:
+        targetEntity: Course
+        mappedBy: instructors
+  lifecycleCallbacks: {  }

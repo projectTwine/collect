@@ -1,0 +1,47 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+ {% block headmeta %}
+     <title>Meet your Next Course | Class Central</title>
+ {% endblock %}
+
+{%  block content %}
+
+    <span class="hidden" id="meet-your-next-course-page"></span>
+    <div class="intro-wrap">
+        <div class="description-wrap">
+            <div class="description">
+                <h1 class='cc-page-header'>Meet your Next Course</h1>
+                <p>These recommendations have been generated based on your interests. <a href="{{ path('ClassCentralSiteBundle_homepage',{'meet-your-next-course':true}) }}">Start over</a> to generate more recommendations. <a id="meetyournextcourse-create-free-account" href="">Sign up</a> to never miss a course to get updates about new and upcoming courses based on your interests.</p>
+            </div>
+        </div>
+    </div>
+
+    {% if results is not empty %}
+        <section class="courses">
+            <h2 class="section-heading">
+                <span>Courses</span>
+            </h2>
+            <div id="filter-wrap">
+                <div class="mobile-filter-btn-wrap">
+                    <a href="#" class="mobile-filter-btn">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4 col-lg-3 filter-column">
+                        {%  include 'ClassCentralSiteBundle:Helpers:filters.html.twig' with {} %}
+
+                    </div>
+                    <div class="col-sm-8 col-lg-9 table-column">
+                        <div class="tables-wrap">
+                            {% include 'ClassCentralSiteBundle:Helpers:course.table.html.twig' with{'results':results,'tableId':'meetyournextcourse',allowSorting: false} %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+{% endblock %}

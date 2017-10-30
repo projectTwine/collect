@@ -1,0 +1,41 @@
+ClassCentral\SiteBundle\Entity\ReviewFeedback:
+    type: entity
+    table: reviews_feedback
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        helpful:
+            type: boolean
+            nullable: false
+        created:
+            type: datetime
+            nullable: true
+        sessionId:
+            type: string
+            length: 50
+            column: session_id
+    manyToOne:
+        review:
+            targetEntity: Review
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                review_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        user:
+            targetEntity: User
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

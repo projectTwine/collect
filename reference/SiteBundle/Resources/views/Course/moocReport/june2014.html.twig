@@ -1,0 +1,470 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+ {% block headmeta %}
+     {% set count=198 %}
+     <title>MOOC Course Report - {{ month|capitalize }}, {{ year }}</title>
+     <meta name="description"
+           content="MOOC Report: List of {{ count }} courses starting in {{ month|capitalize }} {{ year }}"/>
+     <meta property="og:title" content="MOOC Report: List of {{ count }} courses starting in {{ month|capitalize }} {{ year }}" />
+     <meta property="og:url" content="https://www.class-central.com{{ path('mooc-report', {month: month, year: year}) }}" />
+     <meta property="og:image" content="https://d3r3mog6nu8pt4.cloudfront.net/mooc-report/mooc-report-june.jpg">
+     <meta property="og:site_name" content="Class Central"/>
+     <meta property="og:description" content="MOOC Report: List of {{ 198 }} courses starting in {{ month|capitalize }} {{ year }}" />
+     <meta property="og:type" content="website" />
+
+     <meta property="fb:admins" content="{{ fb_admins }}" />
+
+     <!-- Twitter card integration -->
+     <meta name="twitter:card" content="summary">
+     <meta name="twitter:site" content="@classcentral">
+     <meta name="twitter:title" content="MOOC Report: List of {{ count }} courses starting in {{ month|capitalize }} {{ year }}">
+     <meta name="twitter:description" content="MOOC Report: List of {{ count }} courses starting in {{ month|capitalize }} {{ year }}">
+     <meta name="twitter:domain" content="www.class-central.com">
+
+     <script type="text/javascript">
+         //<![CDATA[
+         (function() {
+             var shr = document.createElement('script');
+             shr.setAttribute('data-cfasync', 'false');
+             shr.src = '//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js';
+             shr.type = 'text/javascript'; shr.async = 'true';
+             shr.onload = shr.onreadystatechange = function() {
+                 var rs = this.readyState;
+                 if (rs && rs != 'complete' && rs != 'loaded') return;
+                 var site_id = '5fdc3916cf323ac313c8667aa04b147a';
+                 try { Shareaholic.init(site_id); } catch (e) {}
+             };
+             var s = document.getElementsByTagName('script')[0];
+             s.parentNode.insertBefore(shr, s);
+         })();
+         //]]>
+     </script>
+ {% endblock %}
+
+ {% block content %}
+
+     <div id="mooc-report" style="background-color: white; padding: 20px 40px">
+
+     <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='6526183' style="margin-left: -10px"></div>
+     <h1 style="color: #000000; font-size: 35px; margin-top: -10px">MOOC Report: List of 198 courses starting in June 2014</h1>
+     <em>MOOC Report is a monthly column published by <a href="http://www.class-central.com/" target="_blank">Class Central</a> during the first week of each month. MOOC Course report aims to provide a comprehensive list of courses starting/available in the month of publication. To receive this list via email signup for our <a title="MOOC Report Newsletter" href="https://www.class-central.com/newsletters/subscribe/mooc-report" target="_blank">monthly newsletter</a>.</em>
+
+     <br/>  <br/>
+     Self paced courses are not mentioned below and can be found over at <a title="Self Paced MOOC courses" href="http://www.class-central.com/courses/selfpaced" target="_blank">Class Central</a>.
+     <br/> <br/>
+     <a title="Permalink to Ten most popular MOOCs starting in June 2014." href="https://www.class-central.com/ten-most-popular-moocs/june-2014" rel="bookmark"><strong>Ten most popular MOOCs starting in June 2014.</strong></a>
+
+     <br/>
+
+     <h1><a href='https://www.class-central.com/stream/business'>Business & Management (33)</a></h1>
+     <a href='https://www.class-central.com/mooc/2040/edraak-ba_101-----'><strong>BA_101: استراتيجيات فعاله للبحث عن وظيفة</strong></a><br/>
+     <i>Jun 1st &middot; Edraak</i><br/>
+     <a href='https://www.class-central.com/mooc/345/coursera-introduction-to-finance'><strong>Introduction to Finance</strong></a><br/>
+     <i>Jun 2nd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/893/open2study-big-data-for-better-performance'><strong>Big Data for Better Performance</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/999/open2study-diagnosing-the-financial-health-of-a-business'><strong>Diagnosing the Financial Health of a Business</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/1471/open2study-emergency-management'><strong>Emergency Management</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/1639/open2study-entrepreneurship-and-family-business'><strong>Entrepreneurship and Family Business</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/894/open2study-financial-literacy'><strong>Financial Literacy</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/895/open2study-financial-planning'><strong>Financial Planning</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/1640/open2study-human-resources'><strong>Human Resources</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/1177/open2study-innovation-for-powerful-outcomes'><strong>Innovation for Powerful Outcomes</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/1002/open2study-introduction-to-business-in-asia'><strong>Introduction to Business in Asia</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/1003/open2study-introduction-to-enterprise-architecture'><strong>Introduction to Enterprise Architecture</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/1473/open2study-leadership-identity-influence-and-power'><strong>Leadership: Identity, Influence and Power</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/1644/open2study-negotiation-and-conflict-resolutio'><strong>Negotiation and Conflict Resolutio</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/1004/open2study-online-advertising'><strong>Online Advertising</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/900/open2study-principles-of-project-management'><strong>Principles of Project Management</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/901/open2study-sports-and-recreation-management'><strong>Sports and Recreation Management</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/902/open2study-strategic-management'><strong>Strategic Management</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/2008/miriada-x-estrategias-de-marketing-online-community-manager'><strong>Estrategias de Marketing Online. Community Manager</strong></a><br/>
+     <i>Jun 2nd &middot; Miríada X</i><br/>
+     <a href='https://www.class-central.com/mooc/2116/polimi-open-knowledge-gestconf101-gestire-il-conflitto'><strong>GestConf101 - Gestire il conflitto</strong></a><br/>
+     <i>Jun 4th &middot; Polimi OPEN KNOWLEDGE</i><br/>
+     <a href='https://www.class-central.com/mooc/2045/edraak-ba_102---'><strong>BA_102: السيرة الذاتية الناجحة</strong></a><br/>
+     <i>Jun 4th &middot; Edraak</i><br/>
+     <a href='https://www.class-central.com/mooc/2044/edraak-ba_103------'><strong>BA_103: كيف تسوق نفسك في سوق العمل</strong></a><br/>
+     <i>Jun 8th &middot; Edraak</i><br/>
+     <a href='https://www.class-central.com/mooc/1363/coursera-subsistence-marketplaces'><strong>Subsistence Marketplaces</strong></a><br/>
+     <i>Jun 9th &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/748/janux-introduction-to-management'><strong>Introduction to Management</strong></a><br/>
+     <i>Jun 9th &middot; Janux</i><br/>
+     <a href='https://www.class-central.com/mooc/1380/coursera-financing-and-investing-in-infrastructure'><strong>Financing and Investing in Infrastructure</strong></a><br/>
+     <i>Jun 9th &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/840/coursera-developing-innovative-ideas-for-new-companies-the-first-step-in-entrepreneurship'><strong>Developing Innovative Ideas for New Companies: The First Step in Entrepreneurship</strong></a><br/>
+     <i>Jun 9th &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/546/coursera-foundations-of-business-strategy'><strong>Foundations of Business Strategy</strong></a><br/>
+     <i>Jun 16th &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/2065/coursera-supply-chain-management-a-learning-perspective'><strong>Supply Chain Management: A Learning Perspective </strong></a><br/>
+     <i>Jun 16th &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/2088/canvas-net-the-entrepreneurial-educator-designing-for-the-21st-century'><strong>The Entrepreneurial Educator: Designing for the 21st Century</strong></a><br/>
+     <i>Jun 23rd &middot; Canvas.net</i><br/>
+     <a href='https://www.class-central.com/mooc/1201/iversity-the-do-school-start-up-lab'><strong>The DO School Start-Up Lab</strong></a><br/>
+     <i>Jun 28th &middot; iversity</i><br/>
+     <a href='https://www.class-central.com/mooc/1856/coursera-advanced-competitive-strategy'><strong>Advanced Competitive Strategy</strong></a><br/>
+     <i>Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/2060/futurelearn-starting-a-business-realise-your-vision'><strong>Starting a business: realise your vision</strong></a><br/>
+     <i>Jun 30th &middot; FutureLearn</i><br/>
+     <a href='https://www.class-central.com/mooc/1385/coursera----fundamentals-of-corporate-finance'><strong>Основы корпоративных финансов (Fundamentals of Corporate Finance)</strong></a><br/>
+     <i>Jun 30th &middot; Coursera</i><br/>
+     <h1><a href='https://www.class-central.com/stream/humanities'>Humanities (30)</a></h1>
+     <a href='https://www.class-central.com/mooc/1361/coursera-paradoxes-of-war'><strong>Paradoxes of War</strong></a><br/>
+     <i>Jun 1st &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/702/coursera--'><strong>中國古代歷史與人物－－秦始皇</strong></a><br/>
+     <i>Jun 1st &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1772/coursera-the-olympic-games-and-the-media'><strong>The Olympic Games and the Media</strong></a><br/>
+     <i>Jun 2nd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/2028/futurelearn-literature-of-the-english-country-house'><strong>Literature of the English Country House</strong></a><br/>
+     <i>Jun 2nd &middot; FutureLearn</i><br/>
+     <a href='https://www.class-central.com/mooc/352/coursera-fantasy-and-science-fiction-the-human-mind-our-modern-world'><strong>Fantasy and Science Fiction: The Human Mind, Our Modern World</strong></a><br/>
+     <i>Jun 2nd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1818/open2study-chinese-language-and-culture'><strong>Chinese Language and Culture</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/485/coursera-animal-behaviour'><strong>Animal Behaviour</strong></a><br/>
+     <i>Jun 2nd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1472/open2study-indigenous-studies-australia-and-aotearoa-new-zealand'><strong>Indigenous Studies: Australia and Aotearoa New Zealand</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/1474/open2study-midwifery'><strong>Midwifery</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/1005/open2study-understanding-the-origins-of-crime'><strong>Understanding the Origins of Crime</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/905/open2study-writing-for-the-web'><strong>Writing for the Web</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/973/canvas-net-college-foundations-reading-writing-and-math'><strong>College Foundations: Reading, Writing, and Math</strong></a><br/>
+     <i>Jun 2nd &middot; Canvas.net</i><br/>
+     <a href='https://www.class-central.com/mooc/2047/edraak-ecdv100-----'><strong>ECDV100: العرب: أين، وإلى أين؟  إدراك</strong></a><br/>
+     <i>Jun 5th &middot; Edraak</i><br/>
+     <a href='https://www.class-central.com/mooc/2049/edraak-czn100----'><strong>CZN100: المواطنة في العالم العربي</strong></a><br/>
+     <i>Jun 5th &middot; Edraak</i><br/>
+     <a href='https://www.class-central.com/mooc/353/coursera-greek-and-roman-mythology'><strong>Greek and Roman Mythology</strong></a><br/>
+     <i>Jun 8th &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/2017/coursera-deciphering-secrets-unlocking-the-manuscripts-of-medieval-spain'><strong>Deciphering Secrets: Unlocking the Manuscripts of Medieval Spain</strong></a><br/>
+     <i>Jun 15th &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1933/gacco-ga003--'><strong>ga003: 国際安全保障論 ～戦争と平和のパズルを分析的に読み解く～</strong></a><br/>
+     <i>Jun 16th &middot; gacco</i><br/>
+     <a href='https://www.class-central.com/mooc/1258/futurelearn-sustainability-society-and-you'><strong>Sustainability, society and you</strong></a><br/>
+     <i>Jun 16th &middot; FutureLearn</i><br/>
+     <a href='https://www.class-central.com/mooc/766/coursera-crafting-an-effective-writer-tools-of-the-trade-fundamental-english-writing'><strong>Crafting an Effective Writer: Tools of the Trade (Fundamental English Writing)</strong></a><br/>
+     <i>Jun 20th &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1269/coursera-how-to-change-the-world'><strong>How to Change the World</strong></a><br/>
+     <i>Jun 21st &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/2030/futurelearn-right-vs-might-in-international-relations'><strong>Right vs Might in International Relations</strong></a><br/>
+     <i>Jun 23rd &middot; FutureLearn</i><br/>
+     <a href='https://www.class-central.com/mooc/543/coursera-english-common-law-structure-and-principles'><strong>English Common Law: Structure and Principles</strong></a><br/>
+     <i>Jun 23rd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/2085/canvas-net-mega-events-inside-the-fifa-world-cup'><strong>Mega Events: Inside the FIFA World Cup</strong></a><br/>
+     <i>Jun 23rd &middot; Canvas.net</i><br/>
+     <a href='https://www.class-central.com/mooc/989/canvas-net-thinking-like-a-writer'><strong>Thinking Like a Writer</strong></a><br/>
+     <i>Jun 23rd &middot; Canvas.net</i><br/>
+     <a href='https://www.class-central.com/mooc/2091/canvas-net-mastering-academic-research-information-skills-for-successful-students'><strong>Mastering Academic Research: Information Skills for Successful Students</strong></a><br/>
+     <i>Jun 23rd &middot; Canvas.net</i><br/>
+     <a href='https://www.class-central.com/mooc/920/coursera-globalization-and-you'><strong>Globalization and You</strong></a><br/>
+     <i>Jun 24th &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/2036/how-writers-write-poetry'><strong>How Writers Write Poetry</strong></a><br/>
+     <i>Jun 28th &middot; Others</i><br/>
+     <a href='https://www.class-central.com/mooc/1250/futurelearn-england-in-the-time-of-king-richard-iii'><strong>England in the time of King Richard III</strong></a><br/>
+     <i>Jun 30th &middot; FutureLearn</i><br/>
+     <a href='https://www.class-central.com/mooc/2015/coursera-risk-and-opportunity-managing-risk-for-development'><strong>Risk and Opportunity: Managing Risk for Development</strong></a><br/>
+     <i>Jun 30th &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1969/coursera-representaciones-culturales-de-las-sexualidades'><strong>Representaciones Culturales de las Sexualidades </strong></a><br/>
+     <i>Jun 30th &middot; Coursera</i><br/>
+     <h1><a href='https://www.class-central.com/stream/social-sciences'>Social Sciences (15)</a></h1>
+     <a href='https://www.class-central.com/mooc/2058/coursesites-origins-and-progression-of-sports-in-america'><strong>Origins and Progression of Sports in America</strong></a><br/>
+     <i>Jun 1st &middot; CourseSites</i><br/>
+     <a href='https://www.class-central.com/mooc/1767/coursera-understanding-research-methods'><strong>Understanding Research Methods</strong></a><br/>
+     <i>Jun 2nd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/317/coursera-model-thinking'><strong>Model Thinking</strong></a><br/>
+     <i>Jun 2nd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/892/open2study-becoming-human-anthropology'><strong>Becoming Human: Anthropology</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/1980/edx-fpp-1x-financial-programming-and-policies-part-1-macroeconomic-accounts-analysis'><strong>FPP.1x: Financial Programming and Policies, Part 1: Macroeconomic Accounts & Analysis</strong></a><br/>
+     <i>Jun 2nd &middot; EdX</i><br/>
+     <a href='https://www.class-central.com/mooc/897/open2study-foundations-of-psychology'><strong>Foundations of Psychology</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/2002/miriada-x-curso-fundamental-de-microeconomia-3-edicion'><strong>Curso Fundamental de Microeconomía (3ª edición)</strong></a><br/>
+     <i>Jun 2nd &middot; Miríada X</i><br/>
+     <a href='https://www.class-central.com/mooc/1416/open2study-sociology'><strong>Sociology</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/1935/futurelearn-forensic-psychology-witness-investigation'><strong>Forensic psychology: witness investigation</strong></a><br/>
+     <i>Jun 9th &middot; FutureLearn</i><br/>
+     <a href='https://www.class-central.com/mooc/436/coursera-microeconomics-principles'><strong>Microeconomics Principles</strong></a><br/>
+     <i>Jun 16th &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/891/coursera-networks-illustrated-principles-without-calculus'><strong>Networks Illustrated: Principles without Calculus</strong></a><br/>
+     <i>Jun 16th &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1050/coursera-the-power-of-macroeconomics-economic-principles-in-the-real-world'><strong>The Power of Macroeconomics: Economic Principles in the Real World</strong></a><br/>
+     <i>Jun 21st &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1054/coursera-the-power-of-microeconomics-economic-principles-in-the-real-world'><strong>The Power of Microeconomics: Economic Principles in the Real World</strong></a><br/>
+     <i>Jun 23rd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1387/coursera-introduction-to-neuroeconomics-how-the-brain-makes-decisions'><strong>Introduction to Neuroeconomics: how the brain makes decisions</strong></a><br/>
+     <i>Jun 23rd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/2010/coursera-presumed-innocent-the-social-science-of-wrongful-conviction'><strong>Presumed Innocent? The Social Science of Wrongful Conviction</strong></a><br/>
+     <i>Jun 25th &middot; Coursera</i><br/>
+     <h1><a href='https://www.class-central.com/stream/health'>Health & Medicine (19)</a></h1>
+     <a href='https://www.class-central.com/mooc/1252/futurelearn-improving-your-image-dental-photography-in-practice'><strong>Improving your image: dental photography in practice</strong></a><br/>
+     <i>Jun 2nd &middot; FutureLearn</i><br/>
+     <a href='https://www.class-central.com/mooc/540/coursera-data-management-for-clinical-research'><strong>Data Management for Clinical Research</strong></a><br/>
+     <i>Jun 2nd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1950/edx-ph555x-improving-global-health-focusing-on-quality-and-safety'><strong>PH555x: Improving Global Health: Focusing on Quality and Safety</strong></a><br/>
+     <i>Jun 2nd &middot; EdX</i><br/>
+     <a href='https://www.class-central.com/mooc/822/coursera-the-science-of-safety-in-healthcare'><strong>The Science of Safety in Healthcare</strong></a><br/>
+     <i>Jun 2nd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/896/open2study-food-nutrition-your-health'><strong>Food, Nutrition & Your Health</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/898/open2study-introduction-to-nursing-in-healthcare'><strong>Introduction to Nursing in Healthcare</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/1417/open2study-the-human-body-as-a-machine'><strong>The Human Body as a Machine</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/1418/open2study-understanding-common-diseases'><strong>Understanding Common Diseases</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/1864/mars2014-1x-metabolic-applied-research-strategy'><strong>MARS2014-1x: Metabolic Applied Research Strategy</strong></a><br/>
+     <i>Others</i><br/>
+     <a href='https://www.class-central.com/mooc/660/coursera-kiglobalhx-an-introduction-to-global-health'><strong>KIGlobalHx: An Introduction to Global Health</strong></a><br/>
+     <i>Jun 3rd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1975/futurelearn-swallowing-difficulties-and-medicines'><strong>Swallowing difficulties and medicines</strong></a><br/>
+     <i>Jun 9th &middot; FutureLearn</i><br/>
+     <a href='https://www.class-central.com/mooc/1977/futurelearn-obesity-causes-and-consequences'><strong>Obesity: causes and consequences</strong></a><br/>
+     <i>Jun 9th &middot; FutureLearn</i><br/>
+     <a href='https://www.class-central.com/mooc/2043/edraak-cmh100---'><strong>CMH100: الصحة النفسيه للطفل</strong></a><br/>
+     <i>Jun 10th &middot; Edraak</i><br/>
+     <a href='https://www.class-central.com/mooc/1365/coursera-global-health-and-humanitarianism'><strong>Global Health and Humanitarianism</strong></a><br/>
+     <i>Jun 16th &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/478/coursera-nutrition-and-physical-activity-for-health'><strong>Nutrition and Physical Activity for Health</strong></a><br/>
+     <i>Jun 16th &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/2062/coursera-grundlagenkurs-unfallchirurgie'><strong>Grundlagenkurs Unfallchirurgie</strong></a><br/>
+     <i>Jun 20th &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1808/coursera-the-meat-we-eat'><strong>The Meat We Eat</strong></a><br/>
+     <i>Jun 23rd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/597/coursera-genes-and-the-human-condition-from-behavior-to-biotechnology'><strong>Genes and the Human Condition (From Behavior to Biotechnology)</strong></a><br/>
+     <i>Jun 23rd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1403/coursera-the-addicted-brain'><strong>The Addicted Brain</strong></a><br/>
+     <i>Jun 23rd &middot; Coursera</i><br/>
+     <h1><a href='https://www.class-central.com/stream/science'>Science (22)</a></h1>
+     <a href='https://www.class-central.com/mooc/1642/open2study-microbiology-and-forensic-science'><strong>Microbiology and Forensic Science</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/1925/canvas-net-sustainable-energy-innovation'><strong>Sustainable Energy Innovation</strong></a><br/>
+     <i>Jun 2nd &middot; Canvas.net</i><br/>
+     <a href='https://www.class-central.com/mooc/815/coursera-introduction-to-thermodynamics-transferring-energy-from-here-to-there'><strong>Introduction to Thermodynamics: Transferring Energy from Here to There</strong></a><br/>
+     <i>Jun 2nd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1968/canvas-net-climate-science-connections-water-in-the-west'><strong>Climate Science Connections: Water in the West</strong></a><br/>
+     <i>Jun 2nd &middot; Canvas.net</i><br/>
+     <a href='https://www.class-central.com/mooc/1415/open2study-agriculture-and-the-world-we-live-in'><strong>Agriculture and the World We Live In</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/997/open2study-astronomy-discovering-the-universe'><strong>Astronomy: Discovering the Universe</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/1174/open2study-basic-physics'><strong>Basic Physics</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/1297/open2study-chemistry-building-blocks-of-the-world'><strong>Chemistry – Building Blocks of the World</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/1175/open2study-climate-change'><strong>Climate Change</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/1638/open2study-contemporary-issues-in-ocean-governance'><strong>Contemporary Issues in Ocean Governance</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/1456/coursera-introduction-to-physical-chemistry'><strong>Introduction to Physical Chemistry</strong></a><br/>
+     <i>Jun 2nd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1641/open2study-marine-and-antarctic-science'><strong>Marine and Antarctic Science</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/1476/open2study-water-in-a-thirsty-world'><strong>Water in a Thirsty World</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/2114/polimi-open-knowledge-fis101-introduzione-alla-fisica-sperimentale-meccanica-termodinamica'><strong>FinAccount101 - Introduction to financial and management accounting</strong></a><br/>
+     <i>Jun 3rd &middot; Polimi OPEN KNOWLEDGE</i><br/>
+     <a href='https://www.class-central.com/mooc/742/edx-2-01x-elements-of-structures'><strong> 2.01x: Elements of Structures</strong></a><br/>
+     <i>Jun 3rd &middot; EdX</i><br/>
+     <a href='https://www.class-central.com/mooc/945/edx-medx202-01-genomic-medicine-gets-personal'><strong>MEDX202-01: Genomic Medicine Gets Personal</strong></a><br/>
+     <i>Jun 4th &middot; EdX</i><br/>
+     <a href='https://www.class-central.com/mooc/2055/coursera-our-energy-future'><strong>Our Energy Future</strong></a><br/>
+     <i>Jun 9th &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/2012/coursera-bioinformatics-life-sciences-on-your-computer'><strong>Bioinformatics: Life Sciences on Your Computer</strong></a><br/>
+     <i>Jun 9th &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1984/edx-7-qbwx-quantitative-biology-workshop'><strong>7.QBWx: Quantitative Biology Workshop</strong></a><br/>
+     <i>Jun 10th &middot; EdX</i><br/>
+     <a href='https://www.class-central.com/mooc/637/edx-7-00x-introduction-to-biology-the-secret-of-life'><strong>7.00x: Introduction to Biology - The Secret of Life</strong></a><br/>
+     <i>Jun 17th &middot; EdX</i><br/>
+     <a href='https://www.class-central.com/mooc/1444/futurelearn-good-brain-bad-brain-basics'><strong>Good brain, bad brain: basics</strong></a><br/>
+     <i>Jun 23rd &middot; FutureLearn</i><br/>
+     <a href='https://www.class-central.com/mooc/1635/edx-anu-astro2x-exoplanets'><strong>ANU-ASTRO2x: Exoplanets</strong></a><br/>
+     <i>Jun 24th &middot; EdX</i><br/>
+     <h1><a href='https://www.class-central.com/stream/art-and-design'>Art & Design (8)</a></h1>
+     <a href='https://www.class-central.com/mooc/731/coursera-fundamentals-of-rehearsing-music-ensembles'><strong>Fundamentals of Rehearsing Music Ensembles</strong></a><br/>
+     <i>Jun 2nd &middot; 8 weeks long &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1645/open2study-the-art-of-drawing-and-painting'><strong>The Art of Drawing and Painting</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/1560/open2study-the-art-of-photography'><strong>The Art of Photography</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/1477/open2study-world-music'><strong>World Music</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/1870/edx-usw30x-tangible-things-discovering-history-through-artworks-artifacts-scientific-specimens-and-the-stuff-around-you'><strong>USW30x:  Tangible Things: Discovering History Through Artworks, Artifacts, Scientific Specimens, and the Stuff Around You </strong></a><br/>
+     <i>Jun 2nd &middot; EdX</i><br/>
+     <a href='https://www.class-central.com/mooc/2046/edraak-flm100-------'><strong>FLM100: رحلة في صناعة الأفلام مع نادين لبكي</strong></a><br/>
+     <i>Jun 15th &middot; Edraak</i><br/>
+     <a href='https://www.class-central.com/mooc/1805/coursesites-introducing-entrepreneurship-for-musicians'><strong>Introducing Entrepreneurship for Musicians</strong></a><br/>
+     <i>Jun 16th &middot; CourseSites</i><br/>
+     <a href='https://www.class-central.com/mooc/1998/miriada-x-arte-latinoamericano-con-enfasis-colombia-2-edicion'><strong>Arte Latinoamericano con Énfasis Colombia (2ª edición)</strong></a><br/>
+     <i>Jun 16th &middot; Miríada X</i><br/>
+     <h1><a href='https://www.class-central.com/stream/maths'>Mathematics and Stats (18)</a></h1>
+     <a href='https://www.class-central.com/mooc/932/edx-stat2-3x-introduction-to-statistics-inference'><strong>Stat2.3x: Introduction to Statistics: Inference</strong></a><br/>
+     <i>Jun 2nd &middot; EdX</i><br/>
+     <a href='https://www.class-central.com/mooc/1412/coursera-cok-degiskenli-fonksiyonlarda-turev-ve-entegral-i-temel-kavram-ve-yontemler-multivariable-calculus-i-fundamental-concepts-and-basic-techniques'><strong>Çok Değişkenli Fonksiyonlarda Türev ve Entegral I: Temel Kavram ve Yöntemler / Multivariable Calculus I: Fundamental Concepts and Basic Techniques</strong></a><br/>
+     <i>Jun 2nd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1712/coursera-the-data-scientist-s-toolbox'><strong>The Data Scientist’s Toolbox</strong></a><br/>
+     <i>Jun 2nd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1713/coursera-r-programming'><strong>R Programming</strong></a><br/>
+     <i>Jun 2nd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1714/coursera-getting-and-cleaning-data'><strong>Getting and Cleaning Data</strong></a><br/>
+     <i>Jun 2nd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1715/coursera-exploratory-data-analysis'><strong>Exploratory Data Analysis</strong></a><br/>
+     <i>Jun 2nd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1716/coursera-reproducible-research'><strong>Reproducible Research</strong></a><br/>
+     <i>Jun 2nd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1717/coursera-statistical-inference'><strong>Statistical Inference</strong></a><br/>
+     <i>Jun 2nd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1718/coursera-regression-models'><strong>Regression Models</strong></a><br/>
+     <i>Jun 2nd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1719/coursera-practical-machine-learning'><strong>Practical Machine Learning</strong></a><br/>
+     <i>Jun 2nd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1720/coursera-developing-data-products'><strong>Developing Data Products</strong></a><br/>
+     <i>Jun 2nd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/963/canvas-net-math-refresher-with-college-success-tips'><strong>Math Refresher with College Success Tips</strong></a><br/>
+     <i>Jun 2nd &middot; Canvas.net</i><br/>
+     <a href='https://www.class-central.com/mooc/2115/polimi-open-knowledge-mat101-matematica-di-base-per-l-universita-pre-calculus'><strong>MAT101 - Matematica di base per l'università: Pre-Calculus</strong></a><br/>
+     <i>Jun 3rd &middot; Polimi OPEN KNOWLEDGE</i><br/>
+     <a href='https://www.class-central.com/mooc/1993/miriada-x-estadistica-descriptiva'><strong>Estadística descriptiva</strong></a><br/>
+     <i>Jun 6th &middot; Miríada X</i><br/>
+     <a href='https://www.class-central.com/mooc/596/coursera-mathematical-biostatistics-boot-camp-1'><strong>Mathematical Biostatistics Boot Camp 1</strong></a><br/>
+     <i>Jun 16th &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/917/stanford-openedx-educ115n-how-to-learn-math'><strong>EDUC115N: How to Learn Math</strong></a><br/>
+     <i>Jun 17th &middot; Stanford OpenEdx</i><br/>
+     <a href='https://www.class-central.com/mooc/843/coursera-pre-calculus'><strong>Pre-Calculus</strong></a><br/>
+     <i>Jun 23rd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/2093/canvas-net-technical-mathematics-for-industry'><strong>Technical Mathematics for Industry</strong></a><br/>
+     <i>Jun 23rd &middot; Canvas.net</i><br/>
+     <h1><a href='https://www.class-central.com/stream/education'>Education & Teaching (23)</a></h1>
+     <a href='https://www.class-central.com/mooc/1653/miriada-x-espanol-salamanca-a2'><strong>Español Salamanca A2</strong></a><br/>
+     <i>Jun 2nd &middot; Miríada X</i><br/>
+     <a href='https://www.class-central.com/mooc/949/coursera-instructional-methods-in-health-professions-education'><strong>Instructional Methods in Health Professions Education</strong></a><br/>
+     <i>Jun 2nd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/862/coursera-evolution-a-course-for-educators'><strong>Evolution: A Course for Educators</strong></a><br/>
+     <i>Jun 2nd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/2059/coursera-liderazgo-en-gestion-educativa-estrategica-a-traves-del-uso-de-la-tecnologia'><strong>Liderazgo en gestión educativa estratégica a través del uso de la tecnología</strong></a><br/>
+     <i>Jun 2nd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/998/open2study-becoming-a-confident-trainer'><strong>Becoming a Confident Trainer</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/1000/open2study-early-childhood-education'><strong>Early Childhood Education</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/1001/open2study-education-in-a-changing-world'><strong>Education in a Changing World</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/903/open2study-teaching-adult-learners'><strong>Teaching Adult Learners</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/2086/canvas-net-steam-camp-diy'><strong>STEAM CAMP - DIY</strong></a><br/>
+     <i>Jun 2nd &middot; Canvas.net</i><br/>
+     <a href='https://www.class-central.com/mooc/2087/canvas-net-technology-in-a-foreign-language-class'><strong>Technology in A Foreign Language Class</strong></a><br/>
+     <i>Jun 2nd &middot; Canvas.net</i><br/>
+     <a href='https://www.class-central.com/mooc/2090/canvas-net-5-habits-of-highly-creative-teachers'><strong>5 Habits of Highly Creative Teachers</strong></a><br/>
+     <i>Jun 2nd &middot; Canvas.net</i><br/>
+     <a href='https://www.class-central.com/mooc/1059/canvas-net-risk-management-in-higher-education-student-issues'><strong>Risk Management in Higher Education: Student Issues</strong></a><br/>
+     <i>Jun 2nd &middot; Canvas.net</i><br/>
+     <a href='https://www.class-central.com/mooc/2050/edraak-tlc100---'><strong>TLC100: علِّم بثقة</strong></a><br/>
+     <i>Jun 5th &middot; Edraak</i><br/>
+     <a href='https://www.class-central.com/mooc/1926/edx-ecfs312x-positive-behavior-support-for-young-children'><strong>ECFS312x: Positive Behavior Support for Young Children</strong></a><br/>
+     <i>Jun 10th &middot; EdX</i><br/>
+     <a href='https://www.class-central.com/mooc/1443/futurelearn-preparing-for-uni'><strong>Preparing for Uni</strong></a><br/>
+     <i>Jun 16th &middot; FutureLearn</i><br/>
+     <a href='https://www.class-central.com/mooc/867/coursera-tinkering-fundamentals-a-constructionist-approach-to-stem-learning'><strong>Tinkering Fundamentals: A Constructionist Approach to STEM Learning</strong></a><br/>
+     <i>Jun 19th &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1978/coursera-teaching-goes-massive-new-skills-required'><strong>Teaching goes massive: new skills required</strong></a><br/>
+     <i>Jun 23rd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1764/coursera-applying-principles-of-behavior-in-the-k-12-classroom'><strong>Applying Principles of Behavior in the K-12 Classroom</strong></a><br/>
+     <i>Jun 23rd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1143/canvas-net-teaching-online-reflections-on-practice'><strong>Teaching Online: Reflections on Practice</strong></a><br/>
+     <i>Jun 23rd &middot; Canvas.net</i><br/>
+     <a href='https://www.class-central.com/mooc/860/coursera-foundations-of-virtual-instruction'><strong>Foundations of Virtual Instruction</strong></a><br/>
+     <i>Jun 30th &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1936/futurelearn-study-skills-for-international-students'><strong>Study skills for international students</strong></a><br/>
+     <i>Jun 30th &middot; FutureLearn</i><br/>
+     <a href='https://www.class-central.com/mooc/2066/coursera-e-learning-ecologies'><strong>e-Learning Ecologies</strong></a><br/>
+     <i>Jun 30th &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1750/coursera-assessment-and-teaching-of-21st-century-skills'><strong>Assessment and Teaching of 21st Century Skills</strong></a><br/>
+     <i>Jun 30th &middot; Coursera</i><br/>
+     <h1><a href='https://www.class-central.com/stream/cs'>Computer Science (23)</a></h1>
+     <a href='https://www.class-central.com/mooc/335/coursera-internet-history-technology-and-security'><strong>Internet History, Technology, and Security</strong></a><br/>
+     <i>Jun 2nd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1957/coursera-programming-for-everybody'><strong>Programming for Everybody</strong></a><br/>
+     <i>Jun 2nd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1188/mongodb-university-m101js-mongodb-for-node-js-developers'><strong>M101JS: MongoDB for Node.js Developers</strong></a><br/>
+     <i>Jun 2nd &middot; MongoDB University</i><br/>
+     <a href='https://www.class-central.com/mooc/1850/futurelearn-creative-coding'><strong>Creative coding</strong></a><br/>
+     <i>Jun 2nd &middot; FutureLearn</i><br/>
+     <a href='https://www.class-central.com/mooc/1176/open2study-concepts-in-game-development'><strong>Concepts in Game Development</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/2042/edraak-cs100-----'><strong>CS100: مقدمة في علم الحاسوب والبرمجة</strong></a><br/>
+     <i>Jun 5th &middot; Edraak</i><br/>
+     <a href='https://www.class-central.com/mooc/1724/coursera-principles-of-computing'><strong>Principles of Computing</strong></a><br/>
+     <i>Jun 9th &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/558/edx-cs169-2x-software-as-a-service'><strong>CS169.2x: Software as a Service</strong></a><br/>
+     <i>Jun 10th &middot; EdX</i><br/>
+     <a href='https://www.class-central.com/mooc/1346/opensap-introduction-to-sap-hana-cloud-platform'><strong>Introduction to SAP HANA Cloud Platform</strong></a><br/>
+     <i>Jun 11th &middot; openSAP</i><br/>
+     <a href='https://www.class-central.com/mooc/1341/edx-6-00-1x-introduction-to-computer-science-and-programming-using-python'><strong>6.00x: Introduction to Computer Science and Programming</strong></a><br/>
+     <i>Jun 11th &middot; EdX</i><br/>
+     <a href='https://www.class-central.com/mooc/2056/opensap-next-steps-in-sap-hana-cloud-platform'><strong>Next Steps in SAP HANA Cloud Platform</strong></a><br/>
+     <i>Jun 12th &middot; openSAP</i><br/>
+     <a href='https://www.class-central.com/mooc/339/coursera-algorithms-part-i'><strong>Algorithms, Part I</strong></a><br/>
+     <i>Jun 13th &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/835/coursera-machine-learning'><strong>Machine Learning</strong></a><br/>
+     <i>Jun 16th &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1838/futurelearn-teaching-computing-part-2'><strong>Teaching computing: part 2</strong></a><br/>
+     <i>Jun 16th &middot; FutureLearn</i><br/>
+     <a href='https://www.class-central.com/mooc/2035/forum-academy-plm14101-global-information-technology-outlook'><strong>PLM14101: Global Information Technology Outlook</strong></a><br/>
+     <i>Jun 17th &middot; Forum Academy</i><br/>
+     <a href='https://www.class-central.com/mooc/1983/edx-comp102x-introduction-to-computing-with-java'><strong>COMP102x: Introduction to Computing with Java</strong></a><br/>
+     <i>Jun 20th &middot; EdX</i><br/>
+     <a href='https://www.class-central.com/mooc/529/coursera-creative-programming-for-digital-media-mobile-apps'><strong>Creative Programming for Digital Media & Mobile Apps</strong></a><br/>
+     <i>Jun 23rd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/600/mongodb-university-m101p-mongodb-for-developers'><strong>M101P: MongoDB for Developers</strong></a><br/>
+     <i>Jun 24th &middot; MongoDB University</i><br/>
+     <a href='https://www.class-central.com/mooc/306/coursera-human-computer-interaction'><strong>Human-Computer Interaction</strong></a><br/>
+     <i>Jun 30th &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/426/coursera-algorithms-design-and-analysis-part-2'><strong>Algorithms: Design and Analysis, Part 2</strong></a><br/>
+     <i>Jun 30th &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/616/coursera-cryptography-i'><strong>Cryptography I</strong></a><br/>
+     <i>Jun 30th &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/453/coursera-the-hardware-software-interface'><strong>The Hardware/Software Interface</strong></a><br/>
+     <i>Jun 30th &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/451/coursera-introduction-to-data-science'><strong>Introduction to Data Science</strong></a><br/>
+     <i>Jun 30th &middot; Coursera</i><br/>
+     <h1><a href='https://www.class-central.com/stream/engineering'>Engineering (7)</a></h1>
+     <a href='https://www.class-central.com/mooc/1822/coursera-organic-solar-cells-theory-and-practice'><strong>Organic Solar Cells - Theory and Practice</strong></a><br/>
+     <i>Jun 2nd &middot; Coursera</i><br/>
+     <a href='https://www.class-central.com/mooc/1643/open2study-mining-engineering'><strong>Mining Engineering</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/1475/open2study-mobile-robotics'><strong>Mobile Robotics</strong></a><br/>
+     <i>Jun 2nd &middot; 4 weeks long &middot; Open2Study</i><br/>
+     <a href='https://www.class-central.com/mooc/2041/edraak-ce100---'><strong>CE100: دارات كهربائية وإلكترونية</strong></a><br/>
+     <i>Jun 5th &middot; Edraak</i><br/>
+     <a href='https://www.class-central.com/mooc/1979/edx-snu446-345-2x-robot-mechanics-and-control-part-ii'><strong>SNU446.345.2x: Robot Mechanics and Control, Part II</strong></a><br/>
+     <i>Jun 9th &middot; EdX</i><br/>
+     <a href='https://www.class-central.com/mooc/1274/iversity-vehicle-dynamics-ii-cornering'><strong>Vehicle Dynamics II: Cornering</strong></a><br/>
+     <i>Jun 16th &middot; iversity</i><br/>
+     <a href='https://www.class-central.com/mooc/2078/upv-x-dynamics-and-control'><strong>Dynamics and Control</strong></a><br/>
+     <i>Jun 17th &middot; UPV [X]</i><br/>
+
+
+
+     </div>
+
+ {% endblock %}

@@ -1,0 +1,25 @@
+ClassCentral\SiteBundle\Entity\Collection:
+    type: entity
+    table: collections
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        title:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        created:
+            type: datetime
+            nullable: false
+        slug:
+            type: string
+            length: 100
+            fixed: false
+            nullable: false
+    lifecycleCallbacks: {  }

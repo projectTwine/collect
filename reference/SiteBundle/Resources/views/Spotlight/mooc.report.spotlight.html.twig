@@ -1,0 +1,43 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block content -%}
+
+    <h2 class="section-heading">
+        <span>MOOC Report</span>
+    </h2>
+
+    <div class="row">
+        {% for position in 13..17 %}
+            {% set spotlight = spotlights[position] %}
+            <div class="col-xs-6 col-sm-4 col-md-3 spotlight-item-wrap {{ spotlightMap[spotlight.type].visible }}
+               {% if spotlight.position != 13 and spotlight.position !=14 %} hidden-xs {% endif %}
+            "
+
+                 id="home-spotlight-{{ spotlight.position }}">
+                <a class="spotlight-item {{ spotlightMap[spotlight.type].class }}" href="{{ spotlight.url }}"
+                   onmousedown="ga('send','event','Spotlight','{{ spotlight.position }}',
+                           '{% if spotlight.title %} {{ spotlight.title }} {% else %} {{ spotlight.description }} {% endif %}');"
+                        {% if spotlight.type == 5 %} rel="nofollow" {% endif %} {# sponsor links #}
+                        >
+                    <div class="img-wrap">
+                        {% set spotlightImage = imageService.getSpotlightImage (spotlight.imageUrl, spotlight.id) %}
+                        <img src="{{ spotlightImage }}" alt="spotlight background image">
+                        {% if spotlight.title %}
+                            <h3>
+                                {{ spotlight.title }}
+                            </h3>
+                        {% endif %}
+                    </div>
+                    <p class="excerpt">
+                        {{ spotlight.description }}
+                    </p>
+                    <span class="action">{{ spotlightMap[spotlight.type].text }}</span>
+                </a>
+            </div>
+        {% endfor %}
+
+    </div>
+
+    <h4><a href="{{ path('spotlight_mooc_report_right_shift') }}" >Right Shift Spotlight</a></h4>
+
+{% endblock %}

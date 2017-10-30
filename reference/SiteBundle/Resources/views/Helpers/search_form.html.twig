@@ -1,0 +1,12 @@
+<div class='cc-home-form'>
+    <form action="{{ path('ClassCentralSiteBundle_search') }}" method="get" name="search">
+        <div class="input-append">
+            <input class="cc-search-box" placeholder="What do you want to learn?" {% if keywords is not null %} value="{{keywords}}" {% endif %} id="st-search-input" type="text" name="q">
+            <button>
+                <svg viewBox="0 0 33 32" class="icon-search">
+                    <use xlink:href="#icon-cc-logo2"></use>
+                </svg>
+            </button>
+        </div>
+    </form>
+</div>

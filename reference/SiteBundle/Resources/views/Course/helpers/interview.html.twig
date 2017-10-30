@@ -1,0 +1,27 @@
+{% if course.interview %}
+    {% set interview = course.interview %}
+    <div class="course-review-card">
+        <div class="review-card">
+            <div class="review-card__header">
+                <div class="review-card__image">
+                    <img src="{{ interview.image }}" alt="{{ interview.instructorName }}">
+                </div>
+                <div class="review-card__info">
+                    <div class="review-card__small-text">Class Central presents</div>
+                    <div class="review-card__subtitle">An interview with</div>
+                    <div class="review-card__title">{{ interview.instructorName }}</div>
+                </div>
+            </div>
+
+            <div class="review-card__body">
+                <span class="triangle"></span>
+                {{ interview.summary }}
+                <a href="{{ interview.url }}"
+                   class="review-card__read"
+                   onmousedown="ga('send','event','Read Instructor Interview','{{ course.name }}')"
+                >Read</a>
+
+            </div>
+        </div>
+    </div>
+{% endif %}

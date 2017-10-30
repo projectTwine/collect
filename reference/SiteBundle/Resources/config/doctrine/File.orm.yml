@@ -1,0 +1,52 @@
+ClassCentral\SiteBundle\Entity\File:
+    type: entity
+    table: files
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        entity:
+            type: string
+            length: 50
+            fixed: false
+            nullable: false
+        type:
+            type: string
+            length: 50
+            fixed: false
+            nullable: false
+        entityId:
+            type: string
+            length: 50
+            fixed: false
+            nullable: false
+            column: entity_id
+        fileName:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            column: file_name
+        fileType:
+            type: string
+            length: 50
+            fixed: false
+            nullable: true
+            column: file_type
+        uniqueKey:
+            type: string
+            length: 100
+            fixed: false
+            nullable: true
+            column: unique_key
+        created:
+          type: datetime
+          nullable: true
+        modified:
+          type: datetime
+          nullable: true
+    lifecycleCallbacks: {  }

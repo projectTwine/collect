@@ -1,0 +1,24 @@
+<script>
+window.gscript = document.createElement('script');
+$('body').append(window.gscript);
+
+window.gscript.onload = function() {
+  gapi.load('auth2', function(){
+    // Retrieve the singleton for the GoogleAuth library and set up the client.
+    var auth2 = gapi.auth2.init({
+      client_id: '{{ google_auth_client_id }}',
+      cookiepolicy: 'single_host_origin'
+    });
+
+    var signInButtons = document.getElementsByClassName("sign-in-with-google");
+
+    for (var i = 0; i < signInButtons.length; i++) {
+      auth2.attachClickHandler(signInButtons.item(i), {}, function(googleUser) {
+        CC.Class['User'].googleAuth(googleUser.getAuthResponse().id_token);
+      }, function(error) {});
+    }
+  });
+}
+
+window.gscript.src = "https://apis.google.com/js/api:client.js";
+</script>

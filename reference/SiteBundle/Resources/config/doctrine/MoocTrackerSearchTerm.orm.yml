@@ -1,0 +1,31 @@
+ClassCentral\SiteBundle\Entity\MoocTrackerSearchTerm:
+    type: entity
+    table: mooc_tracker_search_terms
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        searchTerm:
+            type: string
+            length: 100
+            fixed: false
+            nullable: false
+            column: search_term
+        created:
+            type: datetime
+            nullable: true
+    manyToOne:
+        user:
+            targetEntity: User
+            cascade: {  }
+            mappedBy: null
+            inversedBy: moocTrackerSearchTerms
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

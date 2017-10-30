@@ -1,0 +1,112 @@
+ClassCentral\SiteBundle\Entity\Review:
+    type: entity
+    table: reviews
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        rating:
+            type: float
+            nullable: false
+        review:
+            type: text
+            nullable: false
+        hours:
+            type: integer
+            unsigned: false
+            nullable: true
+        difficultyId:
+            type: integer
+            unsigned: false
+            nullable: true
+            column: difficulty_id
+        levelId:
+            type: integer
+            unsigned: false
+            nullable: true
+            column: level_id
+        listId:
+            type: integer
+            unsigned: false
+            nullable: true
+            column: list_id
+        created:
+            type: datetime
+            nullable: true
+        modified:
+            type: datetime
+            nullable: false
+        status:
+            type: integer
+            nullable: false
+        externalLink:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: external_link
+        reviewerName:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: reviewer_name
+        source:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+        isRating:
+            type: boolean
+            nullable: true
+            column: is_rating
+        score:
+            type: integer
+            unsigned: false
+            nullable: true
+    manyToOne:
+        reviewSummary:
+                targetEntity: ReviewSummary
+                cascade: {  }
+                mappedBy: null
+                inversedBy: null
+                joinColumns:
+                    review_summary_id:
+                        referencedColumnName: id
+                orphanRemoval: false
+        user:
+            targetEntity: User
+            cascade: {  }
+            mappedBy: null
+            inversedBy: reviews
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        course:
+            targetEntity: Course
+            cascade: {  }
+            mappedBy: null
+            inversedBy: reviews
+            joinColumns:
+                course_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        offering:
+            targetEntity: Offering
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                offering_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    oneToOne:
+        fbSummary:
+          targetEntity: ReviewFeedbackSummary
+          mappedBy: review
+    lifecycleCallbacks: {  }

@@ -1,0 +1,9 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block content %}
+
+    {% for course in courses %}
+       {{ course.id }}|||{{ course.name }} <br/>
+    {% endfor %}
+
+{% endblock %}

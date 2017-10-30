@@ -1,0 +1,240 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+ {% block headmeta %}
+     <title itemprop='name'>Class Central • #1 Search Engine for Free Online Courses & MOOCs</title>
+     <link rel="canonical" href="{{ baseurl }}" itemprop="url">
+     <meta name="description"
+           content="Love to learn? Discover thousands of FREE online courses and MOOCs from top universities and companies on Class Central."/>
+
+     {% include 'ClassCentralSiteBundle:Helpers:fb_opengraph.html.twig' %}
+
+     <meta name="twitter:card" content="summary_large_image">
+     <meta name="twitter:site" content="@classcentral">
+     <meta name="twitter:title" content="Class Central • #1 Search Engine for Free Online Courses & MOOCs">
+     <meta name="twitter:description" content="Love to learn? Discover thousands of FREE online courses and MOOCs from top universities and companies on Class Central">
+     <meta name="twitter:image" content="https://www.class-central.com/bundles/classcentralsite/slashpixel/images/cc_20k_reviews.png">
+
+    <script type="application/ld+json">
+     {
+         "@context": "http://schema.org",
+         "@type": "WebSite",
+         "name": "Class Central",
+         "url": "https://www.class-central.com",
+         "potentialAction": {
+             "@type": "SearchAction",
+             "target": "https://www.class-central.com/search?q={search_term_string}",
+             "query-input": "required name=search_term_string"
+         }
+     }
+    </script>
+
+     <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "name": "Class Central",
+      "url": "https://www.class-central.com",
+      "logo": "https://www.class-central.com/bundles/classcentralsite/slashpixel/images/cc.logo.png",
+      "sameAs": [
+             "http://www.facebook.com/classcentral",
+             "http://twitter.com/classcentral",
+             "http://www.linkedin.com/company/class-central",
+             "http://plus.google.com/+ClassCentral",
+             "https://github.com/classcentral",
+             "angel.co/class-central"
+      ]
+    }
+ </script>
+
+
+ {% endblock %}
+
+{% block contentheader %}
+    <section class="headerArea headerArea-slim">
+        <div class="container">
+          <div class="headerIntro">
+
+            <!--
+              <div class="headerIntro_slider" style="display:none">
+              <div class="lineSlider js-lineSlider">
+                <nav class="lineSlider_nav js-lineSlider_nav">
+                </nav>
+                <div class="lineSlider_slides js-lineSlider_slides">
+                  <div class="lineSlider_slide js-lineSlider_slide">
+                    Discover free online courses and MOOCs from top universities and companies
+                  </div>
+                  <div class="lineSlider_slide js-lineSlider_slide">
+                    Read reviews to decide if a course is right for you
+                  </div>
+                  <div class="lineSlider_slide js-lineSlider_slide">
+                      Never Miss a Course: Use <a href="https://www.class-central.com/report/follow-button-for-education/">Follow button</a> and <a href="https://www.class-central.com/report/mooc-tracker/">MOOC Tracker</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            -->
+
+              <div class="headerIntro_topText">
+                  ★★★★★
+              </div>
+              <h1 class="headerIntro_title">Find The Best Online Courses From Top Universities</h1>
+              <h2 class="headerIntro_subTitle"></h2>
+            <div class="headerIntro_buttons">
+              {% if not app.user %}
+
+                  <div class="headerIntro_button">
+                    <a href="#" class="baseButton animation-rollButton" data-action="meet-your-next-course"  onmousedown="ga('send','event','Homepage Hero','Meet Your Next Course');" >Meet Your Next Course</a>
+                    <span class="headerIntro_buttonSub">no sign up required</span>
+                  </div>
+
+                <!--
+                  <div class="headerIntro_button">
+                      <a href="/collection/top-free-online-courses" class="baseButton animation-rollButton"  onmousedown="ga('send','event','Homepage Hero','View Top 50');" >Top 50 MOOCs of All Time</a>
+                      <span class="headerIntro_buttonSub">highest rated free online courses</span>
+                  </div>
+                  -->
+              {% else %}
+                  {% if app.user.areRecommendationsAvailable  %}
+                      <div class="headerIntro_button">
+                          <a href="{{ path('user_recommendations') }}" class="baseButton animation-rollButton"  onmousedown="ga('send','event','Homepage Hero','View Personalized Recommendations');" >View Personalized Recommendations</a>
+                      </div>
+                  {% else %}
+                      <div class="headerIntro_button">
+                          <a href="{{ path('user_follows') }}" class="baseButton animation-rollButton"  onmousedown="ga('send','event','Homepage Hero','Unlock Personalized Recommendations');" >Unlock Personalized Recommendations</a>
+                      </div>
+                  {% endif %}
+              {% endif %}
+
+              <div class="headerIntro_button">
+                <a href="{{ path('subjects') }}"    onmousedown="ga('send','event','Homepage Hero','Subjects');" class="baseButton baseButton-alt">browse subjects</a>
+              </div>
+
+              <!--
+              <div class="headerIntro_button">
+                <a href="{{ path('ClassCentralSiteBundle_faq') }}"    onmousedown="ga('send','event','Homepage Hero','FAQ');" class="linkButton">FAQ</a>
+              </div>
+              -->
+
+            </div>
+          </div>
+
+        </div><!-- /container -->
+        <div class="headerArea_tilt"></div>
+    </section>
+{% endblock %}
+
+{% block content %}
+    <div class="home-spotlight-wrapper">
+        <section class="spotlight">
+
+            {% if app.user %}
+                <div class="front-page-table">
+                    <h2 class="section-heading"><span>Personalized Course Recommendations</span></h2>
+                    {% if app.user.areRecommendationsAvailable  %}
+                        {% include 'ClassCentralSiteBundle:Helpers:course.table.html.twig' with{'results':recommendedCourses.courses,'tableId':'suggestions','hideLoadMore':true,'showSubjectInTable':true,'hideTableAd':true} %}
+                        <a href="{{ path('user_recommendations') }}" class="expand-table-btn">View All</a>
+                    {% else %}
+                        <div class='alert alert-info' role='alert'>
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"> </span>
+                            <a href='{{ path('user_follows') }}'><strong>Never Miss a Course!</strong> Unlock your <strong>personalized course recommendations</strong> by updating your follows</a>. Get regular updates of new and upcoming courses.
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="front-page-table">
+                    <h2 class="section-heading"><span>My Courses</span></h2>
+                    {% if ucCount > 0 %}
+                        {% include 'ClassCentralSiteBundle:Helpers:course.table.html.twig' with{'results':uc,'tableId':'interested','showSubjectInTable':true,'hideTableAd':true} %}
+                        <a href="{{ path('user_library') }}" class="expand-table-btn">View All {{ ucCount }} courses</a>
+                    {% else %}
+                        No courses found!
+                    {% endif %}
+                </div>
+            {% endif %}
+
+
+            {% include 'ClassCentralSiteBundle:Helpers:spotlight.html.twig' with{ spotlights:spotlights, spotlightMap : spotlightMap } %}
+
+        </section>
+
+
+
+        <section class="upcoming-courses front-page-table">
+            <h2 class="section-heading"><span>Trending Online Courses</span></h2>
+            {% include 'ClassCentralSiteBundle:Helpers:course.table.html.twig' with{'results':trendingCourses,'tableId':'trendingHome', 'hideLoadMore': true,'allowSorting' : false,'showSubjectInTable':true,'hideTableAd':true} %}
+            {#
+            <!-- <a href="{{ path('ClassCentralSiteBundle_courses', {type:'recent'}) }}" class="expand-table-btn">View All {{ recentCourses.hits.total }} courses</a> -->
+            #}
+        </section>
+
+
+    </div>
+
+{% endblock %}
+
+{% block abovefooter %}
+
+
+    {% if not app.user %}
+        <section class="convincer">
+            <div class="container">
+
+                <div class="imageConvincer">
+
+                    <div class="imageConvincer_imageCol">
+                        <img src="/bundles/classcentralsite/slashpixel/images/convincer-image.jpg" alt="Illustration of two file cabinets and a desk">
+                    </div>
+
+                    <div class="imageConvincer_textCol">
+                        <h2 class="imageConvincer_title">Personalized recommendations, reviews, reminders, and more.</h2>
+                        <a href="#" class="imageConvincer_button" id="convincer-create-free-account">Get Started</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    {% endif %}
+
+    <section id="cc-op" class="container">
+        <h2 class="section-heading"><span>Analysis by Class Central</span></h2>
+        <a href="/report/tag/mooc-roundup-2016/" class="col left link-block">
+            <h3>Monetization over Massiveness: A Review of MOOC Stats and Trends in 2016</h3>
+            <p>MOOCs: Yes to Monetization, No to being Massive — and more.</p>
+            <div class="cta">
+                <span class="btn-white"><span class="icon-arrow-skyblue icon--right">Read more</span></span>
+            </div>
+        </a>
+        <a href="/report/coursera-2016-review/" class="col right link-block">
+            <h3>Coursera’s 2016: Year in Review</h3>
+            <p>A look at Coursera's evolution in 2016</p>
+            <div class="cta">
+                <span class="btn-white"><span class="icon-arrow-skyblue icon--right">Read more</span></span>
+            </div>
+        </a>
+    </section>
+
+
+    <section class="footer-logos">
+        <ul>
+            <li><a class="harvard-logo" href="{{ path('ClassCentralSiteBundle_university',{slug : 'harvard'}) }}">Harvard University</a></li>
+            <li><a class="mit-logo" href="{{ path('ClassCentralSiteBundle_university',{slug : 'mit'}) }}">Massachusetts Institute of Technology</a></li>
+            <li><a class="berkeley-logo" href="{{ path('ClassCentralSiteBundle_university',{slug : 'berkeley'}) }}">Berkeley University of California</a></li>
+            <li><a class="uts-logo" href="{{ path('ClassCentralSiteBundle_university',{slug : 'utexas'}) }}">University of Texas System</a></li>
+            <li><a class="cornell-logo" href="{{ path('ClassCentralSiteBundle_university',{slug : 'cornell'}) }}">Cornell University</a></li>
+            <li><a class="princeton-logo" href="{{ path('ClassCentralSiteBundle_university',{slug : 'princeton'}) }}">Princeton University</a></li>
+            <li><a class="git-logo" href="{{ path('ClassCentralSiteBundle_university',{slug : 'gatech'}) }}">Georgia Tech</a></li>
+            <li><a class="jhu-logo" href="{{ path('ClassCentralSiteBundle_university',{slug : 'jhu'}) }}">Johns Hopkins University</a></li>
+        </ul>
+    </section>
+
+
+{% endblock %}
+
+{% block customJS %}
+    $( document ).ready(function() {
+        {% if meetYourNextCourse %}
+            CC.Class['NextCourse'].showPickSubjectsStep();
+        {% endif %}
+    });
+{% endblock %}

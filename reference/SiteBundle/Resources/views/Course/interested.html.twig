@@ -1,0 +1,51 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block headmeta %}
+    <title>{{ course.name }} - Interested users | Class Central</title>
+    <meta name="description" content="List Of Class Central users interested in {{course.name  }}"/>
+    <meta name="robots" content="noindex, follow" />
+    
+{% endblock %}
+
+{% block content %}
+
+
+
+<h2 class="section-heading"><span>Interested Class Central users</span></h2>
+
+<div class="row margin-10 row-flip-cards">
+    {% for user in users %}
+        {% if user.profile is defined  %}
+            {{ user.profile.name }}
+        {% endif %}
+        {% set profileUrl = user_service.getProfileUrl( user.id, user.handle ) %}
+        {% if profileUrl %}
+            <div class="col-220 padding-10">
+                <a href="{{ profileUrl }}" class="flip-card" onmousedown="ga('send','event','User Profile Click - View All Interested users page','{{ course.name }}','{{ user.id  }}')">
+                    <div class="card-front">
+                        <div class="card-front__img-section">
+                            <div class="crop-circle crop-circle--bordered">
+                                <img src="{{  user_service.getProfilePic(user.id) }}" alt="{{ user_service.getDisplayName(user) }}">
+                            </div>
+                        </div>
+                        <div class="card-front__text-section">
+                            <span class="card-front__title"> {{ user_service.getDisplayName(user) }}</span>
+                            <span class="card-front__meta">{{ user.location }}</span>
+                        </div>
+                    </div>
+                    <div class="card-back">
+
+                        {% if user.aboutMe %}
+                            <div class="card-back__info-section"> {{ user.aboutMe[0:200] }} </div>
+                        {% endif %}
+                        <div class="card-back__interaction">
+                            <span class="triangle"></span>
+                            <span class="card-back__interaction-text">View Profile</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}

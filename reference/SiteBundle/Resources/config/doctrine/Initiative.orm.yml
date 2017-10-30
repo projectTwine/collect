@@ -1,0 +1,41 @@
+ClassCentral\SiteBundle\Entity\Initiative:
+  type: entity
+  repositoryClass: ClassCentral\SiteBundle\Repository\InitiativeRepository
+  table: initiatives
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: AUTO
+    name:
+      type: string
+      length: 255
+      nullable: false
+    url:
+      type: string
+      nullable: true
+    imageUrl:
+      type: string
+      nullable: true
+      column: image_url
+    description:
+      type: string
+      nullable: true
+    code:
+      type: string
+      length: 20
+      nullable: false
+    tooltip:
+      type: string
+      length: 255
+      nullable: true
+  oneToMany:  
+     courses:
+       targetEntity: Course
+       cascade: {}
+       mappedBy: initiative
+       inversedBy: null
+       orphanRemoval: false

@@ -1,0 +1,204 @@
+<nav class="navbar  {% if page is defined and (page == 'credentials' or page=='credential' or page=='home' or page=='meet_your_next_course' or page=='collection') %}navbar-white navbar-colored{% endif %} navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ path('ClassCentralSiteBundle_homepage')}}" title="#1 Search Engine For Online Courses and MOOCs">
+                <span class="cc-logo-navbar"></span>
+                <svg role="logo" aria-label="class central logo" viewBox="0 0 332 32" class="class-central-logo">
+                    <use xlink:href="#icon-cc-logo"></use>
+                </svg>
+                Class Central
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle nav-title" title="Browse MOOCs by their Start date" data-toggle="dropdown">
+                        Courses
+                        <b class="caret">
+                            <svg class="icon icon-cc-logo7" viewBox="0 0 32 32"><use xlink:href="#icon-cc-logo7"></use></svg>
+                        </b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ path('trending')}}" title="Trending free online courses - MOOCs" onClick="ga('send','event', '{{ navEventName }}', 'Courses', 'Trending')">Trending Now</a></li>
+                        {% for offeringType, offeringDetails in offeringTypes %}
+                            {% if offeringCount[offeringType] is defined and offeringCount[offeringType] > 0 %}
+                                <li><a href="{{ path('ClassCentralSiteBundle_courses',{'type' : offeringType})}}" title="{{offeringDetails.nav}} - MOOCs" onClick="ga('send','event', '{{ navEventName }}', 'Courses', '{{offeringType}}')">{{offeringDetails.nav}} ({{ offeringCount[offeringType] }})</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </li>
+
+                {#
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle nav-title" title="Browser MOOCs by Initiatives" data-toggle="dropdown">
+                            Providers
+                            <b class="caret">
+                                <svg class="icon icon-cc-logo7" viewBox="0 0 32 32"><use xlink:href="#icon-cc-logo7"></use></svg>
+                            </b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            {% for initiative, code in initiativeTypes %}
+                                <li>
+                                    <a href="{{ path('ClassCentralSiteBundle_initiative',{'type' : initiative})}}" title="List of {{ initiativeCount[code]['name'] }} MOOCs" onClick="ga('send','event', '{{ navEventName }}', 'Initiative', '{{initiative}}')">{{initiativeCount[code]['name'] }} ({{ initiativeCount[code]['count'] }})</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                #}
+
+                {# Subjects #}
+                <li><a href="{{ path('subjects',{}) }}" class="nav-title" title="Subjects" onClick="ga('send','event', '{{ navEventName }}', 'Subjects')">Subjects</a></li>
+
+                <li><a href="{{ path('credentials') }}" class="nav-title" title="Earn A Credential" onClick="ga('send','event', '{{ navEventName }}', 'Certifications')">Certifications</a></li>
+
+                <li><a href="/report" class="nav-title" title="MOOC News, Interviews, and Analysis" onClick="ga('send','event', '{{ navEventName }}', 'MOOC Report')">MOOC Report</a></li>
+                <!--<li><a href="{{ path('ClassCentralSiteBundle_news',{}) }}" class="nav-title" title="MOOC news" onClick="ga('send','event', '{{ navEventName }}', 'News')">News</a></li>-->
+
+                {# My Courses/ Signup #}
+                <!-- <li class="mooc-tracker">
+                    {% if app.user %}
+                        <a href="{{ path('user_library') }}" class="nav-title" onClick="ga('send','event', '{{ navEventName }}', 'My Courses')" title="My Courses">
+                            My Courses
+                        </a>
+                    {% else %}
+                        <a href="{{ path('signup') }}" class="nav-title" onClick="ga('send','event', '{{ navEventName }}', 'Class Central Signup')" title="Class Central Signup">
+                            Sign Up
+                        </a>
+                    {% endif %}
+                </li>-->
+
+                <li class="search-form">
+                    <div id='nav-search-form'>
+                        {# <input  id="prependedInput" type="text" name="q"> #}
+                        <a href="/search" class="search-button" onmousedown="ga('send','event', '{{ navEventName }}', 'Search')" id="navbar-search-btn">
+                            <span class="icon-search-png"></span>
+                            <svg viewBox="0 0 33 32" class="icon-search">
+                                <use xlink:href="#icon-cc-logo2"></use>
+                            </svg>
+                        </a>
+                        <form action="{{ path('ClassCentralSiteBundle_search') }}" method="get" name="search" id="navbar-search-form">
+                            <input class="cc-search-box" placeholder="what do you want to learn?" id="st-search-input" type="text" name="q">
+                        </form>
+                    </div>
+                    {# include 'ClassCentralSiteBundle:Helpers:search_form.html.twig' with {'keywords': null} #}
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <!--
+                <li class="nav-fb-like visible-lg">
+                    <div class="fb-like" data-href="https://www.facebook.com/classcentral" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+                </li>
+                -->
+                {#
+                <li class="social-icon">
+                    <a href="http://www.facebook.com/classcentral" target="_blank" onmousedown="ga('send','event', '{{ navEventName }}', 'Social Media','Facebook')">
+                        Facebook
+                        <span class="fb-icon-png"></span>
+                        <svg class="icon icon-facebook" viewBox="0 0 32 32"><use xlink:href="#icon-facebook"></use></svg>
+                    </a>
+                </li>
+                <li class="social-icon">
+                    <a href="https://twitter.com/classcentral" target="_blank" onmousedown="ga('send','event', '{{ navEventName }}', 'Social Media','Twitter')">
+                        Twitter
+                        <span class="twitter-icon-png"></span>
+                        <svg class="icon icon-twitter" viewBox="0 0 32 32"><use xlink:href="#icon-twitter"></use></svg>
+                    </a>
+                </li>
+                <li class="social-icon">
+                    <a href="https://plus.google.com/+ClassCentral" target="_blank" onmousedown="ga('send','event', '{{ navEventName }}', 'Social Media','Google+')">
+                        Google plus
+                        <span class="gplus-icon-png"></span>
+                        <svg class="icon icon-google_follow" viewBox="0 0 32 32"><use xlink:href="#icon-google_follow"></use></svg>
+                    </a>
+                </li>
+                #}
+                <li class="user-menu-wrap">
+
+                    {% if not app.user and page is defined and page == 'meet_your_next_course'  %}
+                    <div class="userMenu_tooltip">
+                      <div class="bottomTip">
+                        <div class="bottomTip_title">Save Your Results</div>
+                        <div class="bottomTip_body">Sign up to receive updates on new and upcoming courses.</div>
+                      </div>
+                    </div>
+                    {% endif %}
+
+                    {% if app.user %}
+                        <a href="#" class="dropdown-toggle"  data-toggle="dropdown">
+                            {% if app.user.name %}
+                                {% set n =  app.user.name|split(' ') %}
+                                {% set name = n[0] %}
+                                {% if name|length > 10 %}
+                                    {{ name|slice(0,9) }}..
+                                {% else %}
+                                    {{ name  }}
+                                {% endif %}
+
+                            {% else %}
+                                User Menu
+                            {% endif %}
+                        </a>
+                        <ul class="dropdown-menu user-menu">
+                            <li>
+                                <a href="{{ path('user_library') }}" class="nav-title" onClick="ga('send','event', '{{ navEventName }}', 'Class Central User Menu')" title="My Courses">
+                                    My Courses
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ user_service.getProfileUrl( app.user.id, app.user.handle ) }}" class="nav-title" onClick="ga('send','event', '{{ navEventName }}', 'Class Central User Menu - My Profile')" title="My Profile">
+                                    My Profile
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('user_reviews') }}" class="nav-title" onClick="ga('send','event', '{{ navEventName }}', 'Class Central User Menu - My Reviews')" title="My Reviews">
+                                    My Reviews
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('user_preferences') }}" class="nav-title" onClick="ga('send','event', '{{ navEventName }}', 'Class Central User Preferences')" title="Preferences">
+                                    Preferences
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('user_follows') }}" class="nav-title" onClick="ga('send','event', '{{ navEventName }}', 'My Follows')" title="My Follows">
+                                    Follows
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('user_recommendations') }}" class="nav-title" onClick="ga('send','event', '{{ navEventName }}', 'My Recommendations')" title="My Recommendations">
+                                    Recommendations <sup>BETA</sup>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ path('logout') }}" class="nav-title" onClick="ga('send','event', '{{ navEventName }}', 'Logout')" >Logout</a>
+                            </li>
+                        </ul>
+
+
+                    {% else %}
+                        <a href="{{ path('login') }}" class="nav-title" onClick="ga('send','event', '{{ navEventName }}', 'Login')">
+                            Log in
+                        </a>
+
+                        {% if page is defined and (page == 'credentials' or page=='credential' or page=='home' or page=='meet_your_next_course') %}
+                        /
+                        <a href="{{ path('signup') }}" id="navbar-create-free-account" class="nav-title" title="Class Central Signup" onClick="ga('send','event', '{{ navEventName }}', 'Class Central Signup User Menu')" title="Class Central Signup">
+                            Sign Up
+                        </a>
+                        {% endif %}
+                    {% endif %}
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container -->
+</nav>

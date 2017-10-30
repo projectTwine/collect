@@ -1,0 +1,50 @@
+ClassCentral\SiteBundle\Entity\IndepthReview:
+    type: entity
+    table: indepth_reviews
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        summary:
+            type: text
+            nullable: false
+        url:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        rating:
+            type: integer
+            unsigned: false
+            nullable: false
+        created:
+            type: datetime
+            nullable: true
+        modified:
+            type: datetime
+            nullable: false
+    manyToOne:
+        user:
+            targetEntity: User
+            cascade: {  }
+            mappedBy: null
+            inversedBy: indepthReviews
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    oneToOne:
+        course:
+            targetEntity: Course
+            cascade: {  }
+            mappedBy: null
+            inversedBy: indepthReview
+            joinColumns:
+                course_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,1118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width">
+<style>
+/**********************************************
+* Ink v1.0.5 - Copyright 2013 ZURB Inc        *
+**********************************************/
+
+/* Client-specific Styles & Reset */
+
+#outlook a {
+    padding:0;
+}
+
+body{
+    width:100% !important;
+    min-width: 100%;
+    -webkit-text-size-adjust:100%;
+    -ms-text-size-adjust:100%;
+    margin:0;
+    padding:0;
+}
+
+.ExternalClass {
+    width:100%;
+}
+
+.ExternalClass,
+.ExternalClass p,
+.ExternalClass span,
+.ExternalClass font,
+.ExternalClass td,
+.ExternalClass div {
+    line-height: 100%;
+}
+
+#backgroundTable {
+    margin:0;
+    padding:0;
+    width:100% !important;
+    line-height: 100% !important;
+}
+
+img {
+    outline:none;
+    text-decoration:none;
+    -ms-interpolation-mode: bicubic;
+    width: auto;
+    max-width: 100%;
+    float: left;
+    clear: both;
+    display: block;
+}
+
+center {
+    width: 100%;
+    min-width: 580px;
+}
+
+a img {
+    border: none;
+}
+
+p {
+    margin: 0 0 0 10px;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+td {
+    word-break: break-word;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+    border-collapse: collapse !important;
+}
+
+table, tr, td {
+    padding: 0;
+    vertical-align: top;
+    text-align: left;
+}
+
+hr {
+    color: #d9d9d9;
+    background-color: #d9d9d9;
+    height: 1px;
+    border: none;
+}
+
+/* Responsive Grid */
+
+table.body {
+    height: 100%;
+    width: 100%;
+}
+
+table.container {
+    width: 580px;
+    margin: 0 auto;
+    text-align: inherit;
+}
+
+table.row {
+    padding: 0px;
+    width: 100%;
+    position: relative;
+}
+
+table.container table.row {
+    display: block;
+}
+
+td.wrapper {
+    padding: 10px 20px 0px 0px;
+    position: relative;
+}
+
+table.columns,
+table.column {
+    margin: 0 auto;
+}
+
+table.columns td,
+table.column td {
+    padding: 0px 0px 10px;
+}
+
+table.columns td.sub-columns,
+table.column td.sub-columns,
+table.columns td.sub-column,
+table.column td.sub-column {
+    padding-right: 10px;
+}
+
+td.sub-column, td.sub-columns {
+    min-width: 0px;
+}
+
+table.row td.last,
+table.container td.last {
+    padding-right: 0px;
+}
+
+table.one { width: 30px; }
+table.two { width: 80px; }
+table.three { width: 130px; }
+table.four { width: 180px; }
+table.five { width: 230px; }
+table.six { width: 280px; }
+table.seven { width: 330px; }
+table.eight { width: 380px; }
+table.nine { width: 430px; }
+table.ten { width: 480px; }
+table.eleven { width: 530px; }
+table.twelve { width: 580px; }
+
+table.one center { min-width: 30px; }
+table.two center { min-width: 80px; }
+table.three center { min-width: 130px; }
+table.four center { min-width: 180px; }
+table.five center { min-width: 230px; }
+table.six center { min-width: 280px; }
+table.seven center { min-width: 330px; }
+table.eight center { min-width: 380px; }
+table.nine center { min-width: 430px; }
+table.ten center { min-width: 480px; }
+table.eleven center { min-width: 530px; }
+table.twelve center { min-width: 580px; }
+
+table.one .panel center { min-width: 10px; }
+table.two .panel center { min-width: 60px; }
+table.three .panel center { min-width: 110px; }
+table.four .panel center { min-width: 160px; }
+table.five .panel center { min-width: 210px; }
+table.six .panel center { min-width: 260px; }
+table.seven .panel center { min-width: 310px; }
+table.eight .panel center { min-width: 360px; }
+table.nine .panel center { min-width: 410px; }
+table.ten .panel center { min-width: 460px; }
+table.eleven .panel center { min-width: 510px; }
+table.twelve .panel center { min-width: 560px; }
+
+.body .columns td.one,
+.body .column td.one { width: 8.333333%; }
+.body .columns td.two,
+.body .column td.two { width: 16.666666%; }
+.body .columns td.three,
+.body .column td.three { width: 25%; }
+.body .columns td.four,
+.body .column td.four { width: 33.333333%; }
+.body .columns td.five,
+.body .column td.five { width: 41.666666%; }
+.body .columns td.six,
+.body .column td.six { width: 50%; }
+.body .columns td.seven,
+.body .column td.seven { width: 58.333333%; }
+.body .columns td.eight,
+.body .column td.eight { width: 66.666666%; }
+.body .columns td.nine,
+.body .column td.nine { width: 75%; }
+.body .columns td.ten,
+.body .column td.ten { width: 83.333333%; }
+.body .columns td.eleven,
+.body .column td.eleven { width: 91.666666%; }
+.body .columns td.twelve,
+.body .column td.twelve { width: 100%; }
+
+td.offset-by-one { padding-left: 50px; }
+td.offset-by-two { padding-left: 100px; }
+td.offset-by-three { padding-left: 150px; }
+td.offset-by-four { padding-left: 200px; }
+td.offset-by-five { padding-left: 250px; }
+td.offset-by-six { padding-left: 300px; }
+td.offset-by-seven { padding-left: 350px; }
+td.offset-by-eight { padding-left: 400px; }
+td.offset-by-nine { padding-left: 450px; }
+td.offset-by-ten { padding-left: 500px; }
+td.offset-by-eleven { padding-left: 550px; }
+
+td.expander {
+    visibility: hidden;
+    width: 0px;
+    padding: 0 !important;
+}
+
+table.columns .text-pad,
+table.column .text-pad {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+table.columns .left-text-pad,
+table.columns .text-pad-left,
+table.column .left-text-pad,
+table.column .text-pad-left {
+    padding-left: 10px;
+}
+
+table.columns .right-text-pad,
+table.columns .text-pad-right,
+table.column .right-text-pad,
+table.column .text-pad-right {
+    padding-right: 10px;
+}
+
+/* Block Grid */
+
+.block-grid {
+    width: 100%;
+    max-width: 580px;
+}
+
+.block-grid td {
+    display: inline-block;
+    padding:10px;
+}
+
+.two-up td {
+    width:270px;
+}
+
+.three-up td {
+    width:173px;
+}
+
+.four-up td {
+    width:125px;
+}
+
+.five-up td {
+    width:96px;
+}
+
+.six-up td {
+    width:76px;
+}
+
+.seven-up td {
+    width:62px;
+}
+
+.eight-up td {
+    width:52px;
+}
+
+/* Alignment & Visibility Classes */
+
+table.center, td.center {
+    text-align: center;
+}
+
+h1.center,
+h2.center,
+h3.center,
+h4.center,
+h5.center,
+h6.center {
+    text-align: center;
+}
+
+span.center {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+img.center {
+    margin: 0 auto;
+    float: none;
+}
+
+.show-for-small,
+.hide-for-desktop {
+    display: none;
+}
+
+/* Typography */
+
+body, table.body, h1, h2, h3, h4, h5, h6, p, td {
+    color: #222222;
+    font-family: "Helvetica", "Arial", sans-serif;
+    font-weight: normal;
+    padding:0;
+    margin: 0;
+    text-align: left;
+    line-height: 1.3;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    word-break: normal;
+}
+
+h1 {font-size: 40px;}
+h2 {font-size: 36px;}
+h3 {font-size: 32px;}
+h4 {font-size: 28px;}
+h5 {font-size: 24px;}
+h6 {font-size: 20px;}
+body, table.body, p, td {font-size: 14px;line-height:19px;}
+
+p.lead, p.lede, p.leed {
+    font-size: 18px;
+    line-height:21px;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+small {
+    font-size: 10px;
+}
+
+a {
+    color: #2ba6cb;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #2795b6 !important;
+}
+
+a:active {
+    color: #2795b6 !important;
+}
+
+a:visited {
+    color: #2ba6cb !important;
+}
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+    color: #2ba6cb;
+}
+
+h1 a:active,
+h2 a:active,
+h3 a:active,
+h4 a:active,
+h5 a:active,
+h6 a:active {
+    color: #2ba6cb !important;
+}
+
+h1 a:visited,
+h2 a:visited,
+h3 a:visited,
+h4 a:visited,
+h5 a:visited,
+h6 a:visited {
+    color: #2ba6cb !important;
+}
+
+/* Panels */
+
+.panel {
+    background: #f2f2f2;
+    border: 1px solid #d9d9d9;
+    padding: 10px !important;
+}
+
+.sub-grid table {
+    width: 100%;
+}
+
+.sub-grid td.sub-columns {
+    padding-bottom: 0;
+}
+
+/* Buttons */
+
+table.button,
+table.tiny-button,
+table.small-button,
+table.medium-button,
+table.large-button {
+    width: 100%;
+    overflow: hidden;
+}
+
+table.button td,
+table.tiny-button td,
+table.small-button td,
+table.medium-button td,
+table.large-button td {
+    display: block;
+    width: auto !important;
+    text-align: center;
+    background: #2ba6cb;
+    border: 1px solid #2284a1;
+    color: #ffffff;
+    padding: 8px 0;
+}
+
+table.tiny-button td {
+    padding: 5px 0 4px;
+}
+
+table.small-button td {
+    padding: 8px 0 7px;
+}
+
+table.medium-button td {
+    padding: 12px 0 10px;
+}
+
+table.large-button td {
+    padding: 21px 0 18px;
+}
+
+table.button td a,
+table.tiny-button td a,
+table.small-button td a,
+table.medium-button td a,
+table.large-button td a {
+    font-weight: bold;
+    text-decoration: none;
+    font-family: Helvetica, Arial, sans-serif;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+table.tiny-button td a {
+    font-size: 12px;
+    font-weight: normal;
+}
+
+table.small-button td a {
+    font-size: 16px;
+}
+
+table.medium-button td a {
+    font-size: 20px;
+}
+
+table.large-button td a {
+    font-size: 24px;
+}
+
+table.button:hover td,
+table.button:visited td,
+table.button:active td {
+    background: #2795b6 !important;
+}
+
+table.button:hover td a,
+table.button:visited td a,
+table.button:active td a {
+    color: #fff !important;
+}
+
+table.button:hover td,
+table.tiny-button:hover td,
+table.small-button:hover td,
+table.medium-button:hover td,
+table.large-button:hover td {
+    background: #2795b6 !important;
+}
+
+table.button:hover td a,
+table.button:active td a,
+table.button td a:visited,
+table.tiny-button:hover td a,
+table.tiny-button:active td a,
+table.tiny-button td a:visited,
+table.small-button:hover td a,
+table.small-button:active td a,
+table.small-button td a:visited,
+table.medium-button:hover td a,
+table.medium-button:active td a,
+table.medium-button td a:visited,
+table.large-button:hover td a,
+table.large-button:active td a,
+table.large-button td a:visited {
+    color: #ffffff !important;
+}
+
+table.secondary td {
+    background: #e9e9e9;
+    border-color: #d0d0d0;
+    color: #555;
+}
+
+table.secondary td a {
+    color: #555;
+}
+
+table.secondary:hover td {
+    background: #d0d0d0 !important;
+    color: #555;
+}
+
+table.secondary:hover td a,
+table.secondary td a:visited,
+table.secondary:active td a {
+    color: #555 !important;
+}
+
+table.success td {
+    background: #5da423;
+    border-color: #457a1a;
+}
+
+table.success:hover td {
+    background: #457a1a !important;
+}
+
+table.alert td {
+    background: #c60f13;
+    border-color: #970b0e;
+}
+
+table.alert:hover td {
+    background: #970b0e !important;
+}
+
+table.radius td {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+table.round td {
+    -webkit-border-radius: 500px;
+    -moz-border-radius: 500px;
+    border-radius: 500px;
+}
+
+/* Outlook First */
+
+body.outlook p {
+    display: inline !important;
+}
+
+/*  Media Queries */
+
+@media only screen and (max-width: 600px) {
+
+    table[class="body"] img {
+        width: auto !important;
+        height: auto !important;
+    }
+
+    table[class="body"] center {
+        min-width: 0 !important;
+    }
+
+    table[class="body"] .container {
+        width: 95% !important;
+    }
+
+    table[class="body"] .row {
+        width: 100% !important;
+        display: block !important;
+    }
+
+    table[class="body"] .wrapper {
+        display: block !important;
+        padding-right: 0 !important;
+    }
+
+    table[class="body"] .columns,
+    table[class="body"] .column {
+        table-layout: fixed !important;
+        float: none !important;
+        width: 100% !important;
+        padding-right: 0px !important;
+        padding-left: 0px !important;
+        display: block !important;
+    }
+
+    table[class="body"] .wrapper.first .columns,
+    table[class="body"] .wrapper.first .column {
+        display: table !important;
+    }
+
+    table[class="body"] table.columns td,
+    table[class="body"] table.column td {
+        width: 100% !important;
+    }
+
+    table[class="body"] .columns td.one,
+    table[class="body"] .column td.one { width: 8.333333% !important; }
+    table[class="body"] .columns td.two,
+    table[class="body"] .column td.two { width: 16.666666% !important; }
+    table[class="body"] .columns td.three,
+    table[class="body"] .column td.three { width: 25% !important; }
+    table[class="body"] .columns td.four,
+    table[class="body"] .column td.four { width: 33.333333% !important; }
+    table[class="body"] .columns td.five,
+    table[class="body"] .column td.five { width: 41.666666% !important; }
+    table[class="body"] .columns td.six,
+    table[class="body"] .column td.six { width: 50% !important; }
+    table[class="body"] .columns td.seven,
+    table[class="body"] .column td.seven { width: 58.333333% !important; }
+    table[class="body"] .columns td.eight,
+    table[class="body"] .column td.eight { width: 66.666666% !important; }
+    table[class="body"] .columns td.nine,
+    table[class="body"] .column td.nine { width: 75% !important; }
+    table[class="body"] .columns td.ten,
+    table[class="body"] .column td.ten { width: 83.333333% !important; }
+    table[class="body"] .columns td.eleven,
+    table[class="body"] .column td.eleven { width: 91.666666% !important; }
+    table[class="body"] .columns td.twelve,
+    table[class="body"] .column td.twelve { width: 100% !important; }
+
+    table[class="body"] td.offset-by-one,
+    table[class="body"] td.offset-by-two,
+    table[class="body"] td.offset-by-three,
+    table[class="body"] td.offset-by-four,
+    table[class="body"] td.offset-by-five,
+    table[class="body"] td.offset-by-six,
+    table[class="body"] td.offset-by-seven,
+    table[class="body"] td.offset-by-eight,
+    table[class="body"] td.offset-by-nine,
+    table[class="body"] td.offset-by-ten,
+    table[class="body"] td.offset-by-eleven {
+        padding-left: 0 !important;
+    }
+
+    table[class="body"] table.columns td.expander {
+        width: 1px !important;
+    }
+
+    table[class="body"] .right-text-pad,
+    table[class="body"] .text-pad-right {
+        padding-left: 10px !important;
+    }
+
+    table[class="body"] .left-text-pad,
+    table[class="body"] .text-pad-left {
+        padding-right: 10px !important;
+    }
+
+    table[class="body"] .hide-for-small,
+    table[class="body"] .show-for-desktop {
+        display: none !important;
+    }
+
+    table[class="body"] .show-for-small,
+    table[class="body"] .hide-for-desktop {
+        display: inherit !important;
+    }
+}
+
+</style>
+<style>
+
+    table.facebook td {
+        background: #3b5998;
+        border-color: #2d4473;
+    }
+
+    table.facebook:hover td {
+        background: #2d4473 !important;
+    }
+
+    table.twitter td {
+        background: #00acee;
+        border-color: #0087bb;
+    }
+
+    table.twitter:hover td {
+        background: #0087bb !important;
+    }
+
+    table.google-plus td {
+        background-color: #DB4A39;
+        border-color: #CC0000;
+    }
+
+    table.google-plus:hover td {
+        background: #CC0000 !important;
+    }
+
+    .template-label {
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 11px;
+    }
+
+    .callout .wrapper {
+        padding-bottom: 20px;
+    }
+
+    .callout .panel {
+        background: #ECF8FF;
+        border-color: #b9e5ff;
+    }
+
+    .header {
+        background: #999999;
+    }
+
+    .footer .wrapper {
+        background: #ebebeb;
+    }
+
+    .footer h5 {
+        padding-bottom: 10px;
+    }
+
+    table.columns .text-pad {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    table.columns .left-text-pad {
+        padding-left: 10px;
+    }
+
+    table.columns .right-text-pad {
+        padding-right: 10px;
+    }
+
+    @media only screen and (max-width: 600px) {
+
+        table[class="body"] .right-text-pad {
+            padding-left: 10px !important;
+        }
+
+        table[class="body"] .left-text-pad {
+            padding-right: 10px !important;
+        }
+    }
+
+</style>
+</head>
+<body style="min-width: 100%;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;margin: 0;padding: 0;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;text-align: left;line-height: 19px;font-size: 14px;width: 100% !important;">
+<table class="body" style="border-spacing: 0;border-collapse: collapse;padding: 0;vertical-align: top;text-align: left;height: 100%;width: 100%;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;">
+<tr style="padding: 0;vertical-align: top;text-align: left;">
+<td class="center" align="center" valign="top" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0;vertical-align: top;text-align: center;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;border-collapse: collapse !important;">
+<center style="width: 100%;min-width: 580px;">
+
+<table class="row header" style="border-spacing: 0;border-collapse: collapse;padding: 0px;vertical-align: top;text-align: left;background: #999999;width: 100%;position: relative;">
+    <tr style="padding: 0;vertical-align: top;text-align: left;">
+        <td class="center" align="center" style="background-color: #0662a1;word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0;vertical-align: top;text-align: center;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;border-collapse: collapse !important;">
+            <center style="width: 100%;min-width: 580px;">
+
+                <table class="container" style="border-spacing: 0;border-collapse: collapse;padding: 0;vertical-align: top;text-align: inherit;width: 580px;margin: 0 auto;">
+                    <tr style="padding: 0;vertical-align: top;text-align: left;">
+                        <td class="wrapper last" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 10px 20px 0px 0px;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;position: relative;padding-right: 0px;border-collapse: collapse !important;">
+
+                            <table class="twelve columns" style="border-spacing: 0;border-collapse: collapse;padding: 0;vertical-align: top;text-align: left;margin: 0 auto;width: 580px;">
+                                <tr style="padding: 0;vertical-align: top;text-align: left;">
+                                    <td class="six sub-columns" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0px 0px 10px;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;min-width: 0px;padding-right: 10px;width: 50%;border-collapse: collapse !important;">
+                                        <a href="https://www.class-central.com" style="color: #2ba6cb;text-decoration: none;">
+                                            <img src="https://www.class-central.com/bundles/classcentralsite/slashpixel/images/cc-logo.png" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: auto;max-width: 100%;float: left;clear: both;display: block;border: none;">
+                                        </a>
+                                    </td>
+                                    <td class="six sub-columns last" style="text-align: right;vertical-align: middle;word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0px 0px 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;min-width: 0px;padding-right: 0px;width: 50%;border-collapse: collapse !important;">
+                                        <span class="template-label" style="color: #ffffff;font-weight: bold;font-size: 11px;">Never Stop Learning</span>
+                                    </td>
+                                    <td class="expander" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0 !important;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;visibility: hidden;width: 0px;border-collapse: collapse !important;"></td>
+                                </tr>
+                            </table>
+
+                        </td>
+                    </tr>
+                </table>
+
+            </center>
+        </td>
+    </tr>
+</table>
+
+<table class="container" style="border-spacing: 0;border-collapse: collapse;padding: 0;vertical-align: top;text-align: inherit;width: 580px;margin: 0 auto;">
+<tr style="padding: 0;vertical-align: top;text-align: left;">
+<td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;border-collapse: collapse !important;">
+
+<table class="row" style="border-spacing: 0;border-collapse: collapse;padding: 0px;vertical-align: top;text-align: left;width: 100%;position: relative;display: block;">
+    <tr style="padding: 0;vertical-align: top;text-align: left;">
+        <td class="wrapper last" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 10px 20px 0px 0px;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;position: relative;padding-right: 0px;border-collapse: collapse !important;">
+
+            <table class="twelve columns" style="border-spacing: 0;border-collapse: collapse;padding: 0;vertical-align: top;text-align: left;margin: 0 auto;width: 580px;">
+                <tr style="padding: 0;vertical-align: top;text-align: left;">
+                    <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0px 0px 10px;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;border-collapse: collapse !important;">
+                        <h3 style="color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;margin: 0;text-align: left;line-height: 1.3;word-break: normal;font-size: 32px;">164 CS/Programming courses that you can start this month</h3>
+                        <p class="lead" style="margin: 0;margin-bottom: 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 21px;font-size: 18px;"></p>
+
+                        <table class="row callout" style="border-spacing: 0;border-collapse: collapse;padding: 0px;vertical-align: top;text-align: left;width: 100%;position: relative;display: block;">
+                            <tr style="padding: 0;vertical-align: top;text-align: left;">
+                                <td class="wrapper last" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0px 0px 10px;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;position: relative;padding-bottom: 20px;padding-right: 0px;border-collapse: collapse !important;">
+
+                                    <table class="twelve columns" style="border-spacing: 0;border-collapse: collapse;padding: 0;vertical-align: top;text-align: left;margin: 0 auto;width: 580px;">
+                                        <tr style="padding: 0;vertical-align: top;text-align: left;">
+                                            <td class="panel" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 10px !important;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;background: #ECF8FF;border: 1px solid #d9d9d9;border-color: #b9e5ff;border-collapse: collapse !important;">
+                                                <p style="margin: 0;margin-bottom: 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 19px;font-size: 14px;">MOOC Report: List of 207 free online courses starting in June 2015<a href="https://www.class-central.com/report/mooc-course-report-june-2015/" style="color: #2ba6cb;text-decoration: none;"> See the list »</a></p>
+                                            </td>
+                                            <td class="expander" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0 !important;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;visibility: hidden;width: 0px;border-collapse: collapse !important;"></td>
+                                        </tr>
+                                    </table>
+
+                                </td>
+                            </tr>
+                        </table>
+
+                  <h6 style="color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;margin: 0;text-align: left;line-height: 1.3;word-break: normal;font-size: 20px;">BEGINNER(40)</h6><br>
+<a href="https://www.class-central.com/mooc/1243/futurelearn-begin-programming-build-your-first-mobile-game" style="color: #2ba6cb;text-decoration: none;"><b>Begin Programming: Build Your First Mobile Game</b></a><br><i>University of Reading via FutureLearn</i><br><b> <a href="http://www.futurelearn.com/courses/begin-programming?utm_campaign=Courses+feed&utm_medium=courses-feed&utm_source=courses-feed" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/1243/futurelearn-begin-programming-build-your-first-mobile-game#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">2 ratings</a>)  | Next Session : 1st Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/1957/coursera-programming-for-everybody-python" style="color: #2ba6cb;text-decoration: none;"><b>Programming for Everybody (Python)</b></a><br><i>University of Michigan via Coursera</i><br><b> <a href="https://www.coursera.org/course/pythonlearn" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/1957/coursera-programming-for-everybody-python#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">21 ratings</a>)  | Next Session : 5th Oct, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/3444/edx-html5-1x-learn-html5-from-w3c" style="color: #2ba6cb;text-decoration: none;"><b>HTML5.1x: Learn HTML5 from W3C</b></a><br><i>World Wide Web Consortium (W3C) via edX</i><br><b> <a href="https://www.edx.org/course/learn-html5-w3c-w3cx-html5-1x" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/3444/edx-html5-1x-learn-html5-from-w3c#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">1 rating</a>)  | Next Session : 1st Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/3338/edx-dev203x-introduction-to-bootstrap-a-tutorial" style="color: #2ba6cb;text-decoration: none;"><b>DEV203x: Introduction to Bootstrap – A Tutorial</b></a><br><i>Microsoft via edX</i><br><b> <a href="https://www.edx.org/course/introduction-bootstrap-tutorial-microsoft-dev203x-0" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★☆☆ (<a href="https://www.class-central.com/mooc/3338/edx-dev203x-introduction-to-bootstrap-a-tutorial#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">4 ratings</a>)  | Next Session : 2nd Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/1857/edx-lfs101x-2-introduction-to-linux" style="color: #2ba6cb;text-decoration: none;"><b>LFS101x.2: Introduction to Linux</b></a><br><i>Linux Foundation via edX</i><br><b> <a href="https://www.edx.org/course/introduction-linux-linuxfoundationx-lfs101x-2" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/1857/edx-lfs101x-2-introduction-to-linux#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">9 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/3340/edx-inf201x-windows-powershell-fundamentals" style="color: #2ba6cb;text-decoration: none;"><b>INF201x: Windows PowerShell Fundamentals</b></a><br><i> via edX</i><br><b> <a href="https://www.edx.org/course/windows-powershell-fundamentals-microsoft-inf201x-0" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : 2nd Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/3483/edx-cs005x-cs-for-all-introduction-to-computer-science-and-python-programming" style="color: #2ba6cb;text-decoration: none;"><b>CS005x: CS For All: Introduction to Computer Science and Python Programming</b></a><br><i>Harvey Mudd College via edX</i><br><b> <a href="https://www.edx.org/course/cs-all-introduction-computer-science-harveymuddx-cs005x" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/3483/edx-cs005x-cs-for-all-introduction-to-computer-science-and-python-programming#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">2 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/3353/edx-cloudintro-x-introduction-to-cloud-computing" style="color: #2ba6cb;text-decoration: none;"><b>CloudIntro.x: Introduction to Cloud Computing</b></a><br><i>Microsoft via edX</i><br><b> <a href="https://www.edx.org/course/introduction-cloud-computing-ieeex-cloudintro-x" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : 3rd Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/1727/coursera-usable-security" style="color: #2ba6cb;text-decoration: none;"><b>Usable Security</b></a><br><i>University of Maryland, College Park via Coursera</i><br><b> <a href="https://www.coursera.org/course/usablesec" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/1727/coursera-usable-security#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">2 ratings</a>)  | Next Session : 8th Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/1341/edx-6-00-1x-introduction-to-computer-science-and-programming-using-python" style="color: #2ba6cb;text-decoration: none;"><b>6.00.1x: Introduction to Computer Science and Programming Using Python</b></a><br><i>Massachusetts Institute of Technology via edX</i><br><b> <a href="https://www.edx.org/course/introduction-computer-science-mitx-6-00-1x-0" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/1341/edx-6-00-1x-introduction-to-computer-science-and-programming-using-python#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">22 ratings</a>)  | Next Session : 10th Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/1650/edx-cs101-1x-introduction-to-computer-programming-part-1" style="color: #2ba6cb;text-decoration: none;"><b>CS101.1x: Introduction to Computer Programming, Part 1</b></a><br><i>IIT(Indian Institute of Technology Bombay) via edX</i><br><b> <a href="https://www.edx.org/course/introduction-computer-programming-part-1-iitbombayx-cs101-1x-0" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★☆☆☆ (<a href="https://www.class-central.com/mooc/1650/edx-cs101-1x-introduction-to-computer-programming-part-1#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">7 ratings</a>)  | Next Session : 16th Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/320/udacity-intro-to-computer-science" style="color: #2ba6cb;text-decoration: none;"><b>Intro to Computer Science</b></a><br><i>University of Virginia via Udacity</i><br><b> <a href="https://www.udacity.com/course/intro-to-computer-science--cs101?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/320/udacity-intro-to-computer-science#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">37 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/590/openhpi-introduction-to-internetworking-with-tcp-ip" style="color: #2ba6cb;text-decoration: none;"><b>Introduction to Internetworking with TCP/IP</b></a><br><i> via openHPI</i><br><b> <a href="https://open.hpi.de/courses/internetworking2014" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★☆☆ (<a href="https://www.class-central.com/mooc/590/openhpi-introduction-to-internetworking-with-tcp-ip#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">2 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/553/openlearning-unsw-computing-1-the-art-of-programming" style="color: #2ba6cb;text-decoration: none;"><b>UNSW Computing 1 - The Art of Programming</b></a><br><i> via OpenLearning</i><br><b> <a href="https://www.openlearning.com/courses/unsw/computing1" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/1010/dco042-python-for-informatics" style="color: #2ba6cb;text-decoration: none;"><b>DCO042 - Python For Informatics</b></a><br><i>University of Michigan via Independent</i><br><b> <a href="https://online.dr-chuck.com/index.php" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/1010/dco042-python-for-informatics#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">5 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/640/program-arcade-games-learn-computer-science" style="color: #2ba6cb;text-decoration: none;"><b>Program Arcade Games - Learn Computer Science</b></a><br><i> via Independent</i><br><b> <a href="http://programarcadegames.com/" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/615/openhpi-semantic-web-technologies" style="color: #2ba6cb;text-decoration: none;"><b>Semantic Web Technologies</b></a><br><i> via openHPI</i><br><b> <a href="https://open.hpi.de/courses/semanticweb" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★☆☆☆ (<a href="https://www.class-central.com/mooc/615/openhpi-semantic-web-technologies#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">1 rating</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/831/udacity-intro-to-java-programming" style="color: #2ba6cb;text-decoration: none;"><b>Intro to Java Programming</b></a><br><i>San Jose State University via Udacity</i><br><b> <a href="https://www.udacity.com/course/intro-to-java-programming--cs046?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/831/udacity-intro-to-java-programming#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">7 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/904/open2study-user-experience-for-the-web" style="color: #2ba6cb;text-decoration: none;"><b>User Experience for the Web</b></a><br><i> via Open2Study</i><br><b> <a href="https://www.open2study.com/courses/user-experience-for-the-web" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/904/open2study-user-experience-for-the-web#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">3 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/1481/udacity-intro-to-point-click-app-development" style="color: #2ba6cb;text-decoration: none;"><b>Intro to Point & Click App Development</b></a><br><i>Salesforce via Udacity</i><br><b> <a href="https://www.udacity.com/course/intro-to-point-click-app-development--ud162?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/1046/udacity-mobile-web-development" style="color: #2ba6cb;text-decoration: none;"><b>Mobile Web Development</b></a><br><i>Google via Udacity</i><br><b> <a href="https://www.udacity.com/course/mobile-web-development--cs256?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/1580/stanford-openedx-db-introduction-to-databases" style="color: #2ba6cb;text-decoration: none;"><b>DB: Introduction to Databases</b></a><br><i>Stanford University via Stanford OpenEdx</i><br><b> <a href="https://class.stanford.edu/courses/Engineering/db/2014_1/about" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/1580/stanford-openedx-db-introduction-to-databases#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">2 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/1821/making-sense-of-data" style="color: #2ba6cb;text-decoration: none;"><b>Making Sense of Data</b></a><br><i>Google via Independent</i><br><b> <a href="https://datasense.withgoogle.com/preview" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★☆☆ (<a href="https://www.class-central.com/mooc/1821/making-sense-of-data#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">7 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/1952/udacity-make-your-own-2048" style="color: #2ba6cb;text-decoration: none;"><b>Make Your Own 2048</b></a><br><i> via Udacity</i><br><b> <a href="https://www.udacity.com/course/make-your-own-2048--ud248?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★☆☆☆☆ (<a href="https://www.class-central.com/mooc/1952/udacity-make-your-own-2048#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">1 rating</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/2013/udacity-programming-foundations-with-python" style="color: #2ba6cb;text-decoration: none;"><b>Programming Foundations with Python</b></a><br><i> via Udacity</i><br><b> <a href="https://www.udacity.com/course/programming-foundations-with-python--ud036?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/2013/udacity-programming-foundations-with-python#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">2 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/590/openhpi-introduction-to-internetworking-with-tcp-ip" style="color: #2ba6cb;text-decoration: none;"><b>Introduction to Internetworking with TCP/IP</b></a><br><i> via openHPI</i><br><b> <a href="https://open.hpi.de/courses/internetworking2014" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★☆☆ (<a href="https://www.class-central.com/mooc/590/openhpi-introduction-to-internetworking-with-tcp-ip#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">2 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/1894/opensap-an-introduction-to-sap-hana" style="color: #2ba6cb;text-decoration: none;"><b>An Introduction to SAP HANA</b></a><br><i> via openSAP</i><br><b> <a href="https://open.sap.com/course/hanaintro1" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★☆☆☆ (<a href="https://www.class-central.com/mooc/1894/opensap-an-introduction-to-sap-hana#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">1 rating</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/2486/nptel-introduction-to-programming-in-c" style="color: #2ba6cb;text-decoration: none;"><b>Introduction to Programming in C</b></a><br><i> via NPTEL</i><br><b> <a href="https://onlinecourses.nptel.ac.in/iitk_cs_101/preview" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★☆☆☆☆ (<a href="https://www.class-central.com/mooc/2486/nptel-introduction-to-programming-in-c#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">1 rating</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/2780/cambridge-university-press-cambridge-gsce-computing-online" style="color: #2ba6cb;text-decoration: none;"><b>Cambridge GSCE Computing Online</b></a><br><i> via Cambridge University Press</i><br><b> <a href="http://www.cambridgegcsecomputing.org/" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/2780/cambridge-university-press-cambridge-gsce-computing-online#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">1 rating</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/2659/udacity-intro-to-html-and-css" style="color: #2ba6cb;text-decoration: none;"><b>Intro to HTML and CSS</b></a><br><i> via Udacity</i><br><b> <a href="https://www.udacity.com/course/intro-to-html-and-css--ud304?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★☆☆ (<a href="https://www.class-central.com/mooc/2659/udacity-intro-to-html-and-css#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">4 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/2660/udacity-javascript-basics" style="color: #2ba6cb;text-decoration: none;"><b>JavaScript Basics</b></a><br><i> via Udacity</i><br><b> <a href="https://www.udacity.com/course/javascript-basics--ud804?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/2660/udacity-javascript-basics#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">3 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/2661/udacity-how-to-use-git-and-github" style="color: #2ba6cb;text-decoration: none;"><b>How to Use Git and GitHub</b></a><br><i> via Udacity</i><br><b> <a href="https://www.udacity.com/course/how-to-use-git-and-github--ud775?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/2661/udacity-how-to-use-git-and-github#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">8 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/442/edx-cs50x-introduction-to-computer-science" style="color: #2ba6cb;text-decoration: none;"><b>CS50x: Introduction to Computer Science</b></a><br><i>Harvard University via edX</i><br><b> <a href="https://www.edx.org/course/introduction-computer-science-harvardx-cs50x" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/442/edx-cs50x-introduction-to-computer-science#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">16 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/3253/udacity-intro-to-relational-databases" style="color: #2ba6cb;text-decoration: none;"><b>Intro to Relational Databases</b></a><br><i> via Udacity</i><br><b> <a href="https://www.udacity.com/course/intro-to-relational-databases--ud197?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/335/coursera-internet-history-technology-and-security" style="color: #2ba6cb;text-decoration: none;"><b>Internet History, Technology, and Security</b></a><br><i>University of Michigan via Coursera</i><br><b> <a href="https://www.coursera.org/course/insidetheinternet" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/335/coursera-internet-history-technology-and-security#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">15 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/3483/edx-cs005x-cs-for-all-introduction-to-computer-science-and-python-programming" style="color: #2ba6cb;text-decoration: none;"><b>CS005x: CS For All: Introduction to Computer Science and Python Programming</b></a><br><i>Harvey Mudd College via edX</i><br><b> <a href="https://www.edx.org/course/cs-all-introduction-computer-science-harveymuddx-cs005x" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/3483/edx-cs005x-cs-for-all-introduction-to-computer-science-and-python-programming#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">2 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/2175/stanford-openedx-cs101-computer-science-101" style="color: #2ba6cb;text-decoration: none;"><b>CS101: Computer Science 101</b></a><br><i>Stanford University via Stanford OpenEdx</i><br><b> <a href="http://online.stanford.edu/course/computer-science-101-self-paced" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★☆☆ (<a href="https://www.class-central.com/mooc/2175/stanford-openedx-cs101-computer-science-101#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">2 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/2957/edx-cs001x-mycs-computer-science-for-beginners" style="color: #2ba6cb;text-decoration: none;"><b>CS001x: MyCS: Computer Science for Beginners</b></a><br><i>Harvey Mudd College via edX</i><br><b> <a href="https://www.edx.org/course/mycs-computer-science-beginners-harveymuddx-cs001x" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★☆☆ (<a href="https://www.class-central.com/mooc/2957/edx-cs001x-mycs-computer-science-for-beginners#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">1 rating</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/303/coursera-introduction-to-databases" style="color: #2ba6cb;text-decoration: none;"><b>Introduction to Databases</b></a><br><i>Stanford University via Coursera</i><br><b> <a href="https://www.coursera.org/course/db" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/303/coursera-introduction-to-databases#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">24 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/375/coursera-computer-science-101" style="color: #2ba6cb;text-decoration: none;"><b>Computer Science 101</b></a><br><i>Stanford University via Coursera</i><br><b> <a href="https://www.coursera.org/course/cs101" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/375/coursera-computer-science-101#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">10 ratings</a>)  | Next Session : Self Paced </b><br><br>
+
+                        <h6 style="color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;margin: 0;text-align: left;line-height: 1.3;word-break: normal;font-size: 20px;">INTERMEDIATE(80)</h6><br>
+<a href="https://www.class-central.com/mooc/1718/coursera-regression-models" style="color: #2ba6cb;text-decoration: none;"><b>Regression Models</b></a><br><i>Johns Hopkins University via Coursera</i><br><b> <a href="https://www.coursera.org/course/regmods" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★☆☆☆☆ (<a href="https://www.class-central.com/mooc/1718/coursera-regression-models#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">1 rating</a>)  | Next Session : 1st Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/1719/coursera-practical-machine-learning" style="color: #2ba6cb;text-decoration: none;"><b>Practical Machine Learning</b></a><br><i>Johns Hopkins University via Coursera</i><br><b> <a href="https://www.coursera.org/course/predmachlearn" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/1719/coursera-practical-machine-learning#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">2 ratings</a>)  | Next Session :1st Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/1720/coursera-developing-data-products" style="color: #2ba6cb;text-decoration: none;"><b>Developing Data Products</b></a><br><i>Johns Hopkins University via Coursera</i><br><b> <a href="https://www.coursera.org/course/devdataprod" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/1720/coursera-developing-data-products#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">1 rating</a>)  | Next Session : 1st Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/1712/coursera-the-data-scientist-s-toolbox" style="color: #2ba6cb;text-decoration: none;"><b>The Data Scientist’s Toolbox</b></a><br><i>Johns Hopkins University via Coursera</i><br><b> <a href="https://www.coursera.org/course/datascitoolbox" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★☆☆ (<a href="https://www.class-central.com/mooc/1712/coursera-the-data-scientist-s-toolbox#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">46 ratings</a>)  | Next Session : 1st Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/1713/coursera-r-programming" style="color: #2ba6cb;text-decoration: none;"><b>R Programming</b></a><br><i>Johns Hopkins University via Coursera</i><br><b> <a href="https://www.coursera.org/course/rprog" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★☆☆☆ (<a href="https://www.class-central.com/mooc/1713/coursera-r-programming#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">83 ratings</a>)  | Next Session : 6th Jul, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/1714/coursera-getting-and-cleaning-data" style="color: #2ba6cb;text-decoration: none;"><b>Getting and Cleaning Data</b></a><br><i>Johns Hopkins University via Coursera</i><br><b> <a href="https://www.coursera.org/course/getdata" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★☆☆ (<a href="https://www.class-central.com/mooc/1714/coursera-getting-and-cleaning-data#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">17 ratings</a>)  | Next Session : 1st Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/1715/coursera-exploratory-data-analysis" style="color: #2ba6cb;text-decoration: none;"><b>Exploratory Data Analysis</b></a><br><i>Johns Hopkins University via Coursera</i><br><b> <a href="https://www.coursera.org/course/exdata" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/1715/coursera-exploratory-data-analysis#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">7 ratings</a>)  | Next Session :1st Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/891/coursera-networks-illustrated-principles-without-calculus" style="color: #2ba6cb;text-decoration: none;"><b>Networks Illustrated: Principles without Calculus</b></a><br><i>Princeton University via Coursera</i><br><b> <a href="https://www.coursera.org/course/ni" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/891/coursera-networks-illustrated-principles-without-calculus#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">1 rating</a>)  | Next Session : 1st Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/3472/coursera-introduction-to-genomic-technologies" style="color: #2ba6cb;text-decoration: none;"><b>Introduction to Genomic Technologies</b></a><br><i>Johns Hopkins University via Coursera</i><br><b> <a href="https://www.coursera.org/course/genintro" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : 6th Jul, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/3026/edx-cs100-1x-introduction-to-big-data-with-apache-spark" style="color: #2ba6cb;text-decoration: none;"><b>CS100.1x: Introduction to Big Data with Apache Spark</b></a><br><i>Harvard University via edX</i><br><b> <a href="https://www.edx.org/course/introduction-big-data-apache-spark-uc-berkeleyx-cs100-1x" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : 1st Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/1712/coursera-the-data-scientist-s-toolbox" style="color: #2ba6cb;text-decoration: none;"><b>The Data Scientist’s Toolbox</b></a><br><i>Johns Hopkins University via Coursera</i><br><b> <a href="https://www.coursera.org/course/datascitoolbox" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★☆☆ (<a href="https://www.class-central.com/mooc/1712/coursera-the-data-scientist-s-toolbox#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">46 ratings</a>)  | Next Session : 1st Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/1713/coursera-r-programming" style="color: #2ba6cb;text-decoration: none;"><b>R Programming</b></a><br><i>Johns Hopkins University via Coursera</i><br><b> <a href="https://www.coursera.org/course/rprog" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★☆☆☆ (<a href="https://www.class-central.com/mooc/1713/coursera-r-programming#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">83 ratings</a>)  | Next Session : 6th Jul, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/1714/coursera-getting-and-cleaning-data" style="color: #2ba6cb;text-decoration: none;"><b>Getting and Cleaning Data</b></a><br><i>Johns Hopkins University via Coursera</i><br><b> <a href="https://www.coursera.org/course/getdata" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★☆☆ (<a href="https://www.class-central.com/mooc/1714/coursera-getting-and-cleaning-data#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">17 ratings</a>)  | Next Session : 1st Jun, 2015  </b><br><br>
+<a href="https://www.class-central.com/mooc/1715/coursera-exploratory-data-analysis" style="color: #2ba6cb;text-decoration: none;"><b>Exploratory Data Analysis</b></a><br><i>Johns Hopkins University via Coursera</i><br><b> <a href="https://www.coursera.org/course/exdata" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/1715/coursera-exploratory-data-analysis#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">7 ratings</a>)  | Next Session : 1st Jun, 2015  </b><br><br>
+<a href="https://www.class-central.com/mooc/1716/coursera-reproducible-research" style="color: #2ba6cb;text-decoration: none;"><b>Reproducible Research</b></a><br><i>Johns Hopkins University via Coursera</i><br><b> <a href="https://www.coursera.org/course/repdata" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/1716/coursera-reproducible-research#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">5 ratings</a>)  | Next Session : 1st Jun, 2015  </b><br><br>
+<a href="https://www.class-central.com/mooc/1717/coursera-statistical-inference" style="color: #2ba6cb;text-decoration: none;"><b>Statistical Inference</b></a><br><i>Johns Hopkins University via Coursera</i><br><b> <a href="https://www.coursera.org/course/statinference" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★☆☆☆ (<a href="https://www.class-central.com/mooc/1717/coursera-statistical-inference#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">4 ratings</a>)  | Next Session : 1st Jun, 2015  </b><br><br>
+<a href="https://www.class-central.com/mooc/3465/edx-spd1x-systematic-program-design-part-1-the-core-method" style="color: #2ba6cb;text-decoration: none;"><b>SPD1x: Systematic Program Design - Part 1: The Core Method</b></a><br><i>The University of British Columbia via edX</i><br><b> <a href="https://www.edx.org/course/systematic-program-design-part-1-core-ubcx-spd1x" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : 2nd Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/3343/edx-dev201x-introduction-to-typescript" style="color: #2ba6cb;text-decoration: none;"><b>DEV201x: Introduction to TypeScript</b></a><br><i>Microsoft via edX</i><br><b> <a href="https://www.edx.org/course/introduction-typescript-microsoft-dev201x-0" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : 2nd Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/3348/edx-dev202-1x-building-cloud-apps-with-microsoft-azure-part-1" style="color: #2ba6cb;text-decoration: none;"><b>DEV202.1x: Building Cloud Apps with Microsoft Azure – Part 1</b></a><br><i>Microsoft via edX</i><br><b> <a href="https://www.edx.org/course/building-cloud-apps-microsoft-azure-part-microsoft-dev202-1x-0" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : 2nd Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/3342/edx-cld201x-introduction-to-office-365-apis" style="color: #2ba6cb;text-decoration: none;"><b>CLD201x: Introduction to Office 365 APIs</b></a><br><i>Microsoft via edX</i><br><b> <a href="https://www.edx.org/course/introduction-office-365-apis-microsoft-cld201x-0" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : 2nd Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/3341/edx-dat201x-querying-with-transact-sql" style="color: #2ba6cb;text-decoration: none;"><b>DAT201x: Querying with Transact-SQL</b></a><br><i>Microsoft via edX</i><br><b> <a href="https://www.edx.org/course/querying-transact-sql-microsoft-dat201x-0" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : 2nd Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/3339/edx-dev204x-programming-with-c" style="color: #2ba6cb;text-decoration: none;"><b>DEV204x: Programming with C#</b></a><br><i>Microsoft via edX</i><br><b> <a href="https://www.edx.org/course/programming-c-microsoft-dev204x-0" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/3339/edx-dev204x-programming-with-c#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">2 ratings</a>)  | Next Session : 2nd Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/1728/coursera-software-security" style="color: #2ba6cb;text-decoration: none;"><b>Software Security </b></a><br><i>University of Maryland, College Park via Coursera</i><br><b> <a href="https://www.coursera.org/course/softwaresec" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/1728/coursera-software-security#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">6 ratings</a>)  | Next Session : 8th Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/1730/coursera-cryptography" style="color: #2ba6cb;text-decoration: none;"><b>Cryptography</b></a><br><i>University of Maryland, College Park via Coursera</i><br><b> <a href="https://www.coursera.org/course/cryptography" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/1730/coursera-cryptography#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">1 rating</a>)  | Next Session : 8th Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/3535/edx-dev202-3x-building-cloud-apps-with-microsoft-azure-part-3" style="color: #2ba6cb;text-decoration: none;"><b>DEV202.3x: Building Cloud Apps with Microsoft Azure – Part 3</b></a><br><i>Microsoft via edX</i><br><b> <a href="https://www.edx.org/course/building-cloud-apps-microsoft-azure-part-microsoft-dev202-3x" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : 16th Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/1178/coursera-programming-mobile-applications-for-android-handheld-systems-part-1" style="color: #2ba6cb;text-decoration: none;"><b>Programming Mobile Applications for Android Handheld Systems: Part 1</b></a><br><i>University of Maryland, College Park via Coursera</i><br><b> <a href="https://www.coursera.org/course/androidpart1" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/1178/coursera-programming-mobile-applications-for-android-handheld-systems-part-1#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">22 ratings</a>)  | Next Session : 17th Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/3076/coursera-programming-mobile-applications-for-android-handheld-systems-part-2" style="color: #2ba6cb;text-decoration: none;"><b>Programming Mobile Applications for Android Handheld Systems: Part 2</b></a><br><i>University of Maryland, College Park via Coursera</i><br><b> <a href="https://www.coursera.org/course/androidpart2" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/3076/coursera-programming-mobile-applications-for-android-handheld-systems-part-2#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">5 ratings</a>)  | Next Session : 17th Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/3079/coursera-programming-cloud-services-for-android-handheld-systems-spring" style="color: #2ba6cb;text-decoration: none;"><b>Programming Cloud Services for Android Handheld Systems: Spring</b></a><br><i>Vanderbilt University via Coursera</i><br><b> <a href="https://www.coursera.org/course/mobilecloudprogram" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : 17th Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/339/coursera-algorithms-part-i" style="color: #2ba6cb;text-decoration: none;"><b>Algorithms, Part I</b></a><br><i>Princeton University via Coursera</i><br><b> <a href="https://www.coursera.org/course/algs4partI" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/339/coursera-algorithms-part-i#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">16 ratings</a>)  | Next Session : 19th Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/374/coursera-algorithms-design-and-analysis-part-1" style="color: #2ba6cb;text-decoration: none;"><b>Algorithms: Design and Analysis, Part 1</b></a><br><i>Stanford University via Coursera</i><br><b> <a href="https://www.coursera.org/course/algo" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/374/coursera-algorithms-design-and-analysis-part-1#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">24 ratings</a>)  | Next Session : 30th Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/323/udacity-design-of-computer-programs" style="color: #2ba6cb;text-decoration: none;"><b>Design of Computer Programs</b></a><br><i>Stanford University via Udacity</i><br><b> <a href="https://www.udacity.com/course/design-of-computer-programs--cs212?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/323/udacity-design-of-computer-programs#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">4 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/324/udacity-web-development" style="color: #2ba6cb;text-decoration: none;"><b>Web Development</b></a><br><i> via Udacity</i><br><b> <a href="https://www.udacity.com/course/web-development--cs253?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/324/udacity-web-development#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">11 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/325/udacity-programming-languages" style="color: #2ba6cb;text-decoration: none;"><b>Programming Languages</b></a><br><i>University of Virginia via Udacity</i><br><b> <a href="https://www.udacity.com/course/programming-languages--cs262?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/325/udacity-programming-languages#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">6 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/364/udacity-intro-to-algorithms" style="color: #2ba6cb;text-decoration: none;"><b>Intro to Algorithms</b></a><br><i> via Udacity</i><br><b> <a href="https://www.udacity.com/course/intro-to-algorithms--cs215?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/365/udacity-software-testing" style="color: #2ba6cb;text-decoration: none;"><b>Software Testing</b></a><br><i>University of Utah via Udacity</i><br><b> <a href="https://www.udacity.com/course/software-testing--cs258?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/365/udacity-software-testing#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">5 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/457/udacity-software-debugging" style="color: #2ba6cb;text-decoration: none;"><b>Software Debugging</b></a><br><i>Saarland University via Udacity</i><br><b> <a href="https://www.udacity.com/course/software-debugging--cs259?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/457/udacity-software-debugging#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">2 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/458/csci-1730-introduction-to-programming-languages" style="color: #2ba6cb;text-decoration: none;"><b>CSCI 1730 - Introduction to Programming Languages</b></a><br><i>Brown University via Independent</i><br><b> <a href="http://www.cs.brown.edu/courses/cs173/2012/OnLine/" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/455/udacity-intro-to-theoretical-computer-science" style="color: #2ba6cb;text-decoration: none;"><b>Intro to Theoretical Computer Science</b></a><br><i> via Udacity</i><br><b> <a href="https://www.udacity.com/course/intro-to-theoretical-computer-science--cs313?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/592/udacity-intro-to-artificial-intelligence" style="color: #2ba6cb;text-decoration: none;"><b>Intro to Artificial Intelligence</b></a><br><i>Stanford University via Udacity</i><br><b> <a href="https://www.udacity.com/course/intro-to-artificial-intelligence--cs271?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/551/udacity-html5-game-development" style="color: #2ba6cb;text-decoration: none;"><b>HTML5 Game Development</b></a><br><i>Google via Udacity</i><br><b> <a href="https://www.udacity.com/course/html5-game-development--cs255?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/551/udacity-html5-game-development#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">2 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/777/openhpi-datenmanagement-mit-sql" style="color: #2ba6cb;text-decoration: none;"><b>Datenmanagement mit SQL</b></a><br><i> via openHPI</i><br><b> <a href="https://open.hpi.de/courses/sql" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/366/learning-from-data-introductory-machine-learning-course" style="color: #2ba6cb;text-decoration: none;"><b>Learning from Data (Introductory Machine Learning course)</b></a><br><i>California Institute of Technology via Independent</i><br><b> <a href="http://work.caltech.edu/telecourse.html" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/366/learning-from-data-introductory-machine-learning-course#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">1 rating</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/795/coursesites-python-for-informatics-exploring-information" style="color: #2ba6cb;text-decoration: none;"><b>Python for Informatics: Exploring Information</b></a><br><i> via CourseSites</i><br><b> <a href="https://www.coursesites.com/webapps/Bb-sites-course-creation-BBLEARN/courseHomepage.htmlx?course_id=_250824_1" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/1806/coursesites-applied-data-science-an-introduction" style="color: #2ba6cb;text-decoration: none;"><b>Applied Data Science: An Introduction</b></a><br><i>Syracuse University via CourseSites</i><br><b> <a href="https://www.coursesites.com/webapps/Bb-sites-course-creation-BBLEARN/courseHomepage.htmlx?course_id=_276927_1" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/1806/coursesites-applied-data-science-an-introduction#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">3 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/1348/opensap-introduction-to-mobile-solution-development" style="color: #2ba6cb;text-decoration: none;"><b>Introduction to Mobile Solution Development</b></a><br><i> via openSAP</i><br><b> <a href="https://open.sap.com/course/mobile1" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/1348/opensap-introduction-to-mobile-solution-development#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">1 rating</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/1470/udacity-intro-to-hadoop-and-mapreduce" style="color: #2ba6cb;text-decoration: none;"><b>Intro to Hadoop and MapReduce</b></a><br><i>Cloudera via Udacity</i><br><b> <a href="https://www.udacity.com/course/intro-to-hadoop-and-mapreduce--ud617?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/1470/udacity-intro-to-hadoop-and-mapreduce#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">1 rating</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/1948/big-data-applications-and-analytics" style="color: #2ba6cb;text-decoration: none;"><b>Big Data applications and Analytics</b></a><br><i>Indiana University via Independent</i><br><b> <a href="https://bigdatacourse.appspot.com/" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★☆☆ (<a href="https://www.class-central.com/mooc/1948/big-data-applications-and-analytics#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">1 rating</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/1347/opensap-introduction-to-software-development-on-sap-hana" style="color: #2ba6cb;text-decoration: none;"><b>Introduction to Software Development on SAP HANA</b></a><br><i> via openSAP</i><br><b> <a href="https://open.sap.com/course/hana1-1" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/1347/opensap-introduction-to-software-development-on-sap-hana#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">4 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/1021/udacity-cs-8802-artificial-intelligence-for-robotics-programming-a-robotic-car" style="color: #2ba6cb;text-decoration: none;"><b>CS 8802, Artificial Intelligence for Robotics: Programming a Robotic Car</b></a><br><i>Stanford University via Udacity</i><br><b> <a href="https://www.udacity.com/course/cs373" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/1021/udacity-cs-8802-artificial-intelligence-for-robotics-programming-a-robotic-car#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">1 rating</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/1480/udacity-intro-to-data-science" style="color: #2ba6cb;text-decoration: none;"><b>Intro to Data Science</b></a><br><i> via Udacity</i><br><b> <a href="https://www.udacity.com/course/intro-to-data-science--ud359?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/1480/udacity-intro-to-data-science#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">4 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/1479/udacity-data-wrangling-with-mongodb" style="color: #2ba6cb;text-decoration: none;"><b>Data Wrangling with MongoDB</b></a><br><i>MongoDB University via Udacity</i><br><b> <a href="https://www.udacity.com/course/data-wrangling-with-mongodb--ud032?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/1479/udacity-data-wrangling-with-mongodb#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">3 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/1478/udacity-data-analysis-with-r" style="color: #2ba6cb;text-decoration: none;"><b>Data Analysis with R</b></a><br><i>Facebook via Udacity</i><br><b> <a href="https://www.udacity.com/course/data-analysis-with-r--ud651?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/1478/udacity-data-analysis-with-r#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">7 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/1701/openhpi-parallel-programming-concepts" style="color: #2ba6cb;text-decoration: none;"><b>Parallel Programming Concepts</b></a><br><i> via openHPI</i><br><b> <a href="https://open.hpi.de/courses/parprog2014" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/1701/openhpi-parallel-programming-concepts#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">3 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/2109/ada-overview" style="color: #2ba6cb;text-decoration: none;"><b>Ada: Overview</b></a><br><i>AdaCore University via Independent</i><br><b> <a href="http://university.adacore.com/courses/overview/" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/2110/ada-basic-concepts" style="color: #2ba6cb;text-decoration: none;"><b>Ada: Basic Concepts</b></a><br><i>AdaCore University via Independent</i><br><b> <a href="http://university.adacore.com/courses/basic-concepts/" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/2111/ada-programming-in-the-large" style="color: #2ba6cb;text-decoration: none;"><b>Ada: Programming in the Large</b></a><br><i>AdaCore University via Independent</i><br><b> <a href="http://university.adacore.com/courses/programming-in-the-large1/" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/2189/udacity-website-performance-optimization" style="color: #2ba6cb;text-decoration: none;"><b>Website Performance Optimization</b></a><br><i>Google via Udacity</i><br><b> <a href="https://www.udacity.com/course/website-performance-optimization--ud884?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/2212/udacity-ux-design-for-mobile-developers" style="color: #2ba6cb;text-decoration: none;"><b>UX Design for Mobile Developers</b></a><br><i>Google via Udacity</i><br><b> <a href="https://www.udacity.com/course/ux-design-for-mobile-developers--ud849?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/2215/udacity-developing-scalable-apps-in-java" style="color: #2ba6cb;text-decoration: none;"><b>Developing Scalable Apps in Java</b></a><br><i>Google via Udacity</i><br><b> <a href="https://www.udacity.com/course/developing-scalable-apps-in-java--ud859?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/2420/universiteplus-java-se-standart-edition" style="color: #2ba6cb;text-decoration: none;"><b>Java SE - Standart Edition</b></a><br><i> via Universiteplus</i><br><b> <a href="https://www.universiteplus.com/courses/java-se-standart-edition" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/2211/udacity-developing-android-apps" style="color: #2ba6cb;text-decoration: none;"><b>Developing Android Apps</b></a><br><i>Google via Udacity</i><br><b> <a href="https://www.udacity.com/course/developing-android-apps--ud853?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/2335/udacity-software-development-process" style="color: #2ba6cb;text-decoration: none;"><b>Software Development Process</b></a><br><i>Georgia Institute of Technology via Udacity</i><br><b> <a href="https://www.udacity.com/course/ud805" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/2336/udacity-computer-networking" style="color: #2ba6cb;text-decoration: none;"><b>Computer Networking</b></a><br><i>Georgia Institute of Technology via Udacity</i><br><b> <a href="https://www.udacity.com/course/ud436" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/2336/udacity-computer-networking#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">2 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/2038/openhpi-knowledge-engineering-with-semantic-web-technologies" style="color: #2ba6cb;text-decoration: none;"><b>Knowledge Engineering with Semantic Web Technologies</b></a><br><i> via openHPI</i><br><b> <a href="https://open.hpi.de/courses/semanticweb2015" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : 2nd Nov, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/2339/practical-numerical-methods-with-python" style="color: #2ba6cb;text-decoration: none;"><b>Practical Numerical Methods with Python</b></a><br><i>George Washington University via Independent</i><br><b> <a href="http://openedx.seas.gwu.edu/courses/GW/MAE6286/2014_fall/about" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/2339/practical-numerical-methods-with-python#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">1 rating</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/2658/udacity-object-oriented-javascript" style="color: #2ba6cb;text-decoration: none;"><b>Object-Oriented JavaScript</b></a><br><i>Hack Reactor via Udacity</i><br><b> <a href="https://www.udacity.com/course/object-oriented-javascript--ud015?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/2658/udacity-object-oriented-javascript#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">2 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/2997/udacity-intro-to-ajax" style="color: #2ba6cb;text-decoration: none;"><b>Intro to AJAX</b></a><br><i> via Udacity</i><br><b> <a href="https://www.udacity.com/course/intro-to-ajax--ud110?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/2898/udacity-data-visualization-and-d3-js" style="color: #2ba6cb;text-decoration: none;"><b>Data Visualization and D3.js</b></a><br><i> via Udacity</i><br><b> <a href="https://www.udacity.com/course/data-visualization-and-d3js--ud507?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/2999/udacity-html5-canvas" style="color: #2ba6cb;text-decoration: none;"><b>HTML5 Canvas</b></a><br><i> via Udacity</i><br><b> <a href="https://www.udacity.com/course/html5-canvas--ud292?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/2861/udacity-intro-to-ios-app-development-with-swift" style="color: #2ba6cb;text-decoration: none;"><b>Intro to iOS App Development with Swift</b></a><br><i> via Udacity</i><br><b> <a href="https://www.udacity.com/course/intro-to-ios-app-development-with-swift--ud585?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/2861/udacity-intro-to-ios-app-development-with-swift#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">4 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/2998/udacity-intro-to-jquery" style="color: #2ba6cb;text-decoration: none;"><b>Intro to jQuery</b></a><br><i> via Udacity</i><br><b> <a href="https://www.udacity.com/course/intro-to-jquery--ud245?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/2996/udacity-intro-to-machine-learning" style="color: #2ba6cb;text-decoration: none;"><b>Intro to Machine Learning</b></a><br><i>Stanford University via Udacity</i><br><b> <a href="https://www.udacity.com/course/intro-to-machine-learning--ud120?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/2996/udacity-intro-to-machine-learning#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">1 rating</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/3254/udacity-full-stack-foundations" style="color: #2ba6cb;text-decoration: none;"><b>Full Stack Foundations</b></a><br><i> via Udacity</i><br><b> <a href="https://www.udacity.com/course/full-stack-foundations--ud088?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/3255/udacity-responsive-web-design-fundamentals" style="color: #2ba6cb;text-decoration: none;"><b>Responsive Web Design Fundamentals</b></a><br><i>Google via Udacity</i><br><b> <a href="https://www.udacity.com/course/responsive-web-design-fundamentals--ud893?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/3255/udacity-responsive-web-design-fundamentals#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">1 rating</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/3288/udacity-health-informatics-in-the-cloud" style="color: #2ba6cb;text-decoration: none;"><b>Health Informatics in the Cloud</b></a><br><i>Georgia Institute of Technology via Udacity</i><br><b> <a href="https://www.udacity.com/course/health-informatics-in-the-cloud--ud809?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/1346/opensap-introduction-to-sap-hana-cloud-platform" style="color: #2ba6cb;text-decoration: none;"><b>Introduction to SAP HANA Cloud Platform</b></a><br><i> via openSAP</i><br><b> <a href="https://open.sap.com/courses/hanacloud1-2" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★☆☆☆ (<a href="https://www.class-central.com/mooc/1346/opensap-introduction-to-sap-hana-cloud-platform#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">1 rating</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/2489/opensap-next-steps-in-software-development-on-sap-hana" style="color: #2ba6cb;text-decoration: none;"><b>Next Steps in Software Development on SAP HANA</b></a><br><i> via openSAP</i><br><b> <a href="https://open.sap.com/courses/hana2" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/2489/opensap-next-steps-in-software-development-on-sap-hana#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">1 rating</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/2360/opensap-abap-development-for-sap-hana" style="color: #2ba6cb;text-decoration: none;"><b>ABAP Development for SAP HANA</b></a><br><i> via openSAP</i><br><b> <a href="https://open.sap.com/course/a4h1" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★☆☆☆ (<a href="https://www.class-central.com/mooc/2360/opensap-abap-development-for-sap-hana#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">1 rating</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/2056/opensap-next-steps-in-sap-hana-cloud-platform" style="color: #2ba6cb;text-decoration: none;"><b>Next Steps in SAP HANA Cloud Platform</b></a><br><i> via openSAP</i><br><b> <a href="https://open.sap.com/courses/hanacloud2-2" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★☆☆ (<a href="https://www.class-central.com/mooc/2056/opensap-next-steps-in-sap-hana-cloud-platform#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">1 rating</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/3351/udacity-javascript-testing" style="color: #2ba6cb;text-decoration: none;"><b>JavaScript Testing</b></a><br><i> via Udacity</i><br><b> <a href="https://www.udacity.com/course/javascript-testing--ud549?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/3350/udacity-uikit-fundamentals" style="color: #2ba6cb;text-decoration: none;"><b>UIKit Fundamentals</b></a><br><i> via Udacity</i><br><b> <a href="https://www.udacity.com/course/uikit-fundamentals--ud788?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/2340/stanford-openedx-lpl-language-proof-and-logic" style="color: #2ba6cb;text-decoration: none;"><b>LPL: Language, Proof and Logic</b></a><br><i>Stanford University via Stanford OpenEdx</i><br><b> <a href="https://class.stanford.edu/courses/Philosophy/LPL-SP/SelfPaced/about" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/3352/udacity-responsive-images" style="color: #2ba6cb;text-decoration: none;"><b>Responsive Images</b></a><br><i> via Udacity</i><br><b> <a href="https://www.udacity.com/course/responsive-images--ud882?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/835/coursera-machine-learning" style="color: #2ba6cb;text-decoration: none;"><b>Machine Learning</b></a><br><i>Stanford University via Coursera</i><br><b> <a href="https://www.coursera.org/learn/machine-learning" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/835/coursera-machine-learning#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">70 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/3393/udacity-ios-networking-with-swift" style="color: #2ba6cb;text-decoration: none;"><b>iOS Networking with Swift</b></a><br><i> via Udacity</i><br><b> <a href="https://www.udacity.com/course/ios-networking-with-swift--ud421?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/3523/udacity-authentication-authorization-oauth" style="color: #2ba6cb;text-decoration: none;"><b>Authentication & Authorization: OAuth</b></a><br><i> via Udacity</i><br><b> <a href="https://www.udacity.com/course/authentication-authorization-oauth--ud330?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/3524/udacity-browser-rendering-optimization" style="color: #2ba6cb;text-decoration: none;"><b>Browser Rendering Optimization</b></a><br><i>Google via Udacity</i><br><b> <a href="https://www.udacity.com/course/browser-rendering-optimization--ud860?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/3525/udacity-developing-scalable-apps-in-python" style="color: #2ba6cb;text-decoration: none;"><b>Developing Scalable Apps in Python</b></a><br><i>Google via Udacity</i><br><b> <a href="https://www.udacity.com/course/developing-scalable-apps-in-python--ud858?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/3525/udacity-developing-scalable-apps-in-python#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">1 rating</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/3526/udacity-ios-persistence-and-core-data" style="color: #2ba6cb;text-decoration: none;"><b>iOS Persistence and Core Data</b></a><br><i> via Udacity</i><br><b> <a href="https://www.udacity.com/course/ios-persistence-and-core-data--ud325?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/3527/udacity-how-to-make-an-ios-app" style="color: #2ba6cb;text-decoration: none;"><b>How to Make an iOS App</b></a><br><i> via Udacity</i><br><b> <a href="https://www.udacity.com/course/how-to-make-an-ios-app--ud607?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/3455/udacity-android-performance" style="color: #2ba6cb;text-decoration: none;"><b>Android Performance</b></a><br><i>Google via Udacity</i><br><b> <a href="https://www.udacity.com/course/android-performance--ud825?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/3579/udacity-android-development-for-beginners" style="color: #2ba6cb;text-decoration: none;"><b>Android Development for Beginners</b></a><br><i>Google via Udacity</i><br><b> <a href="https://www.udacity.com/course/android-development-for-beginners--ud837?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★☆☆ (<a href="https://www.class-central.com/mooc/3579/udacity-android-development-for-beginners#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">2 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/3580/udacity-advanced-android-app-development" style="color: #2ba6cb;text-decoration: none;"><b>Advanced Android App Development</b></a><br><i>Google via Udacity</i><br><b> <a href="https://www.udacity.com/course/advanced-android-app-development--ud855?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/3581/udacity-android-design-for-developers" style="color: #2ba6cb;text-decoration: none;"><b>Android Design for Developers</b></a><br><i>Google via Udacity</i><br><b> <a href="https://www.udacity.com/course/android-design-for-developers--ud862?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/3582/udacity-android-ubiquitous-computing" style="color: #2ba6cb;text-decoration: none;"><b>Android Ubiquitous Computing</b></a><br><i>Google via Udacity</i><br><b> <a href="https://www.udacity.com/course/android-ubiquitous-computing--ud875?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/3583/udacity-google-play-services" style="color: #2ba6cb;text-decoration: none;"><b>Google Play Services</b></a><br><i>Google via Udacity</i><br><b> <a href="https://www.udacity.com/course/google-play-services--ud876?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/3584/udacity-gradle-for-android-and-java" style="color: #2ba6cb;text-decoration: none;"><b>Gradle for Android and Java</b></a><br><i>Google via Udacity</i><br><b> <a href="https://www.udacity.com/course/gradle-for-android-and-java--ud867?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/3082/udacity-javascript-design-patterns" style="color: #2ba6cb;text-decoration: none;"><b>JavaScript Design Patterns</b></a><br><i> via Udacity</i><br><b> <a href="https://www.udacity.com/course/javascript-design-patterns--ud989?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+                        <h6 style="color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;margin: 0;text-align: left;line-height: 1.3;word-break: normal;font-size: 20px;">ADVANCED(26)</h6><br>
+
+<a href="https://www.class-central.com/mooc/319/udacity-artificial-intelligence-for-robotics" style="color: #2ba6cb;text-decoration: none;"><b>Artificial Intelligence for Robotics</b></a><br><i>Stanford University via Udacity</i><br><b> <a href="https://www.udacity.com/course/artificial-intelligence-for-robotics--cs373?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/319/udacity-artificial-intelligence-for-robotics#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">8 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/326/udacity-applied-cryptography" style="color: #2ba6cb;text-decoration: none;"><b>Applied Cryptography</b></a><br><i>University of Virginia via Udacity</i><br><b> <a href="https://www.udacity.com/course/applied-cryptography--cs387?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/326/udacity-applied-cryptography#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">2 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/465/openhpi-in-memory-data-management" style="color: #2ba6cb;text-decoration: none;"><b>In-Memory Data Management</b></a><br><i> via openHPI</i><br><b> <a href="https://open.hpi.de/courses/imdb2015" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/465/openhpi-in-memory-data-management#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">2 ratings</a>)  | Next Session : 7th Sep, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/549/udacity-intro-to-parallel-programming" style="color: #2ba6cb;text-decoration: none;"><b>Intro to Parallel Programming</b></a><br><i>Nvidia via Udacity</i><br><b> <a href="https://www.udacity.com/course/intro-to-parallel-programming--cs344?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/549/udacity-intro-to-parallel-programming#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">2 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/552/udacity-interactive-3d-graphics" style="color: #2ba6cb;text-decoration: none;"><b>Interactive 3D Graphics</b></a><br><i>Autodesk via Udacity</i><br><b> <a href="https://www.udacity.com/course/interactive-3d-graphics--cs291?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/552/udacity-interactive-3d-graphics#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">2 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/550/udacity-functional-hardware-verification" style="color: #2ba6cb;text-decoration: none;"><b>Functional Hardware Verification</b></a><br><i>Cadence via Udacity</i><br><b> <a href="https://www.udacity.com/course/functional-hardware-verification--cs348?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/550/udacity-functional-hardware-verification#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">1 rating</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/1847/udacity-machine-learning-1-supervised-learning" style="color: #2ba6cb;text-decoration: none;"><b>Machine Learning 1—Supervised Learning</b></a><br><i>Brown University via Udacity</i><br><b> <a href="https://www.udacity.com/course/ud675" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/1847/udacity-machine-learning-1-supervised-learning#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">1 rating</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/1848/udacity-machine-learning-2-unsupervised-learning" style="color: #2ba6cb;text-decoration: none;"><b>Machine Learning 2—Unsupervised Learning</b></a><br><i>Brown University via Udacity</i><br><b> <a href="https://www.udacity.com/course/ud741" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/1848/udacity-machine-learning-2-unsupervised-learning#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">1 rating</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/1849/udacity-machine-learning-3-reinforcement-learning" style="color: #2ba6cb;text-decoration: none;"><b>Machine Learning 3—Reinforcement Learning</b></a><br><i>Brown University via Udacity</i><br><b> <a href="https://www.udacity.com/course/ud820" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★☆ (<a href="https://www.class-central.com/mooc/1849/udacity-machine-learning-3-reinforcement-learning#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">1 rating</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/2458/opensap-in-memory-data-management-in-a-nutshell" style="color: #2ba6cb;text-decoration: none;"><b>In-Memory Data Management In a Nutshell</b></a><br><i> via openSAP</i><br><b> <a href="https://open.sap.com/courses/hana-warmup" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★☆☆☆ (<a href="https://www.class-central.com/mooc/2458/opensap-in-memory-data-management-in-a-nutshell#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">1 rating</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/3000/udacity-real-time-analytics-with-apache-storm" style="color: #2ba6cb;text-decoration: none;"><b>Real-Time Analytics with Apache Storm</b></a><br><i>Twitter via Udacity</i><br><b> <a href="https://www.udacity.com/course/real-time-analytics-with-apache-storm--ud381?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/3256/udacity-model-building-and-validation" style="color: #2ba6cb;text-decoration: none;"><b>Model Building and Validation</b></a><br><i>AT&T via Udacity</i><br><b> <a href="https://www.udacity.com/course/model-building-and-validation--ud919?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★☆☆ (<a href="https://www.class-central.com/mooc/3256/udacity-model-building-and-validation#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">1 rating</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/1016/udacity-advanced-operating-systems" style="color: #2ba6cb;text-decoration: none;"><b>Advanced Operating Systems</b></a><br><i>Georgia Institute of Technology via Udacity</i><br><b> <a href="https://www.udacity.com/course/advanced-operating-systems--ud189?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/1016/udacity-advanced-operating-systems#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">1 rating</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/1018/udacity-high-performance-computer-architecture" style="color: #2ba6cb;text-decoration: none;"><b>High Performance Computer Architecture</b></a><br><i>Georgia Institute of Technology via Udacity</i><br><b> <a href="https://www.udacity.com/course/high-performance-computer-architecture--ud007?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/1024/udacity-computability-complexity-algorithms" style="color: #2ba6cb;text-decoration: none;"><b>Computability, Complexity & Algorithms</b></a><br><i>Georgia Institute of Technology via Udacity</i><br><b> <a href="https://www.udacity.com/course/computability-complexity-algorithms--ud061?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/1025/udacity-knowledge-based-ai-cognitive-systems" style="color: #2ba6cb;text-decoration: none;"><b>Knowledge-Based AI: Cognitive Systems</b></a><br><i>Georgia Institute of Technology via Udacity</i><br><b> <a href="https://www.udacity.com/course/knowledge-based-ai-cognitive-systems--ud409?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/1029/coursera-introduction-to-recommender-systems" style="color: #2ba6cb;text-decoration: none;"><b>Introduction to Recommender Systems</b></a><br><i>University of Minnesota via Coursera</i><br><b> <a href="https://www.coursera.org/learn/recommender-systems" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★☆☆ (<a href="https://www.class-central.com/mooc/1029/coursera-introduction-to-recommender-systems#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">6 ratings</a>)  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/3531/udacity-machine-learning" style="color: #2ba6cb;text-decoration: none;"><b>Machine Learning</b></a><br><i>Brown University via Udacity</i><br><b> <a href="https://www.udacity.com/course/machine-learning--ud262?utm_medium=referral&utm_campaign=api" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+<a href="https://www.class-central.com/mooc/1623/edx-15-071x-the-analytics-edge" style="color: #2ba6cb;text-decoration: none;"><b>15.071x: The Analytics Edge</b></a><br><i>Massachusetts Institute of Technology via edX</i><br><b> <a href="https://www.edx.org/course/analytics-edge-mitx-15-071x-0" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/1623/edx-15-071x-the-analytics-edge#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">20 ratings</a>)  | Next Session : 2nd Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/1729/coursera-hardware-security" style="color: #2ba6cb;text-decoration: none;"><b>Hardware Security</b></a><br><i>University of Maryland, College Park via Coursera</i><br><b> <a href="https://www.coursera.org/course/hardwaresec" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★☆☆ (<a href="https://www.class-central.com/mooc/1729/coursera-hardware-security#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">5 ratings</a>)  | Next Session : 8th Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/2736/coursera-text-mining-and-analytics" style="color: #2ba6cb;text-decoration: none;"><b>Text Mining and Analytics</b></a><br><i>University of Illinois at Urbana-Champaign via Coursera</i><br><b> <a href="https://www.coursera.org/course/textanalytics" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : 8th Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/3289/coursera-finding-hidden-messages-in-dna-bioinformatics-i" style="color: #2ba6cb;text-decoration: none;"><b>Finding Hidden Messages in DNA (Bioinformatics I)</b></a><br><i>University of California, San Diego  via Coursera</i><br><b> <a href="https://www.coursera.org/course/hiddenmessages" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | ★★★★★ (<a href="https://www.class-central.com/mooc/3289/coursera-finding-hidden-messages-in-dna-bioinformatics-i#course-all-reviews" style="color: #2ba6cb;text-decoration: none;">5 ratings</a>)  | Next Session : 8th Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/3290/coursera-assembling-genomes-and-sequencing-antibiotics-bioinformatics-ii" style="color: #2ba6cb;text-decoration: none;"><b>Assembling Genomes and Sequencing Antibiotics (Bioinformatics II)</b></a><br><i>University of California, San Diego  via Coursera</i><br><b> <a href="https://www.coursera.org/course/assembly" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : 8th Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/2965/edx-cs190-1x-scalable-machine-learning" style="color: #2ba6cb;text-decoration: none;"><b>CS190.1x: Scalable Machine Learning</b></a><br><i>University of California, Berkeley via edX</i><br><b> <a href="https://www.edx.org/course/scalable-machine-learning-uc-berkeleyx-cs190-1x" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : 29th Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/2781/coursera-interactive-computer-graphics-with-webgl" style="color: #2ba6cb;text-decoration: none;"><b>Interactive Computer Graphics with WebGL</b></a><br><i>University of New Mexico via Coursera</i><br><b> <a href="https://www.coursera.org/course/webgl" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : 29th Jun, 2015 </b><br><br>
+<a href="https://www.class-central.com/mooc/1020/udacity-machine-learning" style="color: #2ba6cb;text-decoration: none;"><b>Machine Learning</b></a><br><i>Georgia Institute of Technology via Udacity</i><br><b> <a href="https://www.udacity.com/course/ud262" target="_blank" style="color: #2ba6cb;text-decoration: none;">Go To Class</a>  | Next Session : Self Paced </b><br><br>
+
+
+                    </td>
+                    <td class="expander" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0 !important;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;visibility: hidden;width: 0px;border-collapse: collapse !important;"></td>
+                </tr>
+            </table>
+
+        </td>
+    </tr>
+</table>
+
+
+<table class="row footer" style="border-spacing: 0;border-collapse: collapse;padding: 0px;vertical-align: top;text-align: left;width: 100%;position: relative;display: block;">
+    <tr style="padding: 0;vertical-align: top;text-align: left;">
+        <td class="wrapper" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 10px 20px 0px 0px;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;position: relative;background: #ebebeb;border-collapse: collapse !important;">
+
+            <table class="six columns" style="border-spacing: 0;border-collapse: collapse;padding: 0;vertical-align: top;text-align: left;margin: 0 auto;width: 280px;">
+                <tr style="padding: 0;vertical-align: top;text-align: left;">
+                    <td class="left-text-pad" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0px 0px 10px;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;padding-left: 10px;border-collapse: collapse !important;">
+
+                        <h5 style="color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;margin: 0;text-align: left;line-height: 1.3;word-break: normal;font-size: 24px;padding-bottom: 10px;">Connect With Us:</h5>
+
+                        <table class="tiny-button facebook" style="border-spacing: 0;border-collapse: collapse;padding: 0;vertical-align: top;text-align: left;width: 100%;overflow: hidden;">
+                            <tr style="padding: 0;vertical-align: top;text-align: left;">
+                                <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 5px 0 4px;vertical-align: top;text-align: center;color: #ffffff;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;display: block;background: #3b5998;border: 1px solid #2284a1;border-color: #2d4473;border-collapse: collapse !important;width: auto !important;">
+                                    <a href="https://www.facebook.com/classcentral" style="color: #ffffff;text-decoration: none;font-weight: normal;font-family: Helvetica, Arial, sans-serif;font-size: 12px;">Facebook</a>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <br>
+
+                        <table class="tiny-button twitter" style="border-spacing: 0;border-collapse: collapse;padding: 0;vertical-align: top;text-align: left;width: 100%;overflow: hidden;">
+                            <tr style="padding: 0;vertical-align: top;text-align: left;">
+                                <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 5px 0 4px;vertical-align: top;text-align: center;color: #ffffff;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;display: block;background: #00acee;border: 1px solid #2284a1;border-color: #0087bb;border-collapse: collapse !important;width: auto !important;">
+                                    <a href="https://twitter.com/classcentral" style="color: #ffffff;text-decoration: none;font-weight: normal;font-family: Helvetica, Arial, sans-serif;font-size: 12px;">Twitter</a>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <br>
+
+                        <table class="tiny-button google-plus" style="border-spacing: 0;border-collapse: collapse;padding: 0;vertical-align: top;text-align: left;width: 100%;overflow: hidden;">
+                            <tr style="padding: 0;vertical-align: top;text-align: left;">
+                                <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 5px 0 4px;vertical-align: top;text-align: center;color: #ffffff;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;display: block;background: #2ba6cb;border: 1px solid #2284a1;background-color: #DB4A39;border-color: #CC0000;border-collapse: collapse !important;width: auto !important;">
+                                    <a href="https://plus.google.com/+ClassCentral" style="color: #ffffff;text-decoration: none;font-weight: normal;font-family: Helvetica, Arial, sans-serif;font-size: 12px;">Google +</a>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </td>
+                    <td class="expander" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0 !important;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;visibility: hidden;width: 0px;border-collapse: collapse !important;"></td>
+                </tr>
+            </table>
+
+        </td>
+        <td class="wrapper last" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 10px 20px 0px 0px;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;position: relative;background: #ebebeb;padding-right: 0px;border-collapse: collapse !important;">
+
+            <table class="six columns" style="border-spacing: 0;border-collapse: collapse;padding: 0;vertical-align: top;text-align: left;margin: 0 auto;width: 280px;">
+                <tr style="padding: 0;vertical-align: top;text-align: left;">
+                    <td class="last right-text-pad" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0px 0px 10px;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;padding-right: 0px;border-collapse: collapse !important;">
+
+                    </td>
+                    <td class="expander" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0 !important;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;visibility: hidden;width: 0px;border-collapse: collapse !important;"></td>
+                </tr>
+            </table>
+
+        </td>
+    </tr>
+</table>
+
+
+<table class="row" style="border-spacing: 0;border-collapse: collapse;padding: 0px;vertical-align: top;text-align: left;width: 100%;position: relative;display: block;">
+    <tr style="padding: 0;vertical-align: top;text-align: left;">
+        <td class="wrapper last" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 10px 20px 0px 0px;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;position: relative;padding-right: 0px;border-collapse: collapse !important;">
+
+            <table class="twelve columns" style="border-spacing: 0;border-collapse: collapse;padding: 0;vertical-align: top;text-align: left;margin: 0 auto;width: 580px;">
+                <tr style="padding: 0;vertical-align: top;text-align: left;">
+                    <td align="center" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0px 0px 10px;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;border-collapse: collapse !important;">
+                        <center style="width: 100%;min-width: 580px;">
+                            <p style="text-align: center;margin: 0;margin-bottom: 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;line-height: 19px;font-size: 14px;"><a href="%mailing_list_unsubscribe_url%" style="color: #2ba6cb;text-decoration: none;">Unsubscribe</a></p>
+                        </center>
+                    </td>
+                    <td class="expander" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0 !important;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;visibility: hidden;width: 0px;border-collapse: collapse !important;"></td>
+                </tr>
+            </table>
+
+        </td>
+    </tr>
+</table>
+
+<!-- container end below -->
+</td>
+</tr>
+</table>
+
+</center>
+</td>
+</tr>
+</table>
+</body>
+</html>

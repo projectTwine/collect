@@ -1,0 +1,56 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block headmeta %}
+
+    <title>List of {{providers|length}} providers offering MOOCs/free online courses | Class Central</title>
+    <meta name="description" content="List of {{providers|length}} providers offering MOOCs/free online courses"/>
+    <meta property="og:title" content="List of {{providers|length}} providers offering MOOCs/free online courses" />
+    <meta property="og:url" content="{{ path('providers') }}" />
+    <meta property="og:image" content="https://www.class-central.com/bundles/classcentralsite/slashpixel/images/ccprofilepic.png">
+
+    <meta property="og:description" content="List of {{providers|length}} offering MOOCs/free online courses | Class Central" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter card integration -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@classcentral">
+    <meta name="twitter:title" content="List of {{providers|length}} offering MOOCs/free online courses">
+    <meta name="twitter:description" content="List of {{providers|length}} offering MOOCs/free online courses | Class Central">
+    <meta name="twitter:domain" content="www.class-central.com">
+
+{% endblock %}
+
+{%  block content %}
+    <div class="universities">
+        <div class="intro-wrap">
+            <div class="description-wrap">
+                <h1 class='cc-page-header'>Providers ({{ providers|length  }})</h1>
+            </div>
+        </div>
+
+        <table class="list-of-universities">
+           <tbody>
+                {% for provider in providers %}
+                <tr>
+                    <td>
+                        <div class="header-follow-button ui-theme-light" style="display: inline-block; background-color: transparent;" >
+                            {% include 'ClassCentralSiteBundle:Follow:btn.follow.html.twig' with {
+                                item : followItem,
+                                item_id : provider.id,
+                                itemName: provider.name,
+                                followed: user_session.isItemFollowed(followItem,provider.id),
+                                hideItemName: true
+                             } %}
+                        </div>
+                    </td>
+                    <td><a href="{{ path('ClassCentralSiteBundle_initiative', {'type' : provider.code}) }}" title="{{ provider.name }} MOOCs and Reviews" class="university-name">{{ provider.name }}</a></td>
+                    <td><span class="courses-number">{{ provider.count }}{% if provider.count == 1 %} course {% else %} courses {% endif %}</span></td>
+                    <td><a  href="{{ path('ClassCentralSiteBundle_initiative', {'type' : provider.code}) }}" title="{{ provider.name }} MOOCs and Reviews" class="btn">View Provider Page</a></td>
+                </tr>
+                {% endfor %}
+           </tbody>
+
+        </table>
+
+    </div>
+{% endblock %}

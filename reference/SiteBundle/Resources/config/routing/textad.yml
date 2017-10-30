@@ -1,0 +1,17 @@
+textad:
+    pattern:  /
+    defaults: { _controller: "ClassCentralSiteBundle:TextAd:index" }
+
+textad_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ClassCentralSiteBundle:TextAd:show" }
+
+textad_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ClassCentralSiteBundle:TextAd:edit" }
+
+textad_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ClassCentralSiteBundle:TextAd:update" }
+    requirements: { _method: post|put }
+

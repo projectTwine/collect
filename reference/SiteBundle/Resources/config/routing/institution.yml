@@ -1,0 +1,30 @@
+institution:
+    pattern:  /
+    defaults: { _controller: "ClassCentralSiteBundle:Institution:index" }
+
+institution_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ClassCentralSiteBundle:Institution:show" }
+
+institution_new:
+    pattern:  /new
+    defaults: { _controller: "ClassCentralSiteBundle:Institution:new" }
+
+institution_create:
+    pattern:  /create
+    defaults: { _controller: "ClassCentralSiteBundle:Institution:create" }
+    requirements: { _method: post }
+
+institution_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ClassCentralSiteBundle:Institution:edit" }
+
+institution_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ClassCentralSiteBundle:Institution:update" }
+    requirements: { _method: post }
+
+institution_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ClassCentralSiteBundle:Institution:delete" }
+    requirements: { _method: post }

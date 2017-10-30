@@ -1,0 +1,25 @@
+spotlight:
+    pattern:  /
+    defaults: { _controller: "ClassCentralSiteBundle:Spotlight:index" }
+
+spotlight_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ClassCentralSiteBundle:Spotlight:show" }
+
+
+spotlight_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ClassCentralSiteBundle:Spotlight:edit" }
+
+spotlight_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ClassCentralSiteBundle:Spotlight:update" }
+    requirements: { _method: post|put }
+
+spotlight_mooc_report:
+    pattern: /mooc-report
+    defaults: { _controller: "ClassCentralSiteBundle:Spotlight:moocReportSpotlight" }
+
+spotlight_mooc_report_right_shift:
+    pattern: /mooc-report-right-shift
+    defaults: { _controller: "ClassCentralSiteBundle:Spotlight:moocReportSpotlightRightShift" }

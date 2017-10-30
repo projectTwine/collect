@@ -1,0 +1,33 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block headmeta %}
+    <title xmlns="http://www.w3.org/1999/html">Preferences | Class Central</title>
+{% endblock %}
+
+{% block content %}
+    <div class="user-prefs">
+        <div class="mooc-tracker-preferences">
+            <h2>MOOC Tracker</h2>
+            <div>
+                {% set mtCoursePref = userPrefs[mtCoursePrefId].value %}
+                <input type="checkbox" {% if mtCoursePref == "1" %}checked="checked"{% endif %} value="{{ mtCoursePrefId }}" class="mooc-tracker-checkbox">Courses</input>
+                <p>Receive notifications when "Interested" courses are offered again, about to start, the dates change, etc</p>
+            </div>
+            <div>
+                {% set mtSearchTermPref = userPrefs[mtSearchTermsPrefId].value %}
+                <input type="checkbox" {% if mtSearchTermPref == "1" %}checked="checked"{% endif %} value="{{ mtSearchTermsPrefId }}" class="mooc-tracker-checkbox">Search Terms</input>
+                <p>Receive new course notifications for search terms added to MOOC Tracker</p>
+            </div>
+        </div>
+        <div class="user-newsletter-checkbox-wrapper">
+            <h2>Newsletter Subscriptions</h2>
+            {% for newsletter in newsletters %}
+                <div >
+                    <input type="checkbox" {% if newsletter.id in newsletterIds %}checked="checked"{% endif %} class="user-newsletter-checkbox" value="{{ newsletter.code }}">{{ newsletter.name }}</input>
+                    <p>{{ newsletter.description }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

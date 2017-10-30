@@ -1,0 +1,47 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block content %}
+<h1>Offering list</h1>
+
+<table class="records_list" align="middle">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Initiative</th>
+            <th>Course</th>
+            <th>Startdate</th>
+            <th>Enddate</th>                        
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('offering_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.course.initiative }}</td>
+            <td align="center">{{ entity.course.name }}</td>
+            <td>{% if entity.startDate %}{{ entity.displayDate }}{% endif%}</td>
+            <td>{% if entity.endDate %}{{ entity.endDate|date('dS M, Y') }}{% endif%}</td>
+            <td>
+                <ul>                    
+                    <li>
+                        <a href="{{ path('offering_edit', { 'id': entity.id }) }}" target="_blank">edit</a>
+                    </li>
+                       <li>
+                        <a href="{{ path('offering_new', { 'id': entity.id }) }}" target="_blank">clone</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('offering_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
+{% endblock %}

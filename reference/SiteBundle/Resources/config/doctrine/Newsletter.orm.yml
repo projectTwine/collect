@@ -1,0 +1,37 @@
+ClassCentral\SiteBundle\Entity\Newsletter:
+    type: entity
+    table: newsletters
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        name:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        code:
+            type: string
+            length: 45
+            fixed: false
+            nullable: false
+        title:
+            type: text
+            nullable: true
+        description:
+            type: text
+            nullable: true
+        subject:
+          type: string
+          length: 100
+          fixed: false
+          nullable: false
+        frequency:
+          type: integer
+          unsigned: false
+          nullable: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,22 @@
+
+{% set totalInstitutions = institutions|length %}
+{% set insCount = 1 %}
+{% if totalInstitutions > 0 %}
+{# Output the institutions with links #}
+    {% for institution in institutions %}
+    {% set route = 'ClassCentralSiteBundle_university' %}
+    {% if not institution['isUniversity'] %}
+        {% set route = 'ClassCentralSiteBundle_institution' %}
+    {% endif %}
+    {% if insCount > 1 %}
+        {% if insCount < totalInstitutions %}
+    ,
+        {% else %}
+    and
+        {% endif %}
+    {% endif %}
+    <a class="{{ insClass }}" href="{{ path(route,{'slug' : institution['slug']|lower })}}" title="List of {{institution['name']}} free online/courses MOOCs"
+       onClick="ga('send','event', '{{ insSrcType }} - Inbound Clicks - University', '{{ institution.name }}', '{{insSrcName}}')">{{institution['name']}}</a>
+    {% set insCount = insCount + 1 %}
+    {% endfor %}
+{% endif %}

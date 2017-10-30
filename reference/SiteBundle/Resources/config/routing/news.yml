@@ -1,0 +1,30 @@
+news:
+    pattern:  /index
+    defaults: { _controller: "ClassCentralSiteBundle:News:index" }
+
+news_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ClassCentralSiteBundle:News:show" }
+
+news_new:
+    pattern:  /new
+    defaults: { _controller: "ClassCentralSiteBundle:News:new" }
+
+news_create:
+    pattern:  /create
+    defaults: { _controller: "ClassCentralSiteBundle:News:create" }
+    requirements: { _method: post }
+
+news_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ClassCentralSiteBundle:News:edit" }
+
+news_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ClassCentralSiteBundle:News:update" }
+    requirements: { _method: post }
+
+news_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ClassCentralSiteBundle:News:delete" }
+    requirements: { _method: post }

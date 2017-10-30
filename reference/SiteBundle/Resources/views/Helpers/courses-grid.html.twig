@@ -1,0 +1,42 @@
+<div id='mooc-tracker-courses-grid'>
+    {% for course in courses %}
+        <div id="mooc-tracker-course-box">
+            <div id="mooc-tracker-course-box-inner">
+                <div id="mooc-tracker-course-box-content">
+                    <div id="mooc-tracker-course-box-content-title">
+                        {% if course.name|length > 50 %}
+                            {{ course.name[0:50] }}...
+                        {% else %}
+                            {{ course.name }}
+                        {% endif %}
+                    </div>
+                    {# university/institution #}
+
+                    {% if course.institutions|length %}
+                        <div id="mooc-tracker-course-box-institution">
+                            {{ course.institutions[0].name }}
+                        </div>
+                    {% endif %}
+
+                    {# session dates and view course button#}
+                    <div id="mooc-tracker-course-box-bottom-row">
+                        {% if course.nextOffering is not empty %}
+                            <div id="mooc-tracker-course-box-start-date">
+                                <span>Starts: </span>{{ course.nextOffering.displayDate }}
+                            </div>
+                        {% endif %}
+                        {% if course.initiative is not null %}
+                            {% set initiative=course.initiative.name %}
+                        {% else %}
+                            {% set initiative='Others' %}
+                        {% endif %}
+                        <a class="btn btn-primary btn-mooc-tracker-box" href="{{ path('ClassCentralSiteBundle_mooc',{'id': course.id, 'slug':course.slug}) }}"
+                           onmousedown='recordInboundLink(
+                                   "{{ path('ClassCentralSiteBundle_mooc',{'id': course.id, 'slug': course.slug }) }}",
+                                   "{{initiative}}","{{course.name}}","{{ courseGridId }}");return false'>VIEW COURSE</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

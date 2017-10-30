@@ -1,0 +1,98 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+ {% block headmeta %}
+     <title>Ten most popular MOOCs starting in {{ month }} {{ year }}</title>
+     <meta name="description"
+           content="Ten most popular MOOCs in {{ month }} {{ year }}"/>
+     <meta property="og:title" content="Ten most popular MOOCs starting in {{ month }} {{ year }}" />
+     <meta property="og:url" content="https://www.class-central.com{{ path('top10', {month: month, year: year}) }}" />
+     <meta property="og:image" content="https://www.class-central.com/bundles/classcentralsite/slashpixel/images/ccprofilepic.png">
+     <meta property="og:site_name" content="Class Central"/>
+     <meta property="og:description" content="Ten most popular MOOCs starting in {{ month }} {{ year }}" />
+     <meta property="og:type" content="website" />
+
+     <meta property="fb:admins" content="{{ fb_admins }}" />
+
+     <!-- Twitter card integration -->
+     <meta name="twitter:card" content="summary">
+     <meta name="twitter:site" content="@classcentral">
+     <meta name="twitter:title" content="Ten most popular MOOCs starting in {{ month }} {{ year }}">
+     <meta name="twitter:description" content="Ten most popular MOOCs starting in {{ month }} {{ year }}">
+     <meta name="twitter:domain" content="www.class-central.com">
+
+     <script type="text/javascript">
+         //<![CDATA[
+         (function() {
+             var shr = document.createElement('script');
+             shr.setAttribute('data-cfasync', 'false');
+             shr.src = '//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js';
+             shr.type = 'text/javascript'; shr.async = 'true';
+             shr.onload = shr.onreadystatechange = function() {
+                 var rs = this.readyState;
+                 if (rs && rs != 'complete' && rs != 'loaded') return;
+                 var site_id = '5fdc3916cf323ac313c8667aa04b147a';
+                 try { Shareaholic.init(site_id); } catch (e) {}
+             };
+             var s = document.getElementsByTagName('script')[0];
+             s.parentNode.insertBefore(shr, s);
+         })();
+         //]]>
+     </script>
+ {% endblock %}
+
+ {% block content %}
+    <style>
+        .top-10-moocs h4 {
+            margin-bottom: -16px;
+        }
+    </style>
+     <div class="top-10-moocs">
+         <h1 style="font-size: 40px;color: #000000">Ten most popular MOOCs starting in June 2014.</h1> <br/>
+
+         <a href='https://www.class-central.com/mooc/1715/coursera-exploratory-data-analysis'><h4>Exploratory Data Analysis</h4></a><br/>
+         <p>Learn the essential exploratory techniques for summarizing data. This is the fourth course in the Johns Hopkins Data Science Specialization.
+         </p>
+         <div><strong>Jun 2nd &middot; Coursera</strong></div><br/>
+
+         <a href='https://www.class-central.com/mooc/1717/coursera-statistical-inference'><h4>Statistical Inference</h4></a><br/>
+         <p>Learn how to draw conclusions about populations or scientific truths from data.</p>
+         <div><strong>Jun 2nd &middot; Coursera</strong></div><br/>
+
+         <a href='https://www.class-central.com/mooc/1718/coursera-regression-models'><h4>Regression Models</h4></a><br/>
+         <p>Learn how to use regression models, the most important statistical analysis tool in the data scientist's toolkit.</p>
+         <div><strong>Jun 2nd &middot; Coursera</strong></div><br/>
+
+         <a href='https://www.class-central.com/mooc/1957/coursera-programming-for-everybody'><h4>Programming for Everybody</h4></a><br/>
+         <p>This course aims to teach everyone to learn the basics of programming computers. The course has no pre-requisites and avoids all but the simplest mathematics. Anyone with moderate computer experience should be able to master the materials in this course.
+         </p>
+         <div><strong>Jun 2nd &middot; Coursera</strong></div><br/>
+
+         <a href='https://www.class-central.com/mooc/1269/coursera-how-to-change-the-world'><h4>How to Change the World</h4></a><br/>
+         <p>How can we use the things we share in common to address some of the most challenging problems facing the world? This course examines issues concerning poverty, the environment, technology, health care, gender, education and activism to helps us understand better how to initiate positive change.</p>
+         <div><strong>Jun 21st &middot; Coursera</strong></div><br/>
+
+         <a href='https://www.class-central.com/mooc/1719/coursera-practical-machine-learning'><h4>Practical Machine Learning</h4></a><br/>
+         <p>Learn the basic components of building and applying prediction functions with an emphasis on practical applications. </p>
+         <div><strong>Jun 2nd &middot; Coursera</strong></div><br/>
+
+         <a href='https://www.class-central.com/mooc/932/edx-stat2-3x-introduction-to-statistics-inference'><h4>Stat2.3x: Introduction to Statistics: Inference</h4></a><br/>
+         <p>The focus of Stat2.3x is on statistical inference: how to make valid conclusions based on data from random samples.</p>
+         <div><strong>Jun 2nd &middot; EdX</strong></div><br/>
+
+         <a href='https://www.class-central.com/mooc/1444/futurelearn-good-brain-bad-brain-basics'><h4>Good brain, bad brain: basics</h4></a><br/>
+         <p>This course is designed to be an introduction to the human brain and aims to provide basic information and explanations for the non-specialist so that you may better understand your own amazing brain.</p>
+         <div><strong>Jun 23rd &middot; FutureLearn</strong></div><br/>
+
+         <a href='https://www.class-central.com/mooc/478/coursera-nutrition-and-physical-activity-for-health'><h4>Nutrition and Physical Activity for Health</h4></a><br/>
+         <p>This course will provide a coherent, understandable look at the evidence on how nutrition and physical activity impact health through lower morbidity, longevity, and quality of life.</p>
+         <div><strong>Jun 16th &middot; Coursera</strong></div><br/>
+
+         <a href='https://www.class-central.com/mooc/1387/coursera-introduction-to-neuroeconomics-how-the-brain-makes-decisions'><h4>Introduction to Neuroeconomics: how the brain makes decisions</h4></a><br/>
+         <p>Economics, psychology, and neuroscience are converging today into a unified discipline of Neuroeconomics with the ultimate aim of providing a single, general theory of human decision making. Neuroeconomics provides economists, psychologists and social scientists with a deeper understanding of how they make their own decisions, and how others decide.</p>
+         <div><strong>Jun 23rd &middot;Coursera</strong></div><br/>
+     </div>
+
+    <p><em>Note: Courses that have been offered multiple times before are elimiated from the list</em></p>
+     <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='6518938'></div>
+
+ {% endblock %}

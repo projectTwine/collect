@@ -1,0 +1,55 @@
+<form class="color-scheme-red" action="#" method="post">
+    <div class="padded-input-group padded-input-group--border-top">
+        <h2 class="heading-colored">Private info.</h2>
+        {% if changeEmail %}
+            <div class="alert alert-info"  role="alert">
+                We received your request for change of email address and a verification email was sent to <strong>{{ changeEmail }}</strong>. Please click on the verification link in the email to update your email address.
+            </div>
+        {% endif %}
+        {% if deleteAccount %}
+            <div class="alert alert-info" role="alert">
+                We received your request to delete your account. Accounts are deleted within 7 days of receiving a request
+            </div>
+        {% endif %}
+        <div class="alert alert-danger hide" id="private-form-error" role="alert">
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="bordered-box bordered-box--input">
+                    <label class="cc-input-label" for="edit-profile-email">Email</label>
+                    <input class="plain-input" data-current-email= "{{ user.email }}" type="email" name="edit-profile-email" placeholder="Email"  value="{{ user.email }}">
+                </div>
+                <div class="forgot-password-wrap">
+                    <div class="bordered-box bordered-box--input">
+                        <label class="cc-input-label" for="edit-profile-current-password">Current Password</label>
+                        <input class="plain-input inspectletIgnore" type="password" placeholder="" name="edit-profile-current-password">
+                    </div>
+                    <!--
+                        <a href="{{ path('forgotpassword') }}" class="forgot-password-link">Forgot your password?</a>
+                    -->
+                </div>
+
+                <div class="bordered-box bordered-box--input">
+                    <label class="cc-input-label" for="edit-profile-new-password">New Password</label>
+                    <input class="plain-input inspectletIgnore" type="password"  placeholder="" name="edit-profile-new-password">
+                </div>
+
+                <div class="bordered-box bordered-box--input">
+                    <label class="cc-input-label" for="edit-profile-verify-password">Confirm New Password</label>
+                    <input class="plain-input inspectletIgnore" type="password" placeholder="" name="edit-profile-confirm-password">
+                </div>
+            </div>
+            <div class="col-lg-6 pull-right">
+                                        <span class="cc-note cc-note--red-yellow">
+                                            This is your private info section. Your email and password are competely private.
+                                        </span>
+                {% if not deleteAccount %}
+                    <a href="#" id="delete-profile-link" class="small-link">Delete My Account</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <input class="full-width-button" id="save-profile-private" type="submit" name="submit" value="Update my private info">
+</form>

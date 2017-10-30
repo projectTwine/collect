@@ -1,0 +1,5 @@
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('/bundles/classcentralsite/slashpixel/bootstrap-3.1.1/fonts/glyphicons-halflings-regular.eot');
+    src: url('/bundles/classcentralsite/slashpixel/bootstrap-3.1.1/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/bundles/classcentralsite/slashpixel/bootstrap-3.1.1/fonts/glyphicons-halflings-regular.woff') format('woff'), url('/bundles/classcentralsite/slashpixel/bootstrap-3.1.1/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('/bundles/classcentralsite/slashpixel/fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}

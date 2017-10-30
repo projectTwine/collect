@@ -1,0 +1,183 @@
+{% set ad = random(13) %}
+{% set bannerAdUrl = 'https://info.canvas.net/offer-a-course?utm_source=Class-Central&utm_medium=BannerAd&utm_campaign=Canvas+Network+About+Us&utm_content=Canvas+Network+About+Us+Static+Page+Report' %}
+{% set bannerAdStudentUrl = 'https://www.canvas.net/?utm_source=Class-Central&utm_medium=BannerAd&utm_campaign=Canvas+Network+Home&utm_content=Canvas+Network' %}
+{% set bannerAdProvider = 'Canvas Network' %}
+{% set bannerAdBaseImageUrl = 'https://d3r3mog6nu8pt4.cloudfront.net/ads/' %}
+{#
+{% if ad == 0 %}
+    {%  include 'ClassCentralSiteBundle:Helpers:banner.ad.html.twig' with {
+    'url':'https://www.canvas.net/browse/stem/?utm_source=Class-Central&utm_medium=BannerAd&utm_campaign=Canvas+Network+boost+trajectory&utm_content=Canvas+Network+boost+trajectory+course',
+    'imageUrl' : bannerAdBaseImageUrl ~ '2016_8_Banner_Ads_Class_Central_Com_CanvasNetwork_1.png',
+    'desc': "Boost her trajectory",
+    'provider' : bannerAdProvider,
+    'location': bannerAdlocation
+    } %}
+
+{% elseif ad == 1 %}
+
+    {%  include 'ClassCentralSiteBundle:Helpers:banner.ad.html.twig' with {
+    'url':'https://www.canvas.net/browse/stem/?utm_source=Class-Central&utm_medium=BannerAd&utm_campaign=Canvas+Network+cool+stem&utm_content=',
+    'imageUrl' : bannerAdBaseImageUrl ~ '2016_8_Banner_Ads_Class_Central_Com_CanvasNetwork_1b.png',
+    'desc': "What's so cool about STEM?",
+    'provider' : bannerAdProvider,
+    'location': bannerAdlocation
+    } %}
+
+{% endif %}
+#}
+
+{% if bannerAdlocation== 'Homepage' %}
+    {%  include 'ClassCentralSiteBundle:Helpers:banner.ad.html.twig' with {
+    'url':'https://www.udacity.com/nanodegree?utm_source=class-central&utm_medium=ads&utm_campaign=2016-12-class-central-homepage-banner-ad',
+    'imageUrl' : bannerAdBaseImageUrl ~ 'udacity_homepage_banner_ad.jpeg',
+    'desc': "Master in-demand skills. Advance your tech career with a Nanodegree program",
+    'provider' : 'Udacity',
+    'location': bannerAdlocation
+    } %}
+{% else %}
+
+    {% if ad == 0 %}
+        {%  include 'ClassCentralSiteBundle:Helpers:banner.ad.html.twig' with {
+        'url': bannerAdUrl,
+        'imageUrl' : bannerAdBaseImageUrl ~ '2016_01_ClassCentral_728x90_01a_CanvasNet.jpg',
+        'desc': "A. Teach Your Course on Canvas Network",
+        'provider' : bannerAdProvider,
+        'location': bannerAdlocation
+        } %}
+
+    {% elseif ad == 1 %}
+
+        {%  include 'ClassCentralSiteBundle:Helpers:banner.ad.html.twig' with {
+        'url': bannerAdUrl,
+        'imageUrl' : bannerAdBaseImageUrl ~ '2016_01_ClassCentral_728x90_01b_CanvasNet.jpg',
+        'desc': "B. Teach Your Course on Canvas Network",
+        'provider' : bannerAdProvider,
+        'location': bannerAdlocation
+        } %}
+
+    {% elseif ad == 2 %}
+
+        {%  include 'ClassCentralSiteBundle:Helpers:banner.ad.html.twig' with {
+        'url': bannerAdUrl,
+        'imageUrl' : bannerAdBaseImageUrl ~ '2016_01_ClassCentral_728x90_02a_CanvasNet.jpg',
+        'desc': "A. Educate Students Outside The Classroom",
+        'provider' : bannerAdProvider,
+        'location': bannerAdlocation
+        } %}
+
+    {% elseif ad == 3 %}
+
+        {%  include 'ClassCentralSiteBundle:Helpers:banner.ad.html.twig' with {
+        'url': bannerAdUrl,
+        'imageUrl' : bannerAdBaseImageUrl ~ '2016_01_ClassCentral_728x90_02b_CanvasNet.jpg',
+        'desc': "B. Educate Students Outside The Classroom",
+        'provider' : bannerAdProvider,
+        'location': bannerAdlocation
+        } %}
+
+
+    {% elseif ad == 4 %}
+
+        {%  include 'ClassCentralSiteBundle:Helpers:banner.ad.html.twig' with {
+        'url': bannerAdUrl,
+        'imageUrl' : bannerAdBaseImageUrl ~ '2016_01_ClassCentral_728x90_03a_CanvasNet.jpg',
+        'desc': "A. Grow Professionaly With Canvas Network",
+        'provider' : bannerAdProvider,
+        'location': bannerAdlocation
+        } %}
+
+    {% elseif ad == 5 %}
+
+        {%  include 'ClassCentralSiteBundle:Helpers:banner.ad.html.twig' with {
+        'url': bannerAdUrl,
+        'imageUrl' : bannerAdBaseImageUrl ~ '2016_01_ClassCentral_728x90_03b_CanvasNet.jpg',
+        'desc': "B. Grow Professionaly With Canvas Network",
+        'provider' : bannerAdProvider,
+        'location': bannerAdlocation
+        } %}
+
+    {% elseif ad == 6 %}
+
+        {%  include 'ClassCentralSiteBundle:Helpers:banner.ad.html.twig' with {
+        'url': bannerAdUrl,
+        'imageUrl' : bannerAdBaseImageUrl ~ '2016_01_ClassCentral_728x90_05a_CanvasNet.jpg',
+        'desc': "A. Further Your Teaching Experience",
+        'provider' : bannerAdProvider,
+        'location': bannerAdlocation
+        } %}
+
+    {% elseif ad == 7 %}
+
+        {%  include 'ClassCentralSiteBundle:Helpers:banner.ad.html.twig' with {
+        'url': bannerAdUrl,
+        'imageUrl' : bannerAdBaseImageUrl ~ '2016_01_ClassCentral_728x90_05b_CanvasNet.jpg',
+        'desc': "B. Further Your Teaching Experience",
+        'provider' : bannerAdProvider,
+        'location': bannerAdlocation
+        } %}
+
+    {% elseif ad == 8 %}
+
+        {%  include 'ClassCentralSiteBundle:Helpers:banner.ad.html.twig' with {
+        'url': bannerAdStudentUrl,
+        'imageUrl' : bannerAdBaseImageUrl ~ '2016_01_ClassCentral_728x90_04a_CanvasNet.jpg',
+        'desc': "A. Further Your Education On Canvas Network",
+        'provider' : bannerAdProvider,
+        'location': bannerAdlocation
+        } %}
+
+
+    {% elseif ad == 9 %}
+
+        {%  include 'ClassCentralSiteBundle:Helpers:banner.ad.html.twig' with {
+        'url': bannerAdStudentUrl,
+        'imageUrl' : bannerAdBaseImageUrl ~ '2016_01_ClassCentral_728x90_04b_CanvasNet.jpg',
+        'desc': "B. Further Your Education On Canvas Network",
+        'provider' : bannerAdProvider,
+        'location': bannerAdlocation
+        } %}
+
+
+    {% elseif ad == 10 %}
+
+        {%  include 'ClassCentralSiteBundle:Helpers:banner.ad.html.twig' with {
+        'url': bannerAdStudentUrl,
+        'imageUrl' : bannerAdBaseImageUrl ~ '2016_01_ClassCentral_728x90_06a_CanvasNet.jpg',
+        'desc': "A. Enroll In Online Courses Worldwide",
+        'provider' : bannerAdProvider,
+        'location': bannerAdlocation
+        } %}
+
+    {% elseif ad == 11 %}
+
+        {%  include 'ClassCentralSiteBundle:Helpers:banner.ad.html.twig' with {
+        'url': bannerAdStudentUrl,
+        'imageUrl' : bannerAdBaseImageUrl ~ '2016_01_ClassCentral_728x90_06b_CanvasNet.jpg',
+        'desc': "B. Enroll In Online Courses Worldwide",
+        'provider' : bannerAdProvider,
+        'location': bannerAdlocation
+        } %}
+
+    {% elseif ad == 12 %}
+
+        {%  include 'ClassCentralSiteBundle:Helpers:banner.ad.html.twig' with {
+        'url': bannerAdStudentUrl,
+        'imageUrl' : bannerAdBaseImageUrl ~ '2016_01_ClassCentral_728x90_07a_CanvasNet.jpg',
+        'desc': "A. Grow Professionally With Canvas Network",
+        'provider' : bannerAdProvider,
+        'location': bannerAdlocation
+        } %}
+
+    {% elseif ad == 13 %}
+
+        {%  include 'ClassCentralSiteBundle:Helpers:banner.ad.html.twig' with {
+        'url': bannerAdStudentUrl,
+        'imageUrl' : bannerAdBaseImageUrl ~ '2016_01_ClassCentral_728x90_07b_CanvasNet.jpg',
+        'desc': "B. Grow Professionally With Canvas Network",
+        'provider' : bannerAdProvider,
+        'location': bannerAdlocation
+        } %}
+
+
+    {% endif %}
+{% endif %}

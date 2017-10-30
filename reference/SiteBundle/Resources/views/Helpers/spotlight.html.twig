@@ -1,0 +1,150 @@
+
+
+    <h2 class="section-heading">
+        <span>Popular Online Courses</span>
+    </h2>
+
+    <div class="row">
+
+        {% for position in 1..10 %}
+            {% set spotlight = spotlights[position] %}
+                <div class="col-xs-6 col-sm-4 col-md-3 spotlight-item-wrap {{ spotlightMap[spotlight.type].visible }} {% if spotlight.position != 1 and spotlight.position !=2 %} hidden-xs {% endif %}" id="home-spotlight-{{ spotlight.position }}">
+                  <a class="spotlight-item {{ spotlightMap[spotlight.type].class }}" href="{{ spotlight.url }}"
+                    {% if spotlight.type == 5 %}
+                    data-track-impression="{{ ts.event('AD_IMPRESSION') }}"
+                    data-track-props='{
+                      "ad": {
+                        "provider": "{{ spotlight.provider }}",
+                        "unit": "Homepage Spotlight",
+                        "title": "{{ spotlight.title }}"
+                      }
+                    }'
+                    {% endif %}
+                    onmousedown='{% if spotlight.type == 5 %}
+                      CC.track("{{ ts.event('AD_CLICK') }}", {
+                        ad: {
+                          provider: "{{ spotlight.provider }}",
+                          unit: "Homepage Spotlight",
+                          title: "{{ spotlight.title }}"
+                        }
+                      });{% endif %}
+                      ga("send","event","Spotlight","{{ spotlight.position }}","{% if spotlight.title %} {{ spotlight.title }} {% else %} {{ spotlight.description }} {% endif %}");'
+                    {% if spotlight.type == 5 %} rel="nofollow" target="_blank" {% endif %} {# sponsor links #}
+                    >
+                        <div class="img-wrap">
+                            {% set spotlightImage = imageService.getSpotlightImage (spotlight.imageUrl, spotlight.id) %}
+                            <div class="spotlight-item-image" style="background-image: url({{ spotlightImage }});"></div>
+                            {% if spotlight.type == 2 %}
+
+                                {{ spotlight.courseId }}
+                                {%  set spotlightCourseRating = reviewService.getRatingsAndCount(spotlight.courseId)  %}
+                                <div class="spotlight-item__rating">
+                                  {% include 'ClassCentralSiteBundle:Helpers:starRating.html.twig' with {formattedRating: reviewService.formatRating(spotlightCourseRating.rating),ratingColour: 'white'} %}
+                                </div>
+
+
+                                <div class="spotlight-item__reviews">
+                                  <span class="numberBubble">{{ spotlightCourseRating.numRatings }}</span>
+                                </div>
+                            {% endif %}
+
+                            <div class="spotlight-item__overlay"></div>
+
+                            <div class="spotlight-item__image-content">
+                              {% if spotlight.title %}
+                              <div class="spotlight-item-title">
+                                <h3>
+                                    {{ spotlight.title }}
+                                </h3>
+                              </div>
+
+                            {% endif %}
+                            </div>
+
+                        </div>
+                        <div class="excerpt">
+                            {{ spotlight.description }}
+                        </div>
+                        <div class="spotlight-item__action">{{ spotlightMap[spotlight.type].text }}</div>
+                    </a>
+                </div>
+        {% endfor %}
+
+    </div>
+
+   {% if newestPosts is not empty %}
+    <h2 class="section-heading">
+        <span>MOOC Report - Online Education News & Analysis</span>
+    </h2>
+
+    <div class="row">
+        {% set moocwatchVariation = random(1) %}
+        {% set featuredPostShown = false %}
+        {% set featuredPostId = 0 %}
+
+        {% if moocwatchVariation == 1 %}
+            <div class="spotlight-col-main moocwatch-spotlight text-center">
+
+                <a href="https://www.class-central.com/report/moocwatch-15-moocs-lifelong-learners/" class="featured-media__imageLink"  onmousedown="ga('send','event','MOOC Report - Homepage','MOOCWatch #15: MOOCs Find Their Audience')">
+                    <img src="https://d3r3mog6nu8pt4.cloudfront.net/blog/moocwatch-15-minus-title.jpg" alt="Image title" class="featured-media__img">
+                </a>
+                <div class="featured-media">
+                    <h2 class="featured-media__title">
+                        <a href="https://www.class-central.com/report/moocwatch-15-moocs-lifelong-learners/"  onmousedown="ga('send','event','MOOC Report - Homepage','MOOCWatch #15: MOOCs Find Their Audience')">MOOCWatch #15: MOOCs Find Their Audience</a>
+                    </h2>
+                    <div class="featured-media__content">
+                        This month's digest of news from the MOOC space, including new CEOs, enrollment milestones, and more.
+                    </div>
+                    <div class="featured-media__meta">
+                        Dhawal Shah • June 2017
+                    </div>
+              </div>
+            </div>
+        {% else %}
+            <div class="spotlight-col-main moocwatch-spotlight text-center">
+                <a href="https://www.class-central.com/report/moocwatch-april-2017-shrinking-free/" class="featured-media__imageLink"  onmousedown="ga('send','event','MOOC Report - Homepage','MOOCWatch #14: The Shrinking of Free')">
+                    <img src="https://d3r3mog6nu8pt4.cloudfront.net/blog/moocwatch-14-minus-title.jpg" alt="Image title" class="featured-media__img">
+                </a>
+                <div class="featured-media">
+                    <h2 class="featured-media__title">
+                        <a href="https://www.class-central.com/report/moocwatch-april-2017-shrinking-free/"  onmousedown="ga('send','event','MOOC Report - Homepage','MOOCWatch #14: The Shrinking of Free')">MOOCWatch #14: The Shrinking of Free</a>
+                    </h2>
+                    <div class="featured-media__content">
+                        Sequel to world's biggest MOOC launches, new online master's degrees are announced, and several MOOC retrospectives take place
+                    </div>
+                    <div class="featured-media__meta">
+                        Dhawal Shah • April 2017
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="spotlight-col-aside">
+            {% set postsShown = 0 %}
+            {% for post in newestPosts if postsShown < 4%}
+                    {% if post.id != featuredPostId and 'moocwatch' not in post.title.rendered|lower %}
+                        <div class="media-object media-object--bordered">
+                            <a href="{{ post.link }}" class="media-object__image"    onmousedown="ga('send','event','MOOC Report - Homepage','{{ post.title.rendered|raw }}')">
+                                <img src="{{ imageService.getPostThumbnailSmall(post.acf.thumbnail.url) }}" alt="{{ post.title.rendered|raw }}" class="media-object">
+                            </a>
+
+                            <div class="media-object__content">
+                                <h2 class="media-object__title">
+                                    <a href="{{ post.link }}"  onmousedown="ga('send','event','MOOC Report - Homepage','{{ post.title.rendered|raw }}')">{{ post.title.rendered|raw }}</a>
+                                </h2>
+                                <div class="media-object__meta">
+                                    {#  {{ moocReport.author(post.author).name }} •#} {{ post.date|date("jS M, Y") }}
+                                </div>
+                            </div>
+
+                        </div>
+                        {% set postsShown = postsShown + 1 %}
+                    {% endif %}
+
+            {% endfor %}
+
+        </div>
+
+
+    </div>
+   {% endif %}

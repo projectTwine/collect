@@ -1,0 +1,20 @@
+<a target="_blank" rel="nofollow" href="{{ url }}"
+  data-track-impression="{{ ts.event('AD_IMPRESSION') }}"
+  data-track-props='{
+    "ad": {
+      "provider": "Canvas Network",
+      "unit": "Banner Ads",
+      "title": "{{ desc }}"
+    }
+  }'
+  onmousedown='
+    CC.track("{{ ts.event('AD_CLICK') }}", {
+      ad: {
+        provider: "Canvas Network",
+        unit: "Banner Ads",
+        title: "{{ desc }}"
+      }
+    });ga("send","event", "Banner Ad Click", "{{ desc }}","{{ location }}");'
+>
+      <img src="{{ imageUrl }}" style="max-width: 728px; width: 100%" />
+</a>

@@ -1,0 +1,18 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block content %}
+
+    <h1>{{ msg }}</h1>
+
+    <h1>Copy Courses</h1>
+
+    <form id="copy-course-form" class="clearfix" method="post" >
+
+        <span >Original Tag id</span>
+        <input type="text" class="form-control bfh-number" data-min="0" name="orig" >
+
+        <span >Duplicate Tag id</span>
+        <input type="text" class="form-control bfh-number" data-min="0" name="dup" >
+        <input type="submit"></intput>
+    </form>
+{% endblock %}

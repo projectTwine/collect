@@ -1,0 +1,175 @@
+ <form class="color-scheme-brand form" action="#" method="post">
+        <div class="padded-input-group padded-input-group--border-bot">
+            <h2 class="heading-colored">Your profile.</h2>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <span class="review-form-error" id="full-name-error" style="display:none;">
+                            Should be atleast three letters
+                   </span>
+                    <div class="bordered-box bordered-box--input">
+                        <label class="cc-input-label" for="edit-profile-full-name">Full Name</label>
+                        <input class="plain-input" type="text" name="full-name" placeholder="Full name" id="edit-profile-full-name" value="{{ user.getDisplayName }}">
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="bordered-box bordered-box--input">
+                        <label class="cc-input-label" for="edit-profile-location">Location</label>
+                        <input class="plain-input" type="text" name="location" placeholder="My location" id="edit-profile-location" value="{{ profile.location }}">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="bordered-box bordered-box--input">
+                        <label class="cc-input-label" for="edit-profile-qualifications">Highest Degree obtained</label>
+                        <select class="plain-input plain-input--select js-colorize-select" name="highest-degree" id="edit-profile-qualifications">
+                            <option value="" class="select-placeholder">Degrees</option>
+                            {% for id,degree in degrees%}
+                                <option value="{{ id }}" {% if profile.highestDegree == degree %} selected="selected" {% endif %}>{{ degree }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="bordered-box bordered-box--input">
+                        <label class="cc-input-label" for="edit-profile-field-of-study">Field of Study</label>
+                        <input class="plain-input" type="text" name="field-of-study" placeholder="Add field of study" id="edit-profile-field-of-study" value="{{ profile.fieldOfStudy }}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-lg-6">
+                    <div class="bordered-box bordered-box--input">
+                        <label class="cc-input-label" for="edit-profile-job-title">Job Title</label>
+                        <input class="plain-input" type="text" name="job-title" placeholder="Current Job Title" id="edit-profile-job-title" value="{{ profile.jobTitle }}">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="bordered-box bordered-box--input">
+                        <label class="cc-input-label" for="edit-profile-about-me">About me</label>
+                        <textarea class="plain-input plain-input--textarea" name="about-me" id="edit-profile-about-me" placeholder="A little about me...">{{ profile.aboutMe }}</textarea>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="cc-form-block-wrap">
+                        <label class="cc-input-label" for="edit-profile-job-title">Privacy</label>
+                        <span class="cc-label-subtext">My Class Central profile is...</span>
+
+                        <div class="cc-form-toggle">
+                            <div class="cc-toggle">
+                                <span class="cc-toggle__text cc-toggle__text--left">Private</span>
+                                <input id="toggle-private" type="checkbox" class="cc-toggle__checkbox" name="privacy" id="edit-profile-qualifications"  {% if not user.isPrivate %}checked{% endif %}>
+                                <label for="toggle-private" class="cc-toggle__label"></label>
+                                <span class="cc-toggle__text cc-toggle__text--right">Public</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="bordered-box bordered-box--input">
+                        <label class="cc-input-label" for="edit-profile-photo">Profile Photo</label>
+                        <img src="{{ profilePic }}" class="photo-preview-thumb" id="edit-profile-photo-preview" alt="your image">
+                        <input class="file-input file-input--photo" type="file" name="profile-pic-uploaded" id="profile-photo-upload"
+                               data-url="/user/profile/image/step1" single
+                               accept="image/jpeg,image/png"
+                        >
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="padded-input-group">
+            <h2 class="heading-colored">Social links.</h2>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="bordered-box bordered-box--input">
+                        <label class="cc-input-label" for="edit-profile-twitter">Twitter</label>
+                        <input class="plain-input" type="text" name="profile-twitter" placeholder="@username" id="edit-profile-twitter" value="{{ profile.twitter }}">
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="bordered-box bordered-box--input">
+                        <label class="cc-input-label" for="edit-profile-facebook">Facebook</label>
+                        <input class="plain-input" type="text" name="profile-facebook" placeholder="facebook.com/username" id="edit-profile-facebook" value="{{ profile.facebook }}">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="bordered-box bordered-box--input">
+                        <label class="cc-input-label" for="edit-profile-website">My Website</label>
+                        <input class="plain-input" type="text" name="profile-website" placeholder="http://mywebsite.com" id="edit-profile-website" value="{{ profile.website }}">
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="bordered-box bordered-box--input">
+                        <label class="cc-input-label" for="edit-profile-linkedin">Linkedin</label>
+                        <input class="plain-input" type="text" name="profile-linkedin" placeholder="linkedin.com/in/username" id="edit-profile-linkedin" value="{{ profile.linkedin }}">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="bordered-box bordered-box--input">
+                        <label class="cc-input-label" for="edit-profile-gplus">Google Plus</label>
+                        <input class="plain-input" type="text" name="profile-gplus" placeholder="plus.google.com/username" id="edit-profile-gplus" value="{{ profile.gplus }}">
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="bordered-box bordered-box--input">
+                        <label class="cc-input-label" for="edit-profile-coursera">Coursera</label>
+                        <input class="plain-input" type="text" name="profile-coursera" placeholder="coursera.org/user/i/username" id="edit-profile-coursera" value="{{ profile.coursera }}">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <input class="full-width-button" type="submit" name="submit" id="save-profile" value="Update my public profile">
+    </form>
+ <!-- modal for showing crop photo -->
+ <div id="crop-photo-modal" class="modal fade" data-backdrop="static">
+     <div class="modal-dialog">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                 <h4 class="modal-title">Crop photo</h4>
+             </div>
+             <div class="modal-body">
+                 <div id="spinner-wrapper" style="height:200px">
+                     <span id="searching_spinner_center" style="position: absolute;display: block;top: 50%;left: 50%;"></span>
+                 </div>
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                 <button type="button" id="btn-crop" class="btn btn-primary">Crop</button>
+             </div>
+         </div><!-- /.modal-content -->
+     </div><!-- /.modal-dialog -->
+ </div><!-- /.modal -->
+

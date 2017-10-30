@@ -1,0 +1,152 @@
+{% if format == 'table' %}
+<tr>
+    <td class="add-column">
+        <span class="ad-strip__icon">Ad</span>
+    </td>
+
+
+    <td class="course-name-column"
+      data-track-impression="{{ ts.event('AD_IMPRESSION') }}"
+      data-track-props='{
+        "ad": {
+          "provider": "{{ providerName }}",
+          "unit": "Table Text Ad",
+          "title": "{{ courseName }}"
+        }
+      }'>
+        <span class="label label-warning hidden-md hidden-lg hidden-sm">Ad</span>
+        <a class="course-name ad-name"  rel="nofollow"  target="_blank" href="{{ courseUrl }}" onmousedown='
+          CC.track("{{ ts.event('AD_CLICK') }}", {
+            ad: {
+              provider: "{{ providerName }}",
+              unit: "Table Text Ad",
+              title: "{{ courseName }}"
+            }
+          });ga("send", "event", "Table Ad", "{{ providerName }} - {{ tableId }}", "{{ courseName }}");'
+          title="{{ courseName }}"><span itemprop="name">{{ courseName }}</span>
+        </a>
+        <ul class="table-uni-list">
+            {% if institutionName is not empty %}
+                <li>
+                    <a class="uni-name" rel="nofollow" target="_blank" href="{{ courseUrl }}"  onmousedown='
+                      CC.track("{{ ts.event('AD_CLICK') }}", {
+                        ad: {
+                          provider: "{{ providerName }}",
+                          unit: "Table Text Ad",
+                          title: "{{ courseName }}"
+                        }
+                      });'
+                      >{{ institutionName }}
+                    </a>
+                </li>
+            {% endif %}
+            <span class="via">via</span>
+            <a rel="nofollow" href="{{ courseUrl }}" target="_blank" class="initiativelinks" title="{{ courseName }}" onclick='
+              CC.track("{{ ts.event('AD_CLICK') }}", {
+                ad: {
+                  provider: "{{ providerName }}",
+                  unit: "Table Text Ad",
+                  title: "{{ courseName }}"
+                }
+              });'>{{ providerName }}
+            </a>
+        </ul>
+    </td>
+
+    {% if showSubjectInTable %}
+        <td class="subject-column"> <a class="subject" href="/subject/{{ subjectSlug }}" title="List of {{ subjectName }} MOOCs" onclick='ga("send","event", "Inbound Clicks - Stream", "{{ subjectName }}", "{{ courseName }}")' data-category="{{ subjectName }}">{{ subjectName }}</a>
+        </td>
+    {% endif %}
+
+    <td class="start-date">{{ courseDate }}</td>
+
+    <td data-timestamp="5" class="course-rating-column">
+        <div class="rating-and-count-wrap">
+            <div class="course-table-rating">
+                   {% include 'ClassCentralSiteBundle:Helpers:starRating.html.twig' with {formattedRating: 5,ratingColour: 'brand'} %}
+            </div>
+        </div>
+    </td>
+
+</tr>
+{% elseif format =='course-top' %}
+
+    {#
+    <div class="course-meta__ad" >
+        <div class="ad-strip" style="background-color: #333">
+            <div class="ad-strip__icon">
+                AD
+            </div>
+            <div class="ad-strip__content">
+                    <span class="ad-strip__large-text"   >
+                        <a href="{{ courseUrl }}" target="_blank" rel="nofollow" onmousedown='ga("send","event", "Course Page Ad", "{{ providerName }}", "{{ courseName }}");'> {{ courseName }} </a>
+                    </span>
+
+                    <span class="ad-strip__small-text"   >
+                        {% if institutionName is not empty %} {{ institutionName }}{% endif %} via
+                        <a rel="nofollow" href="{{ providerUrl }}" target="_blank" onmousedown='ga("send","event", "Course Page Ad - Provider", "{{ providerName }}", "{{ courseName }}")'>{{ providerName }}</a>
+                    </span>
+            </div>
+        </div>
+    </div>
+    #}
+
+    <div class="flexAd"
+      data-track-impression="{{ ts.event('AD_IMPRESSION') }}"
+      data-track-props='{
+        "ad": {
+          "provider": "{{ providerName }}",
+          "unit": "Course Page Text Ad",
+          "title": "{{ courseName }}",
+          "position": "{% if adPosition is defined %}{{ adPosition }}{% endif %}"
+        }
+      }'
+    >
+        <div class="flexAd_tag">Sponsored</div>
+        <a href="{{ courseUrl }}" rel="nofollow" target="_blank" class="flexAd_title"
+          onmousedown='
+            CC.track("{{ ts.event('AD_CLICK') }}", {
+              ad: {
+                provider: "{{ providerName }}",
+                unit: "Course Page Text Ad",
+                title: "{{ courseName }}",
+                position: "{% if adPosition is defined %}{{ adPosition }}{% endif %}"
+              }
+            });ga("send", "event", "Course Page Ad", "{{ providerName }}", "{{ courseName }}");'
+        >{{ courseName }}
+        </a>
+        <div class="flexAd_meta">
+            {% if institutionName is not empty %} {{ institutionName }}{% endif %} via <a href="{{ courseUrl }}" rel="nofollow" target="_blank" onmousedown='
+              CC.track("{{ ts.event('AD_CLICK') }}", {
+                ad: {
+                  provider: "{{ providerName }}",
+                  unit: "Course Page Text Ad",
+                  title: "{{ courseName }}",
+                  position: "{% if adPosition is defined %}{{ adPosition }}{% endif %}"
+                }
+              }
+            });ga("send","event", "Course Page Ad", "{{ providerName }}", "{{ courseName }}");'>{{ providerName }}
+          </a>
+        </div>
+    </div>
+
+
+
+{% elseif format =="dock" %}
+    <div class="promo-object">
+        <span class="promo-object__label">Promoted</span>
+        <a href="{{ courseUrl }}" target="_blank" rel="nofollow"
+           onmousedown='ga("send","event", "Dock Ad", "{{ providerName }}", "{{ courseName }}");'
+                >
+            <h3 class="promo-object__title">
+                <span >{{ courseName }}</span>
+            </h3>
+            <div class="promo-object__sub">
+                {% if institutionName is not empty %}<span>{{ institutionName }}</span>{% endif %}
+                Via
+                <span class="promo-object__accent">{{ providerName }}</span>
+            </div>
+        </a>
+    </div><!-- /.promo-object -->
+
+{% endif %}

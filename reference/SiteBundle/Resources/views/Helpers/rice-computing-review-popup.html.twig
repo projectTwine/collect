@@ -1,0 +1,50 @@
+<div class="modal fade" id="modal-referrer-review-link" tabindex="-1" role="dialog" aria-labelledby="modal-review-prompt">
+
+    <div class="modal-dialog modal-dialog__large" role="document">
+        <div class="modal-base-wrap">
+
+            <div class="modal-base">
+                <div class="modal-base__brand-logo">
+                    <svg class="icon" viewBox="0 0 32 32"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-cc-logo-circle"></use></svg>
+                </div>
+                <div class="modal-base__content">
+
+                    <div class="modal-base__col modal-base__col--left">
+                        <div class="media-card">
+                            <h2 class="media-card__title media-card__title--large">Hello!</h2>
+                            <div class="media-card__text">Did Joe and Scott send you here to say nice things about their courses?</div>
+                            <div class="media-card__media">
+                                <img src="/bundles/classcentralsite/slashpixel/images/Illustration-desk.png" alt="desk">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-base__col modal-base__col--right">
+                        <div class="media-card">
+                            <div class="media-card__text">Links to review those Python courses from Rice University can be found below</div>
+                        </div>
+                        <br/>
+                        <ul>
+                            <li><a target="_blank" href="{{ path('review_new', {courseId:408}) }}">An Introduction to Interactive Programming in Python (Part 1)</a></li>
+                            <li><a target="_blank" href="{{ path('review_new', {courseId:3196}) }}">An Introduction to Interactive Programming in Python (Part 2)</a></li>
+                            <li><a target="_blank" href="{{ path('review_new', {courseId:1724}) }}">Principles of Computing (Part 1)</a></li>
+                            <li><a target="_blank" href="{{ path('review_new', {courseId:3198}) }}">Principles of Computing (Part 2)</a></li>
+                            <li><a target="_blank" href="{{ path('review_new', {courseId:1725}) }}">Algorithmic Thinking (Part 1)</a></li>
+                            <li><a target="_blank" href="{{ path('review_new', {courseId:3200}) }}">Algorithmic Thinking (Part 2)</a></li>
+
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <a href="#" class="modal-close-button" data-dismiss="modal" aria-label="Close">
+                <svg class="modal-close-button__icon">
+                    <use xlink:href="#icon-close"></use>
+                </svg>
+                Not right now, thanks.
+            </a>
+
+        </div><!-- /.modal-base-wrap -->
+    </div>
+</div>

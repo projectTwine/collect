@@ -1,0 +1,17 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block content %}
+    <div class="col-sm-8 col-lg-9 course-bottom-wrap">
+        <div class="col-sm-12 course-col">
+                <div class="course-all-reviews" id="course-all-reviews">
+                    <div class="single-reviews-wrap">
+                        {% for review in reviews %}
+                            <p>{{ review.user.email }}</p>
+                            {% include 'ClassCentralSiteBundle:Review:single.html.twig' with{'review':review,'rating':5} %}
+                        {% endfor %}
+                    </div>
+                </div>
+        </div>
+    </div>
+
+{% endblock %}

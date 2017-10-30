@@ -1,0 +1,29 @@
+ClassCentral\SiteBundle\Entity\FollowCounts:
+    type: entity
+    table: follow_counts
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        item:
+            type: string
+            length: 15
+            fixed: true
+            nullable: false
+        itemId:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: item_id
+        followed:
+            type: integer
+            unsigned: false
+            nullable: true
+        modified:
+            type: datetime
+            nullable: false
+    lifecycleCallbacks: {  }

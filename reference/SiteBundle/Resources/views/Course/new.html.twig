@@ -1,0 +1,167 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{%  block headmeta %}
+    {% include 'ClassCentralSiteBundle:Course:tinymce.inc.html.twig' %}
+{% endblock %}
+
+{% block content %}
+<h1>Course creation</h1>
+
+<form action="{{ path('course_create') }}" method="post" {{ form_enctype(form) }} id="course-create">
+    {{ form_widget(form) }}
+
+    <label>Tags</label>
+    <input type="text" id="course-tags" name="course-tags" class="demo-default selectized" tabindex="-1" style="display: none;">
+
+    <p>
+        <button type="submit">Create</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('course') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}
+
+{%  block beforeClosingBody %}
+    {% javascripts '@ClassCentralSiteBundle/Resources/public/slashpixel/js/selectize.min.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    {% stylesheets '@ClassCentralSiteBundle/Resources/public/slashpixel/css/selectize.bootstrap2.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/black-tie/jquery-ui.css" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block customJS %}
+    $(document).ready(function () {
+        var data = {{ tags|json_encode|raw }};
+        var items = data.map(function(x) { return { item: x }; });
+
+        var tags = $('#course-tags').selectize({
+            delimiter: ',',
+            persist: false,
+            create: true,
+            searchField: "item",
+            options: items,
+            labelField: "item",
+            valueField: "item"
+        });
+
+        // submit form
+        $('#course-create').submit(function(event){
+            // Get the tags from selectize and populate the text box
+            $('#course-tags').text( tags[0].selectize.getValue() );
+        });
+
+        $('#classcentral_sitebundle_coursetype_institutions').selectize();
+        $('#classcentral_sitebundle_coursetype_careers').selectize();
+        $('#classcentral_sitebundle_coursetype_interview').selectize();
+        $('#classcentral_sitebundle_coursetype_subjects').selectize();
+
+
+
+    /*******************************************
+        * Instructors Autocomplete (same code exists in edit)
+        *********************************************/
+        function split( val ) {
+            return val.split( /,\s*/ );
+        }
+
+        function extractLast( term ) {
+            return split( term ).pop();
+        }
+
+        // Keep track of instructors
+        var selectedInstructors = new Object();
+        var insIds = split(  $( "#classcentral_sitebundle_coursetype_instructors" ).val() );
+        var insNames = split(  $( "#classcentral_sitebundle_coursetype_instructors_search" ).val() );
+        if(insIds.length == insNames.length) {
+            for(i=0; i < insIds.length; i++) {
+                selectedInstructors[ insIds[i] ] = insNames[i];
+            }
+        }
+
+        function updateInstructorFields() {
+            ids = new Array();
+            names = new Array();
+            for( var key in selectedInstructors) {
+                ids.push(key);
+                names.push(selectedInstructors[key]);
+             }
+
+            // Update the search box
+            names.push( "" ); // Ads a space and comma at the end
+            $( "#classcentral_sitebundle_coursetype_instructors_search" ).val (names.join( ", " ));
+
+            // Update the instructor ids
+            $('#classcentral_sitebundle_coursetype_instructors').val(ids.join( ", " ));
+        }
+
+
+        $( "#classcentral_sitebundle_coursetype_instructors_search" )
+        // don't navigate away from the field on tab when selecting an item
+        .on( "keydown", function( event ) {
+            if ( event.keyCode === $.ui.keyCode.TAB &&
+                $( this ).autocomplete( "instance" ).menu.active ) {
+            event.preventDefault();
+            }
+        })
+        .autocomplete({
+        source: function( request, response ) {
+        $.getJSON("{{ path('instructor_autocomplete') }}", {
+            term: extractLast( request.term )
+        }, response );
+        },
+        search: function() {
+            // custom minLength
+            var term = extractLast( this.value );
+            if ( term.length < 2 ) {
+                return false;
+            }
+        },
+        focus: function() {
+            // prevent value inserted on focus
+            return false;
+        },
+        select: function( event, ui ) {
+
+            var id = ui.item.value;
+            var name = ui.item.label;
+            console.log(name);
+
+            // Update the instructors search box
+            if (id in selectedInstructors) {
+                // do nothing
+            } else {
+                selectedInstructors[id] = name;
+            }
+
+            updateInstructorFields();
+            return false;
+        }
+        });
+
+        // Check if any values were deleted and remove from the selectedInstructors object
+        $("#classcentral_sitebundle_coursetype_instructors_search").on("blur", function() {
+                var insNames = $( "#classcentral_sitebundle_coursetype_instructors_search" ).val();
+                insNames = split(insNames);
+                for( var key in selectedInstructors) {
+                    var insName = selectedInstructors[key];
+                    if( insNames.indexOf(insName) === -1) {
+                        // Element has been deleted
+                        delete selectedInstructors[key]
+                    }
+                }
+
+                updateInstructorFields();
+        });
+    });
+{% endblock %}

@@ -1,0 +1,42 @@
+ClassCentral\SiteBundle\Entity\TextAd:
+    type: entity
+    table: text_ads
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        title:
+            type: string
+            length: 30
+            fixed: true
+            nullable: false
+        displayUrl:
+            type: string
+            length: 40
+            fixed: true
+            nullable: false
+            column: display_url
+        description:
+            type: string
+            length: 80
+            fixed: true
+            nullable: false
+        url:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        visible:
+            type: boolean
+            nullable: false
+        providerName:
+            type: string
+            length: 50
+            fixed: false
+            nullable: false
+            column: provider_name
+    lifecycleCallbacks: {  }

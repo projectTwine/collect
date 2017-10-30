@@ -1,0 +1,130 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+ {% block headmeta %}
+     <title>Class Central Sign in</title>
+     <meta name="description"
+           content="Class Central login"/>
+     <meta property="og:title" content="Login in to Class Central" />
+     <meta property="og:url" content="https://www.class-central.com/login" />
+     <meta property="og:image" content="https://www.class-central.com/bundles/classcentralsite/slashpixel/images/ccprofilepic.png">
+     <meta property="og:site_name" content="Class Central"/>
+     <meta property="og:description" content="Class Central login. Stay updated on courses that match your interests" />
+     <meta property="og:type" content="website" />
+     <meta property="fb:admins" content="{{ fb_admins }}" />
+
+     <!-- Twitter card integration -->
+     <meta name="twitter:card" content="summary">
+     <meta name="twitter:site" content="@classcentral">
+     <meta name="twitter:title" content="Class Central login">
+     <meta name="twitter:description" content="Class Central login">
+     <meta name="twitter:domain" content="www.class-central.com">
+
+ {% endblock %}
+
+{% block contentheader %}
+  <section class="classcentral-style auth" id="auth-login">
+    <form
+      class="bg-white form shadow radius width-centered width-3-4 border-box relative"
+      action="{{ path('login_check') }}"
+      method="post"
+    >
+      <div class="padding-horz-large padding-top-large padding-bottom-xlarge border-bottom border--thin border--gray-light text-center">
+        <div class="medium-up">
+          <h4 class="text--gray inline-block margin-right-medium">Sign in with</h4>
+          <a
+            href="#"
+            onmousedown="ga('send','event','Sign In with Google', 'Login Form');"
+            class="sign-in-with-google btn-white icon--left icon--xsmall icon-google margin-right-small"
+          >
+            Google
+          </a>
+          <a
+            href="{{ path('fb_authorize_start') }}"
+            onmousedown="ga('send','event','Sign In with Facebook', 'Login Form');"
+            class="btn-white icon--left icon--xsmall icon-facebook-box"
+          >
+            Facebook
+          </a>
+        </div>
+        <div class="small-only">
+          <h4 class="text--gray inline-block margin-right-medium">Sign in with</h4>
+          <a
+            href="#"
+            onmousedown="ga('send','event','Sign In with Google', 'Login Form');"
+            class="sign-in-with-google btn-white icon--xsmall icon-google margin-right-small icon--center padding-horz-medium"
+          >
+            Google
+          </a>
+          <a
+            href="{{ path('fb_authorize_start') }}"
+            onmousedown="ga('send','event','Sign In with Facebook', 'Login Form');"
+            class="btn-white icon--xsmall icon-facebook-box icon--center padding-horz-medium"
+          >
+            Facebook
+          </a>
+        </div>
+      </div>
+      <div class="or text--charcoal absolute text-center block">
+        <span class="inline-block margin-top-xxsmall">or</span>
+      </div>
+      <div class="padding-large">
+        {% if error %}
+            {% set errorInfo = user_service.generateLoginErrorMessage(last_username) %}
+            <div class="radius bg-red-light text--red text-left text-3 padding-small padding-right-xlarge margin-bottom-medium relative">
+              {{ errorInfo.message }}
+              <button type="button" data-remove-parent class="block icon--xsmall icon-x absolute top right margin-xsmall"></button>
+            </div>
+            {% if errorInfo.user_account_exists %}
+                <div class="radius bg-gray text--charcoal text-left text-3 padding-small padding-right-xlarge margin-bottom-medium relative">
+                  Trouble signing in? <a href="{{ path('loginViaEmail') }}" class="text--blue">Send email with sign in link</a>.
+                  <button data-remove-parent class="block icon--xsmall icon-x-charcoal absolute top right margin-xsmall"></button>
+                </div>
+            {% endif %}
+            <script type="text/javascript">
+                CC.track("failed_logins", {
+                        failed_login_error: "{{ error.message }}",
+                        failed_login_email: "{{ last_username }}",
+                        failed_login_display_message: "{{ errorInfo.message }}",
+                        failed_login_user_exists: {{ errorInfo.user_account_exists }},
+                        failed_login_signup_type: {{ errorInfo.user_account_signup_type }}
+                });
+            </script>
+        {% endif %}
+        <fieldset>
+          <label for="username" class="text-3 block margin-bottom-xsmall">Your email</label>
+          <input type="email" id="username" name="_username" value="{{ last_username }}" class="input--medium radius width-100" required>
+        </fieldset>
+        <fieldset class="margin-top-medium">
+          <div class="row margin-bottom-xsmall">
+            <label for="password" class="col width-1-2 text-3 block">Your password</label>
+            <a href="{{ path('forgotpassword') }}" title="Forgot password" class="col width-1-2 text--blue text-3 text-right">Forgot password?</a>
+          </div>
+          <input type="password" id="password" name="_password" class="input--medium radius width-100" required>
+        </fieldset>
+        {% if redirectUrl is not empty %}
+            <input type="hidden" name="_target_path" value="{{ redirectUrl }}" />
+        {% endif %}
+        <fieldset class="text-center">
+          <button type="submit" class="btn-blue padding-horz-xxlarge margin-top-large">Sign in</button>
+        </fieldset>
+      </div>
+    </form>
+    <div class="margin-top-large text-center">
+      New to Class Central?
+      <a
+        data-track-click="auth_click"
+        data-track-props='{ "type": "User", "title": "Register" }'
+        id="navbar-create-free-account"
+        href="{{ path('signup') }}"
+        title="Sign up for Class Central"
+        class="text--blue inline-block padding-left-small"
+      >
+        Create a free account
+      </a>
+    </div>
+  </section>
+{% endblock %}
+
+{% block beforeClosingBody %}
+  {% include 'ClassCentralSiteBundle:Layouts/Auth:google.html.twig' %}
+{% endblock %}

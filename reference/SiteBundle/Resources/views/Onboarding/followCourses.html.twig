@@ -1,0 +1,92 @@
+<div class="modal fade" id="onboarding-follow-courses-modal"  role="dialog" aria-labelledby="write-modal-title-here" aria-hidden="true" style="display: none;" data-backdrop="static">
+    <div class="modal-dialog modal-dialog__large" role="document">
+        <div class="modal-base-wrap">
+
+
+            <div class="modal-base-layout">
+
+
+                <div id="modal-pane-2" class="modal-pane">
+                    <div class="on-modal-header">
+                        <h1 class="on-modal-title">Follow Class Central's <i>highest rated courses</i> of all time</h1>
+                        <h2 class="on-modal-subtitle">It will help us improve your course recommendations.</h2>
+                    </div>
+
+                    <div class="on-modal-body">
+                        <div class="on-modal-body__tags">
+                            <div class="on-modal-body__tagswrap js-custom-scrollbar">
+                                <div class="tagboard">
+
+                                    {% for result in interestingCourses.hits.hits %}
+                                        {% set course = result._source %}
+                                        {% set userListIds = user_session.getCourseListIds(course.id) %}
+                                        {% set followed = true %}
+                                        {% if userListIds is empty %}
+                                            {% set followed = false %}
+                                        {% endif %}
+
+                                        {% include 'ClassCentralSiteBundle:Follow:btn.follow.html.twig' with {
+                                            item : followCourseItem,
+                                            item_id : course.id,
+                                            itemName: course.name,
+                                            followed: followed,
+                                            simpleButton: true,
+                                            hideNotification: true
+                                            }
+                                        %}
+
+                                    {% endfor %}
+
+                                    {% for result in courses.hits.hits %}
+                                        {% set course = result._source %}
+                                        {% set userListIds = user_session.getCourseListIds(course.id) %}
+                                        {% set followed = true %}
+                                        {% if userListIds is empty %}
+                                            {% set followed = false %}
+                                        {% endif %}
+
+                                        {% include 'ClassCentralSiteBundle:Follow:btn.follow.html.twig' with {
+                                            item : followCourseItem,
+                                            item_id : course.id,
+                                            itemName: course.name,
+                                            followed: followed,
+                                            simpleButton: true,
+                                            hideNotification: true
+                                            } %}
+
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="on-modal-footer">
+                        <div class="on-modal-footer__bar">
+                            <div class="meter">
+                                <span class="meter__bar" style="width: 0%"></span>
+                            </div>
+                        </div>
+                        <div class="on-modal-footer__button">
+                            <a href="#" class="on-modal-button active" id="onboarding-follow-courses__next">
+                                <div class="on-modal-button__icon">
+                                    <div class="u-scaling-svg">
+                                        <svg class="u-scalingSvg__shape">
+                                            <use xlink:href="#shape-arrow-right-thin" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <span>Pick more courses or move on to the last step</span>
+                            </a>
+                        </div>
+                        <div class="on-modal-footer__nav">
+                            <a href="#" class="on-modal-navbutton on-modal-navbutton-left" id="onboarding-follow-courses__back">Back</a>
+                            <a href="#" class="on-modal-navbutton on-modal-navbutton-right" id="onboarding-follow-courses__skip">Skip</a>
+                        </div>
+                    </div>
+                </div><!-- /.modal-pane -->
+
+            </div>
+
+        </div>
+    </div>
+</div>

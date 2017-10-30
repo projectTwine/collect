@@ -1,0 +1,34 @@
+ClassCentral\SiteBundle\Entity\Sphinxsearch:
+  type: entity
+  table: sphinxsearch
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false      
+    name:
+      type: string
+      length: 255
+      fixed: false
+      nullable: true
+    instructors:
+      type: text
+      nullable: true
+    description:
+      type: text
+      nullable: true
+    initiative:
+      type: string
+      length: 50
+      fixed: false
+      nullable: true
+    stream:
+      type: string
+      length: 255
+      fixed: false
+      nullable: true
+    search:
+      type: text
+      nullable: true
+  lifecycleCallbacks: {  }

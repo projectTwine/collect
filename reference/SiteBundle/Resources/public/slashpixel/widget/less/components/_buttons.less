@@ -1,0 +1,41 @@
+
+@button-text-color:            #fff;
+@button-bg-color:              @blue;
+@button-action-color:          darken(@button-bg-color, 10%);
+@button-border-radius:         3px;
+@button-font-family:           @font-family-headings;
+
+@button-text-color-gray:       #646668;
+@button-bg-color-gray:         #e1e1e1;
+@button-action-color-gray:     darken(@button-bg-color-gray, 10%);
+
+.widgetButton {
+	display: inline-block;
+	font-size: 16px;
+	color: @button-text-color;
+	background-color: @button-bg-color;
+	font-family: @button-font-family;
+	border-radius: @button-border-radius;
+	border: 0;
+	padding: 9px 0px;
+	text-align: center;
+	font-weight: 400;
+	text-decoration: none;
+	box-shadow: none;
+	&:focus,
+	&:hover {
+		outline: none;
+		text-decoration: none;
+		background-color: @button-action-color;
+	}
+}
+
+.widgetButton-gray {
+	color: @button-text-color-gray;
+	background-color: @button-bg-color-gray;
+	&:focus,
+	&:hover {
+		text-decoration: none;
+		background-color: @button-action-color-gray;
+	}
+}

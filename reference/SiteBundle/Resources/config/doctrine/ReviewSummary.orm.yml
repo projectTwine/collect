@@ -1,0 +1,28 @@
+ClassCentral\SiteBundle\Entity\ReviewSummary:
+    type: entity
+    table: reviews_summaries
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        summary:
+            type: text
+            nullable: false
+        created:
+            type: datetime
+            nullable: false
+    manyToOne:
+        review:
+            targetEntity: Review
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                review_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

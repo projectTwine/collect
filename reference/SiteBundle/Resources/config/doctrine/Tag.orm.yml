@@ -1,0 +1,21 @@
+ClassCentral\SiteBundle\Entity\Tag:
+    type: entity
+    table: tags
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        name:
+            type: string
+            length: 100
+            fixed: false
+            nullable: false
+    manyToMany:
+      courses:
+        targetEntity: Course
+        mappedBy: tags
+    lifecycleCallbacks: {  }

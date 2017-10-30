@@ -1,0 +1,40 @@
+ClassCentral\SiteBundle\Entity\ReviewFeedbackSummary:
+    type: entity
+    table: reviews_feedback_summary
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        positive:
+            type: integer
+            unsigned: false
+            nullable: false
+        negative:
+            type: integer
+            unsigned: false
+            nullable: false
+        total:
+            type: integer
+            unsigned: false
+            nullable: false
+        created:
+            type: datetime
+            nullable: true
+        modified:
+            type: datetime
+            nullable: true
+    oneToOne:
+        review:
+            targetEntity: Review
+            cascade: {  }
+            mappedBy: null
+            inversedBy: fbSummary
+            joinColumns:
+                review_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

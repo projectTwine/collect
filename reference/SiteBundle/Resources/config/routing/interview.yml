@@ -1,0 +1,30 @@
+interview:
+    pattern:  /
+    defaults: { _controller: "ClassCentralSiteBundle:Interview:index" }
+
+interview_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ClassCentralSiteBundle:Interview:show" }
+
+interview_new:
+    pattern:  /new
+    defaults: { _controller: "ClassCentralSiteBundle:Interview:new" }
+
+interview_create:
+    pattern:  /create
+    defaults: { _controller: "ClassCentralSiteBundle:Interview:create" }
+    requirements: { _method: post }
+
+interview_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ClassCentralSiteBundle:Interview:edit" }
+
+interview_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ClassCentralSiteBundle:Interview:update" }
+    requirements: { _method: post|put }
+
+interview_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ClassCentralSiteBundle:Interview:delete" }
+    requirements: { _method: post|delete }

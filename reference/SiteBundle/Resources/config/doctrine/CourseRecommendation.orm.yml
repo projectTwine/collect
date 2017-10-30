@@ -1,0 +1,42 @@
+ClassCentral\SiteBundle\Entity\CourseRecommendation:
+    type: entity
+    table: courses_recommendations
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        position:
+            type: integer
+            unsigned: false
+            nullable: true
+            order: asc
+        created:
+            type: datetime
+            nullable: true
+        modified:
+            type: datetime
+            nullable: true
+    manyToOne:
+        course:
+            targetEntity: Course
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                course_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        recommendedCourse:
+            targetEntity: Course
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                recommended_course_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,50 @@
+ClassCentral\SiteBundle\Entity\UserGoogle:
+    type: entity
+    table: users_google
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        googleId:
+            type: string
+            length: 45
+            fixed: false
+            nullable: false
+            column: google_id
+        accessToken:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+            column: access_token
+        googleEmail:
+            type: string
+            length: 100
+            fixed: false
+            nullable: true
+            column: google_email
+        userInfo:
+            type: text
+            nullable: true
+            column: user_info
+        created:
+            type: datetime
+            nullable: true
+        modified:
+            type: datetime
+            nullable: false
+    oneToOne:
+        user:
+            targetEntity: User
+            cascade: {  }
+            mappedBy: null
+            inversedBy: google
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

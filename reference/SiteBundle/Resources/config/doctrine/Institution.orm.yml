@@ -1,0 +1,54 @@
+ClassCentral\SiteBundle\Entity\Institution:
+  type: entity
+  table: institutions
+  repositoryClass: ClassCentral\SiteBundle\Repository\InstitutionRepository
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: IDENTITY
+    name:
+      type: string
+      length: 255
+      fixed: false
+      nullable: false
+    url:
+      type: text
+      nullable: true
+    slug:
+      type: string
+      length: 255
+      fixed: false
+      nullable: false
+    isUniversity:
+      type: boolean
+      nullable: false
+      column: is_university
+    imageUrl:
+      type: string
+      nullable: true
+      column: image_url
+    description:
+      type: string
+      nullable: true
+    country:
+      type: string
+      length: 50
+      fixed: false
+      nullable: false
+    continent:
+      type: string
+      length: 50
+      fixed: false
+      nullable: false
+  manyToMany:         
+    courses:
+      targetEntity: Course
+      mappedBy: institutions
+    credentials:
+       targetEntity: ClassCentral\CredentialBundle\Entity\Credential
+       mappedBy: institutions
+  lifecycleCallbacks: {  }

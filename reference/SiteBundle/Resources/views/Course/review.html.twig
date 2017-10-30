@@ -1,0 +1,29 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block content %}
+<h1>Courses to be reviewed</h1>
+ <table class="records_list">
+     <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>View</th>
+            <th>Edit</th>
+            <th>Edit Lite</th>
+        </tr>
+     </thead>
+     <tbody>
+     {% for course in courses %}
+         <tr>
+            <td>{{ course.id }}</td>
+            <td><a href="{{ path('ClassCentralSiteBundle_mooc', {'id':course.id,'slug':course.slug}) }}">{{ course.name }}</a></td>
+            <td><a href="{{ path('course_show', {'id':course.id}) }}"> Admin View</a></td>
+             <td><a href="{{ path('course_edit', {'id':course.id}) }}"> Edit</a></td>
+             <td><a href="{{ path('course_edit_lite', {'id':course.id}) }}"> Edit Lite</a></td>
+         </tr>
+     {% endfor %}
+
+     </tbody>
+ </table>
+
+{% endblock %}

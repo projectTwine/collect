@@ -1,0 +1,126 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+{% block headmeta %}
+    <title>Edit Profile</title>
+    <meta name="robots" content="noindex" />
+{% endblock %}
+
+{% block content %}
+    <div class="new-review full-new-review col-md-6">
+        <header>
+            <h2>Edit profile</h2>
+        </header>
+        <div class="review-form-wrap">
+            <input id="fileupload" type="file" name="profile-pic-uploaded"
+                   data-url="/user/profile/image/step1" single
+                   accept="image/jpeg,image/png"
+            >
+
+            <!-- modal for showing crop photo -->
+            <div id="crop-photo-modal" class="modal fade" data-backdrop="static">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title">Crop photo</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div id="spinner-wrapper" style="height:200px">
+                                <span id="searching_spinner_center" style="position: absolute;display: block;top: 50%;left: 50%;"></span>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" id="btn-crop" class="btn btn-primary">Crop</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+
+            <form id="review-form" class="clearfix" method="post" action="#review-form">
+
+                <div class="text-wrap">
+                    <div class="review-text">
+                        <span class="review-field-label">About Me</span>
+                        <textarea id="review-text" name="about-me" placeholder=""></textarea>
+                    </div>
+                </div>
+                <div class="course-progress">
+                    <span class="review-field-label">Full Name</span>
+                    <span class="review-form-error" id="full-name-error" style="display:none;">
+                        Should be atleast three letters
+                    </span>
+                    <input type="text" id="ext-reviewer-name" name="full-name" value="" />
+                </div>
+                <div class="course-progress">
+                    <span class="review-field-label">Location</span>
+                    <input type="text" id="ext-reviewer-name" name="location" value="" />
+                </div>
+                <div class="course-progress">
+                    <span class="review-field-label">Field of Study</span>
+                    <input type="text" id="ext-reviewer-name" name="field-of-study" value="" />
+                </div>
+                <div class="course-progress">
+                    <span class="review-field-label">Highest Degree Obtained</span>
+                    <select id="highest-degree-obtained" name="highest-degree">
+                        {% for id,degree in degrees%}
+                            <option value="{{ id }}">{{ degree }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="course-progress">
+                    <span class="review-field-label">Website</span>
+                    <input type="text" id="ext-reviewer-name" name="profile-website" value="" />
+                </div>
+                <div class="course-progress">
+                    <span class="review-field-label">Twitter</span>
+                    <input type="text" id="ext-reviewer-name" name="profile-twitter" value="" />
+                </div>
+                <div class="course-progress">
+                    <span class="review-field-label">Facebook</span>
+                    <input type="text" id="ext-reviewer-name" name="profile-facebook" value="" />
+                </div>
+                <div class="course-progress">
+                    <span class="review-field-label">Coursera</span>
+                    <input type="text" id="ext-reviewer-name" name="profile-coursera" value="" />
+                </div>
+                <div class="course-progress">
+                    <span class="review-field-label">LinkedIn</span>
+                    <input type="text" id="ext-reviewer-name" name="profile-linkedin" value="" />
+                </div>
+                <div class="course-progress">
+                    <span class="review-field-label">Google Plus</span>
+                    <input type="text" id="ext-reviewer-name" name="profile-gplus" value="" />
+                </div>
+                <a id="save-profile"  name="cc-send" href="#">Save</a>
+            </form>
+
+            <header>
+                <h2>Update private profile</h2>
+            </header>
+
+            <form id="review-form" class="clearfix" method="post" action="#review-form">
+
+                <div class="course-progress">
+                    <span class="review-field-label">Email</span>
+                    <input type="text" id="edit-profile-email" data-current-email="email" name="edit-profile-email" value="" />
+                </div>
+                <div class="course-progress">
+                    <span class="review-field-label">Current Password</span>
+                    <input type="password" id="ext-reviewer-name" name="edit-profile-current-password" value="" />
+                </div>
+                <div class="course-progress">
+                    <span class="review-field-label">New Password</span>
+                    <input type="password" id="ext-reviewer-name" name="edit-profile-new-password" value="" />
+                </div>
+                <div class="course-progress">
+                    <span class="review-field-label">Confirm New Password</span>
+                    <input type="password" id="ext-reviewer-name" name="edit-profile-confirm-password" value="" />
+                </div>
+                <a id="save-profile-private"  name="cc-send" href="#">Save</a>
+            </form>
+
+
+        </div>
+    </div>
+
+{% endblock %}

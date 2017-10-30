@@ -1,0 +1,42 @@
+ClassCentral\SiteBundle\Entity\Interview:
+    type: entity
+    table: interviews
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        summary:
+            type: text
+            nullable: false
+        title:
+            type: text
+            nullable: false
+        url:
+            type: text
+            nullable: false
+        instructorName:
+            type: text
+            nullable: false
+            column: instructor_name
+        instructorPhoto:
+            type: text
+            nullable: false
+            column: instructor_photo
+        created:
+            type: datetime
+            nullable: true
+        modified:
+            type: datetime
+            nullable: false
+    oneToMany:
+         courses:
+           targetEntity: Course
+           cascade: {}
+           mappedBy: interview
+           inversedBy: courses
+           orphanRemoval: false
+    lifecycleCallbacks: {  }

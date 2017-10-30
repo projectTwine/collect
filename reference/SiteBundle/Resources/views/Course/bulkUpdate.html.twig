@@ -1,0 +1,80 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block content %}
+    <p>This page is used to bulk update a courses primary subject or secondary subjects. A course can have multiple secondary subjects,
+    so this tool can only be used to add secondary subjects and not remove them.
+    </p>
+    <button onclick="clearCoursesClipboard()">Clear courses clipboard</button>
+    <button onclick="refreshCoursesClipboard()">Refresh courses clipboard</button>
+    <div>
+        {% if succeeded is not empty %}
+            <h3>Successfully updated</h3>
+            {% for id,name in succeeded %}
+                {{ id }}|||{{ name }}<br/>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <div>
+        {% if failed is not empty %}
+            <h3>Failed</h3>
+            {% for id,name in succeeded %}
+                {{ id }}|||{{ name }}<br/>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+
+    <form method="post">
+        <label>Pick a Primary subject</label>
+        <select name="primary-subject">
+            <option disabled selected value> -- select an option -- </option>
+            {% for subject in subjects %}
+                <option value="{{ subject.id }}">{{ subject.name  }}</option>
+            {% endfor %}
+        </select>
+        <br/><br/>
+
+        <label>Pick a Secondary subject</label>
+        <select name="secondary-subject">
+            <option disabled selected value> -- select an option -- </option>
+            {% for subject in subjects %}
+                <option value="{{ subject.id }}">{{ subject.name  }}</option>
+            {% endfor %}
+        </select>
+        <br/><br/>
+
+        <label>Paste courses with ids</label>
+        <textarea name="courses" rows="25" cols="100"></textarea>
+        <br/><br/>
+
+        <input type="submit" value="Update Courses">
+    </form>
+{% endblock %}
+
+{% block customJS %}
+    $( document ).ready(function() {
+        var courses = '';
+        if (Cookies.get( 'bulk_course_copy' ) !== undefined) {
+        courses = Cookies.get( 'bulk_course_copy' );
+        }
+        courses = courses.replace(/;;;/g,"\n");
+        $('textarea[name="courses"]').text(courses);
+
+    });
+
+    function clearCoursesClipboard() {
+        Cookies.remove('bulk_course_copy');
+        $('textarea[name="courses"]').text("");
+    }
+
+    function refreshCoursesClipboard() {
+        var courses = '';
+        if (Cookies.get( 'bulk_course_copy' ) !== undefined) {
+           courses = Cookies.get( 'bulk_course_copy' );
+        }
+        courses = courses.replace(/;;;/g,"\n");
+        $('textarea[name="courses"]').text(courses);
+    }
+
+{% endblock %}

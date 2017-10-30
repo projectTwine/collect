@@ -1,0 +1,47 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block content -%}
+    <h1>IndepthReview edit</h1>
+
+    <form action="{{ path('indepthreview_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+        <input type="hidden" name="_method" value="PUT" />
+        {{ form_widget(edit_form) }}
+        <p>
+            <button type="submit">Edit</button>
+        </p>
+    </form>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('indepthreview') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('indepthreview_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+{% endblock %}
+
+
+{%  block beforeClosingBody %}
+    {% javascripts '@ClassCentralSiteBundle/Resources/public/slashpixel/js/selectize.min.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    {% stylesheets '@ClassCentralSiteBundle/Resources/public/slashpixel/css/selectize.bootstrap2.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+
+{% block customJS %}
+    $(document).ready(function () {
+
+    $('#classcentral_sitebundle_indepthreviewtype_course').selectize();
+    });
+{% endblock %}

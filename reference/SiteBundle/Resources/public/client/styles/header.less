@@ -1,0 +1,137 @@
+// header
+@import "~classcentral-style/dist/icon-subject.css";
+@import "~classcentral-style/dist/icon-university.css";
+@import "~classcentral-style/dist/icon-chevron-down.css";
+@import "~classcentral-style/dist/icon-provider.css";
+@import "~classcentral-style/dist/icon-bullhorn.css";
+@import "~classcentral-style/dist/icon-books.css";
+@import "~classcentral-style/dist/icon-search.css";
+@import "~classcentral-style/dist/icon-arrow-right.css";
+@import "~classcentral-style/dist/icon-paper.css";
+@import "~classcentral-style/dist/icon-course.css";
+@import "~classcentral-style/dist/icon-star.css";
+@import "~classcentral-style/dist/icon-star-half.css";
+@import "~classcentral-style/dist/icon-credential.css";
+@import "~classcentral-style/dist/icon-star-outline.css";
+@import "~classcentral-style/dist/icon-lightening.css";
+@import "~classcentral-style/dist/icon-credential.css";
+@import "~classcentral-style/dist/icon-random.css";
+@import "~classcentral-style/dist/icon-profile.css";
+@import "~classcentral-style/dist/icon-lettermark.css";
+@import "~classcentral-style/dist/icon-x.css";
+@import "~classcentral-style/dist/icon-clock.css";
+@import "~classcentral-style/dist/icon-coupon.css";
+@import "~classcentral-style/dist/icon-checkmark.css";
+
+@import "~classcentral-style/dist/symbol-classcentral-blue.css";
+@import "~classcentral-style/dist/symbol-udemy-green.css";
+
+@import "~classcentral-style/dist/png-udacity-gray.css";
+@import "~classcentral-style/dist/png-futurelearn-gray.css";
+@import "~classcentral-style/dist/png-coursera-gray.css";
+@import "~classcentral-style/dist/png-edx-gray.css";
+@import "~classcentral-style/dist/png-stanford-gray.css";
+@import "~classcentral-style/dist/png-harvard-gray.css";
+@import "~classcentral-style/dist/png-mit-gray.css";
+@import "~classcentral-style/dist/png-gatech-gray.css";
+@import "~classcentral-style/dist/png-umich-gray.css";
+@import "~classcentral-style/dist/png-tsu-gray.css";
+@import "~classcentral-style/dist/png-iimb-gray.css";
+@import "~classcentral-style/dist/png-delft-gray.css";
+@import "~classcentral-style/dist/png-ubc-gray.css";
+
+#cc-header {
+  z-index: 10;
+  position: relative;
+}
+
+.classcentral-style {
+  .review-rating {
+    .icon-star,
+    .icon-star-half,
+    .icon-star-gray-light {
+      height: 18px;
+      line-height: 18px;
+      width: 18px;
+      background-size: 32px 32px !important;
+    }
+  }
+  #browse-menu.arrow-top-middle::after {
+    left: 290px;
+  }
+  #search-results ol a:focus {
+    background: #F2F2F2;
+  }
+}
+
+@keyframes pulse {
+  50% {
+    background: #ffffff;
+  }
+}
+
+.loading-pulse {
+  position: relative;
+  width: (18px / 4);
+  height: 18px;
+  background: rgba(0,0,0,0.3);
+  animation: pulse 750ms infinite;
+  animation-delay: (750ms / 3);
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    display: block;
+    height: (18px / 1.5);
+    width: (18px / 4);
+    background: rgba(0,0,0,0.3);
+    top: 50%;
+    transform: translateY(-50%);
+    animation: pulse 750ms infinite;
+  }
+  &:before {
+    left: -(18px / 2);
+  }
+  &:after {
+    left: (18px / 2);
+    animation-delay: (750ms / 1.5);
+  }
+}
+
+#header {
+  font-family: "myriad-pro", "Myriad Pro", "Myriad", Helvetica, Arial, sans-serif;
+  min-height: 91px;
+  @media (max-width: 1000px) {
+    min-height: 60px;
+    height: 60px;
+  }
+}
+#cc-header {
+  .animate-hidden,
+  .animate-entering,
+  .animate-exiting {
+    // z-index: -10;
+    pointer-events: none;
+    opacity: 0;
+    transform: rotateX(-5deg) translateY(-20px);
+  }
+  .animate-entered {
+    transition: opacity 200ms ease, transform 200ms ease;
+    transform: rotateX(0) translateY(0px);
+    opacity: 1;
+    &.z-mid {
+      z-index: 1000 !important;
+    }
+  }
+  .animate-hidden,
+  .animate-exiting {
+    -webkit-transform-style: preserve-3d;
+
+    transition: opacity 200ms ease, transform 200ms ease;
+  }
+  .animate-soft {
+    &.animate-entering,
+    &.animate-exiting {
+      transform: rotateX(-5deg) translateY(-10px);
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+{% block content %}
+
+<h1>Pages</h1>
+    <a href="{{ path('course',{offset:1}) }}">Page 1 : 0001 - 1000</a> <br/>
+    <a href="{{ path('course',{offset:1001}) }}">Page 2 : 1001 - 2000</a> <br/>
+    <a href="{{ path('course',{offset:2001}) }}">Page 3 : 2001 - 3000</a><br/>
+    <a href="{{ path('course',{offset:3001}) }}">Page 4 : 3001 - 4000</a> <br/>
+    <a href="{{ path('course',{offset:4001}) }}">Page 5 : 4001 - 5000</a><br/>
+    <a href="{{ path('course',{offset:5001}) }}">Page 6 : 5001 - 6000</a> <br/>
+    <a href="{{ path('course',{offset:6001}) }}">Page 7 : 6001 - 7000</a><br/>
+    <a href="{{ path('course',{offset:7001}) }}">Page 8 : 7001 - 8000</a><br/>
+<h1>Course list</h1>
+
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Stream</th>
+            <th>Initiative</th>
+            <th>Institutions</th>
+            <th>Offerings</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('course_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.name }}</td>
+             <td>{{ entity.stream.name }}</td>
+
+            {% if entity.getInitiative() is not null %}
+            <td><a href="{{ path('course_initiative',{'initiative': entity.initiative.code}) }}">{{ entity.getInitiative().getName() }}</a></td>
+            {% else %}
+            <td></td>
+            {% endif %}
+            
+            <td>
+                <ul>
+                    {% for institution in entity.institutions %}
+                        <li><a href="{{ path('institution_edit', {'id': institution.id}) }}">{{institution.name}}</a></li>
+                    {% endfor %}                
+                </ul>
+            </td>
+            <td>{{entity.offerings|length}}</td>
+            <td>
+                <ul>                   
+                    <li>
+                        <a href="{{ path('course_edit', { 'id': entity.id }) }}" target="_blank">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('course_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
+{% endblock %}

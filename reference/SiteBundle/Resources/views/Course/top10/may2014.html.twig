@@ -1,0 +1,91 @@
+{% extends 'ClassCentralSiteBundle::base.html.twig' %}
+
+ {% block headmeta %}
+     <title>Ten most popular MOOCs starting in {{ month }} {{ year }}</title>
+     <meta name="description"
+           content="Ten most popular MOOCs in {{ month }} {{ year }}"/>
+     <meta property="og:title" content="Ten most popular MOOCs starting in {{ month }} {{ year }}" />
+     <meta property="og:url" content="https://www.class-central.com{{ path('top10', {month: month, year: year}) }}" />
+     <meta property="og:image" content="https://www.class-central.com/bundles/classcentralsite/slashpixel/images/ccprofilepic.png">
+     <meta property="og:site_name" content="Class Central"/>
+     <meta property="og:description" content="Ten most popular MOOCs starting in {{ month }} {{ year }}" />
+     <meta property="og:type" content="website" />
+
+     <meta property="fb:admins" content="{{ fb_admins }}" />
+
+     <!-- Twitter card integration -->
+     <meta name="twitter:card" content="summary">
+     <meta name="twitter:site" content="@classcentral">
+     <meta name="twitter:title" content="Ten most popular MOOCs starting in {{ month }} {{ year }}">
+     <meta name="twitter:description" content="Ten most popular MOOCs starting in {{ month }} {{ year }}">
+     <meta name="twitter:domain" content="www.class-central.com">
+
+     <script type="text/javascript">
+         //<![CDATA[
+         (function() {
+             var shr = document.createElement('script');
+             shr.setAttribute('data-cfasync', 'false');
+             shr.src = '//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js';
+             shr.type = 'text/javascript'; shr.async = 'true';
+             shr.onload = shr.onreadystatechange = function() {
+                 var rs = this.readyState;
+                 if (rs && rs != 'complete' && rs != 'loaded') return;
+                 var site_id = '5fdc3916cf323ac313c8667aa04b147a';
+                 try { Shareaholic.init(site_id); } catch (e) {}
+             };
+             var s = document.getElementsByTagName('script')[0];
+             s.parentNode.insertBefore(shr, s);
+         })();
+         //]]>
+     </script>
+ {% endblock %}
+
+ {% block content %}
+
+    <h1 style="font-size: 40px;color: #000000">Ten most popular MOOCs starting in May 2014.</h1>
+
+
+
+     <a href='https://www.class-central.com/mooc/840/coursera-developing-innovative-ideas-for-new-companies-the-first-step-in-entrepreneurship'><strong>Developing Innovative Ideas for New Companies: The First Step in Entrepreneurship</strong></a><br/>
+     <p>Explore how to identify and develop great ideas into great companies. Learn how to identify opportunities based on real customer needs. Develop solid business models. Create successful companies.</p>
+     <div><strong>May 5th &middot; Coursera</strong></div><br/>
+
+     <a href='https://www.class-central.com/mooc/1713/coursera-r-programming'><strong>R Programming</strong></a><br/>
+     <p>Learn how to program in R and how to use R for effective data analysis. This is the second course in the Johns Hopkins Data Science Specialization.</p>
+     <div><strong>May 5th &middot; Coursera</strong></div><br/>
+
+     <a href='https://www.class-central.com/mooc/1712/coursera-the-data-scientist-s-toolbox'><strong>The Data Scientist’s Toolbox</strong></a><br/>
+     <p>Get an overview of the data, questions, and tools that data analysts and data scientists work with. This is the first course in the Johns Hopkins Data Science Specialization.</p>
+     <div><strong>May 5th &middot; Coursera</strong></div><br/>
+
+     <a href='https://www.class-central.com/mooc/710/coursera-inspiring-leadership-through-emotional-intelligence'><strong>Inspiring Leadership through Emotional Intelligence</strong></a><br/>
+     <p>Emotional intelligence, hope, mindfulness, and compassion help a person reverse the damage of chronic stress and build great leadership relationships. The Positive and Negative Emotional Attractors inspire sustained, desired change and learning at many levels.</p>
+     <div><strong>May 5th &middot; Coursera</strong></div><br/>
+
+     <a href='https://www.class-central.com/mooc/1714/coursera-getting-and-cleaning-data'><strong>Getting and Cleaning Data</strong></a><br/>
+     <p>Learn how to gather and clean data from a variety of sources. This is the third course in the Johns Hopkins Data Science Specialization.</p>
+     <div><strong>May 5th &middot; Coursera</strong></div><br/>
+
+     <a href='https://www.class-central.com/mooc/599/mongodb-university-m101j-mongodb-for-java-developers'><strong>M101J: MongoDB for Java Developers</strong></a><br/>
+     <p>Learn everything you need to know to get started building a MongoDB-based app. This course will go over basic installation, JSON, schema design, querying, insertion of data, indexing and working with language drivers. In the course, you will build a blogging platform, backed by MongoDB.</p>
+     <div><strong>May 26th &middot; MongoDB University</strong></div><br/>
+
+     <a href='https://www.class-central.com/mooc/331/coursera-calculus-single-variable'><strong>Calculus: Single Variable</strong></a><br/>
+     <p>This course provides a brisk, challenging, and dynamic treatment of differential and integral calculus, with an emphasis on conceptual understanding and applications to the engineering, physical, and social sciences.</p>
+     <div><strong>May 23rd &middot; Coursera</strong></div><br/>
+
+     <a href='https://www.class-central.com/mooc/1160/novoed-dq-101-introduction-to-decision-quality'><strong>DQ 101: Introduction to Decision Quality</strong></a><br/>
+     <p>Uncertainty and endless debate can inhibit our ability to make good decisions. Many of us squander our best opportunities to create value through better decisions. What if we could judge the quality of our decisions at the time we make them, rather than waiting for their outcome? What if we could turn uncertainty to our advantage? Decision Quality (DQ) is a practical and systematic approach that methodically breaks down barriers and improves the quality and timeliness of important decisions.</p>
+     <div><strong>May 8th &middot; NovoED</strong></div><br/>
+
+     <a href='https://www.class-central.com/mooc/1715/coursera-exploratory-data-analysis'><strong>Exploratory Data Analysis</strong></a><br/>
+     <p>Learn the essential exploratory techniques for summarizing data. This is the fourth course in the Johns Hopkins Data Science Specialization.</p>
+     <div><strong>May 5th &middot; Coursera</strong></div><br/>
+
+     <a href='https://www.class-central.com/mooc/1717/coursera-statistical-inference'><strong>Statistical Inference</strong></a><br/>
+     <p>Learn how to draw conclusions about populations or scientific truths from data. This is the sixth course in the Johns Hopkins Data Science Course Track.</p>
+     <div><strong>May 5th &middot; Coursera</strong></div><br/>
+
+     <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='6518938'></div>
+
+ {% endblock %}
