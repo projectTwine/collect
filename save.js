@@ -12,97 +12,59 @@ const crypto = require('crypto');
 const { spawn } = require('child_process');
 const R = require('ramda')
 const youtube = google.youtube('v3');
+const models = require('./models.js')
 
 
-const inspectJSON = function(object) {
+function inspectJSON(object) {
   console.log(util.inspect(object, {showHidden: false, depth: null}));
 }
 
-const API_KEY = 'AIzaSyC8LjcCWH62R3lw_P6F__B6W2GLwa9OvyI';
-const sequelize = new Sequelize('twine', 'steviejay', '', {
-  host: 'localhost',
-  dialect: 'postgres',
-
-  //TODO: study why this is...?
-  //These configs force connectino to close after 1 second of idle
-  //if > 1 connection is max it will hold until 2 connections are given
-  pool: {
-    max: 1,
-    min: 0,
-    idle: 1000
+/** 
+ * Define "global" configurations here 
+ * This function attempts to reduce pollution of global scope
+ * and instead pass around configurations as needed.
+ */
+function getConfiguration() {
+  return  {
+    youtubeApiKey : 'AIzaSyC8LjcCWH62R3lw_P6F__B6W2GLwa9OvyI',
   }
-});
+}
 
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log("Authenticated to Postgres via Sequelize successfully") ;
-  })
-  .catch((err) => {
-    console.log("Unable to connect to Postgres via Sequelize: ", err) ;
+/* Sets up Sequelize */
+function setupDB() {
+  const sequelize = new Sequelize('twine', 'steviejay', '', {
+    host: 'localhost',
+    dialect: 'postgres',
+
+    //TODO: study why this is...?
+    //These configs force connectino to close after 1 second of idle
+    //if > 1 connection is max it will hold until 2 connections are given
+    pool: {
+      max: 1,
+      min: 0,
+      idle: 1000
+    }
   });
 
-const Videos = sequelize.define('videos', {
-  id : {
-    type : Sequelize.INTEGER,
-    autoIncrement : true,
-    primaryKey : true
-  },
-  source : {
-    type: Sequelize.STRING(50)
-  },
-  title : {
-    type: Sequelize.STRING(300) ,
-    unique: true
-  },
-  url : {
-    type: Sequelize.STRING(100) 
-  },
-  captions : {
-    type: Sequelize.TEXT 
-  },
-  goodness : {
-    //how good is this video?
-    type: Sequelize.INTEGER 
-  },
-  tags : {
-    //run through a LDA/NLP or alternative algorithm -- what tags  do the captions put out? -- hmm would this be redundant?
-    type: Sequelize.ARRAY(Sequelize.TEXT)
-  },
-  viewCount : {
-    type: Sequelize.INTEGER 
-  },
+  sequelize
+    .authenticate()
+    .then(() => {
+      console.log("Authenticated to Postgres via Sequelize successfully") ;
+    })
+    .catch((err) => {
+      console.log("Unable to connect to Postgres via Sequelize: ", err) ;
+    });
 
-  likeCount : {
-    type: Sequelize.INTEGER 
-  },
-  dislikeCount: {
-    type: Sequelize.INTEGER 
-  },
-  favoriteCount: {
-    type: Sequelize.INTEGER 
-  },
-  commentCount : {
-    type: Sequelize.INTEGER 
-  },
-  description : {
-    type: Sequelize.TEXT 
-  },
-  complexity_of_language : {
-    //would this be redundant? planning to fisch-kincaid
-    type: Sequelize.INTEGER
-  },
-  subdivisions : {
-    //I wonder if we can make these foreign keys (edit: cant do that)
-    //chunks of videos that talk about a single-topic
-    //https://stackoverflow.com/questions/41054507/postgresql-array-of-elements-that-each-are-a-foreign-key
-    type: Sequelize.ARRAY(Sequelize.INTEGER)
-  }
-});
+  //Use to refresh your database schema
+  //sequelize.sync({force: true})
+
+  return sequelize;
+}
+
 
 //https://stackoverflow.com/questions/5717093/check-if-a-javascript-string-is-a-url
 //Synchronous
-function isURL(str) {
+function isUrl(str) {
   var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
   '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|'+ // domain name
   '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
@@ -147,19 +109,19 @@ function getSource(url) {
 }
 
 /* Given a YouTube video URL, handles data saving and related */
-async function handleYouTubeVideo(videoURL) {
-  const video_id = videoURL.match(/watch\?v=(.*)/)[1];
-  const data = await getYouTubeInfo(video_id, API_KEY);
-  writeToDB_(data);
+async function handleYouTubeVideo(videoUrl, apiKey, Videos) {
+  const video_id = videoUrl.match(/watch\?v=(.*)/)[1];
+  const data = await getYouTubeInfo(video_id, apiKey);
+  writeToDb(data, Videos);
 }
 
 /** 
  * Given a video_id uses Videos:list API to 
  * get relevant information about a video.
  */ 
-async function getYouTubeInfo(video_id) {
+async function getYouTubeInfo(video_id, apiKey) {
   try {
-    const result = await fetch(`https://www.googleapis.com/youtube/v3/videos?id=${video_id}&part=snippet%2Cstatistics&key=${API_KEY}`);
+    const result = await fetch(`https://www.googleapis.com/youtube/v3/videos?id=${video_id}&part=snippet%2Cstatistics&key=${apiKey}`);
     const info = await result.json();
     const data = {
       source : info.items[0].snippet.source,
@@ -189,10 +151,11 @@ async function getYouTubeInfo(video_id) {
  * Takes video attributes and writes to 'videos' table in 
  * database.
  */
-function writeToDB_(data) {
+function writeToDb(data, Videos) {
   //How do we know if this call was successful?
   Videos.create(data);
 }
+
 
 /**
  * The entrypoint of the save app
@@ -203,9 +166,13 @@ function main() {
   const args = process.argv.slice(2);
   const url = args[0];
   const subs = args[1] || "--write-auto-sub";
+  const sequelize = setupDB();
+  
+  const Videos = models(sequelize);
+  const config = getConfiguration();
 
   //Some error checking on what's getting passed in
-  if(!isURL(url)) {
+  if(!isUrl(url)) {
     console.error("You should be passing a valid URL as a command line arg");
     process.exit(-1);
   }
@@ -225,10 +192,8 @@ function main() {
   const source = getSource(url);
 
   //Start handling URL
-  handleSource[source](url);
+  handleSource[source](url, config.youtubeApiKey, Videos);
 }
 
 main();
   
-//Use to refresh your database schema
-sequelize.sync({force: true})

@@ -1,3 +1,6 @@
+This service follows
+AirBnb's style guide 
+
 # collector
 aggregate lots of different educational resources online and combine.
 1. TeamTreeHouse (
@@ -9,5 +12,6 @@ aggregate lots of different educational resources online and combine.
 ##Stack
 Cheerio
 Node.js
+
 
 
