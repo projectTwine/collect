@@ -10,10 +10,10 @@ const util = require('util');
 const fs = require('fs');
 const crypto = require('crypto');
 const { spawn } = require('child_process');
+const { promisify } = require('util');
 const R = require('ramda')
 const youtube = google.youtube('v3');
-const models = require('./models.js')
-
+const models = require('./models.js');
 
 function inspectJSON(object) {
   console.log(util.inspect(object, {showHidden: false, depth: null}));
@@ -31,7 +31,7 @@ function getConfiguration() {
 }
 
 /* Sets up Sequelize */
-function setupDB() {
+function setupDB(sync) {
   const sequelize = new Sequelize('twine', 'steviejay', '', {
     host: 'localhost',
     dialect: 'postgres',
@@ -56,7 +56,7 @@ function setupDB() {
     });
 
   //Use to refresh your database schema
-  //sequelize.sync({force: true})
+  sequelize.sync({force: sync})
 
   return sequelize;
 }
@@ -65,6 +65,7 @@ function setupDB() {
 //https://stackoverflow.com/questions/5717093/check-if-a-javascript-string-is-a-url
 //Synchronous
 function isUrl(str) {
+  if (!str) return false;
   var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
   '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|'+ // domain name
   '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
@@ -75,59 +76,38 @@ function isUrl(str) {
 };
 
 
-function writeCaptionsToFS (subs, url)  {
-  return new Promise((resolve, reject) => {
-    //Gets captions and writes to FS
-    const shell = spawn('youtube-dl', ['--skip-download', subs, url]);
-    shell.stdout.on('data', (data) => {
-      console.log(`stdout : ${data}`);
-    });
-
-    shell.stderr.on('data', (err) => {
-      reject(err)
-    });
-
-    //This may be a race with the process exit
-    shell.on('close', (code) => {
-      if (code === 0) {
-        return resolve(code);
-      } else {
-        return reject(code);
-      }
-    });
-  })
-}
-
 /**
  * Given a Video URL extracts the "source" of the video
  */
 function getSource(url) {
-  if (url.indexOf("khanacademy") !== -1) return "Khan Academy";
   if (url.indexOf("youtube") !== -1) return "YouTube";
+  if (url.indexOf("khanacademy") !== -1) return "Khan Academy";
   //TODO: can i throw from the top level? and not attempt to catch it?
   throw new Error("invalid source from url");
 }
 
-/* Given a YouTube video URL, handles data saving and related */
+/**
+ * Given a YouTube video URL, handles data saving and related 
+ */
 async function handleYouTubeVideo(videoUrl, apiKey, Videos) {
-  const video_id = videoUrl.match(/watch\?v=(.*)/)[1];
-  const data = await getYouTubeInfo(video_id, apiKey);
-  writeToDb(data, Videos);
+  const videoId = videoUrl.match(/watch\?v=(.*)/)[1];
+  const data = await getYouTubeInfo(videoUrl, videoId, apiKey);
+  await writeToDb(data, Videos);
 }
 
 /** 
  * Given a video_id uses Videos:list API to 
  * get relevant information about a video.
  */ 
-async function getYouTubeInfo(video_id, apiKey) {
+async function getYouTubeInfo(videoUrl, videoId, apiKey) {
   try {
-    const result = await fetch(`https://www.googleapis.com/youtube/v3/videos?id=${video_id}&part=snippet%2Cstatistics&key=${apiKey}`);
+    const result = await fetch(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&part=snippet%2Cstatistics&key=${apiKey}`);
     const info = await result.json();
     const data = {
-      source : info.items[0].snippet.source,
+      source : 'YouTube',
       title : info.items[0].snippet.title,
-      url : null, //get URL from somewhere
-      captions : null, //get captions from shell script
+      url : videoUrl, //get URL from somewhere
+      captions : await getCaptions(videoUrl),
       goodness : null, //
       tags: info.items[0].snippet.tags,
       description : info.items[0].snippet.description,
@@ -136,7 +116,6 @@ async function getYouTubeInfo(video_id, apiKey) {
       dislikeCount : info.items[0].statistics.dislikeCount,
       favoriteCount : info.items[0].statistics.favoriteCount,
       commentCount : info.items[0].statistics.commentCount,
-      description : null,
       complexity_of_language : null,
       subdivisions : null
     };
@@ -146,14 +125,61 @@ async function getYouTubeInfo(video_id, apiKey) {
   }
 }
 
+function createRandomString() {
+  const str = crypto.randomBytes(20).toString('hex');
+  return str;
+}
+
+
+//TODO read then remove file
+//Could probably compose these (CORRECTION: reduce these onto an object)
+function getCaptions(videoUrl) {
+  return new Promise((resolve, reject) => {
+    //First write captions to a file, then read out those captions, save into DB
+    //FileFormat does not include the extension of file name
+    const fileFormat = createRandomString();
+    const shell = spawn('youtube-dl', ['--skip-download', '--write-sub', '-o', fileFormat, videoUrl]);
+
+    shell.stdout.on('data', (data) => {
+      console.log(`stdout : ${data}`) ;
+    });
+
+    shell.stderr.on('data', (err) => {
+      reject(err); 
+    })
+
+    //This may be a race with the process exit
+    shell.on('close', async (code) => {
+      if (code === 0) {
+        let subtitles;
+        try {
+          const fsReadFileX = promisify(fs.readFile);
+          subtitles = await fsReadFileX(fileFormat + '.en.vtt', {encoding: 'utf8'});
+        } catch (err) {
+          console.error("Something went wrong in reading the subtitle file :", err);
+        }
+        console.log("FUCK YEAH", subtitles);
+        return resolve(subtitles);
+      } else {
+        return reject(code);
+      }
+    });
+  });
+}
+
 
 /*
  * Takes video attributes and writes to 'videos' table in 
  * database.
  */
-function writeToDb(data, Videos) {
+async function writeToDb(data, Videos) {
   //How do we know if this call was successful?
-  Videos.create(data);
+  try {
+    await Videos.create(data)
+  } catch (err) {
+    console.log("something went wrong with writing to the db:", err);
+  }
+  return;
 }
 
 
@@ -161,19 +187,19 @@ function writeToDb(data, Videos) {
  * The entrypoint of the save app
  * Called main() for simplicty and convention
  */
-function main() {
+async function main() {
   //First argument is path to node, second is location of script
   const args = process.argv.slice(2);
   const url = args[0];
   const subs = args[1] || "--write-auto-sub";
-  const sequelize = setupDB();
+  const sequelize = setupDB(true);
   
   const Videos = models(sequelize);
   const config = getConfiguration();
 
   //Some error checking on what's getting passed in
   if(!isUrl(url)) {
-    console.error("You should be passing a valid URL as a command line arg");
+    console.error("You should be passing a valid URL as a command line arg, url:", url);
     process.exit(-1);
   }
 
@@ -192,7 +218,8 @@ function main() {
   const source = getSource(url);
 
   //Start handling URL
-  handleSource[source](url, config.youtubeApiKey, Videos);
+  await handleSource[source](url, config.youtubeApiKey, Videos);
+  process.exit(0);
 }
 
 main();
