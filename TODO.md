@@ -3,3 +3,4 @@
 * Start creating the search engine for it
 * Create the sed script that converts from VTT to text
 
+* add storage of youtube channel id and name

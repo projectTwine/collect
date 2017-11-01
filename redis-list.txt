@@ -1,0 +1,20 @@
+//Only videos with  ENGLISH CAPTIONS for now i.e. non-auto-generated
+https://www.youtube.com/watch?v=bCqtb-Z5YGQ; map pt2 mpj
+https://www.youtube.com/watch?v=dz5_lsWlfTU; what is docker?
+https://www.youtube.com/watch?v=RyxXe5mbzlU; what is docker?
+https://www.youtube.com/watch?v=2D1fQgWH-mI; working with promises - google chrome developers
+https://www.youtube.com/watch?v=lil4YCCXRYc; jafar husain - async programming at jsconfeu
+https://www.youtube.com/watch?v=D0fn9sW93ko; es2016- async await
+https://www.youtube.com/watch?v=8aGhZQkoFbQ; philip roberts - what the heck is the event loop
+https://www.youtube.com/watch?v=F6k8lTrAE2g; Node.js: Javascript on the server
+https://www.youtube.com/watch?v=RJaRRS27100; Object and array destructuring in javascript
+https://www.youtube.com/watch?v=wA0gZnBI8i4; Promises in AngularJS: The $q Service Explained
+https://www.youtube.com/watch?v=21EiKfQYZXc; Andrew Ng: AI is the new electricity
+https://www.youtube.com/watch?v=Mv9NEXX1VHc; What on Earth is recursion?
+https://www.youtube.com/watch?v=SzJ46YA_RaA; Map of Computer Science
+
+
+
+
+
+

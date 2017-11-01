@@ -185,7 +185,7 @@ async function writeToDb(data, Videos) {
 
 /**
  * The entrypoint of the save app
- * Called main() for simplicty and convention
+ * Called main() for simplicity and convention
  */
 async function main() {
   //First argument is path to node, second is location of script
