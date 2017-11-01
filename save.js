@@ -131,7 +131,7 @@ function createRandomString() {
 }
 
 
-//TODO read then remove file
+//NEXT: TODO read then remove file
 //Could probably compose these (CORRECTION: reduce these onto an object)
 function getCaptions(videoUrl) {
   return new Promise((resolve, reject) => {
@@ -153,8 +153,8 @@ function getCaptions(videoUrl) {
       if (code === 0) {
         let subtitles;
         try {
-          const fsReadFileX = promisify(fs.readFile);
-          subtitles = await fsReadFileX(fileFormat + '.en.vtt', {encoding: 'utf8'});
+          const fsReadFileP = promisify(fs.readFile);
+          subtitles = await fsReadFileP(fileFormat + '.en.vtt', {encoding: 'utf8'});
         } catch (err) {
           console.error("Something went wrong in reading the subtitle file :", err);
         }
