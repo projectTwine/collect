@@ -6,11 +6,11 @@ module.exports = function models(sequelize) {
       autoIncrement : true,
       primaryKey : true
     },
-    video_id {
+    video_id : {
       type: Sequelize.TEXT,
       unique: true
     },
-    channel_id {
+    channel_id : {
       type: Sequelize.TEXT,
     },
     source : {

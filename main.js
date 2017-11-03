@@ -14,6 +14,7 @@ const { promisify } = require('util');
 const R = require('ramda')
 const youtube = google.youtube('v3');
 const models = require('./models.js');
+const removeFile = require('./utils.js').removeFile;
 
 function inspectJSON(object) {
   console.log(util.inspect(object, {showHidden: false, depth: null}));
@@ -170,17 +171,6 @@ function getCaptions(videoUrl) {
   });
 }
 
-async function removeFile(fileName) {
-  const fsUnlinkP = promisify(fs.unlink);
-  try {
-    await fsUnlinkP(fileName);
-  } catch (err) {
-    console.error("Something went wrong in removing the file", err);
-  }
-}
-
-
-
 
 /*
  * Takes video attributes and writes to 'videos' table in 
@@ -237,4 +227,9 @@ async function main() {
 }
 
 main();
+module.exports = {
+  removeFile : removeFile,
+  writeToDB : writeToDB,
+  getCaptions: getCaptions
+}
   
