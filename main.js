@@ -105,17 +105,19 @@ async function getYouTubeInfo(videoUrl, videoId, apiKey) {
     const info = await result.json();
     const data = {
       source : 'YouTube',
+      video_id : info.items[0].id,
+      channel_id : info.items[0].snippet.channelId,
       title : info.items[0].snippet.title,
       url : videoUrl, //get URL from somewhere
       captions : await getCaptions(videoUrl),
       goodness : null, //
       tags: info.items[0].snippet.tags,
       description : info.items[0].snippet.description,
-      viewCount : info.items[0].statistics.viewCount,
-      likeCount : info.items[0].statistics.likeCount,
-      dislikeCount : info.items[0].statistics.dislikeCount,
-      favoriteCount : info.items[0].statistics.favoriteCount,
-      commentCount : info.items[0].statistics.commentCount,
+      view_count : info.items[0].statistics.viewCount,
+      like_count : info.items[0].statistics.likeCount,
+      dislike_count : info.items[0].statistics.dislikeCount,
+      favorite_count : info.items[0].statistics.favoriteCount,
+      comment_count : info.items[0].statistics.commentCount,
       complexity_of_language : null,
       subdivisions : null
     };
@@ -155,6 +157,7 @@ function getCaptions(videoUrl) {
         try {
           const fsReadFileP = promisify(fs.readFile);
           subtitles = await fsReadFileP(fileFormat + '.en.vtt', {encoding: 'utf8'});
+          await removeFile(fileFormat + '.en.vtt');
         } catch (err) {
           console.error("Something went wrong in reading the subtitle file :", err);
         }
@@ -166,6 +169,17 @@ function getCaptions(videoUrl) {
     });
   });
 }
+
+async function removeFile(fileName) {
+  const fsUnlinkP = promisify(fs.unlink);
+  try {
+    await fsUnlinkP(fileName);
+  } catch (err) {
+    console.error("Something went wrong in removing the file", err);
+  }
+}
+
+
 
 
 /*

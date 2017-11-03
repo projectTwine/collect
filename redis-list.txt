@@ -12,6 +12,7 @@ https://www.youtube.com/watch?v=wA0gZnBI8i4; Promises in AngularJS: The $q Servi
 https://www.youtube.com/watch?v=21EiKfQYZXc; Andrew Ng: AI is the new electricity
 https://www.youtube.com/watch?v=Mv9NEXX1VHc; What on Earth is recursion?
 https://www.youtube.com/watch?v=SzJ46YA_RaA; Map of Computer Science
+https://www.youtube.com/watch?v=kSErOgVqpAA; http://www.cs.cmu.edu/~213/schedule.html exception control flow
 
 
 

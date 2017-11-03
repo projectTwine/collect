@@ -6,6 +6,13 @@ module.exports = function models(sequelize) {
       autoIncrement : true,
       primaryKey : true
     },
+    video_id {
+      type: Sequelize.TEXT,
+      unique: true
+    },
+    channel_id {
+      type: Sequelize.TEXT,
+    },
     source : {
       type: Sequelize.STRING(50)
     },
@@ -27,20 +34,20 @@ module.exports = function models(sequelize) {
       //run through a LDA/NLP or alternative algorithm -- what tags  do the captions put out? -- hmm would this be redundant?
       type: Sequelize.ARRAY(Sequelize.TEXT)
     },
-    viewCount : {
+    view_count : {
       type: Sequelize.INTEGER 
     },
 
-    likeCount : {
+    like_count : {
       type: Sequelize.INTEGER 
     },
-    dislikeCount: {
+    dislike_count: {
       type: Sequelize.INTEGER 
     },
-    favoriteCount: {
+    favorite_count: {
       type: Sequelize.INTEGER 
     },
-    commentCount : {
+    comment_count : {
       type: Sequelize.INTEGER 
     },
     description : {
