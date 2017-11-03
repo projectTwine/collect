@@ -15,5 +15,8 @@
     "ramda": "^0.25.0",
     "request-promise": "^4.2.2",
     "sequelize": "^4.15.0"
+  },
+  "devDependencies": {
+    "jest": "^21.2.1"
   }
 }
