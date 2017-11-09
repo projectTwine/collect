@@ -26,6 +26,10 @@ module.exports = function models(sequelize) {
     captions : {
       type: Sequelize.TEXT 
     },
+    //Did you use the youtube auto-generated captioning?
+    auto_generated_captions : {
+      type: Sequelize.BOOLEAN
+    },
     goodness : {
       //how good is this video?
       type: Sequelize.INTEGER 

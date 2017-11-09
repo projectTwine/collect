@@ -93,7 +93,13 @@ function getSource(url) {
 async function handleYouTubeVideo(videoUrl, apiKey, Videos) {
   const videoId = videoUrl.match(/watch\?v=(.*)/)[1];
   const data = await getYouTubeInfo(videoUrl, videoId, apiKey);
-  await writeToDb(data, Videos);
+  console.log("aiite heres what we got for data", data);
+  //TODO: do i need this try/catch
+  try {
+    await writeToDb(data, Videos);
+  } catch(error) {
+    console.warn(error); 
+  }
 }
 
 /** 
@@ -101,9 +107,12 @@ async function handleYouTubeVideo(videoUrl, apiKey, Videos) {
  * get relevant information about a video.
  */ 
 async function getYouTubeInfo(videoUrl, videoId, apiKey) {
+  console.log("videoId:", videoId);
+  console.log("videoUrl:", videoUrl);
   try {
     const result = await fetch(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&part=snippet%2Cstatistics&key=${apiKey}`);
     const info = await result.json();
+    console.log("info...:",info.items);
     const data = {
       source : 'YouTube',
       video_id : info.items[0].id,
@@ -111,6 +120,7 @@ async function getYouTubeInfo(videoUrl, videoId, apiKey) {
       title : info.items[0].snippet.title,
       url : videoUrl, //get URL from somewhere
       captions : await getCaptions(videoUrl),
+      auto_generated_captions : true,
       goodness : null, //
       tags: info.items[0].snippet.tags,
       description : info.items[0].snippet.description,
@@ -122,6 +132,7 @@ async function getYouTubeInfo(videoUrl, videoId, apiKey) {
       complexity_of_language : null,
       subdivisions : null
     };
+    console.log("WE GOT Data is... ", data);
     return data;
   } catch (error) {
     console.warn(error);
@@ -134,7 +145,6 @@ function createRandomString() {
 }
 
 
-//NEXT: TODO read then remove file
 //Could probably compose these (CORRECTION: reduce these onto an object)
 function getCaptions(videoUrl) {
   return new Promise((resolve, reject) => {
@@ -151,7 +161,6 @@ function getCaptions(videoUrl) {
       reject(err); 
     })
 
-    //This may be a race with the process exit
     shell.on('close', async (code) => {
       if (code === 0) {
         let subtitles;
@@ -162,7 +171,6 @@ function getCaptions(videoUrl) {
         } catch (err) {
           console.error("Something went wrong in reading the subtitle file :", err);
         }
-        console.log("FUCK YEAH", subtitles);
         return resolve(subtitles);
       } else {
         return reject(code);
@@ -196,6 +204,7 @@ async function main() {
   const args = process.argv.slice(2);
   const url = args[0];
   const subs = args[1] || "--write-auto-sub";
+  console.log("Your subtitle options are...", subs);
   const sequelize = setupDB(true);
   
   const Videos = models(sequelize);
@@ -227,9 +236,4 @@ async function main() {
 }
 
 main();
-module.exports = {
-  removeFile : removeFile,
-  writeToDB : writeToDB,
-  getCaptions: getCaptions
-}
   
