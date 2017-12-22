@@ -1,3 +1,4 @@
+require('dotenv').config();
 //Pass in a YouTube URL to insert into postgres database
 //DEBUG=sequelize* node app.js
 const Sequelize = require('sequelize');
@@ -28,24 +29,42 @@ function inspectJSON(object) {
 function getConfiguration() {
   return  {
     youtubeApiKey : 'AIzaSyC8LjcCWH62R3lw_P6F__B6W2GLwa9OvyI',
+    environment : process.env.node_env,
   }
 }
 
 /* Sets up Sequelize */
-function setupDB(sync) {
-  const sequelize = new Sequelize('twine', 'steviejay', '', {
-    host: 'localhost',
-    dialect: 'postgres',
+function setupDB(sync, env) {
 
-    //TODO: study why this is...?
-    //These configs force connectino to close after 1 second of idle
-    //if > 1 connection is max it will hold until 2 connections are given
-    pool: {
-      max: 1,
-      min: 0,
-      idle: 1000
-    }
-  });
+  //TODO clean this up
+  let sequelize;
+  console.log("Your env is..", env);
+  if (env === 'PRODUCTION') {
+    sequelize = new Sequelize('twine', 'program', 'hyLLs4mAjMFE', {
+      host: 'relational-db.clbvhknp2f4q.us-east-1.rds.amazonaws.com',
+      dialect: 'postgres',
+
+      //TODO: study why this is...?
+      //These configs force connectino to close after 1 second of idle
+      //if > 1 connection is max it will hold until 2 connections are given
+      pool: {
+        max: 1,
+        min: 0,
+        idle: 1000
+      }
+    });
+  } else {
+    sequelize = new Sequelize('twine', 'steviejay', '', {
+      host: 'relational-db.clbvhknp2f4q.us-east-1.rds.amazonaws.com',
+      dialect: 'postgres',
+
+      pool: {
+        max: 1,
+        min: 0,
+        idle: 1000
+      }
+    });
+  }
 
   sequelize
     .authenticate()
@@ -145,12 +164,16 @@ function createRandomString() {
 }
 
 
+
 //Could probably compose these (CORRECTION: reduce these onto an object)
+//TODO: there are four types of caption types Forced, None, ASR, standard
 function getCaptions(videoUrl) {
   return new Promise((resolve, reject) => {
     //First write captions to a file, then read out those captions, save into DB
     //FileFormat does not include the extension of file name
     const fileFormat = createRandomString();
+    console.log("this is hthe file", fileFormat);
+    console.log("and heres the URL", videoUrl);
     const shell = spawn('youtube-dl', ['--skip-download', '--write-sub', '-o', fileFormat, videoUrl]);
 
     shell.stdout.on('data', (data) => {
@@ -205,10 +228,10 @@ async function main() {
   const url = args[0];
   const subs = args[1] || "--write-auto-sub";
   console.log("Your subtitle options are...", subs);
-  const sequelize = setupDB(true);
   
+  const config = getConfiguration()
+  const sequelize = setupDB(true, process.env.NODE_ENV);
   const Videos = models(sequelize);
-  const config = getConfiguration();
 
   //Some error checking on what's getting passed in
   if(!isUrl(url)) {
@@ -234,6 +257,22 @@ async function main() {
   await handleSource[source](url, config.youtubeApiKey, Videos);
   process.exit(0);
 }
+
+//TODO??
+/*
+function play() {
+  getCaptions('https://www.youtube.com/watch?v=FdzBj4ZS_jg')
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+
+  process.on('unhandledRejection', (reason, p) => {
+    console.log('Unhandled Rejection at:', p, 'reason:', reason);
+    console.log(reason.stack);
+    // application specific logging, throwing an error, or other logic here
+  });
+}
+play();
+*/
 
 main();
   

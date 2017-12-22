@@ -1,0 +1,68 @@
+{
+  "requiresAttributes": [
+    {
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.ecr-auth",
+      "targetId": null,
+      "targetType": null
+    }
+  ],
+  "taskDefinitionArn": "arn:aws:ecs:us-east-1:647469952966:task-definition/knowledge-graph-task:8",
+  "networkMode": "bridge",
+  "status": "ACTIVE",
+  "revision": 8,
+  "taskRoleArn": null,
+  "containerDefinitions": [
+    {
+      "volumesFrom": [],
+      "memory": 1908,
+      "extraHosts": null,
+      "linuxParameters": null,
+      "dnsServers": null,
+      "disableNetworking": null,
+      "dnsSearchDomains": null,
+      "portMappings": [
+        {
+          "hostPort": 7474,
+          "containerPort": 7474,
+          "protocol": "tcp"
+        },
+        {
+          "hostPort": 7687,
+          "containerPort": 7687,
+          "protocol": "tcp"
+        }
+      ],
+      "hostname": null,
+      "essential": true,
+      "entryPoint": null,
+      "mountPoints": [],
+      "name": "knowledge-graph-container",
+      "ulimits": null,
+      "dockerSecurityOptions": null,
+      "environment": [],
+      "links": null,
+      "workingDirectory": null,
+      "readonlyRootFilesystem": null,
+      "image": "647469952966.dkr.ecr.us-east-1.amazonaws.com/knowledge-graph:latest",
+      "command": [],
+      "user": null,
+      "dockerLabels": null,
+      "logConfiguration": null,
+      "cpu": 0,
+      "privileged": null,
+      "memoryReservation": null,
+      "expanded": false
+    }
+  ],
+  "placementConstraints": [],
+  "volumes": [
+    {
+      "host": {
+        "sourcePath": "/dev/xvda"
+      },
+      "name": "knowledge-graph-volume"
+    }
+  ],
+  "family": "knowledge-graph-task"
+}

@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^4.0.0",
     "googleapis": "^22.2.0",
     "node-fetch": "^1.7.3",
     "pg": "^7.3.0",
